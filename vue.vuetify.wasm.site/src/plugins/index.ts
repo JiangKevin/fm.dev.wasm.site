@@ -7,7 +7,8 @@
 // Plugins
 import { loadFonts } from './webfontloader'
 import vuetify from './vuetify'
-
+import { createPinia, type Pinia } from 'pinia';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 // Types
 import type { App } from 'vue'
 
