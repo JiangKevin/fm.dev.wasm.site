@@ -24,7 +24,10 @@
     background-color: var(--Acrylic_background);
     backdrop-filter: var(--Acrylic_filter);
 }
-
+.fm_left_area
+{
+    color: azure;
+}
 /* 修改 */
 
 .fm_header_bar>.v-toolbar__content>.v-toolbar__prepend

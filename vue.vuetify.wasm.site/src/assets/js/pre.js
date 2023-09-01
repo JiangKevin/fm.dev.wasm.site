@@ -15,6 +15,9 @@ Module = {
     })(),
 }
 /** */
-function displayWindowSize() {
+export function displayWindowSize() {
     Module._setArticleWidth(winW, winH, winW)
 }
+
+
+  
