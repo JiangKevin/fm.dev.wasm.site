@@ -8,7 +8,13 @@ export default {
         },
         view_right: {
             required: true
-        }
+        },
+        left_w: {
+            required: true
+        },
+        right_w: {
+            required: true
+        },
     },
     data: () => ({
         tab: null,
@@ -24,11 +30,11 @@ export default {
             use_view_x = viewSizeX
             // 
             if (this.view_left) {
-                use_view_x = use_view_x - 255 -1 
+                use_view_x = use_view_x - this.left_w 
             }
             // 
             if (this.view_right) {
-                use_view_x = use_view_x - 255 -1 
+                use_view_x = use_view_x - this.right_w 
             }
             return use_view_x
         },

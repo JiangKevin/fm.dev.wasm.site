@@ -4,7 +4,7 @@
     <!-- header -->
     <v-app-bar title="Application bar" height="40" class="fm_header_bar">
       <template v-slot:prepend>
-        <v-app-bar-nav-icon @click="d_show_left=!d_show_left"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click="d_show_left = !d_show_left"></v-app-bar-nav-icon>
       </template>
     </v-app-bar>
     <!-- footer -->
@@ -12,7 +12,7 @@
       <span class="mr-5">2023 &copy; </span>
     </v-footer>
     <!-- left area -->
-    <v-navigation-drawer v-if="d_show_left">
+    <v-navigation-drawer v-if="d_show_left" :width="left_width">
       <template v-slot:prepend>
         <v-list-item lines="two" prepend-avatar="https://randomuser.me/api/portraits/women/81.jpg" title="Jane Smith"
           subtitle="Logged in"></v-list-item>
@@ -27,7 +27,7 @@
       </v-list>
     </v-navigation-drawer>
     <!-- right area -->
-    <v-navigation-drawer v-if="d_show_right" location="right">
+    <v-navigation-drawer v-if="d_show_right" location="right" :width="right_width">
       <template v-slot:prepend>
         <v-list-item lines="two" prepend-avatar="https://randomuser.me/api/portraits/women/81.jpg" title="Jane Smith"
           subtitle="Logged in"></v-list-item>
@@ -43,7 +43,8 @@
 
     <!-- main start-->
     <v-main class="d-flex align-center justify-center">
-      <main_View :view_left="d_show_left" :view_right="d_show_right"></main_View>
+      <main_View :view_left="d_show_left" :view_right="d_show_right" :left_w="left_width" :right_w="right_width">
+      </main_View>
     </v-main>
     <!-- main end-->
 
@@ -54,7 +55,6 @@
 import { useTheme } from 'vuetify';
 import header_view from '@/components/header.vue';
 import main_View from '@/components/main_conent.vue';
-import persistence from '@/components/Persistence.vue';
 import {
   computed,
   nextTick,
@@ -71,5 +71,7 @@ theme.global.name.value = 'dark'
 // 设置左右区域显示与否的变量
 const d_show_left: Ref<boolean> = ref(false);
 const d_show_right: Ref<boolean> = ref(true);
+const left_width: number = 366
+const right_width: number = 300
 
 </script>
