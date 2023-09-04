@@ -4,16 +4,24 @@ import { numberLiteralTypeAnnotation } from '@babel/types'
 export default {
     props: {
         view_left: {
-            required: true
+            type:Boolean,
+            required: true,
+            default:false
         },
         view_right: {
-            required: true
+            type:Boolean,
+            required: true,
+            default:false
         },
         left_w: {
-            required: true
+            type:Number,
+            required: true,
+            default:0
         },
         right_w: {
-            required: true
+            type:Number,
+            required: true,
+            default:0
         },
     },
     data: () => ({

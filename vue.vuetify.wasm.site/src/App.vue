@@ -14,8 +14,7 @@
     <!-- left area -->
     <v-navigation-drawer v-if="d_show_left" :width="left_width">
       <template v-slot:prepend>
-        <v-list-item lines="two" prepend-avatar="https://randomuser.me/api/portraits/women/81.jpg" title="Jane Smith"
-          subtitle="Logged in"></v-list-item>
+        <v-list-item lines="two" prepend-avatar="./assets/81.jpg" title="Jane Smith" subtitle="Logged in"></v-list-item>
       </template>
 
       <v-divider></v-divider>
@@ -29,8 +28,7 @@
     <!-- right area -->
     <v-navigation-drawer v-if="d_show_right" location="right" :width="right_width">
       <template v-slot:prepend>
-        <v-list-item lines="two" prepend-avatar="https://randomuser.me/api/portraits/women/81.jpg" title="Jane Smith"
-          subtitle="Logged in"></v-list-item>
+        <v-list-item lines="two" prepend-avatar="./assets/81.jpg" title="Jane Smith" subtitle="Logged in"></v-list-item>
       </template>
       <v-divider></v-divider>
       <v-list density="compact" nav>
@@ -53,8 +51,9 @@
 <!--  -->
 <script setup lang="ts">
 import { useTheme } from 'vuetify';
-import header_view from '@/components/header.vue';
 import main_View from '@/components/main_conent.vue';
+import loadJs from '@/components/wasm_load.vue'
+// 
 import {
   computed,
   nextTick,
@@ -65,6 +64,7 @@ import {
   type Ref,
   type WritableComputedRef,
 } from 'vue';
+
 // 修改样式
 const theme = useTheme();
 theme.global.name.value = 'dark'
@@ -73,5 +73,9 @@ const d_show_left: Ref<boolean> = ref(false);
 const d_show_right: Ref<boolean> = ref(true);
 const left_width: number = 366
 const right_width: number = 300
+let wasm_programe: undefined
+loadJs('/static/js/hmi_editer_web.js')
+loadJs('./static/js/pre.js')
+
 
 </script>
