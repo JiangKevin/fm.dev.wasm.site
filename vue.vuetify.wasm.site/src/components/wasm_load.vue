@@ -7,10 +7,10 @@ function loadJs(src) {
     document.body.appendChild(script);
       
     script.onload = ()=>{
-    //   resolve();
+      resolve();
     }
     script.onerror = ()=>{
-    //   reject();
+      reject();
     }
   })
 }

@@ -60,7 +60,7 @@ import {
 } from 'vue';
 import main_View from '@/components/main_conent.vue';
 import loadJs from '@/components/wasm_load.vue'
-loadJs('./static/js/hmi_editer_web.js')
+// loadJs('./static/js/hmi_editer_web.js')
 // 修改样式
 const theme = useTheme();
 theme.global.name.value = 'dark'
@@ -68,11 +68,16 @@ theme.global.name.value = 'dark'
 let d_show_left = ref(false);
 let d_show_right = ref(true);
 const left_width = 366
-const right_width = 300
+const right_width = 366
 let wasm_programe
 loadJs('./static/js/pre.js')
-// 
-// wasm_programe = Module
-console.log('dasfadsfadsf')
-console.log(wasm_programe)
+loadJs('./static/js/hmi_editer_web.js').then(() => {
+  // 加载成功，进行后续操作
+})
+loadJs('./static/js/pre.js').then(() => {
+  console.log("wasm_programe:\n")
+  wasm_programe = Module
+  console.log(wasm_programe)
+})
+
 </script>

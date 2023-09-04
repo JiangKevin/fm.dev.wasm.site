@@ -2,8 +2,8 @@ Module = {
   preRun: [],
   postRun: [
     function () {
-      app.wasm_programe = Module;
-      console.log(app.wasm_programe)
+      // app.wasm_programe = Module;
+      // console.log(app.wasm_programe)
     },
   ],
   canvas: (function () {

@@ -4,30 +4,31 @@ import loadJs from '@/components/wasm_load.vue'
 export default {
     props: {
         view_left: {
-            type:Boolean,
+            type: Boolean,
             required: true,
-            default:false
+            default: false
         },
         view_right: {
-            type:Boolean,
+            type: Boolean,
             required: true,
-            default:false
+            default: false
         },
         left_w: {
-            type:Number,
+            type: Number,
             required: true,
-            default:0
+            default: 0
         },
         right_w: {
-            type:Number,
+            type: Number,
             required: true,
-            default:0
+            default: 0
         },
     },
     data: () => ({
         tab: null,
         view_size_x: Number,
-        view_size_y: Number
+        view_size_y: Number,
+        wasm_programe: null
 
     }),
     computed: {
@@ -38,19 +39,19 @@ export default {
             use_view_x = viewSizeX
             // 
             if (this.view_left) {
-                use_view_x = use_view_x - this.left_w 
+                use_view_x = use_view_x - this.left_w
             }
             // 
             if (this.view_right) {
-                use_view_x = use_view_x - this.right_w 
+                use_view_x = use_view_x - this.right_w
             }
             return use_view_x
         },
         compute_view_y() {
             let use_view_y;
             let viewSizeY = document.body.clientHeight
-            use_view_y=viewSizeY
-            return use_view_y - 41 - 32 - 30 ;
+            use_view_y = viewSizeY
+            return use_view_y - 41 - 32 - 30;
         }
     },
     methods:
@@ -59,12 +60,15 @@ export default {
             console.log("adfadf")
         }
     },
-    mounted(){
-        // loadJs('./static/js/hmi_editer_web.js').then(()=>{
+    mounted() {
+        // loadJs('./static/js/hmi_editer_web.js').then(() => {
         //     // 加载成功，进行后续操作
         // })
-        // loadJs('./static/js/pre.js').then(()=>{
+        // loadJs('./static/js/pre.js').then(() => {
         //     // 加载成功，进行后续操作
+        //     console.log("wasm_programe:\n")
+        //     this.wasm_programe = Module
+        //     console.log(this.wasm_programe)
         // })
     }
 }
