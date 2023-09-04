@@ -1,6 +1,7 @@
 <!--  -->
 <script lang="ts">
 import { numberLiteralTypeAnnotation } from '@babel/types'
+import loadJs from '@/components/wasm_load.vue'
 export default {
     props: {
         view_left: {
@@ -58,6 +59,14 @@ export default {
         test: function () {
             console.log("adfadf")
         }
+    },
+    mounted(){
+        loadJs('./static/js/hmi_editer_web.js').then(()=>{
+            // 加载成功，进行后续操作
+        })
+        loadJs('./static/js/pre.js').then(()=>{
+            // 加载成功，进行后续操作
+        })
     }
 }
 </script>

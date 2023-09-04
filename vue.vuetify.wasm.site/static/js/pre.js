@@ -4,7 +4,6 @@ Module = {
     function () {
       let winW = document.body.clientWidth;
       let winH = document.body.clientHeight;
-      //   Module._setArticleWidth(500, 800, 500)
     },
   ],
   canvas: (function () {

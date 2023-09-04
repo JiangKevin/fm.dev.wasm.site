@@ -49,10 +49,11 @@
   </v-app>
 </template>
 <!--  -->
-<script setup lang="ts">
+<script setup allowJs lang="ts">
 import { useTheme } from 'vuetify';
 import main_View from '@/components/main_conent.vue';
-import loadJs from '@/components/wasm_load.vue'
+// import loadJs from '@/components/wasm_load.vue'
+// import Module from '@/components/wasmObj.vue'
 // 
 import {
   computed,
@@ -73,9 +74,15 @@ const d_show_left: Ref<boolean> = ref(false);
 const d_show_right: Ref<boolean> = ref(true);
 const left_width: number = 366
 const right_width: number = 300
-let wasm_programe: undefined
-loadJs('/static/js/hmi_editer_web.js')
-loadJs('./static/js/pre.js')
+let wasm_programe: [string, number, null, undefined, void, any,object];
+// loadJs('/static/js/hmi_editer_web.js')
+// loadJs('./static/js/pre.js')
+
+console.log(main_View)
+// wasm_programe = Module;
+if (wasm_programe) {
+  wasm_programe._setArticleWidth(500, 800, 500)
+}
 
 
 </script>
