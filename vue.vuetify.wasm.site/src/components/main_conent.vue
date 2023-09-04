@@ -24,11 +24,11 @@ export default {
             use_view_x = viewSizeX
             // 
             if (this.view_left) {
-                use_view_x = use_view_x - 255
+                use_view_x = use_view_x - 255 -1 
             }
             // 
             if (this.view_right) {
-                use_view_x = use_view_x - 255
+                use_view_x = use_view_x - 255 -1 
             }
             return use_view_x
         },
