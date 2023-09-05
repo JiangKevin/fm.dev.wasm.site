@@ -76,7 +76,7 @@ export default {
 </script>
 <!--  -->
 <template>
-    <v-navigation-drawer location="right" :width="right_area_w">
+    <v-navigation-drawer location="right" :width="right_area_w" >
         <v-card height="100%">
             <div class="d-flex flex-row" :class="class_object_computed_right_area">
 
