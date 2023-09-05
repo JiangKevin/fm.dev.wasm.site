@@ -2,10 +2,25 @@
 <template>
   <v-app class="fm_app">
     <!-- header -->
-    <v-app-bar title="Application bar" height="40" class="fm_header_bar">
+    <v-app-bar title="Application bar" height="40" class="fm_header_bar" prominent>
       <template v-slot:prepend>
-        <v-app-bar-nav-icon @click="d_show_left = !d_show_left"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click="left_show_click" class="fm_nav_icon"
+          icon="fmicons icon-logo-fm top_area_logo_i"></v-app-bar-nav-icon>
       </template>
+      <v-btn-toggle divided variant="outlined">
+        <v-btn icon="mdi mdi-format-align-left" color="deep-purple-darken-2"></v-btn>
+        <v-btn icon="mdi mdi-format-align-center"></v-btn>
+        <v-btn icon="mdi mdi-format-align-right"></v-btn>
+        <v-btn icon="mdi mdi-format-align-justify"></v-btn>
+      </v-btn-toggle>
+      <!-- <template v-slot:append>
+        <v-btn icon="mdi-format-align-right"></v-btn>
+        <v-btn icon="mdi-format-align-justify"></v-btn>
+        <v-btn icon>
+          <v-icon>mdi-magnify</v-icon>
+        </v-btn>
+        <v-btn icon="mdi-dots-vertical"></v-btn>
+      </template> -->
     </v-app-bar>
     <!-- footer -->
     <v-footer app elevation="3" height="30" class="fm_footer_bar">
@@ -64,20 +79,27 @@ import loadJs from '@/components/wasm_load.vue'
 // 修改样式
 const theme = useTheme();
 theme.global.name.value = 'dark'
+
 // // 设置左右区域显示与否的变量
-let d_show_left = ref(false);
+let d_show_left = ref(true);
 let d_show_right = ref(true);
 const left_width = 366
 const right_width = 366
+let is_debug = ref(true)
 let wasm_programe
-loadJs('./static/js/pre.js')
-loadJs('./static/js/hmi_editer_web.js').then(() => {
-  // 加载成功，进行后续操作
-})
-loadJs('./static/js/pre.js').then(() => {
-  console.log("wasm_programe:\n")
-  wasm_programe = Module
-  console.log(wasm_programe)
-})
+// 假如wasm的控制
+if (!is_debug) {
+  loadJs('./static/js/pre.js')
+  loadJs('./static/js/hmi_editer_web.js').then(() => {
+    // 加载成功，进行后续操作
+  })
+  loadJs('./static/js/pre.js').then(() => {
+    wasm_programe = Module
+  })
+}
+/** */
+function left_show_click() {
+  d_show_left.value = !d_show_left.value
+}
 
 </script>

@@ -51,7 +51,9 @@ export default {
             let use_view_y;
             let viewSizeY = document.body.clientHeight
             use_view_y = viewSizeY
-            return use_view_y - 41 - 32 - 30;
+            console.log(use_view_y)
+            use_view_y= use_view_y - 41 - 32 - 30
+            return use_view_y;
         }
     },
     methods:

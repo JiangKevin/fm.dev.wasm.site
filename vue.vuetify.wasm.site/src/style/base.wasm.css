@@ -8,6 +8,8 @@
   --footer_height: 30 !important;
   --canvas_height:calc(100% - var(--v-layout-left) - var(--v-layout-right));
   --canvas_width:calc(100% - var(--v-layout-top) - var(--v-layout-bottom) - 32px );
+  --red_color:#d12d49ee;
+  --red_hover_color:#d12d49ff;
 }
 
 /* 新的 */
@@ -43,6 +45,10 @@
   background-color: var(--Acrylic_background);
   backdrop-filter: var(--Acrylic_filter);
 }
+.fm_nav_icon
+{
+    border-radius: 0px !important;
+}
 .fm_cards {
   width: 100%;
   top: 0;
@@ -66,5 +72,9 @@
 /* 修改 */
 
 .fm_header_bar > .v-toolbar__content > .v-toolbar__prepend {
-  margin-left: 4px !important;
+  margin-left: 0px !important;
+  background-color:var(--red_color);
 }
+.fm_header_bar > .v-toolbar__content > .v-toolbar__prepend:hover {
+    background-color:var(--red_hover_color);
+  }
