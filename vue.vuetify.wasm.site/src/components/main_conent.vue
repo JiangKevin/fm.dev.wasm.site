@@ -52,7 +52,7 @@ export default {
             let viewSizeY = document.body.clientHeight
             use_view_y = viewSizeY
             console.log(use_view_y)
-            use_view_y= use_view_y - 41 - 32 - 30
+            use_view_y = use_view_y - 41 - 32 - 30
             return use_view_y;
         }
     },
@@ -80,9 +80,10 @@ export default {
     <!-- <canvas id="canvas" class="ems_canvas"></canvas> -->
     <v-card class="fm_cards">
         <v-tabs v-model="tab" bg-color="primary" height="38">
-            <v-tab value="one"  height="38">
+            <v-tab value="one" height="38" maxWidth="48" class="fm_main_area_tab">
                 <v-icon icon="mdi mdi-axis-arrow"></v-icon></v-tab>
-            <v-tab value="two" height="38"><v-icon icon="mdi mdi-chart-timeline-variant-shimmer" ></v-icon></v-tab>
+            <v-tab value="two" height="38" maxWidth="48px" class="fm_main_area_tab"><v-icon
+                    icon="mdi mdi-chart-timeline-variant-shimmer"></v-icon></v-tab>
         </v-tabs>
 
         <v-card-text>

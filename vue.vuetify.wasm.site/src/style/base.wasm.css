@@ -76,11 +76,23 @@
   height: calc(100% - var(--tab_height));
   padding: 0px !important;
 }
+.fm_left_area_cards > .v-card-text {
+    width: 100%;
+    padding: 4px !important;
+    border-top: var(--border_nomal) !important;
+  }
 .fm_tabs_vertical
 {
     max-width: 48px;
     width: 48px;
     border-right: var(--border_nomal);
+}
+.fm_main_area_tab
+{
+    width: 48px !important;
+    min-width: 48px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 }
 /*  */
 .fm_left_flex
