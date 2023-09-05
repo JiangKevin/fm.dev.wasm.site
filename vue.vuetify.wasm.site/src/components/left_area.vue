@@ -44,17 +44,17 @@ export default {
         <div class="d-flex flex-row fm_left_flex">
             <v-tabs v-model="tab" direction="vertical" color="primary" class="fm_left_tabs_vertical">
                 <v-tab value="option-1" max-width="48" width="48">
-                    <v-icon start>
+                    <v-icon>
                         mdi mdi-account
                     </v-icon>
                 </v-tab>
                 <v-tab value="option-2" max-width="48px">
-                    <v-icon start>
+                    <v-icon>
                         mdi mdi-lock
                     </v-icon>
                 </v-tab>
                 <v-tab value="option-3" max-width="48px">
-                    <v-icon start>
+                    <v-icon>
                         mdi mdi-access-point
                     </v-icon>
                 </v-tab>

@@ -47,7 +47,7 @@ export default {
                         <v-toolbar color="primary" height="36">
                             <v-text-field :loading="loading" density="compact" variant="solo" label="Search templates"
                                 append-inner-icon="mdi mdi-magnify" single-line hide-details
-                                class="fm_left_text_field"></v-text-field>
+                                class="fm_right_text_field"></v-text-field>
                         </v-toolbar>
                         <v-card-text>
                             <p>
@@ -64,7 +64,7 @@ export default {
                         <v-toolbar color="primary" height="36">
                             <v-text-field :loading="loading" density="compact" variant="solo" label="Search templates"
                                 append-inner-icon="mdi mdi-magnify" single-line hide-details
-                                class="fm_left_text_field"></v-text-field>
+                                class="fm_right_text_field"></v-text-field>
                         </v-toolbar>
                         <v-card-text>
                             <p>
@@ -87,7 +87,7 @@ export default {
                         <v-toolbar color="primary" height="36">
                             <v-text-field :loading="loading" density="compact" variant="solo" label="Search templates"
                                 append-inner-icon="mdi mdi-magnify" single-line hide-details
-                                class="fm_left_text_field"></v-text-field>
+                                class="fm_right_text_field"></v-text-field>
                         </v-toolbar>
                         <v-card-text>
                             <p class="mb-0">
@@ -102,17 +102,17 @@ export default {
             <!--  -->
             <v-tabs v-model="tab" direction="vertical" color="primary" class="fm_right_tabs_vertical">
                 <v-tab value="option-1" max-width="48" width="48">
-                    <v-icon start>
+                    <v-icon>
                         mdi mdi-account
                     </v-icon>
                 </v-tab>
                 <v-tab value="option-2" max-width="48px">
-                    <v-icon start>
+                    <v-icon>
                         mdi mdi-lock
                     </v-icon>
                 </v-tab>
                 <v-tab value="option-3" max-width="48px">
-                    <v-icon start>
+                    <v-icon>
                         mdi mdi-access-point
                     </v-icon>
                 </v-tab>
