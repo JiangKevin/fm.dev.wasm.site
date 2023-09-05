@@ -206,6 +206,13 @@
   padding-bottom: 0px !important;
   padding-right: 0px !important;
 }
+.fm_left_text_field
+  > .v-input__control
+  > .v-field
+  > .v-field__field
+  > .v-label.v-field-label {
+  margin-left:4px !important;
+}
 /*  */
 .fm_right_text_field {
   height: 38px !important;
@@ -240,6 +247,13 @@
   padding-top: 0px !important;
   padding-bottom: 0px !important;
   padding-right: 0px !important;
+}
+.fm_right_text_field
+  > .v-input__control
+  > .v-field
+  > .v-field__field
+  > .v-label.v-field-label {
+  margin-left: 4px !important;
 }
 /* 修改 */
 
