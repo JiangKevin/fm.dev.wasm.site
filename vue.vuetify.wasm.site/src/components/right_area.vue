@@ -40,28 +40,10 @@ export default {
 <!--  -->
 <template>
     <v-card height="100%">
-
-        <div class="d-flex flex-row fm_left_flex">
-            <v-tabs v-model="tab" direction="vertical" color="primary" class="fm_left_tabs_vertical">
-                <v-tab value="option-1" max-width="48" width="48">
-                    <v-icon start>
-                        mdi mdi-account
-                    </v-icon>
-                </v-tab>
-                <v-tab value="option-2" max-width="48px">
-                    <v-icon start>
-                        mdi mdi-lock
-                    </v-icon>
-                </v-tab>
-                <v-tab value="option-3" max-width="48px">
-                    <v-icon start>
-                        mdi mdi-access-point
-                    </v-icon>
-                </v-tab>
-            </v-tabs>
+        <div class="d-flex flex-row fm_right_flex">
             <v-window v-model="tab">
                 <v-window-item value="option-1">
-                    <v-card flat class="fm_left_area_cards">
+                    <v-card flat class="fm_right_area_cards">
                         <v-toolbar color="primary" height="36">
                             <v-text-field :loading="loading" density="compact" variant="solo" label="Search templates"
                                 append-inner-icon="mdi mdi-magnify" single-line hide-details
@@ -78,7 +60,7 @@ export default {
                     </v-card>
                 </v-window-item>
                 <v-window-item value="option-2">
-                    <v-card flat class="fm_left_area_cards">
+                    <v-card flat class="fm_right_area_cards">
                         <v-toolbar color="primary" height="36">
                             <v-text-field :loading="loading" density="compact" variant="solo" label="Search templates"
                                 append-inner-icon="mdi mdi-magnify" single-line hide-details
@@ -101,7 +83,7 @@ export default {
                     </v-card>
                 </v-window-item>
                 <v-window-item value="option-3">
-                    <v-card flat class="fm_left_area_cards">
+                    <v-card flat class="fm_right_area_cards">
                         <v-toolbar color="primary" height="36">
                             <v-text-field :loading="loading" density="compact" variant="solo" label="Search templates"
                                 append-inner-icon="mdi mdi-magnify" single-line hide-details
@@ -117,6 +99,24 @@ export default {
                     </v-card>
                 </v-window-item>
             </v-window>
+            <!--  -->
+            <v-tabs v-model="tab" direction="vertical" color="primary" class="fm_right_tabs_vertical">
+                <v-tab value="option-1" max-width="48" width="48">
+                    <v-icon start>
+                        mdi mdi-account
+                    </v-icon>
+                </v-tab>
+                <v-tab value="option-2" max-width="48px">
+                    <v-icon start>
+                        mdi mdi-lock
+                    </v-icon>
+                </v-tab>
+                <v-tab value="option-3" max-width="48px">
+                    <v-icon start>
+                        mdi mdi-access-point
+                    </v-icon>
+                </v-tab>
+            </v-tabs>
         </div>
     </v-card>
 </template>

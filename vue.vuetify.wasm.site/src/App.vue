@@ -8,32 +8,23 @@
           icon="fmicons icon-logo-fm top_area_logo_i"></v-app-bar-nav-icon>
       </template>
       <v-btn-toggle divided variant="outlined" max-height="40">
-        <v-btn icon="mdi mdi-arrow-expand-left" @click="right_show_click" class="fm_nav_btn"  maxWidth="22px"></v-btn>
+        <v-btn icon="mdi mdi-arrow-expand-left" @click="right_show_click" class="fm_nav_btn"  maxWidth="48px"></v-btn>
       </v-btn-toggle>
     </v-app-bar>
     <!-- footer -->
     <v-footer app elevation="3" height="30" class="fm_footer_bar">
       <span class="mr-5">2023 &copy; </span>
     </v-footer>
-    <!-- left area -->
+    <!-- left area start-->
     <v-navigation-drawer v-if="d_show_left" :width="left_width">
       <left_area_view></left_area_view>
-
     </v-navigation-drawer>
-    <!-- right area -->
+    <!-- left area end-->
+    <!-- right area start-->
     <v-navigation-drawer v-if="d_show_right" location="right" :width="right_width">
-      <template v-slot:prepend>
-        <v-list-item lines="two" prepend-avatar="./assets/81.jpg" title="Jane Smith" subtitle="Logged in"></v-list-item>
-      </template>
-      <v-divider></v-divider>
-      <v-list density="compact" nav>
-        <v-list-item prepend-icon="mdi mdi-home-city" title="Home" value="home"></v-list-item>
-        <v-list-item prepend-icon="mdi mdi-account" title="My Account" value="account"></v-list-item>
-        <v-list-item prepend-icon="mdi mdi-account-group-outline" title="Users" value="users"></v-list-item>
-      </v-list>
+      <right_area_view></right_area_view>
     </v-navigation-drawer>
-
-
+    <!-- right area end-->
     <!-- main start-->
     <v-main class="d-flex align-center justify-center">
       <main_View :view_left="d_show_left" :view_right="d_show_right" :left_w="left_width" :right_w="right_width">
@@ -56,6 +47,7 @@ import {
 import main_View from '@/components/main_conent.vue';
 import loadJs from '@/components/wasm_load.vue'
 import left_area_view from '@/components/left_area.vue'
+import right_area_view from '@/components/right_area.vue'
 // loadJs('./static/js/hmi_editer_web.js')
 // 修改样式
 const theme = useTheme();

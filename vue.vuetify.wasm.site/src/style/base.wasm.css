@@ -6,13 +6,15 @@
   --Acrylic_filter: blur(4px) !important;
   --header_height: 40 !important;
   --footer_height: 30 !important;
-  --canvas_height:calc(100% - var(--v-layout-left) - var(--v-layout-right));
-  --canvas_width:calc(100% - var(--v-layout-top) - var(--v-layout-bottom) - 32px );
-  --red_color:#d12d49ee;
-  --red_hover_color:#d12d49ff;
-  --white_color:#ffffff84;
-  --white_hover_color:#ffffff;
-  --tab_height:38px;
+  --canvas_height: calc(100% - var(--v-layout-left) - var(--v-layout-right));
+  --canvas_width: calc(
+    100% - var(--v-layout-top) - var(--v-layout-bottom) - 32px
+  );
+  --red_color: #d12d49ee;
+  --red_hover_color: #d12d49ff;
+  --white_color: #ffffff84;
+  --white_hover_color: #ffffff;
+  --tab_height: 38px;
 }
 
 /* 新的 */
@@ -48,17 +50,14 @@
   background-color: var(--Acrylic_background);
   backdrop-filter: var(--Acrylic_filter);
 }
-.fm_nav_icon
-{
-    border-radius: 0px !important;
+.fm_nav_icon {
+  border-radius: 0px !important;
 }
-.fm_nav_btn
-{
-    color:var(--white_color) !important;
+.fm_nav_btn {
+  color: var(--white_color) !important;
 }
-.fm_nav_btn:hover
-{
-    color:var(--white_hover_color) !important;
+.fm_nav_btn:hover {
+  color: var(--white_hover_color) !important;
 }
 .fm_cards {
   width: 100%;
@@ -77,62 +76,86 @@
   padding: 0px !important;
 }
 .fm_left_area_cards > .v-card-text {
-    width: 100%;
-    padding: 4px !important;
-    border-top: var(--border_nomal) !important;
-  }
-.fm_tabs_vertical
-{
-    max-width: 48px;
-    width: 48px;
-    border-right: var(--border_nomal);
+  width: 100%;
+  padding: 4px !important;
+  border-top: var(--border_nomal) !important;
 }
-.fm_main_area_tab
-{
-    width: 48px !important;
-    min-width: 48px !important;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+.fm_right_area_cards > .v-card-text {
+  width: 100%;
+  padding: 4px !important;
+  border-top: var(--border_nomal) !important;
+}
+.fm_left_tabs_vertical {
+  max-width: 48px;
+  width: 48px;
+  border-right: var(--border_nomal);
+}
+.fm_right_tabs_vertical {
+  max-width: 48px;
+  width: 48px;
+  border-left: var(--border_nomal);
+}
+.fm_main_area_tabs {
+  border-bottom: var(--border_nomal) !important;
+}
+.fm_main_area_tab {
+  width: 48px !important;
+  min-width: 48px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 /*  */
-.fm_left_flex
-{
-    height: 100%;
-    border-top: var(--border_nomal) !important;
+.fm_left_flex {
+  height: 100%;
+  border-top: var(--border_nomal) !important;
+}
+.fm_right_flex {
+  height: 100%;
+  border-top: var(--border_nomal) !important;
 }
 /*  */
-.fm_left_text_field
-{
-    height: 38px !important;
+.fm_left_text_field {
+  height: 38px !important;
 }
 
-.fm_left_text_field>.v-input__control
-.fm_left_text_field>.v-input__control>.v-field
-.fm_left_text_field>.v-input__control>.v-field>.v-field__field
-.fm_left_text_field>.v-input__control>.v-field>.v-field__field>.v-field__input
-{
-    height: 38px !important;
-    padding-right: 0px !important;
+.fm_left_text_field
+  > .v-input__control
+  .fm_left_text_field
+  > .v-input__control
+  > .v-field
+  .fm_left_text_field
+  > .v-input__control
+  > .v-field
+  > .v-field__field
+  .fm_left_text_field
+  > .v-input__control
+  > .v-field
+  > .v-field__field
+  > .v-field__input {
+  height: 38px !important;
+  padding-right: 0px !important;
 }
-.fm_left_text_field>.v-input__control>.v-field
-{
-    padding-right: 0px !important;
+.fm_left_text_field > .v-input__control > .v-field {
+  padding-right: 0px !important;
 }
-.fm_left_text_field>.v-input__control>.v-field>.v-field__field>.v-field__input
-{
-    height: 38px !important;
-    padding-left: 4px !important;
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
-    padding-right: 0px !important;
+.fm_left_text_field
+  > .v-input__control
+  > .v-field
+  > .v-field__field
+  > .v-field__input {
+  height: 38px !important;
+  padding-left: 4px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  padding-right: 0px !important;
 }
 
 /* 修改 */
 
 .fm_header_bar > .v-toolbar__content > .v-toolbar__prepend {
   margin-left: 0px !important;
-  background-color:var(--red_color);
+  background-color: var(--red_color);
 }
 .fm_header_bar > .v-toolbar__content > .v-toolbar__prepend:hover {
-    background-color:var(--red_hover_color);
-  }
+  background-color: var(--red_hover_color);
+}
