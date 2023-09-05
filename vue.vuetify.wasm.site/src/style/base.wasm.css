@@ -49,6 +49,7 @@
   box-shadow: none !important;
   background-color: var(--Acrylic_background);
   backdrop-filter: var(--Acrylic_filter);
+  padding-left: 0px !important;
 }
 .fm_nav_icon {
   border-radius: 0px !important;
@@ -211,7 +212,7 @@
   > .v-field
   > .v-field__field
   > .v-label.v-field-label {
-  margin-left:4px !important;
+  margin-left: 4px !important;
 }
 /*  */
 .fm_right_text_field {
@@ -254,6 +255,25 @@
   > .v-field__field
   > .v-label.v-field-label {
   margin-left: 4px !important;
+}
+
+.fm_footer_info {
+  height: 30px;
+  width: 48px;
+  background-color: var(--red_color);
+}
+.fm_footer_bar > .fm_footer_info > i {
+  text-align: center !important;
+  height: 30px !important;
+  line-height: 30px;
+  padding-left: 16px;
+}
+
+.fm_footer_bar > span {
+  text-align: right !important;
+  margin-left: 4px !important;
+  margin-right: 4px !important;
+  font-size: 12px;
 }
 /* 修改 */
 

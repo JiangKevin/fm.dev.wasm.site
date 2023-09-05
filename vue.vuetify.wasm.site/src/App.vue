@@ -8,12 +8,14 @@
           icon="fmicons icon-logo-fm top_area_logo_i"></v-app-bar-nav-icon>
       </template>
       <v-btn-toggle divided variant="outlined" max-height="40">
-        <v-btn icon="mdi mdi-arrow-expand-left" @click="right_show_click" class="fm_nav_btn"  maxWidth="48px"></v-btn>
+        <v-btn icon="mdi mdi-arrow-expand-left" @click="right_show_click" class="fm_nav_btn" maxWidth="48px"></v-btn>
       </v-btn-toggle>
     </v-app-bar>
     <!-- footer -->
     <v-footer app elevation="3" height="30" class="fm_footer_bar">
-      <span class="mr-5">2023 &copy; </span>
+      <div class="fm_footer_info"><i class="mdi mdi-all-inclusive"></i></div>
+      <span>2023 &copy; </span>
+
     </v-footer>
     <!-- left area start-->
     <v-navigation-drawer v-if="d_show_left" :width="left_width">
