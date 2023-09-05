@@ -18,14 +18,14 @@
 
     </v-footer>
     <!-- left area start-->
-    <v-navigation-drawer v-if="d_show_left" :width="left_width">
-      <left_area_view></left_area_view>
-    </v-navigation-drawer>
+    <left_area_view :view_left="d_show_left" :view_right="d_show_right" :left_w="left_width" :right_w="right_width">
+    </left_area_view>
+
     <!-- left area end-->
     <!-- right area start-->
-    <v-navigation-drawer v-if="d_show_right" location="right" :width="right_width">
-      <right_area_view></right_area_view>
-    </v-navigation-drawer>
+    <right_area_view :view_left="d_show_left" :view_right="d_show_right" :left_w="left_width" :right_w="right_width">
+    </right_area_view>
+
     <!-- right area end-->
     <!-- main start-->
     <v-main class="d-flex align-center justify-center">
