@@ -79,10 +79,10 @@ export default {
 <template>
     <!-- <canvas id="canvas" class="ems_canvas"></canvas> -->
     <v-card class="fm_cards">
-        <v-tabs v-model="tab" bg-color="primary">
-            <v-tab value="one">
-                <v-icon icon="mdi-axis-arrow"></v-icon></v-tab>
-            <v-tab value="two"><v-icon icon="mdi-chart-timeline-variant-shimmer"></v-icon></v-tab>
+        <v-tabs v-model="tab" bg-color="primary" height="38">
+            <v-tab value="one"  height="38">
+                <v-icon icon="mdi mdi-axis-arrow"></v-icon></v-tab>
+            <v-tab value="two" height="38"><v-icon icon="mdi mdi-chart-timeline-variant-shimmer" ></v-icon></v-tab>
         </v-tabs>
 
         <v-card-text>
