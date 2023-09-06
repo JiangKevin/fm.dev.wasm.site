@@ -15,6 +15,7 @@
   --white_color: #ffffff84;
   --white_hover_color: #ffffff;
   --tab_height: 38px;
+  --outline_w: 366px;
 }
 
 /* 新的 */
@@ -351,14 +352,43 @@
   flex-direction: row;
 }
 .fm_tl_outline {
-  width: 366px;
+  width: var(--outline_w);
   height: 100%;
   border-right: var(--border_nomal);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.fm_outline_header
+{
+    height: 30px;
+    border-bottom: var(--border_nomal);
+}
+.outline_node
+{
+    padding-left: 8px;
+    font-size: 12px !important;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    color: white;
+    user-select: none;
+    height: 30px;
+    background-color: #252526;
+    margin-bottom: 2px;
+}
+.outline_node:hover {
+    background-color:var(--red_hover_color)
+}
+.outline_node_select{
+    background-color:var(--red_hover_color)
 }
 .fm_timeline {
   position: absolute;
-  margin-left: 367px;
-  width: calc(100% - 367px);
+  margin-left: calc(var(--outline_w) + 1px);
+  width: calc(100% - var(--outline_w) - 1px);
   height: 100%;
 }
 

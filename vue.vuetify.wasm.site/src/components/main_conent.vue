@@ -29,7 +29,10 @@ export default {
         is_tl_creat: false,
         wasm_programe: null,
         timeline_obj: null,
-        d_tl_rows: null
+        d_tl_rows: null,
+        d_tl_select_id: '',
+        d_tl_editing_row_index: -1,
+        d_tl_editing_key_index: -1,
     }),
     computed: {
 
@@ -61,13 +64,27 @@ export default {
                 })
                 /** */
                 this.is_tl_creat = true
-
+                /**timeline 件处理 */
+                this.timeline_obj.onScroll(this.tl_onScroll)
+                this.timeline_obj.onSelected(this.tl_onSelected)
+                this.timeline_obj.onMouseDown(this.tl_onMouseDown)
                 // 初始化json数据到tl
                 this.timeline_obj.setModel({ rows: this.d_tl_rows })
             }
         },
         tab_tl_click() {
             setTimeout(this.init_tl, 100)
+        },
+        tl_onMouseDown(obj) {
+            this.d_tl_editing_row_index = -1
+            this.d_tl_editing_key_index = -1
+            console.log(obj)
+        },
+        tl_onSelected(obj) {
+            // 
+        },
+        tl_onScroll(obj) {
+            // 
         }
     },
     async created() {
@@ -105,14 +122,14 @@ export default {
 <template>
     <v-main>
         <v-sheet class="fm_sheet">
+            <!-- tabs -->
             <v-tabs v-model="tab" height="38" class="fm_main_area_tabs">
                 <v-tab value="one" height="38" :max-width="48" :min-width="48" class="fm_main_area_tab">
                     <v-icon icon="mdi mdi-axis-arrow"></v-icon></v-tab>
                 <v-tab value="two" height="38" :max-width="48" :min-width="48" class="fm_main_area_tab"
                     @click="tab_tl_click"><v-icon icon="mdi mdi-chart-timeline-variant-shimmer"></v-icon></v-tab>
             </v-tabs>
-            <!--  -->
-
+            <!-- tab panels -->
             <v-window v-model="tab" class="fm_main_area_window">
                 <v-window-item value="one" class="fm_main_area_window_item">
                     <canvas id="canvas" :width="view_size_x" :height="view_size_y" class="fm_wasm_canvas"></canvas>
@@ -128,13 +145,15 @@ export default {
                             <!-- outline content -->
                             <div class="outline_scroll_container">
                                 <div class="outline_items">
-                                    <div>
-                                        <div class="outline_node"></div>
+                                    <div v-for="(tl_node, index) in d_tl_rows" :key="index">
+                                        <div class="outline_node"
+                                            :style="{ 'min-height': tl_node.style.height + 'px', 'max-height': tl_node.style.height + 'px' }"
+                                            :class="{ 'outline_node_select ': (d_tl_select_id) == (tl_node.id) }">{{ index +
+                                                ' : ' + tl_node.id + ' | ' + tl_node.title }}</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <!-- timeline  -->
                         <div id="timeline" class="fm_timeline"></div>
                     </div>
