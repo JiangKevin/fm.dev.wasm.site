@@ -230,7 +230,7 @@ export default {
                                     <div class="outline_node" v-for="(tl_node, index) in d_tl_rows" :key="index"
                                         :style="{ 'min-height': tl_node.style.height + 'px', 'max-height': tl_node.style.height + 'px' }"
                                         v-bind:class="{ 'outline_node_select': d_tl_select_id == (tl_node.id) }">{{ index +
-                                            ' : ' + tl_node.id + ' | ' + tl_node.title + d_tl_select_id }}</div>
+                                            ' : ' + tl_node.id + ' | ' + tl_node.title }}</div>
 
                                 </div>
                             </div>
