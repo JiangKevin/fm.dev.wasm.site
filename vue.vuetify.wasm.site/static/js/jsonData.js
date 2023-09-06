@@ -45,8 +45,8 @@ let tl_data_rows = [
     ],
   },
   {
-    id: "#-1691564204887",
-    title: "#-1691564204887",
+    id: "#-1691564204888",
+    title: "#-1691564204888",
     bind_object: {
       uuid: "",
       name: "",
@@ -90,8 +90,2308 @@ let tl_data_rows = [
     ],
   },
   {
-    id: "#-1691564204887",
-    title: "#-1691564204887",
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },
+  {
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },
+  {
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },
+  {
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },
+  {
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },
+  {
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },
+  {
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },
+  {
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },
+  {
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },
+  {
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },
+  {
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },
+  {
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },
+  {
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
+    bind_object: {
+      uuid: "",
+      name: "",
+    },
+    selected: false,
+    draggable: true,
+
+    style: {
+      height: 24,
+      fillColor: "#252526",
+      legend: {},
+      groupsStyle: {
+        height: 24,
+        marginTop: "auto",
+        fillColor: "#FFC107",
+      },
+      keyframesStyle: {
+        shape: "rhomb",
+        width: 10,
+        height: 10,
+        fillColor: "#0413B9",
+        selectedFillColor: "#F44336",
+      },
+    },
+    keyframes: [
+      {
+        uuid: "FF243857-854F-49FD-AA88-6417CFD6DB91",
+        val: 1000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+        selected: true,
+      },
+      {
+        uuid: "358396A4-6DFA-4E2D-96CF-826E58630673",
+        val: 2000,
+        min: 0,
+        max: 1000000,
+        animation: "00 - EASE_NONE",
+      },
+    ],
+  },{
+    id: "#-1691564204889",
+    title: "#-1691564204889",
     bind_object: {
       uuid: "",
       name: "",

@@ -34,8 +34,13 @@ export default {
         d_tl_select_title: '',
         d_tl_editing_row_index: -1,
         d_tl_editing_key_index: -1,
+        /* 随机数，改变变量缓存，用于更新样式 */
+        d_rand: -1,
     }),
     computed: {
+        computed_css_for_ol_select() {
+
+        }
 
     },
     watch:
@@ -136,7 +141,8 @@ export default {
         tl_onScroll(obj) {
             // 
         },
-        outlineMouseWheel(event) {
+        outline_onScroll(event) {
+            console.log(event)
             var outlineContainer = document.getElementById('outline_container')
             var timelineScrollContainer = document.getElementById('timeline-scroll-container')
             var outlineScrollContainer = document.getElementById('outline_scroll_container')
@@ -189,7 +195,7 @@ export default {
 </script>
 <!--  -->
 <template>
-    <v-main>
+    <v-main class="fm_main">
         <v-sheet class="fm_sheet">
             <!-- tabs -->
             <v-tabs v-model="tab" height="38" class="fm_main_area_tabs">
@@ -212,15 +218,15 @@ export default {
                                 <div class="fm_outline_header_in"></div>
                             </div>
                             <!-- outline content -->
-                            <div id="outline-scroll-container" class="outline_scroll_container"
-                                :wheel="outlineMouseWheel(arguments[0])">
+                            <div id="outline-scroll-container" class="outline_scroll_container">
                                 <div id="outline-container" class="outline_items">
-                                    <div v-for="(tl_node, index) in d_tl_rows" :key="index">
-                                        <div class="outline_node"
-                                            :style="{ 'min-height': tl_node.style.height + 'px', 'max-height': tl_node.style.height + 'px' }"
-                                            :class="{ 'outline_node_select ': (d_tl_select_id) == (tl_node.id) }">{{ index +
-                                                ' : ' + tl_node.id + ' | ' + tl_node.title }}</div>
-                                    </div>
+
+                                    <div class="outline_node" v-for="(tl_node, index) in d_tl_rows"
+                                    :key="index" 
+                                        :style="{ 'min-height': tl_node.style.height + 'px', 'max-height': tl_node.style.height + 'px' }"
+                                        v-bind:class="{ 'outline_node_select': d_tl_select_id == (tl_node.id) }">{{ index +
+                                            ' : ' + tl_node.id + ' | ' + tl_node.title + d_tl_select_id }}</div>
+
                                 </div>
                             </div>
                         </div>
