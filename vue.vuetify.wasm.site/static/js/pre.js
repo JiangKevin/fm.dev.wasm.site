@@ -1,9 +1,15 @@
+var canvas_size_x, canvas_size_y;
+
 Module = {
   preRun: [],
   postRun: [
     function () {
-      // app.wasm_programe = Module;
-      // console.log(app.wasm_programe)
+      let clientX = window.innerWidth;
+      canvas_size_x = clientX - 732;
+      let clientY = window.innerHeight;
+      canvas_size_y = clientY - 115;
+      /** */
+      Module._setArticleWidth(canvas_size_x, canvas_size_y, 0);
     },
   ],
   canvas: (function () {
@@ -14,4 +20,3 @@ Module = {
     }
   })(),
 };
-

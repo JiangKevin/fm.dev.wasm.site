@@ -16,12 +16,12 @@ export default {
         view_size_x: {
             type: Number,
             required: true,
-            default: false
+            default: 0
         },
         view_size_y: {
             type: Number,
             required: true,
-            default: false
+            default: 0
         },
     },
     data: () => ({
@@ -44,28 +44,28 @@ export default {
 </script>
 <!--  -->
 <template>
-    <v-main class="d-flex align-center justify-center">
-        <v-sheet :height="view_size_y + 38" class="fm_sheet">
+    <v-main>
+        <v-sheet class="fm_sheet">
             <v-tabs v-model="tab" height="38" class="fm_main_area_tabs">
-                <v-tab value="one" height="38" maxWidth="38" class="fm_main_area_tab">
+                <v-tab value="one" height="38" :max-width="48" :min-width="48" class="fm_main_area_tab">
                     <v-icon icon="mdi mdi-axis-arrow"></v-icon></v-tab>
-                <v-tab value="two" height="38" maxWidth="38px" class="fm_main_area_tab"><v-icon
+                <v-tab value="two" height="38" :max-width="48" :min-width="48" class="fm_main_area_tab"><v-icon
                         icon="mdi mdi-chart-timeline-variant-shimmer"></v-icon></v-tab>
             </v-tabs>
             <!--  -->
-            <v-card-text>
-                <v-window v-model="tab">
-                    <v-window-item value="one">
-                        <canvas id="canvas" :width="view_size_x" :height="view_size_y"></canvas>
-                    </v-window-item>
 
-                    <v-window-item value="two">
-                        Two
-                    </v-window-item>
+            <v-window v-model="tab" class="fm_main_area_window">
+                <v-window-item value="one" class="fm_main_area_window_item">
+                    <canvas id="canvas" :width="view_size_x" :height="view_size_y-7" class="fm_wasm_canvas"></canvas>
+                </v-window-item>
+
+                <v-window-item value="two">
+                    Two
+                </v-window-item>
 
 
-                </v-window>
-            </v-card-text>
+            </v-window>
+
         </v-sheet>
     </v-main>
 </template>

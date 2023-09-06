@@ -7,8 +7,9 @@
         <v-app-bar-nav-icon @click="left_show_click" class="fm_nav_icon" max-height="40"
           icon="fmicons icon-logo-fm top_area_logo_i"></v-app-bar-nav-icon>
       </template>
-      <v-btn-toggle divided variant="outlined" max-height="40">
-        <v-btn icon="mdi mdi-arrow-expand-left" @click="right_show_click" class="fm_nav_btn" maxWidth="48px"></v-btn>
+      <v-btn-toggle divided variant="outlined" class="fm_btn_toggle" height="40" max-height="40">
+        <v-btn icon="mdi mdi-arrow-expand-left" @click="right_show_click" class="fm_nav_btn" maxWidth="48px"
+          height="40"></v-btn>
       </v-btn-toggle>
     </v-app-bar>
     <!-- footer -->
@@ -60,7 +61,7 @@ let right_width = 366
 let main_width = 100
 let main_height = 100
 let is_debug = ref(true)
-let wasm_programe
+let wasm_programe = ref();
 // 假如wasm的控制
 if (is_debug) {
   loadJs('./static/js/pre.js')
@@ -69,6 +70,11 @@ if (is_debug) {
   })
   loadJs('./static/js/pre.js').then(() => {
     wasm_programe = Module
+    main_width = canvas_size_x
+    main_height = canvas_size_y+7
+    console.log("From js : wasm_programe init!")
+    console.log(wasm_programe)
+
   })
 }
 /** 控制左侧区域显示与否 */
@@ -91,9 +97,15 @@ function right_show_click() {
 }
 /** 计算canvas屏幕大小 */
 function compute_view_size() {
-  let clientX = document.body.clientWidth
+  /**
+    对于Internet Explorer、Chrome、Firefox、Opera 以及 Safari：
+    window.innerHeight - 浏览器窗口的内部高度
+    window.innerWidth - 浏览器窗口的内部宽度
+   */
+  let clientX = window.innerWidth
   let view_siz_x = clientX
-  let clientY = document.body.clientHeight
+  let clientY = window.innerHeight
+  console.log("From js: clientY = " + clientY)
   /** */
   if (d_show_left.value) {
     view_siz_x = view_siz_x - 366
@@ -108,7 +120,12 @@ function compute_view_size() {
     view_siz_x = view_siz_x - 48
   }
   /** */
-  main_width = view_siz_x
-  main_height = clientY - 110
+  main_width = view_siz_x - 2
+  main_height = clientY - 108
+
+  console.log("From js: main size x= " + main_width + " , y= " + main_height)
+  if (Module) {
+    Module._setArticleWidth(main_width, main_height, 0)
+  }
 }
 </script>
