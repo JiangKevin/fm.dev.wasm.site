@@ -15,7 +15,7 @@
     <!-- footer -->
     <v-footer app elevation="3" height="30" class="fm_footer_bar">
       <div class="fm_footer_info"><i class="mdi mdi-all-inclusive"></i></div>
-      <span>2023 &copy; </span>
+      <span id="footer_info">2023 &copy; </span>
     </v-footer>
     <!-- left area start-->
     <left_area_view :view_left="d_show_left" :view_right="d_show_right" :left_area_w="left_width"

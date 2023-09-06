@@ -20,3 +20,9 @@ Module = {
     }
   })(),
 };
+
+/** */
+function write_log(title, type, message) {
+  /**footer info */
+  $("#footer_info")[0].innerText = "-- " + title + " : " + message;
+}

@@ -31,6 +31,7 @@ export default {
         timeline_obj: null,
         d_tl_rows: null,
         d_tl_select_id: '',
+        d_tl_select_title: '',
         d_tl_editing_row_index: -1,
         d_tl_editing_key_index: -1,
     }),
@@ -79,12 +80,66 @@ export default {
             this.d_tl_editing_row_index = -1
             this.d_tl_editing_key_index = -1
             console.log(obj)
+            // 
+            if (obj.target) {
+                if (obj.target.type == 'group') {
+                    if (obj.target.row) {
+                        this.d_tl_select_id = obj.target.row.id
+                        this.d_tl_select_title = obj.target.row.title
+                        // 获取row index
+                        let tl_row_count = this.d_tl_rows.length
+                        for (var i = 0; i < tl_row_count; i++) {
+                            if (obj.target.row.id == this.d_tl_rows[i].id) {
+                                this.d_tl_editing_row_index = i
+                                this.write_log('Timeline node selected ', '', 'From js: edit node index is ' + this.d_tl_editing_row_index)
+                                break
+                            } else {
+                                this.d_tl_editing_row_index = -1
+                            }
+                        }
+
+                    }
+                }
+                if (obj.target.type == 'keyframe') {
+                    if (obj.target.row && obj.target.keyframe) {
+                        this.d_tl_select_id = obj.target.row.id
+                        this.d_tl_select_title = obj.target.row.title
+                        // 获取row index
+                        let tl_row_count = this.d_tl_rows.length
+                        for (var i = 0; i < tl_row_count; i++) {
+                            if (obj.target.row.id == this.d_tl_rows[i].id) {
+                                this.d_tl_editing_row_index = i
+                                this.write_log('Timeline node selected ', '', 'From js: edit node index is ' + this.d_tl_editing_row_index)
+                                break
+                            } else {
+                                this.d_tl_editing_row_index = -1
+                            }
+                        }
+                        // 获取选中row 的 选中key 的index
+                        for (var i = 0; i < obj.target.row.keyframes.length; i++) {
+                            if (obj.target.row.keyframes[i].uuid == obj.target.keyframe.uuid) {
+                                this.d_tl_editing_key_index = i
+                                this.write_log('Timeline key selected ', '', 'From js: edit key index is ' + this.d_tl_editing_key_index)
+                                break
+                            } else {
+                                this.d_tl_editing_key_index = -1
+                            }
+                        }
+
+                    }
+                }
+            }
         },
         tl_onSelected(obj) {
             // 
         },
         tl_onScroll(obj) {
             // 
+        },
+        write_log(title, type, message) {
+            console.log("-- " + title + " : " + message)
+            /**footer info */
+            $("#footer_info")[0].innerText = "-- " + title + " : " + message;
         }
     },
     async created() {
@@ -116,6 +171,7 @@ export default {
     async unmounted() {
         console.log('main unmounted')
     }
+
 }
 </script>
 <!--  -->
