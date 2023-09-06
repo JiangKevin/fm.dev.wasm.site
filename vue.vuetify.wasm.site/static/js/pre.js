@@ -7,7 +7,7 @@ Module = {
       let clientX = window.innerWidth;
       canvas_size_x = clientX - 732;
       let clientY = window.innerHeight;
-      canvas_size_y = clientY - 115;
+      canvas_size_y = clientY - 108;
       /** */
       Module._setArticleWidth(canvas_size_x, canvas_size_y, 0);
     },

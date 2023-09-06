@@ -37,10 +37,9 @@
   max-height: 100%;
   overflow: hidden;
 }
-.fm_btn_toggle
-{
-    height: 40px !important;
-    border-radius: 0px !important;
+.fm_btn_toggle {
+  height: 40px !important;
+  border-radius: 0px !important;
 }
 .fm_header_bar {
   border-bottom: var(--border_nomal) !important;
@@ -211,15 +210,14 @@
 .fm_main_area_window > .v-window__container > .v-window-item--active {
   height: 100%;
 }
-.fm_wasm_canvas
-{
-    padding: 0px !important;
-    margin: 0px !important;
+.fm_wasm_canvas {
+  padding: 0px !important;
+  margin: 0px !important;
+  margin-bottom: -7px !important;
 }
-.fm_main_area_window_item
-{
-    margin: 0px !important;
-    padding: 0px !important;
+.fm_main_area_window_item {
+  margin: 0px !important;
+  padding: 0px !important;
 }
 /*  */
 .fm_left_flex {

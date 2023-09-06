@@ -56,7 +56,7 @@ export default {
 
             <v-window v-model="tab" class="fm_main_area_window">
                 <v-window-item value="one" class="fm_main_area_window_item">
-                    <canvas id="canvas" :width="view_size_x" :height="view_size_y-7" class="fm_wasm_canvas"></canvas>
+                    <canvas id="canvas" :width="view_size_x" :height="view_size_y" class="fm_wasm_canvas"></canvas>
                 </v-window-item>
 
                 <v-window-item value="two">
