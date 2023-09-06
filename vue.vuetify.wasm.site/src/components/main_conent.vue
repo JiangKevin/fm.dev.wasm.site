@@ -79,7 +79,7 @@ export default {
         tl_onMouseDown(obj) {
             this.d_tl_editing_row_index = -1
             this.d_tl_editing_key_index = -1
-            console.log(obj)
+            // console.log(obj)
             // 
             if (obj.target) {
                 if (obj.target.type == 'group') {
@@ -91,7 +91,7 @@ export default {
                         for (var i = 0; i < tl_row_count; i++) {
                             if (obj.target.row.id == this.d_tl_rows[i].id) {
                                 this.d_tl_editing_row_index = i
-                                this.write_log('Timeline node selected ', '', 'From js: edit node index is ' + this.d_tl_editing_row_index)
+                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.d_tl_editing_row_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_id)
                                 break
                             } else {
                                 this.d_tl_editing_row_index = -1
@@ -109,7 +109,7 @@ export default {
                         for (var i = 0; i < tl_row_count; i++) {
                             if (obj.target.row.id == this.d_tl_rows[i].id) {
                                 this.d_tl_editing_row_index = i
-                                this.write_log('Timeline node selected ', '', 'From js: edit node index is ' + this.d_tl_editing_row_index)
+                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.d_tl_editing_row_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_id)
                                 break
                             } else {
                                 this.d_tl_editing_row_index = -1
@@ -119,7 +119,7 @@ export default {
                         for (var i = 0; i < obj.target.row.keyframes.length; i++) {
                             if (obj.target.row.keyframes[i].uuid == obj.target.keyframe.uuid) {
                                 this.d_tl_editing_key_index = i
-                                this.write_log('Timeline key selected ', '', 'From js: edit key index is ' + this.d_tl_editing_key_index)
+                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.d_tl_editing_row_index + ' edit key index = ' + this.d_tl_editing_key_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_id)
                                 break
                             } else {
                                 this.d_tl_editing_key_index = -1
@@ -135,6 +135,19 @@ export default {
         },
         tl_onScroll(obj) {
             // 
+        },
+        outlineMouseWheel(event) {
+            var outlineContainer = document.getElementById('outline_container')
+            var timelineScrollContainer = document.getElementById('timeline-scroll-container')
+            var outlineScrollContainer = document.getElementById('outline_scroll_container')
+            if (outlineContainer) {
+                outlineContainer.style.minHeight = timelineScrollContainer.scrollHeight + 'px'
+                outlineScrollContainer.scrollTop = timelineScrollContainer.scrollTop
+            }
+
+            if (this.timeline_obj) {
+                this.timeline_obj._handleWheelEvent(event)
+            }
         },
         write_log(title, type, message) {
             console.log("-- " + title + " : " + message)
@@ -199,8 +212,9 @@ export default {
                                 <div class="fm_outline_header_in"></div>
                             </div>
                             <!-- outline content -->
-                            <div class="outline_scroll_container">
-                                <div class="outline_items">
+                            <div id="outline-scroll-container" class="outline_scroll_container"
+                                :wheel="outlineMouseWheel(arguments[0])">
+                                <div id="outline-container" class="outline_items">
                                     <div v-for="(tl_node, index) in d_tl_rows" :key="index">
                                         <div class="outline_node"
                                             :style="{ 'min-height': tl_node.style.height + 'px', 'max-height': tl_node.style.height + 'px' }"
