@@ -26,19 +26,47 @@ export default {
     },
     data: () => ({
         tab: null,
-        wasm_programe: null
-
+        is_tl_creat: false,
+        wasm_programe: null,
+        timeline_obj: null,
+        d_tl_rows: null
     }),
     computed: {
 
     },
     methods:
     {
+        init_tl() {
+            if (!this.is_tl_creat) {
+                this.timeline_obj = new timelineModule.Timeline()
+                this.timeline_obj.initialize({
+                    id: 'timeline',
+                    headerHeight: 30,
+                    leftMargin: 6,
+                    groupsDraggable: true,
+                    keyframesDraggable: true,
+                    timelineDraggable: true,
+                    controlKeyIsMetaKey: true,
+                    snapAllKeyframesOnMove: true,
+                    // fillColor: '#31313130',
+                    // headerFillColor: '#31313130',
+                    // tickColor: '#D5D5D530',
+                })
+                /** */
+                this.is_tl_creat = true
+                // this.d_tl_rows = tl_data_rows
 
+            }
+        }
     },
     mounted() {
-
-
+        loadJs('./static/js/jsonData.js').then(() => {
+            // 加载成功，进行后续操作
+            // this.d_tl_rows = tl_data_rows
+        })
+        loadJs('./static/js/animationTimelineJs/atl.js?v=2').then(() => {
+            // 加载成功，进行后续操作
+        })
     }
 }
 </script>
@@ -60,7 +88,14 @@ export default {
                 </v-window-item>
 
                 <v-window-item value="two">
-                    Two
+                    <v-btn @click="init_tl">
+                        Button
+                    </v-btn>
+                    <div>
+                        <div></div>
+                        <!-- timeline component -->
+                        <div id="timeline"></div>
+                    </div>
                 </v-window-item>
 
 

@@ -60,18 +60,17 @@ let left_width = 366
 let right_width = 366
 let main_width = 100
 let main_height = 100
-let is_debug = ref(true)
+let is_debug = ref(false)
 let wasm_programe = ref();
 // 假如wasm的控制
-if (is_debug) {
-  loadJs('./static/js/pre.js')
+if (is_debug.value) {
   loadJs('./static/js/hmi_editer_web.js').then(() => {
     // 加载成功，进行后续操作
   })
   loadJs('./static/js/pre.js').then(() => {
     wasm_programe = Module
     main_width = canvas_size_x
-    main_height = canvas_size_y+7
+    main_height = canvas_size_y + 7
     console.log("From js : wasm_programe init!")
     console.log(wasm_programe)
 
