@@ -34,6 +34,13 @@ export default {
     computed: {
 
     },
+    watch:
+    {
+        d_tl_rows(new_d_tl_rows, old_d_tl_rows) {
+            // 初始化json数据到tl
+            console.log("d_tl_rows is change")
+        },
+    },
     methods:
     {
         init_tl() {
@@ -54,19 +61,43 @@ export default {
                 })
                 /** */
                 this.is_tl_creat = true
-                // this.d_tl_rows = tl_data_rows
 
+                // 初始化json数据到tl
+                this.timeline_obj.setModel({ rows: this.d_tl_rows })
             }
+        },
+        tab_tl_click() {
+            setTimeout(this.init_tl, 100)
         }
     },
-    mounted() {
+    async created() {
         loadJs('./static/js/jsonData.js').then(() => {
             // 加载成功，进行后续操作
-            // this.d_tl_rows = tl_data_rows
+            this.d_tl_rows = tl_data_rows
+            console.log(tl_data_rows)
         })
         loadJs('./static/js/animationTimelineJs/atl.js?v=2').then(() => {
             // 加载成功，进行后续操作
+
         })
+        console.log('main created')
+    },
+    async mounted() {
+        console.log('main mounted')
+    },
+    async updated() {
+        console.log('main updated')
+    },
+    async activated() {
+        console.log('main activated')
+    },
+    async serverPrefetch() {
+        console.log('main serverPrefetch')
+        this.init_tl()
+    },
+
+    async unmounted() {
+        console.log('main unmounted')
     }
 }
 </script>
@@ -77,8 +108,8 @@ export default {
             <v-tabs v-model="tab" height="38" class="fm_main_area_tabs">
                 <v-tab value="one" height="38" :max-width="48" :min-width="48" class="fm_main_area_tab">
                     <v-icon icon="mdi mdi-axis-arrow"></v-icon></v-tab>
-                <v-tab value="two" height="38" :max-width="48" :min-width="48" class="fm_main_area_tab"><v-icon
-                        icon="mdi mdi-chart-timeline-variant-shimmer"></v-icon></v-tab>
+                <v-tab value="two" height="38" :max-width="48" :min-width="48" class="fm_main_area_tab"
+                    @click="tab_tl_click"><v-icon icon="mdi mdi-chart-timeline-variant-shimmer"></v-icon></v-tab>
             </v-tabs>
             <!--  -->
 
@@ -86,16 +117,28 @@ export default {
                 <v-window-item value="one" class="fm_main_area_window_item">
                     <canvas id="canvas" :width="view_size_x" :height="view_size_y" class="fm_wasm_canvas"></canvas>
                 </v-window-item>
-
                 <v-window-item value="two">
-                    <v-btn @click="init_tl">
-                        Button
-                    </v-btn>
-                    <div>
-                        <div></div>
-                        <!-- timeline component -->
-                        <div id="timeline"></div>
+                    <div class="fm_tl_out_div">
+                        <!--  outline -->
+                        <div class="fm_tl_outline">
+                            <!-- outline heaer -->
+                            <div class="fm_outline_header">
+                                <div class="fm_outline_header_in"></div>
+                            </div>
+                            <!-- outline content -->
+                            <div class="outline_scroll_container">
+                                <div class="outline_items">
+                                    <div>
+                                        <div class="outline_node"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- timeline  -->
+                        <div id="timeline" class="fm_timeline"></div>
                     </div>
+
                 </v-window-item>
 
 

@@ -342,6 +342,26 @@
   margin-right: 4px !important;
   font-size: 12px;
 }
+
+/* tl 区域 */
+.fm_tl_out_div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.fm_tl_outline {
+  width: 366px;
+  height: 100%;
+  border-right: var(--border_nomal);
+}
+.fm_timeline {
+  position: absolute;
+  margin-left: 367px;
+  width: calc(100% - 367px);
+  height: 100%;
+}
+
 /* 修改 */
 
 .fm_header_bar > .v-toolbar__content > .v-toolbar__prepend {
