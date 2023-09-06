@@ -140,9 +140,15 @@ export default {
         },
         tl_onScroll(obj) {
             // 
+            var outlineContainer = document.getElementById('outline-container')
+            var timelineScrollContainer = document.getElementById('timeline-scroll-container')
+            var outlineScrollContainer = document.getElementById('outline-scroll-container')
+            if (outlineContainer) {
+                outlineContainer.style.minHeight = timelineScrollContainer.scrollHeight + 'px'
+                outlineScrollContainer.scrollTop = timelineScrollContainer.scrollTop
+            }
         },
-        outline_onScroll(event) {
-            console.log(event)
+        outline_onScroll(obj) {
             var outlineContainer = document.getElementById('outline_container')
             var timelineScrollContainer = document.getElementById('timeline-scroll-container')
             var outlineScrollContainer = document.getElementById('outline_scroll_container')
@@ -152,7 +158,7 @@ export default {
             }
 
             if (this.timeline_obj) {
-                this.timeline_obj._handleWheelEvent(event)
+                this.timeline_obj._handleWheelEvent(obj)
             }
         },
         write_log(title, type, message) {
@@ -219,10 +225,9 @@ export default {
                             </div>
                             <!-- outline content -->
                             <div id="outline-scroll-container" class="outline_scroll_container">
-                                <div id="outline-container" class="outline_items">
+                                <div id="outline-container" class="outline_items" @wheel="outline_onScroll">
 
-                                    <div class="outline_node" v-for="(tl_node, index) in d_tl_rows"
-                                    :key="index" 
+                                    <div class="outline_node" v-for="(tl_node, index) in d_tl_rows" :key="index"
                                         :style="{ 'min-height': tl_node.style.height + 'px', 'max-height': tl_node.style.height + 'px' }"
                                         v-bind:class="{ 'outline_node_select': d_tl_select_id == (tl_node.id) }">{{ index +
                                             ' : ' + tl_node.id + ' | ' + tl_node.title + d_tl_select_id }}</div>
