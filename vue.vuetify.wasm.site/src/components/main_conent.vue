@@ -45,6 +45,14 @@ export default {
     },
     watch:
     {
+        view_size_x(new_view_size_x, old_view_size_x) {
+            console.log("view_size_x is change")
+            if (this.timeline_obj) {
+                console.log("timeline_obj redraw")
+                this.timeline_obj.rescale()
+                this.timeline_obj.redraw()
+            }
+        },
         d_tl_rows(new_d_tl_rows, old_d_tl_rows) {
             // 初始化json数据到tl
             console.log("d_tl_rows is change")

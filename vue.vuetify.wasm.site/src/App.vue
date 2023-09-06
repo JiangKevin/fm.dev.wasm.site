@@ -60,7 +60,7 @@ let left_width = 366
 let right_width = 366
 let main_width = 100
 let main_height = 100
-let is_debug = ref(false)
+let is_debug = ref(true)
 let wasm_programe = ref();
 // 假如wasm的控制
 if (is_debug.value) {
