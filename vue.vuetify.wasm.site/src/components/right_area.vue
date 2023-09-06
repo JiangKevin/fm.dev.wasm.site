@@ -13,31 +13,29 @@ export default {
             required: true,
             default: false
         },
-        left_w: {
+        left_area_w: {
             type: Number,
             required: true,
-            default: 0
+            default: false
         },
-        right_w: {
+        right_area_w: {
             type: Number,
             required: true,
-            default: 0
+            default: false
         },
     },
     data: () => ({
         tab: null,
         loaded: false,
         loading: false,
-        right_area_w: 366
+
     }),
     computed: {
         class_object_computed_right_area() {
             if (this.view_right) {
-                this.right_area_w = 366
                 return "fm_right_flex_large"
             }
             else {
-                this.right_area_w = 48
                 return "fm_right_flex"
             }
         },
@@ -62,21 +60,13 @@ export default {
         },
     },
     mounted() {
-        // loadJs('./static/js/hmi_editer_web.js').then(() => {
-        //     // 加载成功，进行后续操作
-        // })
-        // loadJs('./static/js/pre.js').then(() => {
-        //     // 加载成功，进行后续操作
-        //     console.log("wasm_programe:\n")
-        //     this.wasm_programe = Module
-        //     console.log(this.wasm_programe)
-        // })
+
     }
 }
 </script>
 <!--  -->
 <template>
-    <v-navigation-drawer location="right" :width="right_area_w" >
+    <v-navigation-drawer location="right" :width="right_area_w">
         <v-card height="100%">
             <div class="d-flex flex-row" :class="class_object_computed_right_area">
 

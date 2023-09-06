@@ -15,23 +15,20 @@
     <v-footer app elevation="3" height="30" class="fm_footer_bar">
       <div class="fm_footer_info"><i class="mdi mdi-all-inclusive"></i></div>
       <span>2023 &copy; </span>
-
     </v-footer>
     <!-- left area start-->
-    <left_area_view :view_left="d_show_left" :view_right="d_show_right" :left_w="left_width" :right_w="right_width">
+    <left_area_view :view_left="d_show_left" :view_right="d_show_right" :left_area_w="left_width"
+      :right_area_w="right_width">
     </left_area_view>
-
     <!-- left area end-->
     <!-- right area start-->
-    <right_area_view :view_left="d_show_left" :view_right="d_show_right" :left_w="left_width" :right_w="right_width">
+    <right_area_view :view_left="d_show_left" :view_right="d_show_right" :left_area_w="left_width"
+      :right_area_w="right_width">
     </right_area_view>
-
     <!-- right area end-->
     <!-- main start-->
-    <v-main class="d-flex align-center justify-center">
-      <main_View :view_left="d_show_left" :view_right="d_show_right" :left_w="left_width" :right_w="right_width">
-      </main_View>
-    </v-main>
+    <main_View :view_left="d_show_left" :view_right="d_show_right" :view_size_x="main_width" :view_size_y="main_height">
+    </main_View>
     <!-- main end-->
 
   </v-app>
@@ -58,12 +55,14 @@ theme.global.name.value = 'dark'
 // // 设置左右区域显示与否的变量
 let d_show_left = ref(true);
 let d_show_right = ref(true);
-const left_width = 366
-const right_width = 366
+let left_width = 366
+let right_width = 366
+let main_width = 100
+let main_height = 100
 let is_debug = ref(true)
 let wasm_programe
 // 假如wasm的控制
-if (!is_debug) {
+if (is_debug) {
   loadJs('./static/js/pre.js')
   loadJs('./static/js/hmi_editer_web.js').then(() => {
     // 加载成功，进行后续操作
@@ -72,11 +71,44 @@ if (!is_debug) {
     wasm_programe = Module
   })
 }
-/** */
+/** 控制左侧区域显示与否 */
 function left_show_click() {
   d_show_left.value = !d_show_left.value
+  if (d_show_left.value) { left_width = 366 }
+  else {
+    left_width = 48
+  }
+  compute_view_size()
 }
+/** 控制右侧区域显示与否 */
 function right_show_click() {
   d_show_right.value = !d_show_right.value
+  if (d_show_right.value) { right_width = 366 }
+  else {
+    right_width = 48
+  }
+  compute_view_size()
+}
+/** 计算canvas屏幕大小 */
+function compute_view_size() {
+  let clientX = document.body.clientWidth
+  let view_siz_x = clientX
+  let clientY = document.body.clientHeight
+  /** */
+  if (d_show_left.value) {
+    view_siz_x = view_siz_x - 366
+  }
+  else {
+    view_siz_x = view_siz_x - 48
+  }
+  if (d_show_right.value) {
+    view_siz_x = view_siz_x - 366
+  }
+  else {
+    view_siz_x = view_siz_x - 48
+  }
+  /** */
+  main_width = view_siz_x
+  main_height = clientY - 110
 }
 </script>

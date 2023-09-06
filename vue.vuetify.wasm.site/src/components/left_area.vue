@@ -13,31 +13,28 @@ export default {
             required: true,
             default: false
         },
-        left_w: {
+        left_area_w: {
             type: Number,
             required: true,
-            default: 0
+            default: false
         },
-        right_w: {
+        right_area_w: {
             type: Number,
             required: true,
-            default: 0
+            default: false
         },
     },
     data: () => ({
         tab: null,
         loaded: false,
         loading: false,
-        left_area_w: 366
     }),
     computed: {
         class_object_computed_left_area() {
             if (this.view_left) {
-                this.left_area_w = 366
                 return "fm_left_flex_large"
             }
             else {
-                this.left_area_w = 48
                 return "fm_left_flex"
             }
         }
