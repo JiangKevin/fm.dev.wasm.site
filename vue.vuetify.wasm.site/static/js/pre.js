@@ -5,7 +5,7 @@ Module = {
   postRun: [
     function () {
       let clientX = window.innerWidth;
-      canvas_size_x = clientX - 732;
+      canvas_size_x = clientX - 414;
       let clientY = window.innerHeight;
       canvas_size_y = clientY - 108;
       /** */

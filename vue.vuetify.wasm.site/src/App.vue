@@ -4,7 +4,7 @@
     <!-- header -->
     <v-app-bar title="" height="40" class="fm_header_bar" prominent>
       <template v-slot:prepend>
-        <v-app-bar-nav-icon @click="left_show_click" class="fm_nav_icon" max-height="40"
+        <v-app-bar-nav-icon class="fm_nav_icon" max-height="40"
           icon="fmicons icon-logo-fm top_area_logo_i"></v-app-bar-nav-icon>
       </template>
       <v-btn-toggle divided variant="outlined" class="fm_btn_toggle" height="40" max-height="40">
@@ -79,7 +79,7 @@ if (is_debug.value) {
 /** 控制左侧区域显示与否 */
 function left_show_click() {
   d_show_left.value = !d_show_left.value
-  if (d_show_left.value) { left_width = 366 }
+  if (d_show_left.value) { left_width = 48 }
   else {
     left_width = 48
   }
@@ -107,7 +107,7 @@ function compute_view_size() {
   // console.log("From js: clientY = " + clientY)
   /** */
   if (d_show_left.value) {
-    view_siz_x = view_siz_x - 366
+    view_siz_x = view_siz_x - 48
   }
   else {
     view_siz_x = view_siz_x - 48

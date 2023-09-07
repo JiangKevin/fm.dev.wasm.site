@@ -55,11 +55,23 @@ export default {
             // 初始化json数据到tl
             // console.log("d_tl_rows is change")
         },
+        tab(new_tab, old_tab) {
+            if (this.timeline_obj) {
+                window.dispatchEvent(new Event('resize'));
+                console.log("tab is change")
+                // this.timeline_obj.setTime(100)
+                // this.timeline_obj.setTime(1001)
+                // this.timeline_obj.setZoom(1.1)
+                this.timeline_obj.rescale()
+                this.timeline_obj.redraw()
+            }
+        }
     },
     methods:
     {
         init_tl() {
-            if (!this.is_tl_creat) {
+            this.d_rand = Math.random()
+            if (this.is_tl_creat != true) {
                 this.timeline_obj = new timelineModule.Timeline()
                 this.timeline_obj.initialize({
                     id: 'timeline',
@@ -177,7 +189,7 @@ export default {
         loadJs('./static/js/jsonData.js').then(() => {
             // 加载成功，进行后续操作
             this.d_tl_rows = tl_data_rows
-            console.log(tl_data_rows)
+            // console.log(tl_data_rows)
         })
         loadJs('./static/js/tl/animation-timeline.js').then(() => {
             // 加载成功，进行后续操作

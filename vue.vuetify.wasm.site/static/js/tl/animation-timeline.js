@@ -2885,7 +2885,6 @@ var Timeline = /*#__PURE__*/function (_TimelineEventsEmitte) {
       } else {
         // Clear if bg not set.
         _this._ctx.clearRect(0, 0, _this._canvas.width, _this._canvas.height);
-        console.log('asdfasf');
       }
     });
     timeline_defineProperty(timeline_assertThisInitialized(_this), "_renderTimeline", function () {

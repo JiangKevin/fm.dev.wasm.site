@@ -16,25 +16,31 @@ export default {
         left_area_w: {
             type: Number,
             required: true,
-            default: false
+            default: 0
         },
         right_area_w: {
             type: Number,
             required: true,
-            default: false
+            default: 0
         },
     },
     data: () => ({
         tab: null,
         loaded: false,
         loading: false,
+        drawer: true,
+        rail: true,
     }),
     computed: {
         class_object_computed_left_area() {
             if (this.view_left) {
+                this.drawer = true
+                this.rail = true
                 return "fm_left_flex_large"
             }
             else {
+                this.drawer = false
+                this.rail = false
                 return "fm_left_flex"
             }
         }
@@ -66,7 +72,7 @@ export default {
 </script>
 <!--  -->
 <template>
-    <v-navigation-drawer :width="left_area_w">
+    <v-navigation-drawer :width="left_area_w" expand-on-hover rail rail-width="48">
         <v-card height="100%">
             <div class="d-flex flex-row" :class="class_object_computed_left_area">
                 <v-tabs v-model="tab" direction="vertical" color="primary" class="fm_left_tabs_vertical">
@@ -86,7 +92,8 @@ export default {
                         </v-icon>
                     </v-tab>
                 </v-tabs>
-                <v-window v-model="tab" v-if="view_left">
+
+                <v-window v-model="tab">
                     <v-window-item value="option-1">
                         <v-card flat class="fm_left_area_cards">
                             <v-toolbar color="primary" height="36">
