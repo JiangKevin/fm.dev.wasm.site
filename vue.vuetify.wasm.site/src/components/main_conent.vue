@@ -36,6 +36,7 @@ export default {
         d_tl_editing_key_index: -1,
         /* 随机数，改变变量缓存，用于更新样式 */
         d_rand: -1,
+        d_ol_w: 366
     }),
     computed: {
         computed_css_for_ol_select() {
@@ -56,15 +57,7 @@ export default {
             // console.log("d_tl_rows is change")
         },
         tab(new_tab, old_tab) {
-            if (this.timeline_obj) {
-                window.dispatchEvent(new Event('resize'));
-                console.log("tab is change")
-                // this.timeline_obj.setTime(100)
-                // this.timeline_obj.setTime(1001)
-                // this.timeline_obj.setZoom(1.1)
-                this.timeline_obj.rescale()
-                this.timeline_obj.redraw()
-            }
+
         }
     },
     methods:
@@ -95,9 +88,16 @@ export default {
                 // 初始化json数据到tl
                 this.timeline_obj.setModel({ rows: this.d_tl_rows })
             }
+            else {
+                if (this.timeline_obj) {
+                    this.timeline_obj.rescale()
+                    this.timeline_obj.redraw()
+                }
+            }
         },
         tab_tl_click() {
             setTimeout(this.init_tl, 100)
+
         },
         tl_onMouseDown(obj) {
             this.d_tl_editing_row_index = -1
@@ -236,7 +236,7 @@ export default {
                 <v-window-item value="two">
                     <div class="fm_tl_out_div">
                         <!--  outline -->
-                        <div class="fm_tl_outline">
+                        <div class="fm_tl_outline" :width="d_ol_w">
                             <!-- outline heaer -->
                             <div class="fm_outline_header">
                                 <div class="fm_outline_header_in"></div>
