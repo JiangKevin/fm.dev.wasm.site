@@ -104,7 +104,7 @@ function compute_view_size() {
   let clientX = window.innerWidth
   let view_siz_x = clientX
   let clientY = window.innerHeight
-  console.log("From js: clientY = " + clientY)
+  // console.log("From js: clientY = " + clientY)
   /** */
   if (d_show_left.value) {
     view_siz_x = view_siz_x - 366
@@ -122,9 +122,11 @@ function compute_view_size() {
   main_width = view_siz_x - 2
   main_height = clientY - 108
 
-  console.log("From js: main size x= " + main_width + " , y= " + main_height)
-  if (Module) {
-    Module._setArticleWidth(main_width, main_height, 0)
+  // console.log("From js: main size x= " + main_width + " , y= " + main_height)
+  if (is_debug.value) {
+    if (Module) {
+      Module._setArticleWidth(main_width, main_height, 0)
+    }
   }
 }
 </script>

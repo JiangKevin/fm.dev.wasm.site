@@ -46,16 +46,14 @@ export default {
     watch:
     {
         view_size_x(new_view_size_x, old_view_size_x) {
-            console.log("view_size_x is change")
             if (this.timeline_obj) {
-                console.log("timeline_obj redraw")
                 this.timeline_obj.rescale()
                 this.timeline_obj.redraw()
             }
         },
         d_tl_rows(new_d_tl_rows, old_d_tl_rows) {
             // 初始化json数据到tl
-            console.log("d_tl_rows is change")
+            // console.log("d_tl_rows is change")
         },
     },
     methods:
@@ -181,28 +179,28 @@ export default {
             this.d_tl_rows = tl_data_rows
             console.log(tl_data_rows)
         })
-        loadJs('./static/js/animationTimelineJs/atl.js?v=2').then(() => {
+        loadJs('./static/js/tl/animation-timeline.js').then(() => {
             // 加载成功，进行后续操作
 
         })
-        console.log('main created')
+        // console.log('main created')
     },
     async mounted() {
-        console.log('main mounted')
+        // console.log('main mounted')
     },
     async updated() {
-        console.log('main updated')
+        // console.log('main updated')
     },
     async activated() {
-        console.log('main activated')
+        // console.log('main activated')
     },
     async serverPrefetch() {
-        console.log('main serverPrefetch')
-        this.init_tl()
+        // console.log('main serverPrefetch')
+        // this.init_tl()
     },
 
     async unmounted() {
-        console.log('main unmounted')
+        // console.log('main unmounted')
     }
 
 }
