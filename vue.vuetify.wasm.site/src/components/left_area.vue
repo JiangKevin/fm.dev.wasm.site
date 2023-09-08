@@ -1,9 +1,7 @@
 <!--  -->
 <script>
-import loadJs from '@/components/wasm_load.vue'
-
 export default {
-    inject: ['message'],
+    inject: ['d_wasm_obj_res'],
     props: {
         view_left: {
             type: Boolean,
@@ -32,7 +30,7 @@ export default {
         loading: false,
         drawer: true,
         rail: true,
-        d_wasm_obj_res:'',
+
         d_res_search_text:'',
         cards: [
             { title: 'Favorite road trips', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
@@ -67,9 +65,7 @@ export default {
         },
     },
     mounted() {
-        // console.log(this.$attrs)
-        this.message="adsfadf"
-        console.log(this.message) // injected value
+
     }
 }
 </script>

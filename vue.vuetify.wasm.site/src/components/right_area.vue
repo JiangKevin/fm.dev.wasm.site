@@ -1,6 +1,5 @@
 <!--  -->
 <script>
-import loadJs from '@/components/wasm_load.vue'
 export default {
     props: {
         view_left: {

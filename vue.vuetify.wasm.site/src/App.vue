@@ -36,7 +36,7 @@
   </v-app>
 </template>
 
-<script setup>
+<script >
 import { useTheme } from 'vuetify';
 import {
   computed,
@@ -44,92 +44,132 @@ import {
   onMounted,
   ref,
   watch,
+  provide,
+  defineAsyncComponent
 } from 'vue';
-import main_View from '@/components/main_conent.vue';
 import loadJs from '@/components/wasm_load.vue'
+import main_View from '@/components/main_conent.vue';
 import left_area_view from '@/components/left_area.vue'
 import right_area_view from '@/components/right_area.vue'
-// import la_res_view from '@/components/left_area_res.vue';
-// loadJs('./static/js/hmi_editer_web.js')
-// 修改样式
-const theme = useTheme();
-theme.global.name.value = 'dark'
 
-// // 设置左右区域显示与否的变量
-let d_show_left = ref(true);
-let d_show_right = ref(true);
-let left_width = 366
-let right_width = 366
-let main_width = 100
-let main_height = 100
-let is_debug = ref(false)
-let wasm_programe = ref();
-// 假如wasm的控制
-if (is_debug.value) {
-  loadJs('./static/js/hmi_editer_web.js').then(() => {
-    // 加载成功，进行后续操作
-  })
-  loadJs('./static/js/pre.js').then(() => {
-    wasm_programe = Module
-    main_width = canvas_size_x
-    main_height = canvas_size_y + 7
-    console.log("From js : wasm_programe init!")
-    console.log(wasm_programe)
-  })
-}
-/** 控制左侧区域显示与否 */
-function left_show_click() {
-  d_show_left.value = !d_show_left.value
-  if (d_show_left.value) { left_width = 48 }
-  else {
-    left_width = 48
-  }
-  compute_view_size()
-}
-/** 控制右侧区域显示与否 */
-function right_show_click() {
-  d_show_right.value = !d_show_right.value
-  if (d_show_right.value) { right_width = 366 }
-  else {
-    right_width = 48
-  }
-  compute_view_size()
-}
-/** 计算canvas屏幕大小 */
-function compute_view_size() {
-  /**
-    对于Internet Explorer、Chrome、Firefox、Opera 以及 Safari：
-    window.innerHeight - 浏览器窗口的内部高度
-    window.innerWidth - 浏览器窗口的内部宽度
-   */
-  let clientX = window.innerWidth
-  let view_siz_x = clientX
-  let clientY = window.innerHeight
-  // console.log("From js: clientY = " + clientY)
-  /** */
-  if (d_show_left.value) {
-    view_siz_x = view_siz_x - 48
-  }
-  else {
-    view_siz_x = view_siz_x - 48
-  }
-  if (d_show_right.value) {
-    view_siz_x = view_siz_x - 366
-  }
-  else {
-    view_siz_x = view_siz_x - 48
-  }
-  /** */
-  main_width = view_siz_x - 2
-  main_height = clientY - 108
-
-  // console.log("From js: main size x= " + main_width + " , y= " + main_height)
-  if (is_debug.value) {
-    if (Module) {
-      Module._setArticleWidth(main_width, main_height, 0)
+export default {
+  components: {
+    main_View,
+    left_area_view,
+    right_area_view
+  },
+  data: () => ({
+    // // 设置左右区域显示与否的变量
+    d_show_left: true,
+    d_show_right: true,
+    left_width: 366,
+    right_width: 366,
+    main_width: 100,
+    main_height: 100,
+    wasm_programe: ref(),
+    is_debug: false
+  }),
+  setup() {
+    console.log('App setup')
+    // 修改样式
+    const theme = useTheme();
+    theme.global.name.value = 'dark'
+    /** */
+    loadJs('./static/js/tl/animation-timeline.js').then(() => {
+      // 加载成功，进行后续操作
+    })
+    // 获取测试数据
+    provide('d_tl_rows', tl_data_rows);
+    provide('d_wasm_obj_res', wasm_obj_res);
+    
+    // 假如wasm的控制
+    let is_debug = false
+    if (is_debug) {
+      loadJs('./static/js/hmi_editer_web.js').then(() => {
+        // 加载成功，进行后续操作
+      })
+      loadJs('./static/js/pre.js').then(() => {
+        this.main_width = canvas_size_x
+        this.main_height = canvas_size_y + 7
+      })
     }
+  },
+  methods:
+  {
+    /** 计算canvas屏幕大小 */
+    compute_view_size() {
+      /**
+        对于Internet Explorer、Chrome、Firefox、Opera 以及 Safari：
+        window.innerHeight - 浏览器窗口的内部高度
+        window.innerWidth - 浏览器窗口的内部宽度
+       */
+      let clientX = window.innerWidth
+      let view_siz_x = clientX
+      let clientY = window.innerHeight
+      // console.log("From js: clientY = " + clientY)
+      /** */
+      if (this.d_show_left.value) {
+        view_siz_x = view_siz_x - 48
+      }
+      else {
+        view_siz_x = view_siz_x - 48
+      }
+      if (this.d_show_right.value) {
+        view_siz_x = view_siz_x - 366
+      }
+      else {
+        view_siz_x = view_siz_x - 48
+      }
+      /** */
+      this.main_width = view_siz_x - 2
+      this.main_height = clientY - 108
+
+      // console.log("From js: main size x= " + main_width + " , y= " + main_height)
+      if (this.is_debug) {
+        if (Module) {
+          Module._setArticleWidth(main_width, main_height, 0)
+        }
+      }
+    },
+    /** 控制左侧区域显示与否 */
+    left_show_click() {
+      this.d_show_left = !this.d_show_left
+      if (this.d_show_left) { this.left_width = 48 }
+      else {
+        this.left_width = 48
+      }
+      this.compute_view_size()
+    },
+    /** 控制右侧区域显示与否 */
+    right_show_click() {
+      this.d_show_right = !this.d_show_right
+      if (this.d_show_right) { this.right_width = 366 }
+      else {
+        this.right_width = 48
+      }
+      this.compute_view_size()
+    }
+  },
+
+  async created() {
+    console.log('App created')
+  },
+  async mounted() {
+    console.log('App mounted')
+
+  },
+  async updated() {
+    console.log('App updated')
+  },
+  async activated() {
+    console.log('App activated')
+  },
+  async serverPrefetch() {
+    console.log('App serverPrefetch')
+  },
+
+  async unmounted() {
+    console.log('App unmounted')
   }
 }
-/** */
-
 </script>

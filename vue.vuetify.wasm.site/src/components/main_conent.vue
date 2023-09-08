@@ -1,6 +1,5 @@
 <!--  -->
 <script>
-// import loadJs from '@/components/wasm_load.vue'
 export default {
     inject: ['d_tl_rows'],
     props: {
@@ -30,7 +29,6 @@ export default {
         is_tl_creat: false,
         wasm_programe: null,
         timeline_obj: null,
-        // d_tl_rows: null,
         d_tl_select_id: '',
         d_tl_select_title: '',
         d_tl_editing_row_index: -1,
@@ -40,9 +38,7 @@ export default {
         d_ol_w: 366
     }),
     computed: {
-        computed_css_for_ol_select() {
 
-        }
 
     },
     watch:
@@ -187,35 +183,24 @@ export default {
         }
     },
     async created() {
-        // loadJs('./static/js/jsonData.js').then(() => {
-        //     // 加载成功，进行后续操作
-        //     this.d_tl_rows = tl_data_rows
-        //     // console.log(tl_data_rows)
-        // })
-        // loadJs('./static/js/tl/animation-timeline.js').then(() => {
-        //     // 加载成功，进行后续操作
 
-        // })
-        console.log('main created')
-        console.log(this.d_tl_rows)
     },
     async mounted() {
         console.log('main mounted')
-        console.log(this.d_tl_rows)
+
     },
     async updated() {
-        // console.log('main updated')
+        console.log('main updated')
     },
     async activated() {
-        // console.log('main activated')
+        console.log('main activated')
     },
     async serverPrefetch() {
-        // console.log('main serverPrefetch')
-        // this.init_tl()
+        console.log('main serverPrefetch')
     },
 
     async unmounted() {
-        // console.log('main unmounted')
+        console.log('main unmounted')
     }
 
 }
