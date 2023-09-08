@@ -141,6 +141,7 @@ let wasm_obj_res = [
   {
     uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
     name: "Industry Square of XJH",
+    is_expand:false,
     type: "Square",
     node_type: "fbx",
     isTexRepeat: true,
@@ -160,6 +161,7 @@ let wasm_obj_res = [
   {
     uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
     name: "Industry Square of XJH",
+    is_expand:false,
     type: "Square",
     node_type: "fbx",
     importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
@@ -174,6 +176,7 @@ let wasm_obj_res = [
   {
     uuid: "E29DB78B-6EAA-49B2-806B-60B35C933578",
     name: "Industry Square of BLG",
+    is_expand:false,
     type: "Square",
     node_type: "fbx",
     importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
@@ -188,6 +191,7 @@ let wasm_obj_res = [
   {
     uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
     name: "Industry Square of XJH",
+    is_expand:false,
     type: "Square",
     node_type: "fbx",
     importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
@@ -202,6 +206,7 @@ let wasm_obj_res = [
   {
     uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
     name: "Industry Square of XJH",
+    is_expand:false,
     type: "Square",
     node_type: "fbx",
     importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
@@ -216,6 +221,7 @@ let wasm_obj_res = [
   {
     uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
     name: "Industry Square of XJH",
+    is_expand:false,
     type: "Square",
     node_type: "fbx",
     importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],

@@ -26,3 +26,12 @@ function write_log(title, type, message) {
   /**footer info */
   $("#footer_info")[0].innerText = "-- " + title + " : " + message;
 }
+/** uuid 生成 */
+function uuidv4_UpperCase() {
+  // 生成uuid
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = (Math.random() * 16) | 0,
+          v = c == 'x' ? r : (r & 0x3) | 0x8
+      return v.toString(16).toUpperCase()
+  })
+}

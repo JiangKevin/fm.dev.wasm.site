@@ -1,7 +1,7 @@
 <!--  -->
 <script>
 export default {
-    inject: ['d_wasm_obj_res'],
+    inject: ['d_wasm_obj_res', 'is_debug'],
     props: {
         view_left: {
             type: Boolean,
@@ -56,14 +56,17 @@ export default {
     },
     methods:
     {
-        onClick() {
-            this.loading = true
-
-            setTimeout(() => {
-                this.loading = false
-                this.loaded = true
-            }, 2000)
+        show_expand_Click(obj) {
+            obj.is_expand = !obj.is_expand
         },
+        add_wasm_item_to_scenes(obj,index) {
+            console.log(index)
+            if (this.is_debug) {
+                if (Module) {
+                    var uuid_str = uuidv4_UpperCase()
+                }
+            }
+        }
     },
     mounted() {
 
@@ -79,7 +82,7 @@ export default {
                 <v-tabs v-model="tab" direction="vertical" color="primary" class="fm_left_tabs_vertical">
                     <v-tab value="option-1" max-width="48" width="48" height="38">
                         <v-icon>
-                            mdi mdi-account
+                            mdi mdi-bank
                         </v-icon>
                     </v-tab>
                     <v-tab value="option-2" max-width="48px" height="38">
@@ -97,17 +100,17 @@ export default {
                 <v-window v-model="tab" class="fm_window">
                     <v-window-item value="option-1" class="fm_window_item">
                         <v-card flat class="fm_left_area_cards">
-                            <v-toolbar color="primary" height="36">
-                                <v-text-field :loading="loading" density="compact" variant="solo" label="Search templates"
+                            <v-toolbar height="36">
+                                <v-text-field :loading="loading" density="compact" variant="solo" label="Search ..."
                                     append-inner-icon="mdi mdi-magnify" single-line hide-details class="fm_left_text_field"
                                     v-model="d_res_search_text"></v-text-field>
                             </v-toolbar>
                             <v-card-text class="fm_card_text_for_res_out">
                                 <v-container class="fm_v_res_container">
-                                    <v-card width="310" v-for="(res_node, index) in d_wasm_obj_res" :key="index"
+                                    <v-card flat width="310" v-for="(res_node, index) in d_wasm_obj_res" :key="index"
                                         v-show="JSON.stringify(res_node.name).toLowerCase().includes(d_res_search_text)"
                                         class="fm_card_res">
-                                        <v-img :src="res_node.img" height="100px" cover></v-img>
+                                        <v-img class='fm_card_title_img' :src="res_node.img" height="80" cover></v-img>
                                         <v-card-title class="fm_card_title_l">
                                             {{ res_node.name }}
                                         </v-card-title>
@@ -117,25 +120,26 @@ export default {
                                                 <v-card-text class="fm_card_text">
                                                     {{ '#' + index + ' ' + res_node.type + ' ' + res_node.creat_date }}
                                                     <p></p>
-                                                    {{ res_node.uuid }}
+                                                    {{ res_node.uuid + ' / ' + res_node.node_type }}
                                                 </v-card-text>
                                             </div>
                                         </v-expand-transition>
                                         <v-card-actions class="fm_card_actions">
                                             <v-spacer></v-spacer>
-                                            <v-btn class="fm_btn" icon="mdi mdi-checkbox-marked-circle-plus-outline">
+                                            <v-btn class="fm_btn" icon="mdi mdi-checkbox-marked-circle-plus-outline"
+                                                size="x-small" @click="add_wasm_item_to_scenes(res_node,index)">
                                             </v-btn>
-                                            <v-btn class="fm_btn"
+                                            <v-btn class="fm_btn" size="x-small"
                                                 :icon="show ? 'mdi mdi-chevron-double-up' : 'mdi mdi-chevron-double-down'"
                                                 @click="show = !show"></v-btn>
                                         </v-card-actions>
                                     </v-card>
                                 </v-container>
                             </v-card-text>
-                            <v-toolbar color="primary" height="36">
-                                <v-text-field :loading="loading" density="compact" variant="solo" label="Search templates"
-                                    append-inner-icon="mdi mdi-magnify" single-line hide-details class="fm_left_text_field"
-                                    v-model="d_res_search_text"></v-text-field>
+                            <v-toolbar class="fm_toolbar" height="36">
+                                <v-spacer></v-spacer> <v-icon size="0.9em">
+                                    mdi mdi-bank
+                                </v-icon><span class="fm_toolbar_span">{{ d_wasm_obj_res.length }} Resouse Items</span>
                             </v-toolbar>
                         </v-card>
                     </v-window-item>
