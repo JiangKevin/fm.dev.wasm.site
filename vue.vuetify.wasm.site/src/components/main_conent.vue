@@ -83,6 +83,12 @@ export default {
                 this.timeline_obj.onMouseDown(this.tl_onMouseDown)
                 // 初始化json数据到tl
                 this.timeline_obj.setModel({ rows: this.d_tl_rows })
+                // /** 禁用canvas上的鼠标右键菜单*/
+                // let canvas_timeline_el = document.querySelector("timeline_canvas");
+                // canvas_timeline_el.addEventListener("contextmenu", (e) => {
+                //     e.preventDefault();
+                // });
+
             }
             else {
                 if (this.timeline_obj) {

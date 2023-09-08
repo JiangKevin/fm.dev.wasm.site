@@ -1,7 +1,7 @@
 <!--  -->
 <script>
 export default {
-    inject: ['d_wasm_obj_res', 'is_debug'],
+    inject: ['d_wasm_obj_res','d_nodes_gather', 'is_debug'],
     props: {
         view_left: {
             type: Boolean,
@@ -204,6 +204,47 @@ export default {
                     let importFlage = this.get_importFlag(obj)
                     /** */
                     Module.cwrap('add_node_to_scenes', '', ['string', 'string', 'number', 'number'])(obj.url, uuid_str, obj.isTexRepeat, importFlage)
+                    /** */
+                    var wasm_node_insert = {}
+                    this.d_index_increment += 1
+                    wasm_node_insert.index_id = '#' + this.d_index_increment
+                    wasm_node_insert.uuid = uuid_str
+                    wasm_node_insert.type = obj.type
+                    wasm_node_insert.isTexRepeat = obj.isTexRepeat
+                    wasm_node_insert.img = obj.img
+                    wasm_node_insert.url = obj.url
+                    wasm_node_insert.node_type = obj.node_type
+                    wasm_node_insert.node_class = '3D Node'
+                    wasm_node_insert.name = obj.name
+                    wasm_node_insert.quote = false
+                    wasm_node_insert.referenceds = []
+                    wasm_node_insert.selected = false
+                    wasm_node_insert.creat_date = timestampToTime()
+                    wasm_node_insert.icon = obj.icon
+                    wasm_node_insert.describe = ''
+                    /** 位置 */
+                    var i_location = {}
+                    i_location.x = 0
+                    i_location.y = 0
+                    i_location.z = 0
+                    wasm_node_insert.location = i_location
+                    /** 角度 */
+                    var i_direction = {}
+                    i_direction.x = 0
+                    i_direction.y = 0
+                    i_direction.z = 0
+                    wasm_node_insert.direction = i_direction
+                    /** 颜色 */
+                    var i_fillcolor = {}
+                    i_fillcolor.r = 0
+                    i_fillcolor.g = 0
+                    i_fillcolor.b = 0
+                    i_fillcolor.a = 0
+                    i_fillcolor.hexa = '#00000000'
+                    wasm_node_insert.fillcolor = i_fillcolor
+                    /** */
+                    this.d_nodes_gather.push(wasm_node_insert)
+                    console.log(this.d_nodes_gather)
                 }
             }
         }

@@ -53,7 +53,7 @@ import left_area_view from '@/components/left_area.vue'
 import right_area_view from '@/components/right_area.vue'
 
 export default {
-  inject: [ 'is_debug'],
+  inject: ['is_debug'],
   components: {
     main_View,
     left_area_view,
@@ -67,6 +67,7 @@ export default {
     right_width: 366,
     main_width: 100,
     main_height: 100,
+    // d_nodes_gather_of_app: null
     // is_debug: false
   }),
   setup() {
@@ -83,6 +84,7 @@ export default {
     // 获取测试数据
     provide('d_tl_rows', tl_data_rows);
     provide('d_wasm_obj_res', wasm_obj_res);
+    provide('d_nodes_gather', d_nodes_gather_of_app)
     provide('is_debug', is_debug);
 
 

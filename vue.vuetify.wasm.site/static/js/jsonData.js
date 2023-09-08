@@ -235,6 +235,9 @@ let wasm_obj_res = [
   },
 ];
 
+let d_nodes_gather_of_app=[];
+
+
 let wasm_nodes = [
   {
     index_id: "#1",
