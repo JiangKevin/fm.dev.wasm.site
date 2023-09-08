@@ -16,6 +16,7 @@
   --white_hover_color: #ffffff;
   --tab_height: 38px;
   --outline_w: 366px;
+  --la_w: 366px;
   --content_bg_color: #313131;
 }
 
@@ -72,9 +73,12 @@
 }
 
 /*  */
+.fm_left_area_cards {
+  width: calc(var(--la_w) - 48px);
+}
 .fm_left_area_cards > .v-card-text {
-  width: 100%;
-  padding: 4px !important;
+  width: 100% !important;
+  padding: 0px !important;
   border-top: var(--border_nomal) !important;
 }
 .fm_right_area_cards > .v-card-text {
@@ -283,17 +287,20 @@
   > .v-field
   > .v-field__field
   > .v-field__input {
+  font-size: 13px !important;
   height: 38px !important;
   padding-right: 0px !important;
 }
 .fm_left_text_field > .v-input__control > .v-field {
   padding-right: 0px !important;
+  font-size: 13px !important;
 }
 .fm_left_text_field
   > .v-input__control
   > .v-field
   > .v-field__field
   > .v-field__input {
+  font-size: 13px !important;
   height: 38px !important;
   padding-left: 4px !important;
   padding-top: 0px !important;
@@ -306,9 +313,11 @@
   > .v-field__field
   > .v-label.v-field-label {
   margin-left: 4px !important;
+  font-size: 13px !important;
 }
 /*  */
 .fm_right_text_field {
+  font-size: 13px !important;
   height: 38px !important;
 }
 .fm_right_text_field
@@ -325,11 +334,13 @@
   > .v-field
   > .v-field__field
   > .v-field__input {
+  font-size: 13px !important;
   height: 38px !important;
   padding-right: 0px !important;
 }
 .fm_right_text_field > .v-input__control > .v-field {
   padding-right: 0px !important;
+  font-size: 13px !important;
 }
 .fm_right_text_field
   > .v-input__control
@@ -430,7 +441,41 @@
   height: 100%;
   box-sizing: border-box;
 }
-
+.fm_v_res_container {
+  padding: 4px !important;
+  width: 100%;
+}
+.fm_card_title_l {
+  padding: 0px !important;
+  font-size: 13px !important;
+}
+.fm_card_actions {
+  border-top: var(--border_nomal);
+  padding: 0px !important;
+  height: 32px !important;
+  max-height: 32px !important;
+  min-height: 32px !important;
+}
+.fm_card_text {
+  font-size: 13px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  text-align: right;
+}
+.fm_btn {
+  border-radius: 0px !important;
+  min-width: 32px !important;
+  max-width: 32px !important;
+  width: 32px !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+  height: 32px !important;
+  padding-left: 1px !important;
+  padding-right: 1px !important;
+  margin: 0px !important;
+}
 /* 修改 */
 .fm_header_bar > .v-toolbar__content > .v-toolbar__prepend {
   margin-left: 0px !important;

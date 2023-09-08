@@ -1,7 +1,8 @@
 <!--  -->
 <script>
-import loadJs from '@/components/wasm_load.vue'
+// import loadJs from '@/components/wasm_load.vue'
 export default {
+    inject: ['d_tl_rows'],
     props: {
         view_left: {
             type: Boolean,
@@ -29,7 +30,7 @@ export default {
         is_tl_creat: false,
         wasm_programe: null,
         timeline_obj: null,
-        d_tl_rows: null,
+        // d_tl_rows: null,
         d_tl_select_id: '',
         d_tl_select_title: '',
         d_tl_editing_row_index: -1,
@@ -186,19 +187,21 @@ export default {
         }
     },
     async created() {
-        loadJs('./static/js/jsonData.js').then(() => {
-            // 加载成功，进行后续操作
-            this.d_tl_rows = tl_data_rows
-            // console.log(tl_data_rows)
-        })
-        loadJs('./static/js/tl/animation-timeline.js').then(() => {
-            // 加载成功，进行后续操作
+        // loadJs('./static/js/jsonData.js').then(() => {
+        //     // 加载成功，进行后续操作
+        //     this.d_tl_rows = tl_data_rows
+        //     // console.log(tl_data_rows)
+        // })
+        // loadJs('./static/js/tl/animation-timeline.js').then(() => {
+        //     // 加载成功，进行后续操作
 
-        })
-        // console.log('main created')
+        // })
+        console.log('main created')
+        console.log(this.d_tl_rows)
     },
     async mounted() {
-        // console.log('main mounted')
+        console.log('main mounted')
+        console.log(this.d_tl_rows)
     },
     async updated() {
         // console.log('main updated')

@@ -28,6 +28,7 @@ export default {
         tab: null,
         loaded: false,
         loading: false,
+        show: false,
 
     }),
     computed: {
@@ -79,12 +80,33 @@ export default {
                                     class="fm_right_text_field"></v-text-field>
                             </v-toolbar>
                             <v-card-text>
-                                <p>
-                                    Sed aliquam ultrices mauris. Donec posuere vulputate arcu. Morbi ac felis. Etiam feugiat
-                                    lorem non metus. Sed a libero.
-                                </p>
+                                <v-container class="fm_v_res_container" width="310">
+                                    <v-card width="310">
+                                        <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="100px" width="310px"
+                                            cover></v-img>
+                                        <v-card-title class="fm_card_title_l">
+                                            Top western road trips 
+                                        </v-card-title>
+                                        <v-expand-transition>
+                                            <div v-show="show">
+                                                <v-divider></v-divider>
+                                                <v-card-text class="fm_card_text">
+                                                    I'm a thing. But, like most politicians, he promised more than he could
+                                                </v-card-text>
+                                            </div>
+                                        </v-expand-transition>
+                                        <v-card-actions class="fm_card_actions">
+                                            <v-spacer></v-spacer>
+                                            <v-btn class="fm_btn" icon="mdi mdi-checkbox-marked-circle-plus-outline">
+                                            </v-btn>
+                                            <v-btn class="fm_btn"
+                                                :icon="show ? 'mdi mdi-chevron-double-up' : 'mdi mdi-chevron-double-down'"
+                                                @click="show = !show"></v-btn>
 
+                                        </v-card-actions>
 
+                                    </v-card>
+                                </v-container>
                             </v-card-text>
                         </v-card>
                     </v-window-item>
@@ -136,17 +158,17 @@ export default {
                 </v-window>
                 <!--  -->
                 <v-tabs v-model="tab" direction="vertical" color="primary" :class="class_object_computed_right_area_tab">
-                    <v-tab value="option-1" max-width="48" width="48">
+                    <v-tab value="option-1" max-width="48" width="48" height="38">
                         <v-icon>
                             mdi mdi-account
                         </v-icon>
                     </v-tab>
-                    <v-tab value="option-2" max-width="48px">
+                    <v-tab value="option-2" max-width="48px" height="38">
                         <v-icon>
                             mdi mdi-lock
                         </v-icon>
                     </v-tab>
-                    <v-tab value="option-3" max-width="48px">
+                    <v-tab value="option-3" max-width="48px" height="38">
                         <v-icon>
                             mdi mdi-access-point
                         </v-icon>

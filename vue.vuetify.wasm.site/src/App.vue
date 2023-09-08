@@ -29,6 +29,7 @@
     <!-- right area end-->
     <!-- main start-->
     <main_View :view_left="d_show_left" :view_right="d_show_right" :view_size_x="main_width" :view_size_y="main_height">
+
     </main_View>
     <!-- main end-->
 
@@ -48,6 +49,7 @@ import main_View from '@/components/main_conent.vue';
 import loadJs from '@/components/wasm_load.vue'
 import left_area_view from '@/components/left_area.vue'
 import right_area_view from '@/components/right_area.vue'
+// import la_res_view from '@/components/left_area_res.vue';
 // loadJs('./static/js/hmi_editer_web.js')
 // 修改样式
 const theme = useTheme();
@@ -60,7 +62,7 @@ let left_width = 366
 let right_width = 366
 let main_width = 100
 let main_height = 100
-let is_debug = ref(true)
+let is_debug = ref(false)
 let wasm_programe = ref();
 // 假如wasm的控制
 if (is_debug.value) {
@@ -73,7 +75,6 @@ if (is_debug.value) {
     main_height = canvas_size_y + 7
     console.log("From js : wasm_programe init!")
     console.log(wasm_programe)
-
   })
 }
 /** 控制左侧区域显示与否 */
@@ -129,4 +130,6 @@ function compute_view_size() {
     }
   }
 }
+/** */
+
 </script>
