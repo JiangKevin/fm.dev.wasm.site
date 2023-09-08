@@ -27,7 +27,6 @@ export default {
     data: () => ({
         tab: null,
         is_tl_creat: false,
-        wasm_programe: null,
         timeline_obj: null,
         d_tl_select_id: '',
         d_tl_select_title: '',

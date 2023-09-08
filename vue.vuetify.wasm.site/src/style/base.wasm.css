@@ -443,11 +443,47 @@
 }
 .fm_v_res_container {
   padding: 4px !important;
-  width: 100%;
+  width: 318px;
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: 100% !important;
+  overflow-y: visible !important;
 }
 .fm_card_title_l {
   padding: 0px !important;
   font-size: 13px !important;
+  white-space: nowrap;
+  /* //对超出内容隐藏 */
+  overflow: hidden;
+  /* //显示省略符号来代表被修剪的文本 */
+  text-overflow: ellipsis;
+}
+.fm_window {
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 100% !important;
+}
+.fm_window > .v-window__container {
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 100% !important;
+}
+.fm_window_item {
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 100% !important;
+}
+.fm_window_item>.fm_right_area_cards
+{
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 100% !important;
+}
+.fm_window_item>.fm_left_area_cards
+{
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 100% !important;
 }
 .fm_card_actions {
   border-top: var(--border_nomal);
@@ -457,13 +493,30 @@
   min-height: 32px !important;
 }
 .fm_card_text {
-  font-size: 13px !important;
+  font-size: 12px !important;
   padding-left: 0px !important;
   padding-right: 0px !important;
   padding-top: 4px !important;
   padding-bottom: 4px !important;
   text-align: right;
 }
+.fm_card_text_for_res_out {
+  top: 36px;
+  width: 318px;
+  height: calc(100% - 72px);
+  min-height: calc(100% - 72px);
+  max-height: calc(100% - 72px);
+}
+
+.fm_card_res {
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+  height: auto;
+}
+/* .fm_toolbar_res
+{
+  border-bottom: var(--border_nomal);
+} */
 .fm_btn {
   border-radius: 0px !important;
   min-width: 32px !important;

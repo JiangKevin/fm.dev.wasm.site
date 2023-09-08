@@ -66,7 +66,6 @@ export default {
     right_width: 366,
     main_width: 100,
     main_height: 100,
-    wasm_programe: ref(),
     is_debug: false
   }),
   setup() {

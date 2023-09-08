@@ -30,8 +30,10 @@ export default {
         loading: false,
         drawer: true,
         rail: true,
+        is_lock_left: true,
+        is_lock_w: 366,
 
-        d_res_search_text:'',
+        d_res_search_text: '',
         cards: [
             { title: 'Favorite road trips', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
             { title: 'Best airlines', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 },
@@ -50,8 +52,7 @@ export default {
                 this.rail = false
                 return "fm_left_flex"
             }
-        }
-
+        },
     },
     methods:
     {
@@ -71,7 +72,7 @@ export default {
 </script>
 <!--  -->
 <template>
-    <v-navigation-drawer :width="left_area_w" expand-on-hover rail rail-width="48">
+    <v-navigation-drawer :width="is_lock_w" expand-on-hover rail rail-width="48">
         <v-card height="100%">
             <div class="d-flex flex-row" :class="class_object_computed_left_area">
                 <!--  -->
@@ -93,27 +94,30 @@ export default {
                     </v-tab>
                 </v-tabs>
                 <!--  -->
-                <v-window v-model="tab">
-                    <v-window-item value="option-1">
+                <v-window v-model="tab" class="fm_window">
+                    <v-window-item value="option-1" class="fm_window_item">
                         <v-card flat class="fm_left_area_cards">
                             <v-toolbar color="primary" height="36">
                                 <v-text-field :loading="loading" density="compact" variant="solo" label="Search templates"
-                                    append-inner-icon="mdi mdi-magnify" single-line hide-details
-                                    class="fm_left_text_field"  v-model="d_res_search_text" ></v-text-field>
+                                    append-inner-icon="mdi mdi-magnify" single-line hide-details class="fm_left_text_field"
+                                    v-model="d_res_search_text"></v-text-field>
                             </v-toolbar>
-                            <v-card-text>
+                            <v-card-text class="fm_card_text_for_res_out">
                                 <v-container class="fm_v_res_container">
-                                    <v-card width="310" v-for="(res_node,index) in d_wasm_obj_res" :key="index">
-                                        <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="100px"
-                                            cover></v-img>
+                                    <v-card width="310" v-for="(res_node, index) in d_wasm_obj_res" :key="index"
+                                        v-show="JSON.stringify(res_node.name).toLowerCase().includes(d_res_search_text)"
+                                        class="fm_card_res">
+                                        <v-img :src="res_node.img" height="100px" cover></v-img>
                                         <v-card-title class="fm_card_title_l">
-                                            Top western road trips
+                                            {{ res_node.name }}
                                         </v-card-title>
                                         <v-expand-transition>
                                             <div v-show="show">
                                                 <v-divider></v-divider>
                                                 <v-card-text class="fm_card_text">
-                                                    I'm a thing. But, like most politicians, he promised more than he could
+                                                    {{ '#' + index + ' ' + res_node.type + ' ' + res_node.creat_date }}
+                                                    <p></p>
+                                                    {{ res_node.uuid }}
                                                 </v-card-text>
                                             </div>
                                         </v-expand-transition>
@@ -128,6 +132,11 @@ export default {
                                     </v-card>
                                 </v-container>
                             </v-card-text>
+                            <v-toolbar color="primary" height="36">
+                                <v-text-field :loading="loading" density="compact" variant="solo" label="Search templates"
+                                    append-inner-icon="mdi mdi-magnify" single-line hide-details class="fm_left_text_field"
+                                    v-model="d_res_search_text"></v-text-field>
+                            </v-toolbar>
                         </v-card>
                     </v-window-item>
                     <v-window-item value="option-2" width="318">
