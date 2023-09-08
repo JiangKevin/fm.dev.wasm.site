@@ -29,9 +29,18 @@ function write_log(title, type, message) {
 /** uuid 生成 */
 function uuidv4_UpperCase() {
   // 生成uuid
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      var r = (Math.random() * 16) | 0,
-          v = c == 'x' ? r : (r & 0x3) | 0x8
-      return v.toString(16).toUpperCase()
-  })
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    var r = (Math.random() * 16) | 0,
+      v = c == "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16).toUpperCase();
+  });
 }
+/** 禁用canvas上的鼠标右键菜单*/
+let canvas_wasm_el = document.querySelector("canvas");
+canvas_wasm_el.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+let canvas_timeline_el = document.querySelector("timeline_canvas");
+canvas_timeline_el.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
