@@ -80,9 +80,11 @@
 /*  */
 .fm_left_area_cards {
   width: calc(var(--la_w) - 48px);
+  border-radius: 0px !important;
 }
 .fm_right_area_cards {
   width: calc(var(--la_w) - 48px);
+  border-radius: 0px !important;
 }
 .fm_left_area_cards > .v-card-text {
   width: 100% !important;
@@ -222,6 +224,10 @@
   /* height: calc(100% - 2px); */
 }
 /*  */
+.fm_card_no_radius {
+  border-radius: 0px !important;
+}
+/*  */
 .fm_main_area_tabs {
   border-bottom: var(--border_nomal) !important;
   width: 100% !important;
@@ -262,20 +268,24 @@
   width: 48px;
   height: 100%;
   border-top: var(--border_nomal) !important;
+  border-radius: 0px !important;
 }
 .fm_left_flex_large {
   width: 366px;
   height: 100%;
   border-top: var(--border_nomal) !important;
+  border-radius: 0px !important;
 }
 .fm_right_flex {
   height: 100%;
   border-top: var(--border_nomal) !important;
+  border-radius: 0px !important;
 }
 .fm_right_flex_large {
   width: 366px;
   height: 100%;
-  border-top: var(--border_nomal) !important;
+  border-radius: 0px !important;
+  /* border-top: var(--border_nomal) !important; */
 }
 /*  */
 .fm_left_text_field {
@@ -407,6 +417,22 @@
   background-color: var(--bg_color);
   border-radius: 0px !important;
 }
+.fm_toolbar > .v-toolbar__content > .btn {
+  margin-left: 0px;
+}
+.fm_toolbar > .v-toolbar__content > .fm_btn {
+  min-width: 36px !important;
+  max-width: 36px !important;
+  width: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  height: 36px !important;
+  background-color: var(--red_color) !important;
+  margin-right: 1px !important;
+}
+.fm_toolbar > .v-toolbar__content > .fm_btn:hover {
+  background-color: var(--red_hover_color) !important;
+}
 
 /* tl 区域 */
 .fm_tl_out_div {
@@ -478,7 +504,7 @@
   overflow-y: auto !important;
 }
 .fm_v_right_container {
-  padding: 4px !important;
+  padding: 0px !important;
   width: 318px;
   height: 100% !important;
   min-height: 100% !important;
@@ -604,16 +630,19 @@
   height: 100% !important;
   max-height: 100% !important;
   min-height: 100% !important;
+  border-radius: 0px !important;
 }
 .fm_window > .v-window__container {
   height: 100% !important;
   max-height: 100% !important;
   min-height: 100% !important;
+  border-radius: 0px !important;
 }
 .fm_window_item {
   height: 100% !important;
   max-height: 100% !important;
   min-height: 100% !important;
+  border-radius: 0px !important;
 }
 .fm_window_item > .fm_right_area_cards {
   height: 100% !important;
@@ -667,7 +696,9 @@
 .fm_card_res:hover {
   background-color: var(--purple_color) !important;
 }
-
+.active {
+  background-color: var(--purple_color) !important;
+}
 /* .fm_toolbar_res
 {
   border-bottom: var(--border_nomal);
@@ -693,6 +724,40 @@
   pointer-events: none;
   background-color: var(--red_prohibit_color) !important;
   cursor: not-allowed !important;
+}
+.fm_expansion_panels {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+.fm_expansion_panel {
+  margin: 0px !important;
+  padding: 0px !important;
+  border-radius: 0px !important;
+
+}
+.fm_expansion_panel_title {
+  min-height: 48px !important;
+  max-height: 48px !important;
+  height: 48px !important;
+  padding-left: 2px !important;
+  background-color: var(--purple_color) !important;
+}
+.fm_expansion_panel_text{
+  padding: 0px !important;
+  margin: 0px !important;
+  margin-top: 8px !important;
+}
+.fm_expansion_panel_text>.v-expansion-panel-text__wrapper
+{
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  margin: 0px !important;
+}
+.fm_v_text_field
+{
+  padding-top: 0px !important;
 }
 /* 修改 */
 .fm_header_bar > .v-toolbar__content > .v-toolbar__prepend {

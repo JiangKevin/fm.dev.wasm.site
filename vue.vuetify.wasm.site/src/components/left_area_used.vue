@@ -16,6 +16,7 @@ export default {
         d_used_search_text: '',
         show: false,
         d_show_count: 100,
+        d_wasm_selected_index: -1,
         store_wasm_nodes_define: useWasmNodes(),
         store_tl_rows_define: tl_drows()
     }),
@@ -29,6 +30,9 @@ export default {
     {
         tl_node_add(obj) {
             this.store_tl_rows_define.increment_of_tl_rows(obj)
+        },
+        wasm_select_click(index) {
+            this.d_wasm_selected_index = index
         }
     },
     async mounted() {
@@ -53,7 +57,7 @@ export default {
             <v-container class="fm_v_left_container">
                 <v-card flat width="310" v-for="(used_node, index) in store_wasm_nodes_define.d_nodes_gather" :key="index"
                     v-show="JSON.stringify(used_node.name).toLowerCase().includes(d_used_search_text) && index < d_show_count"
-                    class="fm_card_res">
+                    class="fm_card_res" :class="{ 'active': d_wasm_selected_index == index }" @click="wasm_select_click(index)">
                     <v-card-title class="fm_card_title_l_flex">
                         <v-img :src="used_node.img" cover></v-img>
                         <span class="one">
@@ -67,8 +71,8 @@ export default {
                             </v-btn>
                             <!-- <v-btn class="fm_btn_mid" icon="mdi mdi-checkbox-marked-circle-plus-outline" size="x-small">
                             </v-btn> -->
-                            <v-btn class="fm_btn_right" icon="mdi mdi-chart-timeline-variant-shimmer" size="x-small" :class="{'fm_btn_prohibit':used_node.tl_create }"
-                                @click="tl_node_add(used_node)">
+                            <v-btn class="fm_btn_right" icon="mdi mdi-chart-timeline-variant-shimmer" size="x-small"
+                                :class="{ 'fm_btn_prohibit': used_node.tl_create }" @click="tl_node_add(used_node)">
                             </v-btn>
                         </div>
 

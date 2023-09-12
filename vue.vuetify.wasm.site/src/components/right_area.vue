@@ -75,7 +75,7 @@ export default {
 <!--  -->
 <template>
     <v-navigation-drawer location="right" :width="right_area_w">
-        <v-card height="100%">
+        <v-card height="100%" class="fm_card_no_radius">
             <div class="d-flex flex-row" :class="class_object_computed_right_area">
                 <v-window v-model="tab" v-if="view_right" class="fm_window">
                     <v-window-item value="option-1" class="fm_window_item">
