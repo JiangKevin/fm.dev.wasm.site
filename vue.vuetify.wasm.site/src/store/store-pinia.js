@@ -28,6 +28,7 @@ export const useWasmNodes = defineStore("wasm_nodes_used", {
       wasm_node_insert.creat_date = timestampToTime();
       wasm_node_insert.icon = obj.icon;
       wasm_node_insert.describe = "";
+      wasm_node_insert.tl_create = false;
       /** 位置 */
       var i_location = {};
       i_location.x = 0;
@@ -268,10 +269,19 @@ export const tl_drows = defineStore("tl", {
     };
   },
   actions: {
-    increment_of_tl_rows(uuid_str, obj) {
-
-
-
+    increment_of_tl_rows(obj) {
+      if (obj.tl_create != true) {
+        var tl_node_insert = JSON.parse(JSON.stringify(NewRow_template));
+        tl_node_insert.id = "#-" + new Date().getTime().toString();
+        tl_node_insert.title = obj.name;
+        tl_node_insert.bind_object.uuid = obj.uuid;
+        tl_node_insert.bind_object.name = obj.name;
+        this.tl_rows.push(tl_node_insert);
+        // console.log("From js:increment_of_tl_rows");
+        // console.log(tl_node_insert);
+        //
+        obj.tl_create = true;
+      }
     },
   },
 });

@@ -13,8 +13,9 @@ export default {
         show: false,
         d_show_count: 100,
         d_index_increment: -1,
-        store_define: useWasmNodes(),
-        d_wasm_obj_res: wasm_obj_res()
+        store_wasm_nodes_define: useWasmNodes(),
+        store_wasm_obj_res_define: wasm_obj_res()
+        
     }),
     setup() {
 
@@ -174,7 +175,7 @@ export default {
                 }
             }
             /** */
-            this.store_define.increment_of_nodes_gather(uuid_str, obj)
+            this.store_wasm_nodes_define.increment_of_nodes_gather(uuid_str, obj)
         }
     },
     mounted() {
@@ -192,7 +193,7 @@ export default {
         </v-toolbar>
         <v-card-text class="fm_card_text_for_left_out">
             <v-container class="fm_v_left_container">
-                <v-card flat width="310" v-for="(res_node, index) in d_wasm_obj_res.obj_res" :key="index"
+                <v-card flat width="310" v-for="(res_node, index) in store_wasm_obj_res_define.obj_res" :key="index"
                     v-show="JSON.stringify(res_node.name).toLowerCase().includes(d_res_search_text) && index < d_show_count"
                     class="fm_card_res">
                     <v-img class='fm_card_title_img' :src="res_node.img" height="80" cover></v-img>
@@ -224,7 +225,7 @@ export default {
         <v-toolbar class="fm_toolbar" height="36">
             <v-spacer></v-spacer> <v-icon size="0.9em">
                 mdi mdi-bank
-            </v-icon><span class="fm_toolbar_span">{{ d_wasm_obj_res.obj_res.length }} Resouse Items</span>
+            </v-icon><span class="fm_toolbar_span">{{ store_wasm_obj_res_define.obj_res.length }} Resouse Items</span>
         </v-toolbar>
     </v-card>
 </template>

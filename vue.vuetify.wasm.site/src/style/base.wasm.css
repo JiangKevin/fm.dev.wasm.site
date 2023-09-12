@@ -11,6 +11,7 @@
     100% - var(--v-layout-top) - var(--v-layout-bottom) - 32px
   );
   --red_shallow_color: #e94d67ee;
+  --red_prohibit_color: #6c3f48c7;
   --red_color: #d12d49ee;
   --red_hover_color: #d12d49ff;
   --white_color: #ffffff84;
@@ -79,6 +80,9 @@
 .fm_left_area_cards {
   width: calc(var(--la_w) - 48px);
 }
+.fm_right_area_cards {
+  width: calc(var(--la_w) - 48px);
+}
 .fm_left_area_cards > .v-card-text {
   width: 100% !important;
   padding: 0px !important;
@@ -86,7 +90,7 @@
 }
 .fm_right_area_cards > .v-card-text {
   width: 100%;
-  padding: 4px !important;
+  padding: 0px !important;
   border-top: var(--border_nomal) !important;
 }
 .fm_left_tabs_vertical {
@@ -472,6 +476,14 @@
   max-height: 100% !important;
   overflow-y: auto !important;
 }
+.fm_v_right_container {
+  padding: 4px !important;
+  width: 318px;
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: 100% !important;
+  overflow-y: auto !important;
+}
 .fm_card_title_img {
   border-top: var(--border_nomal);
   border-left: var(--border_nomal);
@@ -572,16 +584,13 @@
   margin: 0px !important;
   background-color: var(--red_shallow_color) !important;
 }
-.fm_btn_right:hover
-{
+.fm_btn_right:hover {
   background-color: var(--red_hover_color) !important;
 }
-.fm_btn_left:hover
-{
+.fm_btn_left:hover {
   background-color: var(--red_hover_color) !important;
 }
-.fm_btn_mid:hover
-{
+.fm_btn_mid:hover {
   background-color: var(--red_hover_color) !important;
 }
 
@@ -634,10 +643,17 @@
   min-height: calc(100% - 72px) !important;
   max-height: calc(100% - 72px) !important;
 }
+.fm_card_text_for_right_out {
+  top: 36px;
+  width: 318px;
+  height: calc(100% - 72px) !important;
+  min-height: calc(100% - 72px) !important;
+  max-height: calc(100% - 72px) !important;
+}
 
 .fm_card_res {
-  margin-top: 8px !important;
-  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+  margin-bottom: 4px !important;
   height: auto;
   border-radius: 0px !important;
   box-shadow: 1px 2px 0px 0px #4343443c, 0px 0px 0px 1px #1f1f2200 !important;
@@ -657,6 +673,11 @@
   padding-left: 1px !important;
   padding-right: 1px !important;
   margin: 0px !important;
+}
+.fm_btn_prohibit {
+  pointer-events: none;
+  background-color: var(--red_prohibit_color) !important;
+  cursor: not-allowed !important;
 }
 /* 修改 */
 .fm_header_bar > .v-toolbar__content > .v-toolbar__prepend {

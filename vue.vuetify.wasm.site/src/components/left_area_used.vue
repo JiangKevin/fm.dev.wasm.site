@@ -2,7 +2,7 @@
 <script>
 import { defineComponent, inject, watch } from 'vue'
 // import { store } from '@/store/store.js'
-import { useWasmNodes } from '@/store/store-pinia'
+import { useWasmNodes, tl_drows } from '@/store/store-pinia'
 export default {
     // inject: ['d_nodes_gather', 'is_debug'],
     components: {
@@ -16,8 +16,8 @@ export default {
         d_used_search_text: '',
         show: false,
         d_show_count: 100,
-        store_define: useWasmNodes()
-
+        store_wasm_nodes_define: useWasmNodes(),
+        store_tl_rows_define: tl_drows()
     }),
     setup() {
 
@@ -27,7 +27,9 @@ export default {
     },
     methods:
     {
-
+        tl_node_add(obj) {
+            this.store_tl_rows_define.increment_of_tl_rows(obj)
+        }
     },
     async mounted() {
         console.log('left area used mounted')
@@ -49,7 +51,7 @@ export default {
         </v-toolbar>
         <v-card-text class="fm_card_text_for_left_out">
             <v-container class="fm_v_left_container">
-                <v-card flat width="310" v-for="(used_node, index) in store_define.d_nodes_gather" :key="index"
+                <v-card flat width="310" v-for="(used_node, index) in store_wasm_nodes_define.d_nodes_gather" :key="index"
                     v-show="JSON.stringify(used_node.name).toLowerCase().includes(d_used_search_text) && index < d_show_count"
                     class="fm_card_res">
                     <v-card-title class="fm_card_title_l_flex">
@@ -65,7 +67,8 @@ export default {
                             </v-btn>
                             <!-- <v-btn class="fm_btn_mid" icon="mdi mdi-checkbox-marked-circle-plus-outline" size="x-small">
                             </v-btn> -->
-                            <v-btn class="fm_btn_right" icon="mdi mdi-chart-timeline-variant-shimmer" size="x-small">
+                            <v-btn class="fm_btn_right" icon="mdi mdi-chart-timeline-variant-shimmer" size="x-small" :class="{'fm_btn_prohibit':used_node.tl_create }"
+                                @click="tl_node_add(used_node)">
                             </v-btn>
                         </div>
 
@@ -77,6 +80,7 @@ export default {
         <v-toolbar class="fm_toolbar" height="36">
             <v-spacer></v-spacer> <v-icon size="0.9em">
                 mdi mdi-torch
-            </v-icon><span class="fm_toolbar_span">{{ store_define.d_nodes_gather.length }} Model Items</span>
+            </v-icon><span class="fm_toolbar_span">{{ store_wasm_nodes_define.d_nodes_gather.length }} Model Items</span>
         </v-toolbar>
-    </v-card></template>
+    </v-card>
+</template>
