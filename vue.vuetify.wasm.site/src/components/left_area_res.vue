@@ -162,9 +162,9 @@ export default {
             return importFlage
         },
         async add_wasm_item_to_scenes(obj, index) {
+            var uuid_str = uuidv4_UpperCase()
             if (this.is_debug) {
                 if (Module) {
-                    var uuid_str = uuidv4_UpperCase()
                     console.log(uuid_str)
                     /** */
                     let importFlage = this.get_importFlag(obj)
@@ -175,7 +175,6 @@ export default {
             }
             /** */
             this.store_define.increment_of_nodes_gather(uuid_str, obj)
-            console.log(this.store_define.d_nodes_gather)
         }
     },
     mounted() {

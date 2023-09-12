@@ -10,15 +10,16 @@
   --canvas_width: calc(
     100% - var(--v-layout-top) - var(--v-layout-bottom) - 32px
   );
+  --red_shallow_color: #e94d67ee;
   --red_color: #d12d49ee;
   --red_hover_color: #d12d49ff;
   --white_color: #ffffff84;
   --white_hover_color: #ffffff;
   --tab_height: 38px;
-  --outline_w: 366px;
+  --outline_w: 318px;
   --la_w: 366px;
   --content_bg_color: #313131;
-  --bg_color: rgb(33,33,33) !important;
+  --bg_color: rgb(33, 33, 33) !important;
   --box_shadow: 1px 2px 0px 0px #4343443c, 0px 0px 0px 1px #1f1f2200 !important;
 }
 
@@ -396,7 +397,7 @@
   font-size: 12px;
   border-radius: 0px !important;
 }
-.fm_toolbar>.v-toolbar__content {
+.fm_toolbar > .v-toolbar__content {
   border-top: var(--border_nomal);
   background-color: var(--bg_color);
   border-radius: 0px !important;
@@ -471,7 +472,7 @@
   max-height: 100% !important;
   overflow-y: auto !important;
 }
-.fm_card_title_img{
+.fm_card_title_img {
   border-top: var(--border_nomal);
   border-left: var(--border_nomal);
   border-right: var(--border_nomal);
@@ -490,6 +491,100 @@
   border-left: var(--border_nomal);
   border-right: var(--border_nomal);
 }
+.fm_card_title_l_flex {
+  margin: 0px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  font-size: 12px !important;
+  white-space: nowrap;
+  /* //对超出内容隐藏 */
+  overflow: hidden;
+  /* //显示省略符号来代表被修剪的文本 */
+  text-overflow: ellipsis;
+  border: var(--border_nomal);
+  /* display: flex;
+  flex-direction: column; */
+}
+.fm_card_title_l_flex > .v-img {
+  width: 50px;
+  height: 50px;
+}
+.fm_card_title_l_flex > .one {
+  position: absolute;
+  top: 0px;
+  left: 60px;
+}
+.fm_card_title_l_flex > .two {
+  position: absolute;
+  top: 18px;
+  left: 60px;
+}
+.fm_card_title_l_flex > .btn {
+  position: absolute;
+  top: 8px;
+  left: 256px;
+}
+.fm_btn_left {
+  border-top-left-radius: 12px !important;
+  border-bottom-left-radius: 12px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+
+  min-width: 24px !important;
+  max-width: 24px !important;
+  width: 24px !important;
+  min-height: 24px !important;
+  max-height: 24px !important;
+  height: 24px !important;
+  padding-left: 1px !important;
+  padding-right: 1px !important;
+  margin: 0px !important;
+  background-color: var(--red_shallow_color) !important;
+}
+.fm_btn_mid {
+  border-radius: 0px !important;
+  min-width: 24px !important;
+  max-width: 24px !important;
+  width: 24px !important;
+  min-height: 24px !important;
+  max-height: 24px !important;
+  height: 24px !important;
+  padding-left: 1px !important;
+  padding-right: 1px !important;
+  margin: 0px !important;
+  background-color: var(--red_shallow_color) !important;
+}
+.fm_btn_right {
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  border-top-right-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
+  min-width: 24px !important;
+  max-width: 24px !important;
+  width: 24px !important;
+  min-height: 24px !important;
+  max-height: 24px !important;
+  height: 24px !important;
+  padding-left: 1px !important;
+  padding-right: 1px !important;
+  margin: 0px !important;
+  background-color: var(--red_shallow_color) !important;
+}
+.fm_btn_right:hover
+{
+  background-color: var(--red_hover_color) !important;
+}
+.fm_btn_left:hover
+{
+  background-color: var(--red_hover_color) !important;
+}
+.fm_btn_mid:hover
+{
+  background-color: var(--red_hover_color) !important;
+}
+
 .fm_window {
   height: 100% !important;
   max-height: 100% !important;

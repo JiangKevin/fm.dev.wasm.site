@@ -214,13 +214,64 @@ var tl_data_rows = [
     ],
   },
 ];
+/** 可编辑对象 */
+var NewRow_template = {
+  id: "#-1691484560194",
+  title: "test1",
+  bind_object: {
+    uuid: "",
+    name: "",
+  },
+  selected: false,
+  draggable: true,
+  style: {
+    height: 24,
+    fillColor: "#252526",
+    legend: {},
+    groupsStyle: {
+      height: 24,
+      marginTop: "auto",
+      fillColor: "#FFC107",
+    },
+    keyframesStyle: {
+      shape: "rhomb",
+      width: 10,
+      height: 10,
+      fillColor: "#0413B9",
+      selectedFillColor: "#F44336",
+    },
+  },
+  keyframes: [
+    {
+      uuid: "",
+      val: 1000,
+      animation: "00 - EASE_NONE",
+      selected: false,
+      min: 0,
+      max: 1000,
+    },
+    {
+      uuid: "",
+      val: 2000,
+      animation: "00 - EASE_NONE",
+      selected: false,
+      min: 1000,
+      max: 2000,
+    },
+  ],
+};
 
 export const tl_drows = defineStore("tl", {
-    state: () => {
-      return {
-        tl_rows: tl_data_rows,
-      };
+  state: () => {
+    return {
+      tl_rows: reactive([]),
+    };
+  },
+  actions: {
+    increment_of_tl_rows(uuid_str, obj) {
+
+
+
     },
-    actions: {},
-  });
-  
+  },
+});

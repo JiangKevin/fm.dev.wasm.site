@@ -71,12 +71,6 @@ export default {
     // d_nodes_gather_of_app1: null
     // is_debug: false
   }),
-  // provide() {
-  //   return
-  //   {
-  //     // d_nodes_gather_of_app1: computed(() => this.d_nodes_gather_of_app)
-  //   }
-  // },
   setup() {
     console.log('App setup')
     // 假如wasm的控制
