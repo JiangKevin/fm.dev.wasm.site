@@ -13,6 +13,7 @@
   --red_shallow_color: #e94d67ee;
   --red_prohibit_color: #6c3f48c7;
   --red_color: #d12d49ee;
+  --purple_color: #5f1acdee;
   --red_hover_color: #d12d49ff;
   --white_color: #ffffff84;
   --white_hover_color: #ffffff;
@@ -484,24 +485,29 @@
   max-height: 100% !important;
   overflow-y: auto !important;
 }
-.fm_card_title_img {
-  border-top: var(--border_nomal);
+
+.fm_card_title_l {
+  padding: 0px !important;
+  margin: 0px !important;
   border-left: var(--border_nomal);
   border-right: var(--border_nomal);
+  border-top: var(--border_nomal);
 }
-.fm_card_title_l {
+.fm_card_title_l > span {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
   padding-right: 0px !important;
-  padding-left: 8px !important;
+  padding-left: 6px !important;
   font-size: 13px !important;
   white-space: nowrap;
   /* //对超出内容隐藏 */
   overflow: hidden;
   /* //显示省略符号来代表被修剪的文本 */
   text-overflow: ellipsis;
-  border-left: var(--border_nomal);
-  border-right: var(--border_nomal);
+}
+.fm_card_title_l > .v-img {
+  margin: 4px !important;
+  padding: 0px !important;
 }
 .fm_card_title_l_flex {
   margin: 0px !important;
@@ -622,9 +628,9 @@
 .fm_card_actions {
   border: var(--border_nomal);
   padding: 0px !important;
-  height: 24px !important;
-  max-height: 24px !important;
-  min-height: 24px !important;
+  height: 28px !important;
+  max-height: 28px !important;
+  min-height: 28px !important;
 }
 .fm_card_text {
   font-size: 12px !important;
@@ -658,6 +664,10 @@
   border-radius: 0px !important;
   box-shadow: 1px 2px 0px 0px #4343443c, 0px 0px 0px 1px #1f1f2200 !important;
 }
+.fm_card_res:hover {
+  background-color: var(--purple_color) !important;
+}
+
 /* .fm_toolbar_res
 {
   border-bottom: var(--border_nomal);
@@ -673,7 +683,12 @@
   padding-left: 1px !important;
   padding-right: 1px !important;
   margin: 0px !important;
+  /* background-color: var(--red_shallow_color) !important; */
 }
+.fm_btn:hover {
+  background-color: var(--red_hover_color) !important;
+}
+
 .fm_btn_prohibit {
   pointer-events: none;
   background-color: var(--red_prohibit_color) !important;

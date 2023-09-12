@@ -6,6 +6,7 @@ import right_area_tl_edit_view from '@/components/right_area_tl_edit.vue'
 export default {
     components: {
         right_area_wasm_edit_view,
+        right_area_tl_edit_view
     },
     props: {
         view_left: {

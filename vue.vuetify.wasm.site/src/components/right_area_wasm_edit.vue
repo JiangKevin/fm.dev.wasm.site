@@ -31,11 +31,11 @@ export default {
         }
     },
     async mounted() {
-        console.log('left area used mounted')
+        // console.log('left area used mounted')
         // console.log(this.d_nodes_gather)
     },
     async updated() {
-        console.log('left area used updated')
+        // console.log('left area used updated')
         // console.log(this.d_nodes_gather)
     },
 }

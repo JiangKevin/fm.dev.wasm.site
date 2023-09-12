@@ -1,7 +1,6 @@
 <!--  -->
 <script>
 import { defineComponent, inject, watch } from 'vue'
-// import { store } from '@/store/store.js'
 import { useWasmNodes, tl_drows } from '@/store/store-pinia'
 export default {
     components: {
@@ -31,11 +30,11 @@ export default {
         }
     },
     async mounted() {
-        console.log('left area used mounted')
+        // console.log('left area used mounted')
         // console.log(this.d_nodes_gather)
     },
     async updated() {
-        console.log('left area used updated')
+        // console.log('left area used updated')
         // console.log(this.d_nodes_gather)
     },
 }

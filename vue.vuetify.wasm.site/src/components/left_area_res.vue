@@ -15,7 +15,7 @@ export default {
         d_index_increment: -1,
         store_wasm_nodes_define: useWasmNodes(),
         store_wasm_obj_res_define: wasm_obj_res()
-        
+
     }),
     setup() {
 
@@ -196,9 +196,10 @@ export default {
                 <v-card flat width="310" v-for="(res_node, index) in store_wasm_obj_res_define.obj_res" :key="index"
                     v-show="JSON.stringify(res_node.name).toLowerCase().includes(d_res_search_text) && index < d_show_count"
                     class="fm_card_res">
-                    <v-img class='fm_card_title_img' :src="res_node.img" height="80" cover></v-img>
+
                     <v-card-title class="fm_card_title_l">
-                        {{ res_node.name }}
+                        <v-img :src="res_node.img" height="80" cover></v-img>
+                        <span>{{ res_node.name }}</span>
                     </v-card-title>
                     <v-expand-transition>
                         <div v-show="show">
