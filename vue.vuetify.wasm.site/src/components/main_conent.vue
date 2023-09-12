@@ -1,7 +1,8 @@
 <!--  -->
 <script>
+import { tl_drows } from '@/store/store-pinia'
+
 export default {
-    inject: ['d_tl_rows'],
     props: {
         view_left: {
             type: Boolean,
@@ -34,7 +35,8 @@ export default {
         d_tl_editing_key_index: -1,
         /* 随机数，改变变量缓存，用于更新样式 */
         d_rand: -1,
-        d_ol_w: 366
+        d_ol_w: 366,
+        d_tl_rows:tl_drows()
     }),
     computed: {
 
@@ -82,7 +84,7 @@ export default {
                 this.timeline_obj.onSelected(this.tl_onSelected)
                 this.timeline_obj.onMouseDown(this.tl_onMouseDown)
                 // 初始化json数据到tl
-                this.timeline_obj.setModel({ rows: this.d_tl_rows })
+                this.timeline_obj.setModel({ rows: this.d_tl_rows.tl_rows })
                 // /** 禁用canvas上的鼠标右键菜单*/
                 // let canvas_timeline_el = document.querySelector("timeline_canvas");
                 // canvas_timeline_el.addEventListener("contextmenu", (e) => {
@@ -112,9 +114,9 @@ export default {
                         this.d_tl_select_id = obj.target.row.id
                         this.d_tl_select_title = obj.target.row.title
                         // 获取row index
-                        let tl_row_count = this.d_tl_rows.length
+                        let tl_row_count = this.d_tl_rows.tl_rows.length
                         for (var i = 0; i < tl_row_count; i++) {
-                            if (obj.target.row.id == this.d_tl_rows[i].id) {
+                            if (obj.target.row.id == this.d_tl_rows.tl_rows[i].id) {
                                 this.d_tl_editing_row_index = i
                                 this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.d_tl_editing_row_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_id)
                                 break
@@ -130,9 +132,9 @@ export default {
                         this.d_tl_select_id = obj.target.row.id
                         this.d_tl_select_title = obj.target.row.title
                         // 获取row index
-                        let tl_row_count = this.d_tl_rows.length
+                        let tl_row_count = this.d_tl_rows.tl_rows.length
                         for (var i = 0; i < tl_row_count; i++) {
-                            if (obj.target.row.id == this.d_tl_rows[i].id) {
+                            if (obj.target.row.id == this.d_tl_rows.tl_rows[i].id) {
                                 this.d_tl_editing_row_index = i
                                 this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.d_tl_editing_row_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_id)
                                 break
@@ -238,7 +240,7 @@ export default {
                             <div id="outline-scroll-container" class="outline_scroll_container">
                                 <div id="outline-container" class="outline_items" @wheel="outline_onScroll">
 
-                                    <div class="outline_node" v-for="(tl_node, index) in d_tl_rows" :key="index"
+                                    <div class="outline_node" v-for="(tl_node, index) in d_tl_rows.tl_rows" :key="index"
                                         :style="{ 'min-height': tl_node.style.height + 'px', 'max-height': tl_node.style.height + 'px' }"
                                         v-bind:class="{ 'outline_node_select': d_tl_select_id == (tl_node.id) }">{{ index +
                                             ' : ' + tl_node.id + ' | ' + tl_node.title }}</div>

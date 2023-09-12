@@ -1,3 +1,172 @@
+// auth.js
+import { defineStore, acceptHMRUpdate } from "pinia";
+import { reactive, ref } from "vue";
+
+export const useWasmNodes = defineStore("wasm_nodes_used", {
+  state: () => {
+    return {
+      d_nodes_gather: reactive([]),
+      d_index_increment: -1,
+    };
+  },
+  actions: {
+    increment_of_nodes_gather(uuid_str, obj) {
+      var wasm_node_insert = {};
+      this.d_index_increment += 1;
+      wasm_node_insert.index_id = "#" + this.d_index_increment;
+      wasm_node_insert.uuid = uuid_str;
+      wasm_node_insert.type = obj.type;
+      wasm_node_insert.isTexRepeat = obj.isTexRepeat;
+      wasm_node_insert.img = obj.img;
+      wasm_node_insert.url = obj.url;
+      wasm_node_insert.node_type = obj.node_type;
+      wasm_node_insert.node_class = "3D Node";
+      wasm_node_insert.name = obj.name;
+      wasm_node_insert.quote = false;
+      wasm_node_insert.referenceds = [];
+      wasm_node_insert.selected = false;
+      wasm_node_insert.creat_date = timestampToTime();
+      wasm_node_insert.icon = obj.icon;
+      wasm_node_insert.describe = "";
+      /** 位置 */
+      var i_location = {};
+      i_location.x = 0;
+      i_location.y = 0;
+      i_location.z = 0;
+      wasm_node_insert.location = i_location;
+      /** 角度 */
+      var i_direction = {};
+      i_direction.x = 0;
+      i_direction.y = 0;
+      i_direction.z = 0;
+      wasm_node_insert.direction = i_direction;
+      /** 颜色 */
+      var i_fillcolor = {};
+      i_fillcolor.r = 0;
+      i_fillcolor.g = 0;
+      i_fillcolor.b = 0;
+      i_fillcolor.a = 0;
+      i_fillcolor.hexa = "#00000000";
+      wasm_node_insert.fillcolor = i_fillcolor;
+      /** */
+      this.d_nodes_gather.push(wasm_node_insert);
+    },
+  },
+});
+
+// // 确保传递正确的 store 声明，本例中为 `useAuth`
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useWasmNodes, import.meta.hot));
+}
+/** */
+var wasm_obj_resouse = [
+  {
+    uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
+    name: "Industry Square of XJH",
+    is_expand: false,
+    type: "Square",
+    node_type: "fbx",
+    isTexRepeat: true,
+    importFlags: [
+      "aiProcess_CalcTangentSpace",
+      "aiProcess_GenNormals",
+      "aiProcess_Triangulate",
+      "aiProcess_SortByPType",
+    ],
+    creat_date: "2020-10-11",
+    icon: "",
+    img: "./static/res/img/1693191131721.jpg",
+    url: "./data/original3D/blg-dmgc.FBX",
+    describe:
+      "Collection of best designed, highly customizable, & developer’s friendly VueJS Admin Dashboard Templates for your next project. Download these templates and boost your development skills.",
+  },
+  {
+    uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
+    name: "Industry Square of XJH",
+    is_expand: false,
+    type: "Square",
+    node_type: "fbx",
+    importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
+    isTexRepeat: true,
+    creat_date: "2020-10-11",
+    icon: "",
+    img: "./static/res/img/img_lights.jpg",
+    url: "./data/original3D/ld-dmgc-1.fbx",
+    describe:
+      "Collection of best designed, highly customizable, & developer’s friendly VueJS Admin Dashboard Templates for your next project. Download these templates and boost your development skills.",
+  },
+  {
+    uuid: "E29DB78B-6EAA-49B2-806B-60B35C933578",
+    name: "Industry Square of BLG",
+    is_expand: false,
+    type: "Square",
+    node_type: "fbx",
+    importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
+    isTexRepeat: true,
+    creat_date: "2020-10-11",
+    icon: "",
+    img: "./static/res/img/img_lights.jpg",
+    url: "./data/original3D/ld-dmgc.FBX",
+    describe:
+      "Collection of best designed, highly customizable, & developer’s friendly VueJS Admin Dashboard Templates for your next project. Download these templates and boost your development skills.",
+  },
+  {
+    uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
+    name: "Industry Square of XJH",
+    is_expand: false,
+    type: "Square",
+    node_type: "fbx",
+    importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
+    isTexRepeat: true,
+    creat_date: "2020-10-11",
+    icon: "",
+    img: "./static/res/img/img_lights.jpg",
+    url: "./data/original3D/ld-dmgc.FBX",
+    describe:
+      "Collection of best designed, highly customizable, & developer’s friendly VueJS Admin Dashboard Templates for your next project. Download these templates and boost your development skills.",
+  },
+  {
+    uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
+    name: "Industry Square of XJH",
+    is_expand: false,
+    type: "Square",
+    node_type: "fbx",
+    importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
+    isTexRepeat: true,
+    creat_date: "2020-10-11",
+    icon: "",
+    img: "./static/res/img/img_lights.jpg",
+    url: "./data/original3D/ld-dmgc.FBX",
+    describe:
+      "Collection of best designed, highly customizable, & developer’s friendly VueJS Admin Dashboard Templates for your next project. Download these templates and boost your development skills.",
+  },
+  {
+    uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
+    name: "Industry Square of XJH",
+    is_expand: false,
+    type: "Square",
+    node_type: "fbx",
+    importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
+    isTexRepeat: true,
+    creat_date: "2020-10-11",
+    icon: "",
+    img: "./static/res/img/img_lights.jpg",
+    url: "./data/original3D/ld-dmgc.FBX",
+    describe:
+      "Collection of best designed, highly customizable, & developer’s friendly VueJS Admin Dashboard Templates for your next project. Download these templates and boost your development skills.",
+  },
+];
+
+export const wasm_obj_res = defineStore("wasm_obj_res", {
+  state: () => {
+    return {
+      obj_res: wasm_obj_resouse,
+    };
+  },
+  actions: {},
+});
+
+/** */
 var tl_data_rows = [
   {
     id: "#-1691564204887",
@@ -43,200 +212,15 @@ var tl_data_rows = [
         animation: "00 - EASE_NONE",
       },
     ],
-  }
-];
-/** 可编辑对象 */
-var NewRow_template = {
-  id: "#-1691484560194",
-  title: "test1",
-  bind_object: {
-    uuid: "",
-    name: "",
-  },
-  selected: false,
-  draggable: true,
-  style: {
-    height: 24,
-    fillColor: "#252526",
-    legend: {},
-    groupsStyle: {
-      height: 24,
-      marginTop: "auto",
-      fillColor: "#FFC107",
-    },
-    keyframesStyle: {
-      shape: "rhomb",
-      width: 10,
-      height: 10,
-      fillColor: "#0413B9",
-      selectedFillColor: "#F44336",
-    },
-  },
-  keyframes: [
-    {
-      uuid: "",
-      val: 1000,
-      animation: "00 - EASE_NONE",
-      selected: false,
-      min: 0,
-      max: 1000,
-    },
-    {
-      uuid: "",
-      val: 2000,
-      animation: "00 - EASE_NONE",
-      selected: false,
-      min: 1000,
-      max: 2000,
-    },
-  ],
-};
-
-var wasm_obj_res = [
-  {
-    uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
-    name: "Industry Square of XJH",
-    is_expand:false,
-    type: "Square",
-    node_type: "fbx",
-    isTexRepeat: true,
-    importFlags: [
-      "aiProcess_CalcTangentSpace",
-      "aiProcess_GenNormals",
-      "aiProcess_Triangulate",
-      "aiProcess_SortByPType",
-    ],
-    creat_date: "2020-10-11",
-    icon: "",
-    img: "./static/res/img/1693191131721.jpg",
-    url: "./data/original3D/blg-dmgc.FBX",
-    describe:
-      "Collection of best designed, highly customizable, & developer’s friendly VueJS Admin Dashboard Templates for your next project. Download these templates and boost your development skills.",
-  },
-  {
-    uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
-    name: "Industry Square of XJH",
-    is_expand:false,
-    type: "Square",
-    node_type: "fbx",
-    importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
-    isTexRepeat: true,
-    creat_date: "2020-10-11",
-    icon: "",
-    img: "./static/res/img/img_lights.jpg",
-    url: "./data/original3D/ld-dmgc-1.fbx",
-    describe:
-      "Collection of best designed, highly customizable, & developer’s friendly VueJS Admin Dashboard Templates for your next project. Download these templates and boost your development skills.",
-  },
-  {
-    uuid: "E29DB78B-6EAA-49B2-806B-60B35C933578",
-    name: "Industry Square of BLG",
-    is_expand:false,
-    type: "Square",
-    node_type: "fbx",
-    importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
-    isTexRepeat: true,
-    creat_date: "2020-10-11",
-    icon: "",
-    img: "./static/res/img/img_lights.jpg",
-    url: "./data/original3D/ld-dmgc.FBX",
-    describe:
-      "Collection of best designed, highly customizable, & developer’s friendly VueJS Admin Dashboard Templates for your next project. Download these templates and boost your development skills.",
-  },
-  {
-    uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
-    name: "Industry Square of XJH",
-    is_expand:false,
-    type: "Square",
-    node_type: "fbx",
-    importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
-    isTexRepeat: true,
-    creat_date: "2020-10-11",
-    icon: "",
-    img: "./static/res/img/img_lights.jpg",
-    url: "./data/original3D/ld-dmgc.FBX",
-    describe:
-      "Collection of best designed, highly customizable, & developer’s friendly VueJS Admin Dashboard Templates for your next project. Download these templates and boost your development skills.",
-  },
-  {
-    uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
-    name: "Industry Square of XJH",
-    is_expand:false,
-    type: "Square",
-    node_type: "fbx",
-    importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
-    isTexRepeat: true,
-    creat_date: "2020-10-11",
-    icon: "",
-    img: "./static/res/img/img_lights.jpg",
-    url: "./data/original3D/ld-dmgc.FBX",
-    describe:
-      "Collection of best designed, highly customizable, & developer’s friendly VueJS Admin Dashboard Templates for your next project. Download these templates and boost your development skills.",
-  },
-  {
-    uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
-    name: "Industry Square of XJH",
-    is_expand:false,
-    type: "Square",
-    node_type: "fbx",
-    importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
-    isTexRepeat: true,
-    creat_date: "2020-10-11",
-    icon: "",
-    img: "./static/res/img/img_lights.jpg",
-    url: "./data/original3D/ld-dmgc.FBX",
-    describe:
-      "Collection of best designed, highly customizable, & developer’s friendly VueJS Admin Dashboard Templates for your next project. Download these templates and boost your development skills.",
   },
 ];
 
-var d_nodes_gather_of_app=[];
-
-
-var wasm_nodes = [
-  {
-    index_id: "#1",
-    uuid: "B13A0F2A-0129-4F4A-8A24-012DE2503FFE",
-    type: "Square",
-    isTexRepeat: true,
-    img: "./static/res/img/img_lights.jpg",
-    url: "./data/original3D/ld-dmgc.FBX",
-    node_type: "fbx",
-    node_class: "3D Node",
-    name: "Industry Square of XJH",
-    quote: false,
-    referenceds: [],
-    selected: false,
-    creat_date: "2023-08-23 18:32:05",
-  },
-  {
-    index_id: "#2",
-    uuid: "3B9A4F26-7CAE-4AC1-BE4E-6DC628F5DBD8",
-    type: "Square",
-    isTexRepeat: true,
-    img: "./static/res/img/img_lights.jpg",
-    url: "./data/original3D/ld-dmgc.FBX",
-    node_type: "fbx",
-    node_class: "3D Node",
-    name: "Industry Square of XJH",
-    quote: false,
-    referenceds: [],
-    selected: false,
-    creat_date: "2023-08-23 18:32:05",
-  },
-  {
-    index_id: "#3",
-    uuid: "C3CD13AF-732A-4C48-91F7-51DFCE085CF8",
-    type: "Square",
-    isTexRepeat: true,
-    img: "./static/res/img/img_lights.jpg",
-    url: "./data/original3D/ld-dmgc.FBX",
-    node_type: "fbx",
-    node_class: "3D Node",
-    name: "Industry Square of XJH",
-    quote: false,
-    referenceds: [],
-    selected: false,
-    creat_date: "2023-08-23 18:32:07",
-  },
-];
+export const tl_drows = defineStore("tl", {
+    state: () => {
+      return {
+        tl_rows: tl_data_rows,
+      };
+    },
+    actions: {},
+  });
+  

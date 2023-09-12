@@ -1,7 +1,7 @@
 <!--  -->
 <script>
+import { inject, watch } from 'vue'
 export default {
-    inject: ['d_wasm_obj_res'],
     props: {
         view_left: {
             type: Boolean,
@@ -31,6 +31,7 @@ export default {
         show: false,
 
     }),
+
     computed: {
         class_object_computed_right_area() {
             if (this.view_right) {
@@ -78,34 +79,8 @@ export default {
                                     append-inner-icon="mdi mdi-magnify" single-line hide-details
                                     class="fm_right_text_field"></v-text-field>
                             </v-toolbar>
-                            <v-card-text class="fm_card_text_for_res_out">
-                                <v-container class="fm_v_res_container">
-                                    <v-card width="310" v-for="(res_node, index) in d_wasm_obj_res" :key="index"
-                                        class="fm_card_res">
-                                        <v-img :src="res_node.img" height="100px" cover></v-img>
-                                        <v-card-title class="fm_card_title_l">
-                                            {{ res_node.name }}
-                                        </v-card-title>
-                                        <v-expand-transition>
-                                            <div v-show="show">
-                                                <v-divider></v-divider>
-                                                <v-card-text class="fm_card_text">
-                                                    {{ '#' + index + ' ' + res_node.type + ' ' + res_node.creat_date }}
-                                                    <p></p>
-                                                    {{ res_node.uuid }}
-                                                </v-card-text>
-                                            </div>
-                                        </v-expand-transition>
-                                        <v-card-actions class="fm_card_actions">
-                                            <v-spacer></v-spacer>
-                                            <v-btn class="fm_btn" icon="mdi mdi-checkbox-marked-circle-plus-outline">
-                                            </v-btn>
-                                            <v-btn class="fm_btn"
-                                                :icon="show ? 'mdi mdi-chevron-double-up' : 'mdi mdi-chevron-double-down'"
-                                                @click="show = !show"></v-btn>
-                                        </v-card-actions>
-                                    </v-card>
-                                </v-container>
+                            <v-card-text class="fm_card_text_for_left_out">
+                                
                             </v-card-text>
                             <v-toolbar color="primary" height="36">
                                 <v-text-field :loading="loading" density="compact" variant="solo" label="Search templates"

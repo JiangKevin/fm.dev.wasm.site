@@ -45,7 +45,8 @@ import {
   ref,
   watch,
   provide,
-  defineAsyncComponent
+  defineAsyncComponent,
+  reactive
 } from 'vue';
 import loadJs from '@/components/wasm_load.vue'
 import main_View from '@/components/main_conent.vue';
@@ -53,7 +54,7 @@ import left_area_view from '@/components/left_area.vue'
 import right_area_view from '@/components/right_area.vue'
 
 export default {
-  inject: ['is_debug'],
+  // inject: ['is_debug'],
   components: {
     main_View,
     left_area_view,
@@ -67,13 +68,19 @@ export default {
     right_width: 366,
     main_width: 100,
     main_height: 100,
-    // d_nodes_gather_of_app: null
+    // d_nodes_gather_of_app1: null
     // is_debug: false
   }),
+  // provide() {
+  //   return
+  //   {
+  //     // d_nodes_gather_of_app1: computed(() => this.d_nodes_gather_of_app)
+  //   }
+  // },
   setup() {
     console.log('App setup')
     // 假如wasm的控制
-    let is_debug = true
+    let is_debug = false
     // 修改样式
     const theme = useTheme();
     theme.global.name.value = 'dark'
@@ -81,12 +88,9 @@ export default {
     loadJs('./static/js/tl/animation-timeline.js').then(() => {
       // 加载成功，进行后续操作
     })
-    // 获取测试数据
-    provide('d_tl_rows', tl_data_rows);
-    provide('d_wasm_obj_res', wasm_obj_res);
-    provide('d_nodes_gather', d_nodes_gather_of_app)
-    provide('is_debug', is_debug);
 
+    // provide('d_tl_rows', tl_data_rows);
+    provide('is_debug', is_debug);
 
     if (is_debug) {
       loadJs('./static/js/hmi_editer_web.js').then(() => {
@@ -96,7 +100,13 @@ export default {
 
       })
     }
+    else {
+      loadJs('./static/js/no_wasm_pre.js').then(() => {
+
+      })
+    }
   },
+
   methods:
   {
     /** 计算canvas屏幕大小 */
@@ -133,6 +143,9 @@ export default {
           Module._setArticleWidth(main_width, main_height, 0)
         }
       }
+    },
+    cc() {
+      console.log("From js app")
     },
     /** 控制左侧区域显示与否 */
     left_show_click() {

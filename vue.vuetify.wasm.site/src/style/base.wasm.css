@@ -463,7 +463,7 @@
   height: 100%;
   box-sizing: border-box;
 }
-.fm_v_res_container {
+.fm_v_left_container {
   padding: 4px !important;
   width: 318px;
   height: 100% !important;
@@ -532,12 +532,12 @@
   border-left: var(--border_nomal);
   border-right: var(--border_nomal);
 }
-.fm_card_text_for_res_out {
+.fm_card_text_for_left_out {
   top: 36px;
   width: 318px;
-  height: calc(100% - 72px);
-  min-height: calc(100% - 72px);
-  max-height: calc(100% - 72px);
+  height: calc(100% - 72px) !important;
+  min-height: calc(100% - 72px) !important;
+  max-height: calc(100% - 72px) !important;
 }
 
 .fm_card_res {

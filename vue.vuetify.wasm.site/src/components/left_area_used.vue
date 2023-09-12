@@ -1,0 +1,86 @@
+<!--  -->
+<script>
+import { defineComponent, inject, watch } from 'vue'
+// import { store } from '@/store/store.js'
+import { useWasmNodes } from '@/store/store-pinia'
+export default {
+    // inject: ['d_nodes_gather', 'is_debug'],
+    components: {
+    },
+    props: {
+
+    },
+    data: () => ({
+        loaded: false,
+        loading: false,
+        d_used_search_text: '',
+        show: false,
+        d_show_count: 100,
+        store_define: useWasmNodes()
+
+    }),
+    setup() {
+
+    },
+    computed: {
+
+    },
+    methods:
+    {
+
+    },
+    async mounted() {
+        console.log('left area used mounted')
+        // console.log(this.d_nodes_gather)
+    },
+    async updated() {
+        console.log('left area used updated')
+        // console.log(this.d_nodes_gather)
+    },
+}
+</script>
+<!--  -->
+<template>
+    <v-card flat class="fm_left_area_cards">
+        <v-toolbar height="36">
+            <v-text-field :loading="loading" density="compact" variant="solo" label="Search ..."
+                append-inner-icon="mdi mdi-magnify" single-line hide-details class="fm_left_text_field"
+                v-model="d_used_search_text"></v-text-field>
+        </v-toolbar>
+        <v-card-text class="fm_card_text_for_left_out">
+            <v-container class="fm_v_left_container">
+                <v-card flat width="310" v-for="(used_node, index) in store_define.d_nodes_gather" :key="index"
+                    v-show="JSON.stringify(used_node.name).toLowerCase().includes(d_used_search_text) && index < d_show_count"
+                    class="fm_card_res">
+                    <v-img class='fm_card_title_img' :src="used_node.img" height="80" cover></v-img>
+                    <v-card-title class="fm_card_title_l">
+                        {{ used_node.name }}
+                    </v-card-title>
+                    <v-expand-transition>
+                        <div v-show="show">
+                            <v-divider></v-divider>
+                            <v-card-text class="fm_card_text">
+                                {{ '#' + index + ' ' + used_node.type + ' ' + used_node.creat_date }}
+                                <p></p>
+                                {{ used_node.uuid + ' / ' + used_node.node_type }}
+                            </v-card-text>
+                        </div>
+                    </v-expand-transition>
+                    <v-card-actions class="fm_card_actions">
+                        <v-spacer></v-spacer>
+                        <v-btn class="fm_btn" icon="mdi mdi-checkbox-marked-circle-plus-outline" size="x-small">
+                        </v-btn>
+                        <v-btn class="fm_btn" size="x-small"
+                            :icon="show ? 'mdi mdi-chevron-double-up' : 'mdi mdi-chevron-double-down'"
+                            @click="show = !show"></v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-container>
+        </v-card-text>
+        <v-toolbar class="fm_toolbar" height="36">
+            <v-spacer></v-spacer> <v-icon size="0.9em">
+                mdi mdi-torch
+            </v-icon><span class="fm_toolbar_span">{{ store_define.d_nodes_gather.length }} Model Items</span>
+        </v-toolbar>
+    </v-card>
+</template>
