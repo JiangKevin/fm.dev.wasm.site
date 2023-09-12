@@ -61,7 +61,7 @@ export default {
                 <v-expansion-panels class="fm_expansion_panels" v-model="panel" multiple>
                     <v-expansion-panel value="foo" class="fm_expansion_panel">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
-                            <v-icon icon="mdi mdi-auto-fix"></v-icon>Basic
+                            <v-icon icon="mdi mdi-auto-fix"></v-icon><span>Basic</span>
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
                                     :icon="expanded ? 'mdi mdi-arrow-expand-vertical' : 'mdi mdi-arrow-collapse-vertical'"></v-icon>
@@ -83,7 +83,7 @@ export default {
                     </v-expansion-panel>
                     <v-expansion-panel value="bar" class="fm_expansion_panel">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
-                            <v-icon icon="mdi mdi-circle-edit-outline"></v-icon> Expanded
+                            <v-icon icon="mdi mdi-airplane-edit"></v-icon> <span>Expanded</span>
 
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
