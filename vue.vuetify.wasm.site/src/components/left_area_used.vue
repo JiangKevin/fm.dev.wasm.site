@@ -33,6 +33,7 @@ export default {
         },
         wasm_select_click(index) {
             this.d_wasm_selected_index = index
+            this.store_wasm_nodes_define.d_select_edit_index = index;
         }
     },
     async mounted() {
@@ -57,7 +58,8 @@ export default {
             <v-container class="fm_v_left_container">
                 <v-card flat width="310" v-for="(used_node, index) in store_wasm_nodes_define.d_nodes_gather" :key="index"
                     v-show="JSON.stringify(used_node.name).toLowerCase().includes(d_used_search_text) && index < d_show_count"
-                    class="fm_card_res" :class="{ 'active': d_wasm_selected_index == index }" @click="wasm_select_click(index)">
+                    class="fm_card_res" :class="{ 'active': d_wasm_selected_index == index }"
+                    @click="wasm_select_click(index)">
                     <v-card-title class="fm_card_title_l_flex">
                         <v-img :src="used_node.img" cover></v-img>
                         <span class="one">

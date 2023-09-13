@@ -7,6 +7,7 @@ export const useWasmNodes = defineStore("wasm_nodes_used", {
     return {
       d_nodes_gather: reactive([]),
       d_index_increment: -1,
+      d_select_edit_index: -1,
     };
   },
   actions: {
@@ -51,6 +52,13 @@ export const useWasmNodes = defineStore("wasm_nodes_used", {
       wasm_node_insert.fillcolor = i_fillcolor;
       /** */
       this.d_nodes_gather.push(wasm_node_insert);
+    },
+    current_item_of_gather() {
+      if (this.d_select_edit_index != -1) {
+        return this.d_nodes_gather[this.d_select_edit_index];
+      } else {
+        return this.d_nodes_gather[0];
+      }
     },
   },
 });

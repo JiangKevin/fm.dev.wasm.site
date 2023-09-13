@@ -1,10 +1,14 @@
 <!--  -->
 <script>
-import { defineComponent, inject, watch } from 'vue'
+import { defineComponent, inject, watch, ref } from 'vue'
 // import { store } from '@/store/store.js'
 import { useWasmNodes, tl_drows } from '@/store/store-pinia'
+import { ColorPicker } from "vue3-colorpicker";
+import "vue3-colorpicker/style.css";
+
 export default {
     components: {
+        ColorPicker
     },
     props: {
 
@@ -31,7 +35,7 @@ export default {
             this.store_tl_rows_define.increment_of_tl_rows(obj)
         },
         all() {
-            this.panel = ['foo', 'bar']
+            this.panel = ['basic', 'color', 'others']
         },
         none() {
             this.panel = []
@@ -59,9 +63,72 @@ export default {
         <v-card-text class="fm_card_text_for_right_out">
             <v-container class="fm_v_right_container">
                 <v-expansion-panels class="fm_expansion_panels" v-model="panel" multiple>
-                    <v-expansion-panel value="foo" class="fm_expansion_panel">
+                    <v-expansion-panel value="basic" class="fm_expansion_panel">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
                             <v-icon icon="mdi mdi-auto-fix"></v-icon><span>Basic</span>
+                            <template v-slot:actions="{ expanded }">
+                                <v-icon :color="!expanded ? 'teal' : ''"
+                                    :icon="expanded ? 'mdi mdi-arrow-expand-vertical' : 'mdi mdi-arrow-collapse-vertical'"></v-icon>
+                            </template>
+                        </v-expansion-panel-title>
+                        <v-expansion-panel-text class="fm_expansion_panel_text">
+                            <!-- <wbr/> -->
+                            <!--  -->
+                            <v-text-field clearable label="UUID" prepend-inner-icon="mdi mdi-barcode" variant="solo"
+                                density="comfortable" class="fm_v_text_field" disabled hide-details="true"
+                                v-model="store_wasm_nodes_define.current_item_of_gather().uuid"></v-text-field>
+                            <!--  -->
+                            <v-text-field clearable label="Name" prepend-inner-icon="mdi mdi-qrcode" hide-details="true"
+                                clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" class="fm_v_text_field"
+                                v-model="store_wasm_nodes_define.current_item_of_gather().name"></v-text-field>
+                            <!-- 坐标 -->
+                            <v-text-field clearable label="X of Location" prepend-inner-icon="mdi mdi-map-marker-down"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field"
+                                v-model="store_wasm_nodes_define.current_item_of_gather().location.x"></v-text-field>
+                            <v-text-field clearable label="Y of Location" prepend-inner-icon="mdi mdi-map-marker-down"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field"
+                                v-model="store_wasm_nodes_define.current_item_of_gather().location.y"></v-text-field>
+                            <v-text-field clearable label="Z of Location" prepend-inner-icon="mdi mdi-map-marker-down"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field"
+                                v-model="store_wasm_nodes_define.current_item_of_gather().location.z"></v-text-field>
+                            <!-- 角度 -->
+                            <v-text-field clearable label="X of Direction" prepend-inner-icon="mdi mdi-flag-triangle"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field"
+                                v-model="store_wasm_nodes_define.current_item_of_gather().direction.x"></v-text-field>
+                            <v-text-field clearable label="Y of Direction" prepend-inner-icon="mdi mdi-flag-triangle"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field"
+                                v-model="store_wasm_nodes_define.current_item_of_gather().direction.y"></v-text-field>
+                            <v-text-field clearable label="Z of Direction" prepend-inner-icon="mdi mdi-flag-triangle"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field"
+                                v-model="store_wasm_nodes_define.current_item_of_gather().direction.z"></v-text-field>
+                        </v-expansion-panel-text>
+                    </v-expansion-panel>
+                    <v-expansion-panel value="color" class="fm_expansion_panel">
+                        <v-expansion-panel-title class="fm_expansion_panel_title">
+                            <v-icon icon="mdi mdi-palette"></v-icon> <span>Colors</span>
+
+                            <template v-slot:actions="{ expanded }">
+                                <v-icon :color="!expanded ? 'teal' : ''"
+                                    :icon="expanded ? 'mdi mdi-arrow-expand-vertical' : 'mdi mdi-arrow-collapse-vertical'"></v-icon>
+                            </template>
+                        </v-expansion-panel-title>
+                        <v-expansion-panel-text class="fm_expansion_panel_text">
+                            <p></p>
+                            <!-- <wbr/> -->
+                            <!--  -->
+                            <ColorPicker format="rgb" shape="square" theme="black" />
+                        </v-expansion-panel-text>
+                    </v-expansion-panel>
+                    <v-expansion-panel value="others" class="fm_expansion_panel">
+                        <v-expansion-panel-title class="fm_expansion_panel_title">
+                            <v-icon icon="mdi mdi-airplane-edit"></v-icon> <span>Expanded</span>
+
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
                                     :icon="expanded ? 'mdi mdi-arrow-expand-vertical' : 'mdi mdi-arrow-collapse-vertical'"></v-icon>
@@ -78,24 +145,6 @@ export default {
                             <v-text-field clearable label="Label" prepend-inner-icon="mdi mdi-map-marker"
                                 clear-icon="mdi mdi-backspace" variant="underlined" density="comfortable"
                                 class="fm_v_text_field"></v-text-field>
-
-                        </v-expansion-panel-text>
-                    </v-expansion-panel>
-                    <v-expansion-panel value="bar" class="fm_expansion_panel">
-                        <v-expansion-panel-title class="fm_expansion_panel_title">
-                            <v-icon icon="mdi mdi-airplane-edit"></v-icon> <span>Expanded</span>
-
-                            <template v-slot:actions="{ expanded }">
-                                <v-icon :color="!expanded ? 'teal' : ''"
-                                    :icon="expanded ? 'mdi mdi-arrow-expand-vertical' : 'mdi mdi-arrow-collapse-vertical'"></v-icon>
-                            </template>
-                        </v-expansion-panel-title>
-                        <v-expansion-panel-text class="fm_expansion_panel_text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore
-                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                            ut
-                            aliquip ex ea commodo consequat.
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                 </v-expansion-panels>
