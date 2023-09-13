@@ -223,7 +223,7 @@ export default {
                 </v-card>
             </v-container>
         </v-card-text>
-        <v-toolbar class="fm_toolbar" height="36">
+        <v-toolbar class="fm_toolbar_bottom" >
             <v-spacer></v-spacer> <v-icon size="0.9em">
                 mdi mdi-bank
             </v-icon><span class="fm_toolbar_span">{{ store_wasm_obj_res_define.obj_res.length }} Resouse Items</span>

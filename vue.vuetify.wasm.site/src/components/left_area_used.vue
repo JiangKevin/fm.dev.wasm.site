@@ -83,7 +83,7 @@ export default {
 
             </v-container>
         </v-card-text>
-        <v-toolbar class="fm_toolbar" height="36">
+        <v-toolbar class="fm_toolbar_bottom" >
             <v-spacer></v-spacer> <v-icon size="0.9em">
                 mdi mdi-torch
             </v-icon><span class="fm_toolbar_span">{{ store_wasm_nodes_define.d_nodes_gather.length }} Model Items</span>

@@ -449,6 +449,14 @@ input::-webkit-inner-spin-button {
   background-color: var(--red_hover_color) !important;
 }
 
+.fm_toolbar_bottom > .v-toolbar__content {
+  border-top: var(--border_nomal);
+  background-color: var(--bg_color);
+  border-radius: 0px !important;
+  height: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
+}
 /* tl 区域 */
 .fm_tl_out_div {
   width: 100%;
@@ -689,16 +697,16 @@ input::-webkit-inner-spin-button {
 .fm_card_text_for_left_out {
   top: 36px;
   width: 318px;
-  height: calc(100% - 72px) !important;
-  min-height: calc(100% - 72px) !important;
-  max-height: calc(100% - 72px) !important;
+  height: calc(100% - 64px) !important;
+  min-height: calc(100% - 64px) !important;
+  max-height: calc(100% - 64px) !important;
 }
 .fm_card_text_for_right_out {
   top: 36px;
   width: 318px;
-  height: calc(100% - 72px) !important;
-  min-height: calc(100% - 72px) !important;
-  max-height: calc(100% - 72px) !important;
+  height: calc(100% - 28px) !important;
+  min-height: calc(100% - 28px) !important;
+  max-height: calc(100% - 28px) !important;
 }
 
 .fm_card_res {
@@ -750,9 +758,9 @@ input::-webkit-inner-spin-button {
   border-radius: 0px !important;
 }
 .fm_expansion_panel_title {
-  min-height: var(--f_btn_h) !important;
-  max-height: var(--f_btn_h) !important;
-  height: var(--f_btn_h) !important;
+  min-height: 35px !important;
+  max-height:  35px !important;
+  height:  35px !important;
   padding-left: 4px !important;
   background-color: var(--purple_color) !important;
   padding: 0px !important;
@@ -812,7 +820,38 @@ input::-webkit-inner-spin-button {
   min-width: 90px !important;
   width: 90px !important;
 }
+/*  */
+.fm_toolbar_contain {
+  border-left: var(--border_nomal);
+}
 
+.fm_toolbar_btn {
+  min-width: 28px !important;
+  max-width: 28px !important;
+  width: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
+  height: 28px !important;
+  margin: 0px !important;
+  border-radius: 0px !important;
+}
+.fm_toolbar_btn > span > i {
+  font-size: 0.9em !important;
+}
+.fm_dialog_card
+{
+  border-radius: 2px !important;
+}
+.fm_dialog_card>.v-card-title
+{
+  padding-left: 8px !important;
+  border-bottom: var(--border_nomal);
+}
+.fm_dialog_card>.v-card-text
+{
+  padding-left: 8px !important;
+  border-bottom: var(--border_nomal);
+}
 /* 修改 */
 .fm_header_bar > .v-toolbar__content > .v-toolbar__prepend {
   margin-left: 0px !important;
@@ -823,10 +862,9 @@ input::-webkit-inner-spin-button {
 }
 
 .vc-colorpicker.black {
-  background-color:#313131 !important;
+  background-color: #313131 !important;
 }
-.vc-color-wrap.transparent
-{
+.vc-color-wrap.transparent {
   margin-top: 4px !important;
   margin-bottom: 4px !important;
 }

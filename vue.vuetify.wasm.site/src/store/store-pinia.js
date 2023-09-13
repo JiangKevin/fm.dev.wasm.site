@@ -120,6 +120,12 @@ export const useWasmNodes = defineStore("wasm_nodes_used", {
       //
       //   console.log(this.d_nodes_gather);
     },
+    delete_current_item() {
+      if (this.d_select_edit_index != -1) {
+        this.d_nodes_gather.splice(this.d_select_edit_index, 1);
+        this.d_select_edit_index = -1;
+      }
+    },
   },
 });
 
@@ -334,6 +340,8 @@ export const tl_drows = defineStore("tl", {
   state: () => {
     return {
       tl_rows: reactive([]),
+      d_select_row_index: -1,
+      d_select_key_index: -1,
     };
   },
   actions: {
@@ -345,8 +353,6 @@ export const tl_drows = defineStore("tl", {
         tl_node_insert.bind_object.uuid = obj.uuid;
         tl_node_insert.bind_object.name = obj.name;
         this.tl_rows.push(tl_node_insert);
-        // console.log("From js:increment_of_tl_rows");
-        // console.log(tl_node_insert);
         //
         obj.tl_create = true;
       }

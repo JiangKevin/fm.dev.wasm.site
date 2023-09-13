@@ -16,13 +16,13 @@ export default {
     data: () => ({
         loaded: false,
         loading: false,
-        d_used_search_text: '',
+        d_edit_search_text: '',
         show: false,
         d_show_count: 100,
         store_wasm_nodes_define: useWasmNodes(),
         store_tl_rows_define: tl_drows(),
         panel: ['basic', 'color', 'others'],
-        c_color: 'rgba(252, 192, 46, 0.62)'
+        is_del_wasm_item: false
     }),
     setup() {
 
@@ -44,6 +44,10 @@ export default {
         change_fillcolor_attributes(obj) {
             this.store_wasm_nodes_define.update_current_item_fillcolor();
 
+        },
+        delete_wasm_node(obj){
+           this.is_del_wasm_item = false
+           this.store_wasm_nodes_define.delete_current_item()
         }
     },
     async mounted() {
@@ -59,12 +63,6 @@ export default {
 <!--  -->
 <template>
     <v-card flat class="fm_right_area_cards">
-        <v-toolbar class="fm_toolbar" height="37">
-            <v-btn class="fm_btn" icon="mdi mdi-arrow-expand-vertical" size="x-small" @click="all">
-            </v-btn>
-            <v-btn class="fm_btn" icon="mdi mdi-arrow-collapse-vertical" size="x-small" @click="none">
-            </v-btn>
-        </v-toolbar>
         <v-card-text class="fm_card_text_for_right_out">
             <v-container class="fm_v_right_container">
                 <v-expansion-panels class="fm_expansion_panels" v-model="panel" multiple>
@@ -73,10 +71,11 @@ export default {
                             <v-icon icon="mdi mdi-auto-fix"></v-icon><span>Basic</span>
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
-                                    :icon="expanded ? 'mdi mdi-arrow-expand-vertical' : 'mdi mdi-arrow-collapse-vertical'"></v-icon>
+                                    :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>
                             </template>
                         </v-expansion-panel-title>
-                        <v-expansion-panel-text class="fm_expansion_panel_text" v-if="store_wasm_nodes_define.d_select_edit_index!=-1">
+                        <v-expansion-panel-text class="fm_expansion_panel_text"
+                            v-if="store_wasm_nodes_define.d_select_edit_index != -1">
                             <!-- <wbr/> -->
                             <!--  -->
                             <v-text-field clearable label="UUID" prepend-inner-icon="mdi mdi-barcode" variant="solo"
@@ -120,10 +119,11 @@ export default {
 
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
-                                    :icon="expanded ? 'mdi mdi-arrow-expand-vertical' : 'mdi mdi-arrow-collapse-vertical'"></v-icon>
+                                    :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>
                             </template>
                         </v-expansion-panel-title>
-                        <v-expansion-panel-text class="fm_expansion_panel_text"  v-if="store_wasm_nodes_define.d_select_edit_index!=-1">
+                        <v-expansion-panel-text class="fm_expansion_panel_text"
+                            v-if="store_wasm_nodes_define.d_select_edit_index != -1">
                             <p></p>
                             <!-- <wbr/> -->
                             <!--  -->
@@ -139,7 +139,7 @@ export default {
 
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
-                                    :icon="expanded ? 'mdi mdi-arrow-expand-vertical' : 'mdi mdi-arrow-collapse-vertical'"></v-icon>
+                                    :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>
                             </template>
                         </v-expansion-panel-title>
                         <v-expansion-panel-text class="fm_expansion_panel_text">
@@ -149,10 +149,40 @@ export default {
                 </v-expansion-panels>
             </v-container>
         </v-card-text>
-        <v-toolbar class="fm_toolbar" height="36">
-            <v-spacer></v-spacer> <v-icon size="0.9em">
-                mdi mdi-torch
-            </v-icon><span class="fm_toolbar_span"></span>
+        <v-toolbar class="fm_toolbar_bottom">
+            <v-spacer></v-spacer>
+            <div class="fm_toolbar_contain">
+                <v-btn icon="mdi mdi-delete" class="fm_toolbar_btn"></v-btn>
+                <v-dialog v-model="is_del_wasm_item" activator="parent" transition="dialog-bottom-transition" persistent
+                    width="auto">
+                    <v-card class="fm_dialog_card" v-if="store_wasm_nodes_define.d_select_edit_index != -1">
+                        <v-card-title>
+                            Are you sure you want to delete the current item?
+                        </v-card-title>
+                        <v-card-text>
+                            <v-icon icon="mdi mdi-barcode"></v-icon>
+                            <span> {{ " " + store_wasm_nodes_define.current_item_of_gather().uuid }}</span>
+                            <p></p>
+                            <v-icon icon="mdi mdi-qrcode"></v-icon>
+                            <span> {{ " " + store_wasm_nodes_define.current_item_of_gather().name }}</span>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="green-darken-1" variant="text" @click="is_del_wasm_item = false">
+                                Cancel
+                            </v-btn>
+                            <v-btn color="red" variant="text" @click="delete_wasm_node">
+                                Ok
+                            </v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
+            </div>
+            <div class="fm_toolbar_contain">
+                <v-btn icon="mdi mdi-chevron-triple-down" class="fm_toolbar_btn" @click="all"></v-btn>
+                <v-btn icon="mdi mdi-chevron-triple-up" class="fm_toolbar_btn" @click="none"></v-btn>
+            </div>
+
         </v-toolbar>
     </v-card>
 </template>
