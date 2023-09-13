@@ -12,7 +12,6 @@ export const useWasmNodes = defineStore("wasm_nodes_used", {
   },
   getters: {
     // compute_select_fillcolor(state) {
-
     // }
   },
   actions: {
@@ -65,6 +64,61 @@ export const useWasmNodes = defineStore("wasm_nodes_used", {
       } else {
         return this.d_nodes_gather[0];
       }
+    },
+    colorRGBA2Hexa(rgb_str) {
+      var a,
+        isPercent,
+        rgb = rgb_str
+          .replace(/\s/g, "")
+          .match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i),
+        alpha = ((rgb && rgb[4]) || "").trim(),
+        hex = rgb
+          ? (rgb[1] | (1 << 8)).toString(16).slice(1) +
+            (rgb[2] | (1 << 8)).toString(16).slice(1) +
+            (rgb[3] | (1 << 8)).toString(16).slice(1)
+          : rgb_str;
+
+      if (alpha !== "") {
+        a = alpha;
+      } else {
+        a = "01";
+      }
+      hex = hex + a;
+
+      return "#" + hex;
+    },
+    update_current_item_fillcolor() {
+      if (this.d_select_edit_index != -1) {
+        let current_item = this.d_nodes_gather[this.d_select_edit_index];
+        let color_array = current_item.fillcolor.rgba.match(/([0-9.]+)/g);
+        //
+        if (color_array) {
+          if (color_array.length == 4) {
+            // rgba
+            current_item.fillcolor.r = color_array[0];
+            current_item.fillcolor.g = color_array[1];
+            current_item.fillcolor.b = color_array[2];
+            current_item.fillcolor.a = color_array[3];
+            // hexa
+            current_item.fillcolor.hexa = this.colorRGBA2Hexa(
+              current_item.fillcolor.rgba
+            );
+          }
+          if (color_array.length == 3) {
+            // rgb
+            current_item.fillcolor.r = color_array[0];
+            current_item.fillcolor.g = color_array[1];
+            current_item.fillcolor.b = color_array[2];
+            current_item.fillcolor.a = 1;
+            // hex
+            current_item.fillcolor.hexa = this.colorRGBA2Hexa(
+              current_item.fillcolor.rgba
+            );
+          }
+        }
+      }
+      //
+      console.log(this.d_nodes_gather);
     },
   },
 });

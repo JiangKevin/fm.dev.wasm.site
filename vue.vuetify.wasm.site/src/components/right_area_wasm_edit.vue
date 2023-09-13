@@ -42,7 +42,8 @@ export default {
             this.panel = []
         },
         change_fillcolor_attributes(obj) { 
-            console.log(obj)
+            this.store_wasm_nodes_define.update_current_item_fillcolor();
+
         }
     },
     async mounted() {
