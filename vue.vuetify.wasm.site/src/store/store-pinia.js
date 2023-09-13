@@ -10,6 +10,11 @@ export const useWasmNodes = defineStore("wasm_nodes_used", {
       d_select_edit_index: -1,
     };
   },
+  getters: {
+    // compute_select_fillcolor(state) {
+
+    // }
+  },
   actions: {
     increment_of_nodes_gather(uuid_str, obj) {
       var wasm_node_insert = {};
@@ -49,6 +54,7 @@ export const useWasmNodes = defineStore("wasm_nodes_used", {
       i_fillcolor.b = 0;
       i_fillcolor.a = 0;
       i_fillcolor.hexa = "#00000000";
+      i_fillcolor.rgba = "rgba(0, 0, 0, 0)";
       wasm_node_insert.fillcolor = i_fillcolor;
       /** */
       this.d_nodes_gather.push(wasm_node_insert);

@@ -22,6 +22,7 @@ export default {
         store_wasm_nodes_define: useWasmNodes(),
         store_tl_rows_define: tl_drows(),
         panel: [],
+        c_color: 'rgba(252, 192, 46, 0.62)'
     }),
     setup() {
 
@@ -40,6 +41,9 @@ export default {
         none() {
             this.panel = []
         },
+        change_fillcolor_attributes(obj) { 
+            console.log(obj)
+        }
     },
     async mounted() {
         // console.log('left area used mounted')
@@ -122,7 +126,10 @@ export default {
                             <p></p>
                             <!-- <wbr/> -->
                             <!--  -->
-                            <ColorPicker format="rgb" shape="square" theme="black" />
+                            <ColorPicker format="rgb" shape="square" theme="black"
+                                v-model:pureColor="store_wasm_nodes_define.current_item_of_gather().fillcolor.rgba"
+                                @pureColorChange="change_fillcolor_attributes(store_wasm_nodes_define.current_item_of_gather().fillcolor)" />
+                            <span>Node Color :{{ store_wasm_nodes_define.current_item_of_gather().fillcolor.rgba }}</span>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                     <v-expansion-panel value="others" class="fm_expansion_panel">

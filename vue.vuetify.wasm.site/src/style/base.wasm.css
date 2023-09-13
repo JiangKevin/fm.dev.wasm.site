@@ -822,11 +822,11 @@ input::-webkit-inner-spin-button {
   background-color: var(--red_hover_color);
 }
 
-.picker
-{
-  z-index: 2000 !important;
+.vc-colorpicker.black {
+  background-color:#313131 !important;
 }
-.color-picker
+.vc-color-wrap.transparent
 {
-  border-radius: 0px !important;
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
 }
