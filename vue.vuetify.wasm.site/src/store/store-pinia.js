@@ -118,7 +118,7 @@ export const useWasmNodes = defineStore("wasm_nodes_used", {
         }
       }
       //
-      console.log(this.d_nodes_gather);
+      //   console.log(this.d_nodes_gather);
     },
   },
 });

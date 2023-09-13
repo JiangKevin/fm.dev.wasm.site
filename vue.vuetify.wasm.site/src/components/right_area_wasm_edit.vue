@@ -21,7 +21,7 @@ export default {
         d_show_count: 100,
         store_wasm_nodes_define: useWasmNodes(),
         store_tl_rows_define: tl_drows(),
-        panel: [],
+        panel: ['basic', 'color', 'others'],
         c_color: 'rgba(252, 192, 46, 0.62)'
     }),
     setup() {
@@ -41,7 +41,7 @@ export default {
         none() {
             this.panel = []
         },
-        change_fillcolor_attributes(obj) { 
+        change_fillcolor_attributes(obj) {
             this.store_wasm_nodes_define.update_current_item_fillcolor();
 
         }
@@ -76,7 +76,7 @@ export default {
                                     :icon="expanded ? 'mdi mdi-arrow-expand-vertical' : 'mdi mdi-arrow-collapse-vertical'"></v-icon>
                             </template>
                         </v-expansion-panel-title>
-                        <v-expansion-panel-text class="fm_expansion_panel_text">
+                        <v-expansion-panel-text class="fm_expansion_panel_text" v-if="store_wasm_nodes_define.d_select_edit_index!=-1">
                             <!-- <wbr/> -->
                             <!--  -->
                             <v-text-field clearable label="UUID" prepend-inner-icon="mdi mdi-barcode" variant="solo"
@@ -123,7 +123,7 @@ export default {
                                     :icon="expanded ? 'mdi mdi-arrow-expand-vertical' : 'mdi mdi-arrow-collapse-vertical'"></v-icon>
                             </template>
                         </v-expansion-panel-title>
-                        <v-expansion-panel-text class="fm_expansion_panel_text">
+                        <v-expansion-panel-text class="fm_expansion_panel_text"  v-if="store_wasm_nodes_define.d_select_edit_index!=-1">
                             <p></p>
                             <!-- <wbr/> -->
                             <!--  -->
@@ -143,16 +143,7 @@ export default {
                             </template>
                         </v-expansion-panel-title>
                         <v-expansion-panel-text class="fm_expansion_panel_text">
-                            <p></p>
-                            <!-- <wbr/> -->
                             <!--  -->
-                            <v-text-field clearable label="Label" prepend-inner-icon="mdi mdi-map-marker"
-                                clear-icon="mdi mdi-backspace" variant="underlined" density="comfortable"
-                                class="fm_v_text_field"></v-text-field>
-                            <!--  -->
-                            <v-text-field clearable label="Label" prepend-inner-icon="mdi mdi-map-marker"
-                                clear-icon="mdi mdi-backspace" variant="underlined" density="comfortable"
-                                class="fm_v_text_field"></v-text-field>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                 </v-expansion-panels>
@@ -161,7 +152,7 @@ export default {
         <v-toolbar class="fm_toolbar" height="36">
             <v-spacer></v-spacer> <v-icon size="0.9em">
                 mdi mdi-torch
-            </v-icon><span class="fm_toolbar_span">{{ store_wasm_nodes_define.d_nodes_gather.length }} Model Items</span>
+            </v-icon><span class="fm_toolbar_span"></span>
         </v-toolbar>
     </v-card>
 </template>

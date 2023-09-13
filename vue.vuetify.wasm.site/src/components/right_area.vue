@@ -92,12 +92,12 @@ export default {
                 <v-tabs v-model="tab" direction="vertical" color="primary" :class="class_object_computed_right_area_tab">
                     <v-tab value="option-1" max-width="48" width="48" height="38">
                         <v-icon>
-                            mdi mdi-account
+                            mdi mdi-mace
                         </v-icon>
                     </v-tab>
                     <v-tab value="option-2" max-width="48" width="48" height="38">
                         <v-icon>
-                            mdi mdi-lock
+                            mdi mdi-magic-staff
                         </v-icon>
                     </v-tab>
                     <v-tab value="option-3" max-width="48" width="48" height="38">
