@@ -31,8 +31,6 @@ export default {
         timeline_obj: null,
         d_tl_select_id: '',
         d_tl_select_title: '',
-        d_tl_editing_row_index: -1,
-        d_tl_editing_key_index: -1,
         /* 随机数，改变变量缓存，用于更新样式 */
         d_rand: -1,
         d_ol_w: 366,
@@ -103,8 +101,6 @@ export default {
 
         },
         tl_onMouseDown(obj) {
-            this.d_tl_editing_row_index = -1
-            this.d_tl_editing_key_index = -1
             this.d_tl_rows.d_select_key_index = -1
             this.d_tl_rows.d_select_row_index = -1
             // console.log(obj)
@@ -118,12 +114,10 @@ export default {
                         let tl_row_count = this.d_tl_rows.tl_rows.length
                         for (var i = 0; i < tl_row_count; i++) {
                             if (obj.target.row.id == this.d_tl_rows.tl_rows[i].id) {
-                                this.d_tl_editing_row_index = i
                                 this.d_tl_rows.d_select_row_index = i
-                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.d_tl_editing_row_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_id)
+                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.d_tl_rows.d_select_row_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_id)
                                 break
                             } else {
-                                this.d_tl_editing_row_index = -1
                                 this.d_tl_rows.d_select_row_index = -1
                             }
                         }
@@ -138,24 +132,20 @@ export default {
                         let tl_row_count = this.d_tl_rows.tl_rows.length
                         for (var i = 0; i < tl_row_count; i++) {
                             if (obj.target.row.id == this.d_tl_rows.tl_rows[i].id) {
-                                this.d_tl_editing_row_index = i
                                 this.d_tl_rows.d_select_row_index = i
-                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.d_tl_editing_row_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_id)
+                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.d_tl_rows.d_select_row_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_id)
                                 break
                             } else {
-                                this.d_tl_editing_row_index = -1
                                 this.d_tl_rows.d_select_row_index = -1
                             }
                         }
                         // 获取选中row 的 选中key 的index
                         for (var i = 0; i < obj.target.row.keyframes.length; i++) {
                             if (obj.target.row.keyframes[i].uuid == obj.target.keyframe.uuid) {
-                                this.d_tl_editing_key_index = i
                                 this.d_tl_rows.d_select_key_index = i
-                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.d_tl_editing_row_index + ' edit key index = ' + this.d_tl_editing_key_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_id)
+                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.d_tl_rows.d_select_row_index + ' edit key index = ' + this.d_tl_rows.d_select_key_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_id)
                                 break
                             } else {
-                                this.d_tl_editing_key_index = -1
                                 this.d_tl_rows.d_select_key_index = -1
                             }
                         }
@@ -362,7 +352,8 @@ export default {
                                 <div id="outline-container" class="outline_items" @wheel="outline_onScroll">
                                     <div class="outline_node" v-for="(tl_node, index) in d_tl_rows.tl_rows" :key="index"
                                         :style="{ 'min-height': tl_node.style.height + 'px', 'max-height': tl_node.style.height + 'px' }"
-                                        v-bind:class="{ 'outline_node_select': d_tl_select_id == (tl_node.id) }">{{ index.toFixed(0).padStart(4, '0') +
+                                        v-bind:class="{ 'outline_node_select': d_tl_select_id == (tl_node.id) }">{{
+                                            index.toFixed(0).padStart(4, '0') +
                                             ' : ' + tl_node.id + ' | ' + tl_node.title }}</div>
 
                                 </div>
