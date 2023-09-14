@@ -111,6 +111,30 @@ export default {
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
                                 type="number" class="fm_v_text_field"
                                 v-model="store_wasm_nodes_define.current_item_of_gather().direction.z"></v-text-field>
+                            <!--  -->
+                            <div class="fm_color_div">
+                                <ColorPicker format="rgb" shape="square" theme="black"
+                                    v-model:pureColor="store_wasm_nodes_define.current_item_of_gather().fillcolor.rgba"
+                                    @pureColorChange="change_fillcolor_attributes(store_wasm_nodes_define.current_item_of_gather().fillcolor)" />
+                                <div class="span_div"> <span>Node Color :{{
+                                    store_wasm_nodes_define.current_item_of_gather().fillcolor.rgba }}</span></div>
+                            </div>
+                            <!--  -->
+
+                            <!-- Rendering mode -->
+                            <v-switch v-model="store_wasm_nodes_define.current_item_of_gather().draw_model" value="FACE"
+                                true-value="FACE" hide-details="true" class="fm_switch" label="Rendering mode:Face"
+                                color="indigo-darken-3" true-icon="mdi mdi-cube"></v-switch>
+                            <v-switch v-model="store_wasm_nodes_define.current_item_of_gather().draw_model"
+                                value="WIREFRAME" true-value="WIREFRAME" hide-details="true" class="fm_switch"
+                                label="Rendering mode:WireFrame" color="indigo-darken-3"
+                                true-icon="mdi mdi-cube-outline"></v-switch>
+                            <v-switch v-model="store_wasm_nodes_define.current_item_of_gather().draw_model" value="POINT"
+                                true-value="POINT" hide-details="true" class="fm_switch" label="Rendering mode:Point"
+                                color="indigo-darken-3" true-icon="mdi mdi-blur"></v-switch>
+                            <v-switch v-model="store_wasm_nodes_define.current_item_of_gather().tl_create" :value=true
+                                :true-value=true hide-details="true" class="fm_switch" label="Inclue prefabricated actions"
+                                color="red-darken-3" readonly true-icon="mdi mdi-chart-timeline-variant-shimmer"></v-switch>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                     <v-expansion-panel value="color" class="fm_expansion_panel">
@@ -127,13 +151,7 @@ export default {
                             <p></p>
                             <!-- <wbr/> -->
                             <!--  -->
-                            <div class="fm_color_div">
-                                <ColorPicker format="rgb" shape="square" theme="black"
-                                    v-model:pureColor="store_wasm_nodes_define.current_item_of_gather().fillcolor.rgba"
-                                    @pureColorChange="change_fillcolor_attributes(store_wasm_nodes_define.current_item_of_gather().fillcolor)" />
-                                <div class="span_div"> <span>Node Color :{{
-                                    store_wasm_nodes_define.current_item_of_gather().fillcolor.rgba }}</span></div>
-                            </div>
+
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                     <v-expansion-panel value="others" class="fm_expansion_panel">
@@ -148,20 +166,7 @@ export default {
                         <v-expansion-panel-text class="fm_expansion_panel_text"
                             v-if="store_wasm_nodes_define.d_select_edit_index != -1">
                             <!--  -->
-                            <v-switch v-model="store_wasm_nodes_define.current_item_of_gather().tl_create" :value=true
-                                :true-value=true hide-details="true" class="fm_switch" label="Inclue prefabricated actions"
-                                color="red-darken-3" readonly true-icon="mdi mdi-chart-timeline-variant-shimmer"></v-switch>
-                            <!-- Rendering mode -->
-                            <v-switch v-model="store_wasm_nodes_define.current_item_of_gather().draw_model" value="FACE"
-                                true-value="FACE" hide-details="true" class="fm_switch" label="Rendering mode:Face"
-                                color="indigo-darken-3" true-icon="mdi mdi-cube"></v-switch>
-                            <v-switch v-model="store_wasm_nodes_define.current_item_of_gather().draw_model"
-                                value="WIREFRAME" true-value="WIREFRAME" hide-details="true" class="fm_switch"
-                                label="Rendering mode:WireFrame" color="indigo-darken-3"
-                                true-icon="mdi mdi-cube-outline"></v-switch>
-                            <v-switch v-model="store_wasm_nodes_define.current_item_of_gather().draw_model" value="POINT"
-                                true-value="POINT" hide-details="true" class="fm_switch" label="Rendering mode:Point"
-                                color="indigo-darken-3" true-icon="mdi mdi-blur"></v-switch>
+
 
                             <!-- Rendering mode -->
                         </v-expansion-panel-text>
