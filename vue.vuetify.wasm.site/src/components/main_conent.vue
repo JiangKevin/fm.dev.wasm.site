@@ -362,7 +362,7 @@ export default {
                                 <div id="outline-container" class="outline_items" @wheel="outline_onScroll">
                                     <div class="outline_node" v-for="(tl_node, index) in d_tl_rows.tl_rows" :key="index"
                                         :style="{ 'min-height': tl_node.style.height + 'px', 'max-height': tl_node.style.height + 'px' }"
-                                        v-bind:class="{ 'outline_node_select': d_tl_select_id == (tl_node.id) }">{{ index +
+                                        v-bind:class="{ 'outline_node_select': d_tl_select_id == (tl_node.id) }">{{ index.toFixed(0).padStart(4, '0') +
                                             ' : ' + tl_node.id + ' | ' + tl_node.title }}</div>
 
                                 </div>
