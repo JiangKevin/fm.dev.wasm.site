@@ -501,7 +501,7 @@ input::-webkit-inner-spin-button {
   background-color: var(--content_bg_color);
 }
 .outline_node {
-  padding-left: 8px;
+  padding-left: 4px;
   font-size: 12px !important;
   display: flex;
   align-items: center;
