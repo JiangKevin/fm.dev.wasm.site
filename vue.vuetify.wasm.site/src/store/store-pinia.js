@@ -1,7 +1,7 @@
 // auth.js
 import { defineStore, acceptHMRUpdate } from "pinia";
 import { reactive, ref } from "vue";
-//
+// uuid生成函数
 function uuidv4_UpperCase() {
   // 生成uuid
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
@@ -10,7 +10,7 @@ function uuidv4_UpperCase() {
     return v.toString(16).toUpperCase();
   });
 }
-//
+// 颜色色值转换函数
 function colorRGBA2Hexa(rgb_str) {
   var a,
     isPercent,
@@ -33,7 +33,33 @@ function colorRGBA2Hexa(rgb_str) {
 
   return "#" + hex;
 }
-//
+// 调整当前颜色不同颜色转换的共通函数
+function update_color_for_bring_in(obj) {
+  let color_array = obj.rgba.match(/([0-9.]+)/g);
+  if (color_array) {
+    if (color_array.length == 4) {
+      // rgba
+      obj.r = color_array[0];
+      obj.g = color_array[1];
+      obj.b = color_array[2];
+      obj.a = color_array[3];
+      // hexa
+      obj.hexa = colorRGBA2Hexa(obj.rgba);
+    }
+    if (color_array.length == 3) {
+      // rgb
+      obj.r = color_array[0];
+      obj.g = color_array[1];
+      obj.b = color_array[2];
+      obj.a = 1;
+      // hex
+      obj.hexa = colorRGBA2Hexa(obj.rgba);
+    }
+  }
+}
+/**
+ * 实体 --------------------------------------
+ */
 export const useWasmNodes = defineStore("wasm_nodes_used", {
   state: () => {
     return {
@@ -99,50 +125,8 @@ export const useWasmNodes = defineStore("wasm_nodes_used", {
         return this.d_nodes_gather[0];
       }
     },
-    colorRGBA2Hexa(rgb_str) {
-      var a,
-        isPercent,
-        rgb = rgb_str
-          .replace(/\s/g, "")
-          .match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i),
-        alpha = ((rgb && rgb[4]) || "").trim(),
-        hex = rgb
-          ? (rgb[1] | (1 << 8)).toString(16).slice(1) +
-            (rgb[2] | (1 << 8)).toString(16).slice(1) +
-            (rgb[3] | (1 << 8)).toString(16).slice(1)
-          : rgb_str;
-
-      if (alpha !== "") {
-        a = alpha;
-      } else {
-        a = "01";
-      }
-      hex = hex + a;
-
-      return "#" + hex;
-    },
-    update_color_for_bring_in(obj) {
-      let color_array = obj.rgba.match(/([0-9.]+)/g);
-      if (color_array) {
-        if (color_array.length == 4) {
-          // rgba
-          obj.r = color_array[0];
-          obj.g = color_array[1];
-          obj.b = color_array[2];
-          obj.a = color_array[3];
-          // hexa
-          obj.hexa = this.colorRGBA2Hexa(obj.rgba);
-        }
-        if (color_array.length == 3) {
-          // rgb
-          obj.r = color_array[0];
-          obj.g = color_array[1];
-          obj.b = color_array[2];
-          obj.a = 1;
-          // hex
-          obj.hexa = this.colorRGBA2Hexa(obj.rgba);
-        }
-      }
+    change_color_for_bring_in(obj) {
+      update_color_for_bring_in(obj);
       console.log(this.d_nodes_gather);
     },
     delete_current_item() {
@@ -604,6 +588,10 @@ export const configs_of_platform = defineStore("Config", {
         this.is_creat_light_for_wasm = false;
         this.configuration_creat();
       }
+    },
+    change_color_for_bring_in(obj) {
+      update_color_for_bring_in(obj);
+      console.log(this.config_of_lights);
     },
   },
 });

@@ -32,6 +32,10 @@ export default {
         none() {
             this.panel = []
         },
+        change_color_attributes(obj) {
+            this.store_configs_define.change_color_for_bring_in(obj);
+
+        },
     },
     async mounted() {
 
@@ -126,19 +130,22 @@ export default {
                             <!-- <v-divider :thickness="1" class="border-opacity-75" color="#511acb"></v-divider> -->
                             <div class="fm_color_div">
                                 <ColorPicker format="rgb" shape="square" theme="black"
-                                    v-model:pureColor="light_config.diffuse_color.rgba" />
+                                    v-model:pureColor="light_config.diffuse_color.rgba"
+                                    @pureColorChange="change_color_attributes(light_config.diffuse_color)" />
                                 <div class="span_div"> <span>Diffuse Color :{{ light_config.diffuse_color.rgba }}</span>
                                 </div>
                             </div>
                             <div class="fm_color_div">
                                 <ColorPicker format="rgb" shape="square" theme="black"
-                                    v-model:pureColor="light_config.specular_color.rgba" />
+                                    v-model:pureColor="light_config.specular_color.rgba"
+                                    @pureColorChange="change_color_attributes(light_config.specular_color)" />
                                 <div class="span_div"> <span>Specular Color :{{ light_config.specular_color.rgba }}</span>
                                 </div>
                             </div>
                             <div class="fm_color_div">
                                 <ColorPicker format="rgb" shape="square" theme="black"
-                                    v-model:pureColor="light_config.ambient_color.rgba" />
+                                    v-model:pureColor="light_config.ambient_color.rgba"
+                                    @pureColorChange="change_color_attributes(light_config.ambient_color)" />
                                 <div class="span_div">
                                     <span>Ambient Color :{{ light_config.ambient_color.rgba }}</span>
                                 </div>

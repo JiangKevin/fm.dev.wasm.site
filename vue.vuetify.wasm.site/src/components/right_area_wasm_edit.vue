@@ -42,7 +42,7 @@ export default {
             this.panel = []
         },
         change_fillcolor_attributes(obj) {
-            this.store_wasm_nodes_define.update_color_for_bring_in(obj);
+            this.store_wasm_nodes_define.change_color_for_bring_in(obj);
 
         },
         delete_wasm_node(obj) {
