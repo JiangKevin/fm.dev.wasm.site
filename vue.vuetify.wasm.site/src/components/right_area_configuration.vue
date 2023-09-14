@@ -123,21 +123,33 @@ export default {
                                 type="number" class="fm_v_text_field" v-model="light_config.surface_h"
                                 v-if="light_config.type == 'AMBIENT'"></v-text-field>
                             <!-- 颜色 -->
-                            <ColorPicker format="rgb" shape="square" theme="black"
-                                v-model:pureColor="light_config.diffuse_color.rgba" />
-                            <span>Diffuse Color :{{ light_config.diffuse_color.rgba }}</span>
-                            <ColorPicker format="rgb" shape="square" theme="black"
-                                v-model:pureColor="light_config.specular_color.rgba" />
-                            <span>Specular Color :{{ light_config.specular_color.rgba }}</span>
-                            <ColorPicker format="rgb" shape="square" theme="black"
-                                v-model:pureColor="light_config.ambient_color.rgba" />
-                            <span>Ambient Color :{{ light_config.ambient_color.rgba }}</span>
+                            <!-- <v-divider :thickness="1" class="border-opacity-75" color="#511acb"></v-divider> -->
+                            <div class="fm_color_div">
+                                <ColorPicker format="rgb" shape="square" theme="black"
+                                    v-model:pureColor="light_config.diffuse_color.rgba" />
+                                <div class="span_div"> <span>Diffuse Color :{{ light_config.diffuse_color.rgba }}</span>
+                                </div>
+                            </div>
+                            <div class="fm_color_div">
+                                <ColorPicker format="rgb" shape="square" theme="black"
+                                    v-model:pureColor="light_config.specular_color.rgba" />
+                                <div class="span_div"> <span>Specular Color :{{ light_config.specular_color.rgba }}</span>
+                                </div>
+                            </div>
+                            <div class="fm_color_div">
+                                <ColorPicker format="rgb" shape="square" theme="black"
+                                    v-model:pureColor="light_config.ambient_color.rgba" />
+                                <div class="span_div">
+                                    <span>Ambient Color :{{ light_config.ambient_color.rgba }}</span>
+                                </div>
+                            </div>
                             <!-- 启用与否 -->
+                            <!-- <v-divider :thickness="1" class="border-opacity-75" color="#511acb"></v-divider> -->
                             <v-switch v-model="light_config.enable" :value=true :true-value=true hide-details="true"
-                                class="fm_switch" label="Enable light" color="red-darken-3" readonly
+                                class="fm_switch" label="Enable light" color="red-darken-3"
                                 true-icon="mdi mdi-white-balance-sunny"></v-switch>
                             <v-switch v-model="light_config.legend" :value=true :true-value=true hide-details="true"
-                                class="fm_switch" label="Legend show" color="red-darken-3" readonly
+                                class="fm_switch" label="Legend show" color="red-darken-3"
                                 true-icon="mdi mdi-pin"></v-switch>
                         </v-expansion-panel-text>
                     </v-expansion-panel>

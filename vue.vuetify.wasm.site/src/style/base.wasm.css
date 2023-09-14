@@ -870,8 +870,28 @@ input::-webkit-inner-spin-button {
 }
 .fm_switch > .v-input__control > .v-selection-control > .v-label {
   padding-left: 0px !important;
+  border-bottom: var(--border_nomal);
 }
-
+.fm_color_div {
+  width: 318px !important;
+  min-width: 318px !important;
+  max-width: 318px !important;
+  display: flex;
+}
+.fm_color_div > .span_div {
+  width: 252px !important;
+  min-width: 252px !important;
+  max-width: 252px !important;
+  height: 32px;
+  min-height: 32px;
+  max-height: 32px;
+  border-bottom: var(--border_nomal);
+}
+.fm_color_div > .span_div > span {
+  height: 32px;
+  line-height: 32px;
+  color: rgba(255, 255, 255, 0.75);
+}
 /* -------------------------------------- */
 
 /* 修改 */

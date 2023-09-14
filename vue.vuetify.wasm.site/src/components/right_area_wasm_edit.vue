@@ -127,10 +127,13 @@ export default {
                             <p></p>
                             <!-- <wbr/> -->
                             <!--  -->
-                            <ColorPicker format="rgb" shape="square" theme="black"
-                                v-model:pureColor="store_wasm_nodes_define.current_item_of_gather().fillcolor.rgba"
-                                @pureColorChange="change_fillcolor_attributes(store_wasm_nodes_define.current_item_of_gather().fillcolor)" />
-                            <span>Node Color :{{ store_wasm_nodes_define.current_item_of_gather().fillcolor.rgba }}</span>
+                            <div class="fm_color_div">
+                                <ColorPicker format="rgb" shape="square" theme="black"
+                                    v-model:pureColor="store_wasm_nodes_define.current_item_of_gather().fillcolor.rgba"
+                                    @pureColorChange="change_fillcolor_attributes(store_wasm_nodes_define.current_item_of_gather().fillcolor)" />
+                                <div class="span_div"> <span>Node Color :{{
+                                    store_wasm_nodes_define.current_item_of_gather().fillcolor.rgba }}</span></div>
+                            </div>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                     <v-expansion-panel value="others" class="fm_expansion_panel">
