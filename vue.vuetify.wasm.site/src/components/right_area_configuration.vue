@@ -49,18 +49,23 @@ export default {
                 <!-- container start -->
                 <!-- expansion-panels start -->
                 <v-expansion-panels class="fm_expansion_panels" v-model="panel" multiple>
-                    <!-- panel light -->
-                    <v-expansion-panel value="light" class="fm_expansion_panel">
+                    <!-- panel lights -->
+                    <v-expansion-panel value="light" class="fm_expansion_panel"
+                        v-for="(light_config, index) in store_configs_define.config_of_lights" :key="index">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
-                            <v-icon icon="mdi mdi-lightbulb-group"></v-icon><span>Lights</span>
+                            <v-icon :icon=light_config.icon></v-icon><span>{{ light_config.name }}</span>
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
                                     :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>
                             </template>
                         </v-expansion-panel-title>
                         <v-expansion-panel-text class="fm_expansion_panel_text">
+                            <!--  -->
                         </v-expansion-panel-text>
                     </v-expansion-panel>
+
+
+
                     <!-- panel camera -->
                     <v-expansion-panel value="camera" class="fm_expansion_panel">
                         <v-expansion-panel-title class="fm_expansion_panel_title">

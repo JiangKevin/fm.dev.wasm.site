@@ -358,7 +358,8 @@ export const configs_of_platform = defineStore("Config", {
         /* 
         点光源 */
         var p_light = {};
-        p_light.name = "POINTLIGHT";
+        p_light.name = "Point light";
+        p_light.icon = "mdi mdi-lightbulb-on-90";
         p_light.type = "POINT";
         p_light.uuid = this.uuidv4_UpperCase();
         p_light.enable = true;
@@ -412,7 +413,8 @@ export const configs_of_platform = defineStore("Config", {
         /* 
         运动光源 */
         var s_light = {};
-        s_light.name = "SPOTLIGHT";
+        s_light.name = "Spot light";
+        s_light.icon = "mdi mdi-light-flood-down";
         s_light.type = "SPOT";
         s_light.uuid = this.uuidv4_UpperCase();
         s_light.enable = false;
@@ -468,7 +470,8 @@ export const configs_of_platform = defineStore("Config", {
         /* 
         环境光源 */
         var a_light = {};
-        a_light.name = "AMBIENTLIGHT";
+        a_light.name = "Ambient light";
+        a_light.icon = "mdi mdi-theme-light-dark";
         a_light.type = "AMBIENT";
         a_light.uuid = this.uuidv4_UpperCase();
         a_light.enable = false;
@@ -524,7 +527,8 @@ export const configs_of_platform = defineStore("Config", {
         /* 
         平行光源 */
         var d_light = {};
-        d_light.name = "DIRECTIONALIGHT";
+        d_light.name = "Directiona light";
+        d_light.icon = "mdi mdi-car-light-high";
         d_light.type = "DIRECTIONA";
         d_light.uuid = this.uuidv4_UpperCase();
         d_light.enable = false;
