@@ -904,6 +904,7 @@ input::-webkit-inner-spin-button {
 .fm_switch > .v-input__control > .v-selection-control > .v-label {
   padding-left: 0px !important;
   border-bottom: var(--border_nomal);
+  font-size: 12px !important;
 }
 .fm_color_div {
   width: 318px !important;
@@ -924,6 +925,7 @@ input::-webkit-inner-spin-button {
   height: 32px;
   line-height: 32px;
   color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
 }
 /* -------------------------------------- */
 
