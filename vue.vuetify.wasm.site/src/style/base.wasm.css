@@ -476,8 +476,18 @@ input::-webkit-inner-spin-button {
 }
 .fm_outline_header {
   height: 30px;
+  min-height: 30px;
+  max-height: 30px;
   border-bottom: var(--border_nomal);
   overflow: hidden;
+}
+.fm_outline_header_in> .v-toolbar__content 
+{
+  background-color: var(--bg_color);
+  border-radius: 0px !important;
+  height: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
 }
 .outline_scroll_container {
   height: 100%;
@@ -767,12 +777,18 @@ input::-webkit-inner-spin-button {
 }
 .fm_expansion_panel_title > span {
   /* margin-left: 0px !important; */
-  padding-left: 10px !important;
+  padding-left: 2px !important;
   text-align: start !important;
   float: left !important;
 }
 .fm_expansion_panel_title > i {
-  padding-left: 4px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  height: 100% !important;
+  width: 30px !important;
+  line-height: 100% !important;
+  background-color: transparent;
+  border-right: var(--border_nomal);
 }
 .fm_expansion_panel_title > span > i {
   margin-right: 8px !important;
@@ -823,6 +839,7 @@ input::-webkit-inner-spin-button {
 /*  */
 .fm_toolbar_contain {
   border-left: var(--border_nomal);
+  width:fit-content !important;
 }
 
 .fm_toolbar_btn {
@@ -838,6 +855,22 @@ input::-webkit-inner-spin-button {
 .fm_toolbar_btn > span > i {
   font-size: 0.9em !important;
 }
+
+.fm_ol_toolbar_btn {
+  min-width: 28px !important;
+  max-width: 28px !important;
+  width: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
+  height: 28px !important;
+  margin: 0px !important;
+  border-radius: 0px !important;
+
+}
+.fm_ol_toolbar_btn > span > i {
+  font-size: 1em !important;
+}
+
 .fm_dialog_card {
   border-radius: 2px !important;
 }

@@ -32,9 +32,6 @@ export default {
     },
     methods:
     {
-        tl_node_add(obj) {
-            this.store_tl_rows_define.increment_of_tl_rows(obj)
-        },
         all() {
             this.panel = ['basic', 'color', 'others']
         },

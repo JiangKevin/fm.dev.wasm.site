@@ -314,18 +314,34 @@ export const tl_drows = defineStore("tl", {
     };
   },
   actions: {
-    increment_of_tl_rows(obj) {
-      if (obj.tl_create != true) {
+    increment_of_tl_rows(wasm_item) {
+      if (wasm_item.tl_create != true) {
         var tl_node_insert = JSON.parse(JSON.stringify(NewRow_template));
         tl_node_insert.id = "#-" + new Date().getTime().toString();
         tl_node_insert.uuid = uuidv4_UpperCase();
-        tl_node_insert.title = obj.name;
-        tl_node_insert.bind_object.uuid = obj.uuid;
-        tl_node_insert.bind_object.name = obj.name;
+        tl_node_insert.title = wasm_item.name;
+        tl_node_insert.bind_object.uuid = wasm_item.uuid;
+        tl_node_insert.bind_object.name = wasm_item.name;
         this.tl_rows.push(tl_node_insert);
         //
-        obj.tl_create = true;
+        wasm_item.tl_create = true;
       }
+    },
+    increment_of_select_row(keyTime) {
+      if (this.d_select_row_index == -1) {
+        return;
+      }
+      /** 创建新的key对象 */
+      let new_row_key = {};
+      /**将当前tl的time点赋予新的key val */
+      new_row_key.val = keyTime;
+      new_row_key.uuid = uuidv4_UpperCase();
+      new_row_key.animation = "00 - EASE_NONE";
+      new_row_key.selected = false;
+      new_row_key.min = new_row_key.val - 1000;
+      new_row_key.min = new_row_key.val - 0 + 1000;
+      //
+      this.tl_rows[this.d_select_row_index].keyframes.push(new_row_key)
     },
     clear_data() {
       if (this.tl_rows.length != 0) {
@@ -591,7 +607,7 @@ export const configs_of_platform = defineStore("Config", {
     },
     change_color_for_bring_in(obj) {
       update_color_for_bring_in(obj);
-      console.log(this.config_of_lights);
+      // console.log(this.config_of_lights);
     },
   },
 });

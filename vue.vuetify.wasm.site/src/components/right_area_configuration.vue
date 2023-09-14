@@ -193,7 +193,7 @@ export default {
                 <!-- container end -->
             </v-container>
         </v-card-text>
-        <v-toolbar class="fm_toolbar_bottom" height="36">
+        <v-toolbar class="fm_toolbar_bottom" >
             <v-spacer></v-spacer>
             <div class="fm_toolbar_contain">
                 <v-btn icon="mdi mdi-chevron-triple-down" class="fm_toolbar_btn" @click="all"></v-btn>
