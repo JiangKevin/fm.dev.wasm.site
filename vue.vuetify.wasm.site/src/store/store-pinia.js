@@ -1,7 +1,39 @@
 // auth.js
 import { defineStore, acceptHMRUpdate } from "pinia";
 import { reactive, ref } from "vue";
+//
+function uuidv4_UpperCase() {
+  // 生成uuid
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    var r = (Math.random() * 16) | 0,
+      v = c == "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16).toUpperCase();
+  });
+}
+//
+function colorRGBA2Hexa(rgb_str) {
+  var a,
+    isPercent,
+    rgb = rgb_str
+      .replace(/\s/g, "")
+      .match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i),
+    alpha = ((rgb && rgb[4]) || "").trim(),
+    hex = rgb
+      ? (rgb[1] | (1 << 8)).toString(16).slice(1) +
+        (rgb[2] | (1 << 8)).toString(16).slice(1) +
+        (rgb[3] | (1 << 8)).toString(16).slice(1)
+      : rgb_str;
 
+  if (alpha !== "") {
+    a = alpha;
+  } else {
+    a = "01";
+  }
+  hex = hex + a;
+
+  return "#" + hex;
+}
+//
 export const useWasmNodes = defineStore("wasm_nodes_used", {
   state: () => {
     return {
@@ -89,38 +121,29 @@ export const useWasmNodes = defineStore("wasm_nodes_used", {
 
       return "#" + hex;
     },
-    update_current_item_fillcolor() {
-      if (this.d_select_edit_index != -1) {
-        let current_item = this.d_nodes_gather[this.d_select_edit_index];
-        let color_array = current_item.fillcolor.rgba.match(/([0-9.]+)/g);
-        //
-        if (color_array) {
-          if (color_array.length == 4) {
-            // rgba
-            current_item.fillcolor.r = color_array[0];
-            current_item.fillcolor.g = color_array[1];
-            current_item.fillcolor.b = color_array[2];
-            current_item.fillcolor.a = color_array[3];
-            // hexa
-            current_item.fillcolor.hexa = this.colorRGBA2Hexa(
-              current_item.fillcolor.rgba
-            );
-          }
-          if (color_array.length == 3) {
-            // rgb
-            current_item.fillcolor.r = color_array[0];
-            current_item.fillcolor.g = color_array[1];
-            current_item.fillcolor.b = color_array[2];
-            current_item.fillcolor.a = 1;
-            // hex
-            current_item.fillcolor.hexa = this.colorRGBA2Hexa(
-              current_item.fillcolor.rgba
-            );
-          }
+    update_color_for_bring_in(obj) {
+      let color_array = obj.rgba.match(/([0-9.]+)/g);
+      if (color_array) {
+        if (color_array.length == 4) {
+          // rgba
+          obj.r = color_array[0];
+          obj.g = color_array[1];
+          obj.b = color_array[2];
+          obj.a = color_array[3];
+          // hexa
+          obj.hexa = this.colorRGBA2Hexa(obj.rgba);
+        }
+        if (color_array.length == 3) {
+          // rgb
+          obj.r = color_array[0];
+          obj.g = color_array[1];
+          obj.b = color_array[2];
+          obj.a = 1;
+          // hex
+          obj.hexa = this.colorRGBA2Hexa(obj.rgba);
         }
       }
-      //
-      //   console.log(this.d_nodes_gather);
+      console.log(this.d_nodes_gather);
     },
     delete_current_item() {
       if (this.d_select_edit_index != -1) {
@@ -253,6 +276,7 @@ export const wasm_obj_res = defineStore("wasm_obj_res", {
 /** 可编辑对象 */
 var NewRow_template = {
   id: "#-1691484560194",
+  uuid: "",
   title: "test1",
   bind_object: {
     uuid: "",
@@ -310,6 +334,7 @@ export const tl_drows = defineStore("tl", {
       if (obj.tl_create != true) {
         var tl_node_insert = JSON.parse(JSON.stringify(NewRow_template));
         tl_node_insert.id = "#-" + new Date().getTime().toString();
+        tl_node_insert.uuid = uuidv4_UpperCase();
         tl_node_insert.title = obj.name;
         tl_node_insert.bind_object.uuid = obj.uuid;
         tl_node_insert.bind_object.name = obj.name;
@@ -339,17 +364,6 @@ export const configs_of_platform = defineStore("Config", {
     };
   },
   actions: {
-    uuidv4_UpperCase() {
-      // 生成uuid
-      return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-        /[xy]/g,
-        function (c) {
-          var r = (Math.random() * 16) | 0,
-            v = c == "x" ? r : (r & 0x3) | 0x8;
-          return v.toString(16).toUpperCase();
-        }
-      );
-    },
     configuration_creat() {
       if (this.is_creat_light_for_wasm == false) {
         this.config_of_lights = [];
@@ -361,7 +375,7 @@ export const configs_of_platform = defineStore("Config", {
         p_light.name = "Point light";
         p_light.icon = "mdi mdi-lightbulb-on-90";
         p_light.type = "POINT";
-        p_light.uuid = this.uuidv4_UpperCase();
+        p_light.uuid = uuidv4_UpperCase();
         p_light.enable = true;
         p_light.legend = true;
         // 位置
@@ -416,7 +430,7 @@ export const configs_of_platform = defineStore("Config", {
         s_light.name = "Spot light";
         s_light.icon = "mdi mdi-light-flood-down";
         s_light.type = "SPOT";
-        s_light.uuid = this.uuidv4_UpperCase();
+        s_light.uuid = uuidv4_UpperCase();
         s_light.enable = false;
         s_light.legend = false;
         // 位置
@@ -473,7 +487,7 @@ export const configs_of_platform = defineStore("Config", {
         a_light.name = "Ambient light";
         a_light.icon = "mdi mdi-theme-light-dark";
         a_light.type = "AMBIENT";
-        a_light.uuid = this.uuidv4_UpperCase();
+        a_light.uuid = uuidv4_UpperCase();
         a_light.enable = false;
         a_light.legend = false;
         // 位置
@@ -530,7 +544,7 @@ export const configs_of_platform = defineStore("Config", {
         d_light.name = "Directiona light";
         d_light.icon = "mdi mdi-car-light-high";
         d_light.type = "DIRECTIONA";
-        d_light.uuid = this.uuidv4_UpperCase();
+        d_light.uuid = uuidv4_UpperCase();
         d_light.enable = false;
         d_light.legend = false;
         // 位置
@@ -578,11 +592,11 @@ export const configs_of_platform = defineStore("Config", {
         this.d_wasm_light_count = 4;
         this.d_wasm_light_index = 0;
       }
-      // 
+      //
       // console.log(this.config_of_lights)
     },
     clear_data() {
-      console.log("From js: store pinia clear data")      
+      console.log("From js: store pinia clear data");
       if (this.config_of_lights.length != 0) {
         this.config_of_lights = [];
         this.d_wasm_light_count = -1;
