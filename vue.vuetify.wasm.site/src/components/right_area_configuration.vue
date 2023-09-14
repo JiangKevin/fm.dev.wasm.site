@@ -89,6 +89,38 @@ export default {
                             <v-text-field clearable label="Z of Direction" prepend-inner-icon="mdi mdi-flag-triangle"
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
                                 type="number" class="fm_v_text_field" v-model="light_config.direction.z"></v-text-field>
+
+                            <!-- 衰减，平行光源不具备的属性 -->
+                            <v-text-field clearable label="Constant" prepend-inner-icon="mdi mdi-flash" hide-details="true"
+                                clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" type="number"
+                                class="fm_v_text_field" v-model="light_config.constant"
+                                v-if="light_config.type != 'DIRECTIONA'"></v-text-field>
+                            <v-text-field clearable label="Linear" prepend-inner-icon="mdi mdi-flash" hide-details="true"
+                                clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" type="number"
+                                class="fm_v_text_field" v-model="light_config.linear"
+                                v-if="light_config.type != 'DIRECTIONA'"></v-text-field>
+                            <v-text-field clearable label="Quadratic" prepend-inner-icon="mdi mdi-flash" hide-details="true"
+                                clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" type="number"
+                                class="fm_v_text_field" v-model="light_config.quadratic"
+                                v-if="light_config.type != 'DIRECTIONA'"></v-text-field>
+                            <!-- 只有运动光源具备的特性 -->
+                            <v-text-field clearable label="SpotCutOff" prepend-inner-icon="mdi mdi-angle-obtuse"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field" v-model="light_config.spotCutOff"
+                                v-if="light_config.type == 'SPOT'"></v-text-field>
+                            <v-text-field clearable label="Exponent" prepend-inner-icon="mdi mdi-lightning-bolt-outline"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field" v-model="light_config.exponent"
+                                v-if="light_config.type == 'SPOT'"></v-text-field>
+                            <!-- 只有环境光源具备的特性 -->
+                            <v-text-field clearable label="Surface_w" prepend-inner-icon="mdi mdi-arrow-expand-horizontal"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field" v-model="light_config.surface_w"
+                                v-if="light_config.type == 'AMBIENT'"></v-text-field>
+                            <v-text-field clearable label="Surface_h" prepend-inner-icon="mdi mdi-arrow-expand-vertical"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field" v-model="light_config.surface_h"
+                                v-if="light_config.type == 'AMBIENT'"></v-text-field>
                             <!-- 颜色 -->
                             <ColorPicker format="rgb" shape="square" theme="black"
                                 v-model:pureColor="light_config.diffuse_color.rgba" />
@@ -99,7 +131,6 @@ export default {
                             <ColorPicker format="rgb" shape="square" theme="black"
                                 v-model:pureColor="light_config.ambient_color.rgba" />
                             <span>Ambient Color :{{ light_config.ambient_color.rgba }}</span>
-
                         </v-expansion-panel-text>
                     </v-expansion-panel>
 
