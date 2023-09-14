@@ -1,7 +1,7 @@
 <!--  -->
 <script>
 import { defineComponent, inject, watch } from 'vue'
-import { useWasmNodes, tl_drows } from '@/store/store-pinia'
+import { configs_of_platform } from '@/store/store-pinia'
 import { ColorPicker } from "vue3-colorpicker";
 import "vue3-colorpicker/style.css";
 export default {
@@ -15,7 +15,8 @@ export default {
         loaded: false,
         loading: false,
         show: false,
-        panel: ['row', 'key', 'attributes'],
+        panel: ['light', 'camera', 'others'],
+        store_configs_define: configs_of_platform(),
     }),
     setup() {
 
@@ -26,7 +27,7 @@ export default {
     methods:
     {
         all() {
-            this.panel = ['row', 'key', 'attributes']
+            this.panel = ['light', 'camera', 'others']
         },
         none() {
             this.panel = []
@@ -48,10 +49,10 @@ export default {
                 <!-- container start -->
                 <!-- expansion-panels start -->
                 <v-expansion-panels class="fm_expansion_panels" v-model="panel" multiple>
-                    <!-- panel row -->
-                    <v-expansion-panel value="row" class="fm_expansion_panel">
+                    <!-- panel light -->
+                    <v-expansion-panel value="light" class="fm_expansion_panel">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
-                            <v-icon icon="mdi mdi-lightbulb-group"></v-icon><span>Row</span>
+                            <v-icon icon="mdi mdi-lightbulb-group"></v-icon><span>Lights</span>
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
                                     :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>
@@ -60,10 +61,10 @@ export default {
                         <v-expansion-panel-text class="fm_expansion_panel_text">
                         </v-expansion-panel-text>
                     </v-expansion-panel>
-                    <!-- panel key -->
-                    <v-expansion-panel value="key" class="fm_expansion_panel">
+                    <!-- panel camera -->
+                    <v-expansion-panel value="camera" class="fm_expansion_panel">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
-                            <v-icon icon="mdi mdi-cctv"></v-icon><span>Key</span>
+                            <v-icon icon="mdi mdi-cctv"></v-icon><span>Camera</span>
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
                                     :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>
@@ -72,10 +73,10 @@ export default {
                         <v-expansion-panel-text class="fm_expansion_panel_text">
                         </v-expansion-panel-text>
                     </v-expansion-panel>
-                    <!-- panel attributes -->
-                    <v-expansion-panel value="attributes" class="fm_expansion_panel">
+                    <!-- panel other -->
+                    <v-expansion-panel value="others" class="fm_expansion_panel">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
-                            <v-icon icon="mdi mdi-cogs"></v-icon><span>Attributes</span>
+                            <v-icon icon="mdi mdi-cogs"></v-icon><span>Others</span>
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
                                     :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>

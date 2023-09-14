@@ -3,10 +3,13 @@
 import { inject, watch } from 'vue'
 import right_area_wasm_edit_view from '@/components/right_area_wasm_edit.vue'
 import right_area_tl_edit_view from '@/components/right_area_tl_edit.vue'
+import right_area_configuration_view from '@/components/right_area_configuration.vue'
+import { configs_of_platform } from '@/store/store-pinia'
 export default {
     components: {
         right_area_wasm_edit_view,
-        right_area_tl_edit_view
+        right_area_tl_edit_view,
+        right_area_configuration_view
     },
     props: {
         view_left: {
@@ -35,6 +38,7 @@ export default {
         loaded: false,
         loading: false,
         show: false,
+        store_configs_define: configs_of_platform(),
 
     }),
 
@@ -85,7 +89,7 @@ export default {
                         <right_area_tl_edit_view></right_area_tl_edit_view>
                     </v-window-item>
                     <v-window-item value="option-3" class="fm_window_item">
-                        <right_area_tl_edit_view></right_area_tl_edit_view>
+                        <right_area_configuration_view></right_area_configuration_view>
                     </v-window-item>
                 </v-window>
                 <!--  -->
@@ -102,7 +106,7 @@ export default {
                     </v-tab>
                     <v-tab value="option-3" max-width="48" width="48" height="38">
                         <v-icon>
-                            mdi mdi-access-point
+                            mdi mdi-wrench-cog-outline
                         </v-icon>
                     </v-tab>
                 </v-tabs>

@@ -48,11 +48,11 @@ import {
   defineAsyncComponent,
   reactive
 } from 'vue';
+import { configs_of_platform } from "@/store/store-pinia";
 import loadJs from '@/components/wasm_load.vue'
 import main_View from '@/components/main_conent.vue';
 import left_area_view from '@/components/left_area.vue'
 import right_area_view from '@/components/right_area.vue'
-
 export default {
   // inject: ['is_debug'],
   components: {
@@ -68,8 +68,7 @@ export default {
     right_width: 366,
     main_width: 100,
     main_height: 100,
-    // d_nodes_gather_of_app1: null
-    // is_debug: false
+    store_configs_define: configs_of_platform()
   }),
   setup() {
     console.log('App setup')
@@ -100,7 +99,6 @@ export default {
       })
     }
   },
-
   methods:
   {
     /** 计算canvas屏幕大小 */
@@ -166,7 +164,8 @@ export default {
   },
   async mounted() {
     console.log('App mounted')
-
+    // 期初配置
+    setTimeout(this.store_configs_define.configuration_creat(), 5000);
   },
   async updated() {
     console.log('App updated')
@@ -177,7 +176,6 @@ export default {
   async serverPrefetch() {
     console.log('App serverPrefetch')
   },
-
   async unmounted() {
     console.log('App unmounted')
   }
