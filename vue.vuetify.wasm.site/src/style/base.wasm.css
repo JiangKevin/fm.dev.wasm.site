@@ -759,8 +759,8 @@ input::-webkit-inner-spin-button {
 }
 .fm_expansion_panel_title {
   min-height: 35px !important;
-  max-height:  35px !important;
-  height:  35px !important;
+  max-height: 35px !important;
+  height: 35px !important;
   padding-left: 4px !important;
   background-color: var(--purple_color) !important;
   padding: 0px !important;
@@ -838,20 +838,42 @@ input::-webkit-inner-spin-button {
 .fm_toolbar_btn > span > i {
   font-size: 0.9em !important;
 }
-.fm_dialog_card
-{
+.fm_dialog_card {
   border-radius: 2px !important;
 }
-.fm_dialog_card>.v-card-title
-{
+.fm_dialog_card > .v-card-title {
   padding-left: 8px !important;
   border-bottom: var(--border_nomal);
 }
-.fm_dialog_card>.v-card-text
-{
+.fm_dialog_card > .v-card-text {
   padding-left: 8px !important;
   border-bottom: var(--border_nomal);
 }
+.fm_switch {
+  padding-left: 0px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
+}
+.fm_switch > .v-input__control > .v-selection-control {
+  height: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
+}
+.fm_switch
+  > .v-input__control
+  > .v-selection-control
+  > .v-selection-control__wrapper {
+  width: 60px !important;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}
+.fm_switch > .v-input__control > .v-selection-control > .v-label {
+  padding-left: 0px !important;
+}
+
+/* -------------------------------------- */
+
 /* 修改 */
 .fm_header_bar > .v-toolbar__content > .v-toolbar__prepend {
   margin-left: 0px !important;

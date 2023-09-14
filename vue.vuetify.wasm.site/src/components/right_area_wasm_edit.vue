@@ -145,7 +145,7 @@ export default {
                         <v-expansion-panel-text class="fm_expansion_panel_text"
                             v-if="store_wasm_nodes_define.d_select_edit_index != -1">
                             <!--  -->
-                            <v-switch v-model="store_wasm_nodes_define.current_item_of_gather().tl_create" :value= true hide-details="true" 
+                            <v-switch v-model="store_wasm_nodes_define.current_item_of_gather().tl_create" :value= true :true-value= true hide-details="true" class="fm_switch"
                                 label="Inclue prefabricated actions" color="red-darken-3" readonly true-icon="mdi mdi-chart-timeline-variant-shimmer"></v-switch>
                             <!-- prepend-icon="mdi mdi-chevron-triple-up" -->
                         </v-expansion-panel-text>
