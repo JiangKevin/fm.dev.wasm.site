@@ -69,6 +69,7 @@ export default {
                             <v-text-field clearable label="Type" prepend-inner-icon="mdi mdi-qrcode" disabled
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
                                 class="fm_v_text_field" v-model="light_config.type"></v-text-field>
+
                             <!-- 坐标 -->
                             <v-text-field clearable label="X of Location" prepend-inner-icon="mdi mdi-map-marker-down"
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
@@ -131,6 +132,13 @@ export default {
                             <ColorPicker format="rgb" shape="square" theme="black"
                                 v-model:pureColor="light_config.ambient_color.rgba" />
                             <span>Ambient Color :{{ light_config.ambient_color.rgba }}</span>
+                            <!-- 启用与否 -->
+                            <v-switch v-model="light_config.enable" :value=true :true-value=true hide-details="true"
+                                class="fm_switch" label="Enable light" color="red-darken-3" readonly
+                                true-icon="mdi mdi-white-balance-sunny"></v-switch>
+                            <v-switch v-model="light_config.legend" :value=true :true-value=true hide-details="true"
+                                class="fm_switch" label="Legend show" color="red-darken-3" readonly
+                                true-icon="mdi mdi-pin"></v-switch>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
 
