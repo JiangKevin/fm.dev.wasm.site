@@ -15,7 +15,7 @@ export default {
         loaded: false,
         loading: false,
         show: false,
-        panel: ['light', 'camera', 'others'],
+        panel: ['Point light', 'Spot light', 'Ambient light', 'Directiona light', 'camera', 'others'],
         store_configs_define: configs_of_platform(),
     }),
     setup() {
@@ -27,7 +27,7 @@ export default {
     methods:
     {
         all() {
-            this.panel = ['light', 'camera', 'others']
+            this.panel = ['Point light', 'Spot light', 'Ambient light', 'Directiona light', 'camera', 'others']
         },
         none() {
             this.panel = []
@@ -50,8 +50,9 @@ export default {
                 <!-- expansion-panels start -->
                 <v-expansion-panels class="fm_expansion_panels" v-model="panel" multiple>
                     <!-- panel lights -->
-                    <v-expansion-panel value="light" class="fm_expansion_panel"
-                        v-for="(light_config, index) in store_configs_define.config_of_lights" :key="index">
+                    <v-expansion-panel class="fm_expansion_panel"
+                        v-for="(light_config, index) in store_configs_define.config_of_lights" :key="index"
+                        :value="light_config.name">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
                             <v-icon :icon=light_config.icon></v-icon><span>{{ light_config.name }}</span>
                             <template v-slot:actions="{ expanded }">
@@ -60,7 +61,45 @@ export default {
                             </template>
                         </v-expansion-panel-title>
                         <v-expansion-panel-text class="fm_expansion_panel_text">
-                            <!--  -->
+                            <!-- uuid -->
+                            <v-text-field clearable label="UUID" prepend-inner-icon="mdi mdi-barcode" variant="solo"
+                                density="comfortable" class="fm_v_text_field" disabled hide-details="true"
+                                v-model="light_config.uuid"></v-text-field>
+                            <!-- type -->
+                            <v-text-field clearable label="Type" prepend-inner-icon="mdi mdi-qrcode" disabled
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                class="fm_v_text_field" v-model="light_config.type"></v-text-field>
+                            <!-- 坐标 -->
+                            <v-text-field clearable label="X of Location" prepend-inner-icon="mdi mdi-map-marker-down"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field" v-model="light_config.location.x"></v-text-field>
+                            <v-text-field clearable label="Y of Location" prepend-inner-icon="mdi mdi-map-marker-down"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field" v-model="light_config.location.y"></v-text-field>
+                            <v-text-field clearable label="Z of Location" prepend-inner-icon="mdi mdi-map-marker-down"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field" v-model="light_config.location.z"></v-text-field>
+                            <!-- 方位 -->
+                            <v-text-field clearable label="X of Direction" prepend-inner-icon="mdi mdi-flag-triangle"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field" v-model="light_config.direction.x"></v-text-field>
+                            <v-text-field clearable label="Y of Direction" prepend-inner-icon="mdi mdi-flag-triangle"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field" v-model="light_config.direction.y"></v-text-field>
+                            <v-text-field clearable label="Z of Direction" prepend-inner-icon="mdi mdi-flag-triangle"
+                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
+                                type="number" class="fm_v_text_field" v-model="light_config.direction.z"></v-text-field>
+                            <!-- 颜色 -->
+                            <ColorPicker format="rgb" shape="square" theme="black"
+                                v-model:pureColor="light_config.diffuse_color.rgba" />
+                            <span>Diffuse Color :{{ light_config.diffuse_color.rgba }}</span>
+                            <ColorPicker format="rgb" shape="square" theme="black"
+                                v-model:pureColor="light_config.specular_color.rgba" />
+                            <span>Specular Color :{{ light_config.specular_color.rgba }}</span>
+                            <ColorPicker format="rgb" shape="square" theme="black"
+                                v-model:pureColor="light_config.ambient_color.rgba" />
+                            <span>Ambient Color :{{ light_config.ambient_color.rgba }}</span>
+
                         </v-expansion-panel-text>
                     </v-expansion-panel>
 
