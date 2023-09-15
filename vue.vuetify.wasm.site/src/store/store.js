@@ -308,8 +308,28 @@ export const store = defineStore("store", {
     },
     // 删除当前的wasm 项
     delete_wasm_current_item() {
+      console.log(this.d_wasm_nodes_gather[this.d_wasm_select_edit_index].uuid);
+
       if (this.d_wasm_select_edit_index != -1) {
+        // 删除 tl 的绑定对应项
+        if (this.d_wasm_nodes_gather[this.d_wasm_select_edit_index].tl_create) {
+          for (var i = 0; i < this.d_tl_rows.length; i++) {
+            if (
+              this.d_tl_rows[i].bind_object.uuid ==
+              this.d_wasm_nodes_gather[this.d_wasm_select_edit_index].uuid
+            ) {
+              console.log(this.d_tl_rows[i].bind_object.uuid);
+              this.d_tl_rows.splice(i, 1);
+              this.d_tl_select_row_index = -1;
+              this.d_tl_select_key_index = -1;
+              break;
+            }
+          }
+        }
+        // 删除wasm nodes 对应项
         this.d_wasm_nodes_gather.splice(this.d_wasm_select_edit_index, 1);
+
+        // 重置选中项
         this.d_wasm_select_edit_index = -1;
       }
     },
