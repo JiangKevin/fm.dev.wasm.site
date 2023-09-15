@@ -1,10 +1,8 @@
 <!--  -->
 <script>
 import { defineComponent, inject, watch } from 'vue'
-// import { store } from '@/store/store.js'
-import { useWasmNodes, tl_drows } from '@/store/store-pinia'
+import { store } from '@/store/store'
 export default {
-    // inject: ['d_nodes_gather', 'is_debug'],
     components: {
     },
     props: {
@@ -16,9 +14,7 @@ export default {
         d_used_search_text: '',
         show: false,
         d_show_count: 100,
-        d_wasm_selected_index: -1,
-        store_wasm_nodes_define: useWasmNodes(),
-        store_tl_rows_define: tl_drows()
+        store: store()
     }),
     setup() {
 
@@ -29,11 +25,10 @@ export default {
     methods:
     {
         tl_node_add(obj) {
-            this.store_tl_rows_define.increment_of_tl_rows(obj)
+            this.store.increment_of_tl_rows(obj)
         },
         wasm_select_click(index) {
-            this.d_wasm_selected_index = index
-            this.store_wasm_nodes_define.d_select_edit_index = index;
+            this.store.d_wasm_select_edit_index = index;
         }
     },
     async mounted() {
@@ -56,9 +51,9 @@ export default {
         </v-toolbar>
         <v-card-text class="fm_card_text_for_left_out">
             <v-container class="fm_v_left_container">
-                <v-card flat width="310" v-for="(used_node, index) in store_wasm_nodes_define.d_nodes_gather" :key="index"
+                <v-card flat width="310" v-for="(used_node, index) in store.d_wasm_nodes_gather" :key="index"
                     v-show="JSON.stringify(used_node.name).toLowerCase().includes(d_used_search_text) && index < d_show_count"
-                    class="fm_card_res" :class="{ 'active': d_wasm_selected_index == index }"
+                    class="fm_card_res" :class="{ 'active': store.d_wasm_select_edit_index == index }"
                     @click="wasm_select_click(index)">
                     <v-card-title class="fm_card_title_l_flex">
                         <v-img :src="used_node.img" cover></v-img>
@@ -80,13 +75,12 @@ export default {
 
                     </v-card-title>
                 </v-card>
-
             </v-container>
         </v-card-text>
-        <v-toolbar class="fm_toolbar_bottom" >
+        <v-toolbar class="fm_toolbar_bottom">
             <v-spacer></v-spacer> <v-icon size="0.9em">
                 mdi mdi-torch
-            </v-icon><span class="fm_toolbar_span">{{ store_wasm_nodes_define.d_nodes_gather.length }} Model Items</span>
+            </v-icon><span class="fm_toolbar_span">{{ store.d_wasm_nodes_gather.length }} Model Items</span>
         </v-toolbar>
     </v-card>
 </template>

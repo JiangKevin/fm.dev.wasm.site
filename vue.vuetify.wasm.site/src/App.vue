@@ -48,7 +48,7 @@ import {
   defineAsyncComponent,
   reactive
 } from 'vue';
-import { configs_of_platform } from "@/store/store-pinia";
+import { store } from "@/store/store";
 import loadJs from '@/components/wasm_load.vue'
 import main_View from '@/components/main_conent.vue';
 import left_area_view from '@/components/left_area.vue'
@@ -68,7 +68,7 @@ export default {
     right_width: 366,
     main_width: 100,
     main_height: 100,
-    store_configs_define: configs_of_platform()
+    store: store()
   }),
   setup() {
     console.log('App setup')
@@ -165,7 +165,7 @@ export default {
   async mounted() {
     console.log('App mounted')
     // 期初配置
-    setTimeout(this.store_configs_define.configuration_creat(), 5000);
+    setTimeout(this.store.configuration_creat(), 5000);
   },
   async updated() {
     console.log('App updated')

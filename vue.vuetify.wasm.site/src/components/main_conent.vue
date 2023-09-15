@@ -1,6 +1,6 @@
 <!--  -->
 <script>
-import { tl_drows } from '@/store/store-pinia'
+import { store } from '@/store/store'
 
 export default {
     props: {
@@ -34,10 +34,10 @@ export default {
         /* 随机数，改变变量缓存，用于更新样式 */
         d_rand: -1,
         d_ol_w: 366,
-        d_tl_rows: tl_drows(),
         playing: false,
         playStep: 50,
         trackTimelineMovement: false,
+        store: store()
     }),
     computed: {
 
@@ -51,13 +51,7 @@ export default {
                 this.timeline_obj.redraw()
             }
         },
-        d_tl_rows(new_d_tl_rows, old_d_tl_rows) {
-            // 初始化json数据到tl
-            // console.log("d_tl_rows is change")
-        },
-        tab(new_tab, old_tab) {
 
-        }
     },
     methods:
     {
@@ -85,7 +79,7 @@ export default {
                 this.timeline_obj.onSelected(this.tl_onSelected)
                 this.timeline_obj.onMouseDown(this.tl_onMouseDown)
                 // 初始化json数据到tl
-                this.timeline_obj.setModel({ rows: this.d_tl_rows.tl_rows })
+                this.timeline_obj.setModel({ rows: this.store.d_tl_rows })
                 // 
                 this.iniPlayer()
             }
@@ -101,8 +95,8 @@ export default {
 
         },
         tl_onMouseDown(obj) {
-            this.d_tl_rows.d_select_key_index = -1
-            this.d_tl_rows.d_select_row_index = -1
+            this.store.d_tl_select_row_index = -1
+            this.store.d_tl_select_key_index = -1
             // console.log(obj)
             // 
             if (obj.target) {
@@ -111,14 +105,14 @@ export default {
                         this.d_tl_select_id = obj.target.row.id
                         this.d_tl_select_title = obj.target.row.title
                         // 获取row index
-                        let tl_row_count = this.d_tl_rows.tl_rows.length
+                        let tl_row_count = this.store.d_tl_rows.length
                         for (var i = 0; i < tl_row_count; i++) {
-                            if (obj.target.row.id == this.d_tl_rows.tl_rows[i].id) {
-                                this.d_tl_rows.d_select_row_index = i
-                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.d_tl_rows.d_select_row_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_id)
+                            if (obj.target.row.id == this.store.d_tl_rows[i].id) {
+                                this.store.d_tl_select_row_index = i
+                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.store.d_tl_select_row_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_title)
                                 break
                             } else {
-                                this.d_tl_rows.d_select_row_index = -1
+                                this.store.d_tl_select_row_index = -1
                             }
                         }
 
@@ -129,24 +123,24 @@ export default {
                         this.d_tl_select_id = obj.target.row.id
                         this.d_tl_select_title = obj.target.row.title
                         // 获取row index
-                        let tl_row_count = this.d_tl_rows.tl_rows.length
+                        let tl_row_count = this.store.d_tl_rows.length
                         for (var i = 0; i < tl_row_count; i++) {
-                            if (obj.target.row.id == this.d_tl_rows.tl_rows[i].id) {
-                                this.d_tl_rows.d_select_row_index = i
-                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.d_tl_rows.d_select_row_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_id)
+                            if (obj.target.row.id == this.store.d_tl_rows[i].id) {
+                                this.store.d_tl_select_row_index = i
+                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.store.d_tl_select_row_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_title)
                                 break
                             } else {
-                                this.d_tl_rows.d_select_row_index = -1
+                                this.store.d_tl_select_row_index = -1
                             }
                         }
                         // 获取选中row 的 选中key 的index
                         for (var i = 0; i < obj.target.row.keyframes.length; i++) {
                             if (obj.target.row.keyframes[i].uuid == obj.target.keyframe.uuid) {
-                                this.d_tl_rows.d_select_key_index = i
-                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.d_tl_rows.d_select_row_index + ' edit key index = ' + this.d_tl_rows.d_select_key_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_id)
+                                this.store.d_tl_select_key_index = i
+                                this.write_log('From js: Timeline selected ', '', 'edit node index = ' + this.store.d_tl_select_row_index + ' edit key index = ' + this.store.d_tl_select_key_index + ' ID/Title = ' + this.d_tl_select_id + '/' + this.d_tl_select_title)
                                 break
                             } else {
-                                this.d_tl_rows.d_select_key_index = -1
+                                this.store.d_tl_select_key_index = -1
                             }
                         }
 
@@ -259,7 +253,7 @@ export default {
             }
         },
         new_key() {
-            this.d_tl_rows.increment_of_select_row(this.timeline_obj.getTime());
+            this.store.increment_of_select_row(this.timeline_obj.getTime());
             this.timeline_obj.rescale()
             this.timeline_obj.redraw()
 
@@ -350,7 +344,7 @@ export default {
                             <!-- outline content -->
                             <div id="outline-scroll-container" class="outline_scroll_container">
                                 <div id="outline-container" class="outline_items" @wheel="outline_onScroll">
-                                    <div class="outline_node" v-for="(tl_node, index) in d_tl_rows.tl_rows" :key="index"
+                                    <div class="outline_node" v-for="(tl_node, index) in store.d_tl_rows" :key="index"
                                         :style="{ 'min-height': tl_node.style.height + 'px', 'max-height': tl_node.style.height + 'px' }"
                                         v-bind:class="{ 'outline_node_select': d_tl_select_id == (tl_node.id) }">{{
                                             index.toFixed(0).padStart(4, '0') +

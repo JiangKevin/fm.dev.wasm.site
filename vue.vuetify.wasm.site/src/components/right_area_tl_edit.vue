@@ -1,7 +1,7 @@
 <!--  -->
 <script>
 import { defineComponent, inject, watch } from 'vue'
-import { useWasmNodes, tl_drows } from '@/store/store-pinia'
+import { store } from '@/store/store'
 import { ColorPicker } from "vue3-colorpicker";
 import "vue3-colorpicker/style.css";
 export default {
@@ -16,8 +16,7 @@ export default {
         loading: false,
         show: false,
         panel: ['row', 'key', 'attributes'],
-        store_wasm_nodes_define: useWasmNodes(),
-        store_tl_rows_define: tl_drows(),
+        store:store()
     }),
     setup() {
 
@@ -67,27 +66,27 @@ export default {
                             </template>
                         </v-expansion-panel-title>
                         <v-expansion-panel-text class="fm_expansion_panel_text"
-                            v-if="store_tl_rows_define.d_select_row_index != -1">
+                            v-if="store.d_tl_select_row_index != -1">
                             <!-- id -->
                             <v-text-field clearable label="ID" prepend-inner-icon="mdi mdi-barcode" variant="solo"
                                 density="comfortable" class="fm_v_text_field" disabled hide-details="true"
-                                v-model="store_tl_rows_define.current_row_item_of_gather().id"></v-text-field>
+                                v-model="store.current_tl_row_item_of_gather().id"></v-text-field>
                             <!-- uuid -->
                             <v-text-field clearable label="UUID" prepend-inner-icon="mdi mdi-barcode" variant="solo"
                                 density="comfortable" class="fm_v_text_field" disabled hide-details="true"
-                                v-model="store_tl_rows_define.current_row_item_of_gather().uuid"></v-text-field>
+                                v-model="store.current_tl_row_item_of_gather().uuid"></v-text-field>
                             <!-- title -->
                             <v-text-field clearable label="Title" prepend-inner-icon="mdi mdi-qrcode" variant="solo"
                                 density="comfortable" class="fm_v_text_field" disabled hide-details="true"
-                                v-model="store_tl_rows_define.current_row_item_of_gather().title"></v-text-field>
+                                v-model="store.current_tl_row_item_of_gather().title"></v-text-field>
                             <!-- bind uuid -->
                             <v-text-field clearable label="Bind UUID" prepend-inner-icon="mdi mdi-qrcode" variant="solo"
                                 density="comfortable" class="fm_v_text_field" disabled hide-details="true"
-                                v-model="store_tl_rows_define.current_row_item_of_gather().bind_object.uuid"></v-text-field>
+                                v-model="store.current_tl_row_item_of_gather().bind_object.uuid"></v-text-field>
                             <!-- bind name -->
                             <v-text-field clearable label="Bind name" prepend-inner-icon="mdi mdi-qrcode" variant="solo"
                                 density="comfortable" class="fm_v_text_field" disabled hide-details="true"
-                                v-model="store_tl_rows_define.current_row_item_of_gather().bind_object.name"></v-text-field>
+                                v-model="store.current_tl_row_item_of_gather().bind_object.name"></v-text-field>
                            
                         </v-expansion-panel-text>
                     </v-expansion-panel>

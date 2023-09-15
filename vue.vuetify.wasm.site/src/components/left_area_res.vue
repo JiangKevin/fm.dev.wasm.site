@@ -1,7 +1,7 @@
 <!--  -->
 <script>
 import { defineComponent, inject, watch } from 'vue'
-import { useWasmNodes, wasm_obj_res } from '@/store/store-pinia'
+import { store } from '@/store/store'
 export default {
     props: {
 
@@ -12,16 +12,12 @@ export default {
         d_res_search_text: '',
         show: false,
         d_show_count: 100,
-        d_index_increment: -1,
-        store_wasm_nodes_define: useWasmNodes(),
-        store_wasm_obj_res_define: wasm_obj_res()
-
+        store: store(),
     }),
     setup() {
 
     },
     computed: {
-
 
     },
     methods:
@@ -175,7 +171,7 @@ export default {
                 }
             }
             /** */
-            this.store_wasm_nodes_define.increment_of_nodes_gather(uuid_str, obj)
+            this.store.increment_of_wasm_nodes_gather(uuid_str, obj)
         }
     },
     mounted() {
@@ -193,7 +189,7 @@ export default {
         </v-toolbar>
         <v-card-text class="fm_card_text_for_left_out">
             <v-container class="fm_v_left_container">
-                <v-card flat width="310" v-for="(res_node, index) in store_wasm_obj_res_define.obj_res" :key="index"
+                <v-card flat width="310" v-for="(res_node, index) in store.d_wasm_res" :key="index"
                     v-show="JSON.stringify(res_node.name).toLowerCase().includes(d_res_search_text) && index < d_show_count"
                     class="fm_card_res">
 
@@ -223,10 +219,10 @@ export default {
                 </v-card>
             </v-container>
         </v-card-text>
-        <v-toolbar class="fm_toolbar_bottom" >
+        <v-toolbar class="fm_toolbar_bottom">
             <v-spacer></v-spacer> <v-icon size="0.9em">
                 mdi mdi-bank
-            </v-icon><span class="fm_toolbar_span">{{ store_wasm_obj_res_define.obj_res.length }} Resouse Items</span>
+            </v-icon><span class="fm_toolbar_span">{{ store.d_wasm_res.length }} Resouse Items</span>
         </v-toolbar>
     </v-card>
 </template>

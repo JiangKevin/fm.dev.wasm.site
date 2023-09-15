@@ -1,4 +1,3 @@
-// auth.js
 import { defineStore, acceptHMRUpdate } from "pinia";
 import { reactive, ref } from "vue";
 // uuid生成函数
@@ -58,109 +57,8 @@ function update_color_for_bring_in(obj) {
   }
 }
 /**
- * 实体 --------------------------------------
+ * 测试数据，后期用request 替代
  */
-export const useWasmNodes = defineStore("wasm_nodes_used", {
-  state: () => {
-    return {
-      d_nodes_gather: reactive([]),
-      d_nodes_gather_for_bind: reactive([]),
-      d_index_increment: -1,
-      d_select_edit_index: -1,
-    };
-  },
-  getters: {
-    get_gather_for_bind(state) {
-      state.d_nodes_gather_for_bind = [];
-      for (var i = 0; i < state.d_nodes_gather.length; i++) {
-        let wasm_node_insert_for_bind = {};
-        wasm_node_insert_for_bind.uuid = state.d_nodes_gather[i].uuid;
-        wasm_node_insert_for_bind.name = state.d_nodes_gather[i].name;
-        state.d_nodes_gather_for_bind.push(wasm_node_insert_for_bind);
-      }
-      return state.d_nodes_gather_for_bind;
-    },
-  },
-  actions: {
-    increment_of_nodes_gather(uuid_str, obj) {
-      var wasm_node_insert = {};
-      this.d_index_increment += 1;
-      wasm_node_insert.index_id =
-        "#" + this.d_index_increment.toFixed(0).padStart(4, "0");
-      wasm_node_insert.uuid = uuid_str;
-      wasm_node_insert.type = obj.type;
-      wasm_node_insert.isTexRepeat = obj.isTexRepeat;
-      wasm_node_insert.img = obj.img;
-      wasm_node_insert.url = obj.url;
-      wasm_node_insert.node_type = obj.node_type;
-      wasm_node_insert.node_class = "3D Node";
-      wasm_node_insert.name = obj.name;
-      wasm_node_insert.quote = false;
-      wasm_node_insert.referenceds = [];
-      wasm_node_insert.selected = false;
-      wasm_node_insert.creat_date = timestampToTime();
-      wasm_node_insert.icon = obj.icon;
-      wasm_node_insert.describe = "";
-      wasm_node_insert.tl_create = false;
-      // POINT/WIREFRAME/FACE
-      wasm_node_insert.draw_model = ["FACE", "WIREFRAME"];
-      /** 位置 */
-      var i_location = {};
-      i_location.x = 0;
-      i_location.y = 0;
-      i_location.z = 0;
-      wasm_node_insert.location = i_location;
-      /** 角度 */
-      var i_direction = {};
-      i_direction.x = 0;
-      i_direction.y = 0;
-      i_direction.z = 0;
-      wasm_node_insert.direction = i_direction;
-      /** 颜色 */
-      var i_fillcolor = {};
-      i_fillcolor.r = 0;
-      i_fillcolor.g = 0;
-      i_fillcolor.b = 0;
-      i_fillcolor.a = 0;
-      i_fillcolor.hexa = "#00000000";
-      i_fillcolor.rgba = "rgba(0, 0, 0, 0)";
-      wasm_node_insert.fillcolor = i_fillcolor;
-      /** */
-      this.d_nodes_gather.push(wasm_node_insert);
-    },
-    current_item_of_gather() {
-      if (this.d_nodes_gather.length == 0 || this.d_select_edit_index == -1) {
-        return undefined;
-      }
-
-      return this.d_nodes_gather[this.d_select_edit_index];
-    },
-
-    change_color_for_bring_in(obj) {
-      update_color_for_bring_in(obj);
-      console.log(this.d_nodes_gather);
-    },
-    delete_current_item() {
-      if (this.d_select_edit_index != -1) {
-        this.d_nodes_gather.splice(this.d_select_edit_index, 1);
-        this.d_select_edit_index = -1;
-      }
-    },
-    clear_data() {
-      if (this.d_nodes_gather.length != 0) {
-        this.d_nodes_gather = [];
-        this.d_select_edit_index = -1;
-        this.d_index_increment = -1;
-      }
-    },
-  },
-});
-
-// // 确保传递正确的 store 声明，本例中为 `useAuth`
-if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useWasmNodes, import.meta.hot));
-}
-/** */
 var wasm_obj_resouse = [
   {
     uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
@@ -259,17 +157,10 @@ var wasm_obj_resouse = [
   },
 ];
 
-export const wasm_obj_res = defineStore("wasm_obj_res", {
-  state: () => {
-    return {
-      obj_res: wasm_obj_resouse,
-    };
-  },
-  actions: {},
-});
-
-/** 可编辑对象 */
-var NewRow_template = {
+/**
+ *
+ * 模板数据 */
+var new_tl_row_template = {
   id: "#-1691484560194",
   uuid: "",
   title: "test1",
@@ -316,30 +207,133 @@ var NewRow_template = {
   ],
 };
 
-export const tl_drows = defineStore("tl", {
+/**
+ * 实体 --------------------------------------只有一个实体
+ */
+
+export const store = defineStore("store", {
   state: () => {
     return {
-      tl_rows: reactive([]),
-      d_select_row_index: -1,
-      d_select_key_index: -1,
+      config_of_lights: reactive([]),
+      config_of_camera: reactive([]),
+      d_wasm_nodes_gather: reactive([]),
+      d_wasm_nodes_gather_for_bind: reactive([]),
+      d_tl_rows: reactive([]),
+      d_wasm_res: wasm_obj_resouse, //
+      d_wasm_add_index_increment: -1,
+      d_wasm_select_edit_index: -1,
+      d_tl_select_row_index: -1,
+      d_tl_select_key_index: -1,
+      d_wasm_light_count: -1,
+      d_wasm_light_index: -1,
+      is_creat_light_for_wasm: false,
     };
   },
+  /**getters */
+  getters: {
+    get_wasm_gather_for_bind(state) {
+      state.d_wasm_nodes_gather_for_bind = [];
+      for (var i = 0; i < state.d_wasm_nodes_gather.length; i++) {
+        let wasm_node_insert_for_bind = {};
+        wasm_node_insert_for_bind.uuid = state.d_wasm_nodes_gather[i].uuid;
+        wasm_node_insert_for_bind.name = state.d_wasm_nodes_gather[i].name;
+        state.d_wasm_nodes_gather_for_bind.push(wasm_node_insert_for_bind);
+      }
+      return state.d_wasm_nodes_gather_for_bind;
+    },
+  },
+  /**actions */
   actions: {
+    // 添加wasm nodes
+    increment_of_wasm_nodes_gather(uuid_str, obj) {
+      var wasm_node_insert = {};
+      this.d_wasm_add_index_increment += 1;
+      wasm_node_insert.index_id =
+        "#" + this.d_wasm_add_index_increment.toFixed(0).padStart(4, "0");
+      wasm_node_insert.uuid = uuid_str;
+      wasm_node_insert.type = obj.type;
+      wasm_node_insert.isTexRepeat = obj.isTexRepeat;
+      wasm_node_insert.img = obj.img;
+      wasm_node_insert.url = obj.url;
+      wasm_node_insert.node_type = obj.node_type;
+      wasm_node_insert.node_class = "3D Node";
+      wasm_node_insert.name = obj.name;
+      wasm_node_insert.quote = false;
+      wasm_node_insert.referenceds = [];
+      wasm_node_insert.selected = false;
+      wasm_node_insert.creat_date = timestampToTime();
+      wasm_node_insert.icon = obj.icon;
+      wasm_node_insert.describe = "";
+      wasm_node_insert.tl_create = false;
+      // POINT/WIREFRAME/FACE
+      wasm_node_insert.draw_model = ["FACE", "WIREFRAME"];
+      /** 位置 */
+      var i_location = {};
+      i_location.x = 0;
+      i_location.y = 0;
+      i_location.z = 0;
+      wasm_node_insert.location = i_location;
+      /** 角度 */
+      var i_direction = {};
+      i_direction.x = 0;
+      i_direction.y = 0;
+      i_direction.z = 0;
+      wasm_node_insert.direction = i_direction;
+      /** 颜色 */
+      var i_fillcolor = {};
+      i_fillcolor.r = 0;
+      i_fillcolor.g = 0;
+      i_fillcolor.b = 0;
+      i_fillcolor.a = 0;
+      i_fillcolor.hexa = "#00000000";
+      i_fillcolor.rgba = "rgba(0, 0, 0, 0)";
+      wasm_node_insert.fillcolor = i_fillcolor;
+      /** */
+      this.d_wasm_nodes_gather.push(wasm_node_insert);
+    },
+    // 返回当前编辑的wasm node
+    current_wasm_item_of_gather() {
+      if (
+        this.d_wasm_nodes_gather.length == 0 ||
+        this.d_wasm_select_edit_index == -1
+      ) {
+        return undefined;
+      }
+      //
+      return this.d_wasm_nodes_gather[this.d_wasm_select_edit_index];
+    },
+    // 修改对应hexa的颜色
+    change_color_for_bring_in(obj) {
+      update_color_for_bring_in(obj);
+    },
+    // 删除当前的wasm 项
+    delete_wasm_current_item() {
+      if (this.d_wasm_select_edit_index != -1) {
+        this.d_wasm_nodes_gather.splice(this.d_wasm_select_edit_index, 1);
+        this.d_wasm_select_edit_index = -1;
+      }
+    },
+    // 添加tl row
     increment_of_tl_rows(wasm_item) {
       if (wasm_item.tl_create != true) {
-        var tl_node_insert = JSON.parse(JSON.stringify(NewRow_template));
+        var tl_node_insert = JSON.parse(JSON.stringify(new_tl_row_template));
         tl_node_insert.id = "#-" + new Date().getTime().toString();
         tl_node_insert.uuid = uuidv4_UpperCase();
         tl_node_insert.title = wasm_item.name;
         tl_node_insert.bind_object.uuid = wasm_item.uuid;
         tl_node_insert.bind_object.name = wasm_item.name;
-        this.tl_rows.push(tl_node_insert);
+        // 修改keys的uuid
+        tl_node_insert.keyframes[0].uuid= uuidv4_UpperCase();
+        tl_node_insert.keyframes[1].uuid= uuidv4_UpperCase();
+        // 压入
+        this.d_tl_rows.push(tl_node_insert);
         //
         wasm_item.tl_create = true;
       }
     },
+    // 为选中的tl row 增加new key
     increment_of_select_row(keyTime) {
-      if (this.d_select_row_index == -1) {
+      if (this.d_tl_select_row_index == -1) {
         return;
       }
       /** 创建新的key对象 */
@@ -352,55 +346,36 @@ export const tl_drows = defineStore("tl", {
       new_row_key.min = new_row_key.val - 1000;
       new_row_key.min = new_row_key.val - 0 + 1000;
       //
-      this.tl_rows[this.d_select_row_index].keyframes.push(new_row_key);
+      this.d_tl_rows[this.d_tl_select_row_index].keyframes.push(new_row_key);
     },
-    current_row_item_of_gather() {
-      if (this.tl_rows.length == 0 || this.d_select_row_index == -1) {
+    // 返回当前tl row
+    current_tl_row_item_of_gather() {
+      if (this.d_tl_rows.length == 0 || this.d_tl_select_row_index == -1) {
         return undefined;
       }
-
-      return this.tl_rows[this.d_select_row_index];
+      return this.d_tl_rows[this.d_tl_select_row_index];
     },
-    current_key_item_of_gather() {
+    // 返回当前tl row的当前key
+    current_tl_key_item_of_gather() {
       if (
-        this.tl_rows.length == 0 ||
-        this.d_select_row_index == -1 ||
-        this.d_select_key_index == -1
+        this.d_tl_rows.length == 0 ||
+        this.d_tl_select_row_index == -1 ||
+        this.d_tl_select_key_index == -1
       ) {
         return undefined;
       }
-      return this.tl_rows[this.d_select_row_index].keyframes[
-        this.d_select_key_index
+      return this.d_tl_rows[this.d_tl_select_row_index].keyframes[
+        this.d_tl_select_key_index
       ];
     },
-    clear_data() {
-      if (this.tl_rows.length != 0) {
-        this.tl_rows = [];
-        this.d_select_row_index = -1;
-        this.d_select_key_index = -1;
-      }
-    },
-  },
-});
-
-export const configs_of_platform = defineStore("Config", {
-  state: () => {
-    return {
-      config_of_lights: reactive([]),
-      config_of_camera: reactive([]),
-      d_wasm_light_count: -1,
-      d_wasm_light_index: -1,
-      is_creat_light_for_wasm: false,
-    };
-  },
-  actions: {
+    // wasm 全局设置期初
     configuration_creat() {
       if (this.is_creat_light_for_wasm == false) {
         this.config_of_lights = [];
         this.is_creat_light_for_wasm = true;
         /** 期初light */
         /* 
-        点光源 */
+          点光源 */
         var p_light = {};
         p_light.name = "Point light";
         p_light.icon = "mdi mdi-lightbulb-on-90";
@@ -455,7 +430,7 @@ export const configs_of_platform = defineStore("Config", {
         this.config_of_lights.push(p_light);
 
         /* 
-        运动光源 */
+          运动光源 */
         var s_light = {};
         s_light.name = "Spot light";
         s_light.icon = "mdi mdi-light-flood-down";
@@ -512,7 +487,7 @@ export const configs_of_platform = defineStore("Config", {
         // 注入
         this.config_of_lights.push(s_light);
         /* 
-        环境光源 */
+          环境光源 */
         var a_light = {};
         a_light.name = "Ambient light";
         a_light.icon = "mdi mdi-theme-light-dark";
@@ -569,7 +544,7 @@ export const configs_of_platform = defineStore("Config", {
         // 注入
         this.config_of_lights.push(a_light);
         /* 
-        平行光源 */
+          平行光源 */
         var d_light = {};
         d_light.name = "Directiona light";
         d_light.icon = "mdi mdi-car-light-high";
@@ -623,10 +598,22 @@ export const configs_of_platform = defineStore("Config", {
         this.d_wasm_light_index = 0;
       }
       //
-      // console.log(this.config_of_lights)
     },
+    // 清楚所有数据
     clear_data() {
-      console.log("From js: store pinia clear data");
+      // wasm items
+      if (this.d_wasm_nodes_gather.length != 0) {
+        this.d_wasm_nodes_gather = [];
+        this.d_select_edit_index = -1;
+        this.d_index_increment = -1;
+      }
+      // tl items
+      if (this.d_tl_rows.length != 0) {
+        this.d_tl_rows = [];
+        this.d_tl_select_row_index = -1;
+        this.d_tl_select_key_index = -1;
+      }
+      // configs
       if (this.config_of_lights.length != 0) {
         this.config_of_lights = [];
         this.d_wasm_light_count = -1;
@@ -634,10 +621,6 @@ export const configs_of_platform = defineStore("Config", {
         this.is_creat_light_for_wasm = false;
         this.configuration_creat();
       }
-    },
-    change_color_for_bring_in(obj) {
-      update_color_for_bring_in(obj);
-      // console.log(this.config_of_lights);
     },
   },
 });

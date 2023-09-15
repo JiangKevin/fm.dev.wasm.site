@@ -4,7 +4,6 @@ import { inject, watch } from 'vue'
 import right_area_wasm_edit_view from '@/components/right_area_wasm_edit.vue'
 import right_area_tl_edit_view from '@/components/right_area_tl_edit.vue'
 import right_area_configuration_view from '@/components/right_area_configuration.vue'
-import { configs_of_platform } from '@/store/store-pinia'
 export default {
     components: {
         right_area_wasm_edit_view,
@@ -38,8 +37,6 @@ export default {
         loaded: false,
         loading: false,
         show: false,
-        store_configs_define: configs_of_platform(),
-
     }),
 
     computed: {

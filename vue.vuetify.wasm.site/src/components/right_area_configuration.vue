@@ -1,7 +1,7 @@
 <!--  -->
 <script>
 import { defineComponent, inject, watch } from 'vue'
-import { configs_of_platform } from '@/store/store-pinia'
+import { store } from '@/store/store'
 import { ColorPicker } from "vue3-colorpicker";
 import "vue3-colorpicker/style.css";
 export default {
@@ -16,7 +16,7 @@ export default {
         loading: false,
         show: false,
         panel: ['Point light', 'Spot light', 'Ambient light', 'Directiona light', 'camera', 'others'],
-        store_configs_define: configs_of_platform(),
+        store: store(),
     }),
     setup() {
 
@@ -33,7 +33,7 @@ export default {
             this.panel = []
         },
         change_color_attributes(obj) {
-            this.store_configs_define.change_color_for_bring_in(obj);
+            this.store.change_color_for_bring_in(obj);
 
         },
     },
@@ -54,9 +54,8 @@ export default {
                 <!-- expansion-panels start -->
                 <v-expansion-panels class="fm_expansion_panels" v-model="panel" multiple>
                     <!-- panel lights -->
-                    <v-expansion-panel class="fm_expansion_panel"
-                        v-for="(light_config, index) in store_configs_define.config_of_lights" :key="index"
-                        :value="light_config.name">
+                    <v-expansion-panel class="fm_expansion_panel" v-for="(light_config, index) in store.config_of_lights"
+                        :key="index" :value="light_config.name">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
                             <v-icon :icon=light_config.icon></v-icon><span>{{ light_config.name }}</span>
                             <template v-slot:actions="{ expanded }">
@@ -193,7 +192,7 @@ export default {
                 <!-- container end -->
             </v-container>
         </v-card-text>
-        <v-toolbar class="fm_toolbar_bottom" >
+        <v-toolbar class="fm_toolbar_bottom">
             <v-spacer></v-spacer>
             <div class="fm_toolbar_contain">
                 <v-btn icon="mdi mdi-chevron-triple-down" class="fm_toolbar_btn" @click="all"></v-btn>
