@@ -116,16 +116,16 @@ export default {
                             <!--  -->
 
                             <!-- Rendering mode -->
-                            <v-switch v-model="store.current_wasm_item_of_gather().draw_model" value="FACE" true-value="FACE"
-                                hide-details="true" class="fm_switch" label="Rendering mode:Face" color="indigo-darken-3"
-                                true-icon="mdi mdi-cube"></v-switch>
+                            <v-switch v-model="store.current_wasm_item_of_gather().draw_model" value="FACE"
+                                true-value="FACE" hide-details="true" class="fm_switch" label="Rendering mode:Face"
+                                color="indigo-darken-3" true-icon="mdi mdi-cube"></v-switch>
                             <v-switch v-model="store.current_wasm_item_of_gather().draw_model" value="WIREFRAME"
                                 true-value="WIREFRAME" hide-details="true" class="fm_switch"
                                 label="Rendering mode:WireFrame" color="indigo-darken-3"
                                 true-icon="mdi mdi-cube-outline"></v-switch>
-                            <v-switch v-model="store.current_wasm_item_of_gather().draw_model" value="POINT" true-value="POINT"
-                                hide-details="true" class="fm_switch" label="Rendering mode:Point" color="indigo-darken-3"
-                                true-icon="mdi mdi-blur"></v-switch>
+                            <v-switch v-model="store.current_wasm_item_of_gather().draw_model" value="POINT"
+                                true-value="POINT" hide-details="true" class="fm_switch" label="Rendering mode:Point"
+                                color="indigo-darken-3" true-icon="mdi mdi-blur"></v-switch>
                             <v-switch v-model="store.current_wasm_item_of_gather().tl_create" :value=true :true-value=true
                                 hide-details="true" class="fm_switch" label="Inclue prefabricated actions"
                                 color="red-darken-3" readonly true-icon="mdi mdi-chart-timeline-variant-shimmer"></v-switch>
@@ -170,18 +170,33 @@ export default {
             <v-spacer></v-spacer>
             <div class="fm_toolbar_contain">
                 <v-btn icon="mdi mdi-delete" class="fm_toolbar_btn"></v-btn>
-                <v-dialog v-model="is_del_wasm_item" activator="parent" transition="dialog-bottom-transition" persistent v-if="store.d_wasm_select_edit_index != -1"
-                    width="auto">
+                <v-dialog v-model="is_del_wasm_item" activator="parent" transition="dialog-bottom-transition" persistent
+                    v-if="store.d_wasm_select_edit_index != -1" width="auto">
                     <v-card class="fm_dialog_card" v-if="store.d_wasm_select_edit_index != -1">
                         <v-card-title>
                             Are you sure you want to delete the current item?
                         </v-card-title>
                         <v-card-text>
+                            <span>The deleted model object information is: </span>
+                            <p></p>
                             <v-icon icon="mdi mdi-barcode"></v-icon>
                             <span> {{ " " + store.current_wasm_item_of_gather().uuid }}</span>
                             <p></p>
                             <v-icon icon="mdi mdi-qrcode"></v-icon>
                             <span> {{ " " + store.current_wasm_item_of_gather().name }}</span>
+                            <div v-if="store.current_wasm_item_of_gather().tl_create">
+                                <span>The corresponding prefabricated action information is: </span>
+                                <p></p>
+                                <v-icon icon="mdi mdi-barcode"></v-icon>
+                                <span> {{ " " + store.current_tl_row_bind_for_wasm(store.current_wasm_item_of_gather().uuid).id }}</span>
+                                <p></p>
+                                <v-icon icon="mdi mdi-barcode"></v-icon>
+                                <span> {{ " " + store.current_tl_row_bind_for_wasm(store.current_wasm_item_of_gather().uuid).uuid }}</span>
+                                <p></p>
+                                <v-icon icon="mdi mdi-qrcode"></v-icon>
+                                <span> {{ " " + store.current_tl_row_bind_for_wasm(store.current_wasm_item_of_gather().uuid).title }}</span>
+                            </div>
+
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>

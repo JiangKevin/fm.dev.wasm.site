@@ -318,7 +318,6 @@ export const store = defineStore("store", {
               this.d_tl_rows[i].bind_object.uuid ==
               this.d_wasm_nodes_gather[this.d_wasm_select_edit_index].uuid
             ) {
-              console.log(this.d_tl_rows[i].bind_object.uuid);
               this.d_tl_rows.splice(i, 1);
               this.d_tl_select_row_index = -1;
               this.d_tl_select_key_index = -1;
@@ -331,6 +330,20 @@ export const store = defineStore("store", {
 
         // 重置选中项
         this.d_wasm_select_edit_index = -1;
+      }
+    },
+    // 获取wasm item 关联的tl row 信息
+    current_tl_row_bind_for_wasm(uuid) {
+      if (uuid) {
+        for (var i = 0; i < this.d_tl_rows.length; i++) {
+          if (this.d_tl_rows[i].bind_object.uuid == uuid) {
+            var tl_row_info = {};
+            tl_row_info.uuid = this.d_tl_rows[i].uuid;
+            tl_row_info.id = this.d_tl_rows[i].id;
+            tl_row_info.title = this.d_tl_rows[i].title;
+            return tl_row_info;
+          }
+        }
       }
     },
     // 添加tl row
