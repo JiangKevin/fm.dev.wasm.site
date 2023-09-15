@@ -80,15 +80,15 @@ export default {
                             <v-text-field clearable label="Title" prepend-inner-icon="mdi mdi-qrcode" variant="solo"
                                 density="comfortable" class="fm_v_text_field" disabled hide-details="true"
                                 v-model="store_tl_rows_define.current_row_item_of_gather().title"></v-text-field>
-                            <v-text-field clearable label="Title" prepend-inner-icon="mdi mdi-qrcode" hide-details="true"
-                                clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" class="fm_v_text_field"
-                                v-model="store_tl_rows_define.current_row_item_of_gather().title"></v-text-field>
-                            <!--  -->
-                            <v-combobox label="Bind model" variant="solo" prepend-inner-icon="mdi mdi-qrcode"
-                                hide-details="true" class="fm_v_combobox"
-                                v-model="store_tl_rows_define.current_row_item_of_gather().bind_object" itemTitle="name"
-                                itemValue="uuid" :items="store_wasm_nodes_define.get_gather_for_bind"
-                                :item-props="itemProps"></v-combobox>
+                            <!-- bind uuid -->
+                            <v-text-field clearable label="Bind UUID" prepend-inner-icon="mdi mdi-qrcode" variant="solo"
+                                density="comfortable" class="fm_v_text_field" disabled hide-details="true"
+                                v-model="store_tl_rows_define.current_row_item_of_gather().bind_object.uuid"></v-text-field>
+                            <!-- bind name -->
+                            <v-text-field clearable label="Bind name" prepend-inner-icon="mdi mdi-qrcode" variant="solo"
+                                density="comfortable" class="fm_v_text_field" disabled hide-details="true"
+                                v-model="store_tl_rows_define.current_row_item_of_gather().bind_object.name"></v-text-field>
+                           
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                     <!-- panel key -->
