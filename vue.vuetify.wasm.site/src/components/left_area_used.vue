@@ -61,9 +61,9 @@ export default {
                             {{ used_node.name }}
                         </span>
                         <span class="two">
-                            {{ '#' + index + ' ' + used_node.type + ' ' + used_node.creat_date }}
+                            {{ used_node.index_id + ' ' + used_node.type + ' ' + used_node.creat_date }}
                         </span>
-                        <div class="btn">
+                        <div class="btn" v-if="store.d_wasm_select_edit_index == index">
                             <v-btn class="fm_btn_left" icon="mdi mdi-auto-fix" size="x-small">
                             </v-btn>
                             <!-- <v-btn class="fm_btn_mid" icon="mdi mdi-checkbox-marked-circle-plus-outline" size="x-small">

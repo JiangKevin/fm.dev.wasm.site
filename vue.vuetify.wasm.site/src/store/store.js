@@ -352,6 +352,7 @@ export const store = defineStore("store", {
       if (uuid || name) {
         for (var i = 0; i < this.d_tl_rows.length; i++) {
           if (this.d_tl_rows[i].bind_object.uuid == uuid) {
+            this.d_tl_rows[i].title = name;
             this.d_tl_rows[i].bind_object.name = name;
           }
         }
