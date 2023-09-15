@@ -194,15 +194,15 @@ var new_tl_row_template = {
       animation: "00 - EASE_NONE",
       selected: false,
       min: 0,
-      max: 1000,
+      max: 1000000,
     },
     {
       uuid: "",
       val: 2000,
       animation: "00 - EASE_NONE",
       selected: false,
-      min: 1000,
-      max: 2000,
+      min: 0,
+      max: 1000000,
     },
   ],
 };
@@ -323,8 +323,8 @@ export const store = defineStore("store", {
         tl_node_insert.bind_object.uuid = wasm_item.uuid;
         tl_node_insert.bind_object.name = wasm_item.name;
         // 修改keys的uuid
-        tl_node_insert.keyframes[0].uuid= uuidv4_UpperCase();
-        tl_node_insert.keyframes[1].uuid= uuidv4_UpperCase();
+        tl_node_insert.keyframes[0].uuid = uuidv4_UpperCase();
+        tl_node_insert.keyframes[1].uuid = uuidv4_UpperCase();
         // 压入
         this.d_tl_rows.push(tl_node_insert);
         //
@@ -337,14 +337,15 @@ export const store = defineStore("store", {
         return;
       }
       /** 创建新的key对象 */
+      console.log("keyTime is " + keyTime);
       let new_row_key = {};
       /**将当前tl的time点赋予新的key val */
-      new_row_key.val = keyTime;
+      new_row_key.val = keyTime - 0;
       new_row_key.uuid = uuidv4_UpperCase();
       new_row_key.animation = "00 - EASE_NONE";
       new_row_key.selected = false;
-      new_row_key.min = new_row_key.val - 1000;
-      new_row_key.min = new_row_key.val - 0 + 1000;
+      new_row_key.min = 0;
+      new_row_key.max = 1000000;
       //
       this.d_tl_rows[this.d_tl_select_row_index].keyframes.push(new_row_key);
     },

@@ -7,6 +7,7 @@
         <v-app-bar-nav-icon class="fm_nav_icon" max-height="40"
           icon="fmicons icon-logo-fm top_area_logo_i"></v-app-bar-nav-icon>
       </template>
+      <!--  -->
       <v-btn-toggle divided variant="outlined" class="fm_btn_toggle" height="40" max-height="40">
         <v-btn icon="mdi mdi-arrow-expand-left" @click="right_show_click" class="fm_nav_btn" maxWidth="48px"
           height="40"></v-btn>

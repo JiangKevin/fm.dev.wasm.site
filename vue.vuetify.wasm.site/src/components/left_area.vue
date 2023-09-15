@@ -2,11 +2,12 @@
 <script>
 import left_area_res_view from '@/components/left_area_res.vue'
 import left_area_used_view from '@/components/left_area_used.vue'
-
+import left_area_tools_view from '@/components/left_area_tools.vue'
 export default {
     components: {
         left_area_res_view,
-        left_area_used_view
+        left_area_used_view,
+        left_area_tools_view
     },
     props: {
         view_left: {
@@ -102,22 +103,7 @@ export default {
                         <left_area_used_view></left_area_used_view>
                     </v-window-item>
                     <v-window-item value="option-3" class="fm_window_item">
-                        <v-card flat class="fm_left_area_cards">
-                            <v-toolbar color="primary" height="36">
-                                <v-text-field :loading="loading" density="compact" variant="solo" label="Search templates"
-                                    append-inner-icon="mdi mdi-magnify" single-line hide-details
-                                    class="fm_left_text_field"></v-text-field>
-                            </v-toolbar>
-                            <v-card-text>
-                                <p class="mb-0">
-                                    Cras sagittis. Phasellus nec sem in justo pellentesque facilisis. Proin sapien ipsum,
-                                    porta
-                                    a, auctor quis, euismod ut, mi. Donec quam felis, ultricies nec, pellentesque eu,
-                                    pretium
-                                    quis, sem. Nam at tortor in tellus interdum sagittis.
-                                </p>
-                            </v-card-text>
-                        </v-card>
+                        <left_area_tools_view></left_area_tools_view>
                     </v-window-item>
                 </v-window>
             </div>
