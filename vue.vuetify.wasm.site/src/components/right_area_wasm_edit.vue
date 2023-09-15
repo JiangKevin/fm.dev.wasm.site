@@ -38,8 +38,15 @@ export default {
         },
         change_fillcolor_attributes(obj) {
             this.store.change_color_for_bring_in(obj);
-
         },
+        // 更改名字
+        change_name_for_wasm_item(uuid, name) {
+            if (store.current_wasm_item_of_gather().tl_create) {
+                console.log("From js: uuid= " + uuid + " name= " + name)
+                this.store.update_current_tl_row_bind_for_wasm(uuid, name)
+            }
+        },
+
         delete_wasm_node(obj) {
             this.is_del_wasm_item = false
             this.store.delete_wasm_current_item()
@@ -78,7 +85,8 @@ export default {
                             <!--  -->
                             <v-text-field clearable label="Name" prepend-inner-icon="mdi mdi-qrcode" hide-details="true"
                                 clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" class="fm_v_text_field"
-                                v-model="store.current_wasm_item_of_gather().name"></v-text-field>
+                                v-model="store.current_wasm_item_of_gather().name"
+                                @update:modelValue="change_name_for_wasm_item(store.current_wasm_item_of_gather().uuid, store.current_wasm_item_of_gather().name)"></v-text-field>
                             <!-- 坐标 -->
                             <v-text-field clearable label="X of Location" prepend-inner-icon="mdi mdi-map-marker-down"
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
@@ -188,13 +196,19 @@ export default {
                                 <span>The corresponding prefabricated action information is: </span>
                                 <p></p>
                                 <v-icon icon="mdi mdi-barcode"></v-icon>
-                                <span> {{ " " + store.current_tl_row_bind_for_wasm(store.current_wasm_item_of_gather().uuid).id }}</span>
+                                <span> {{ " " +
+                                    store.current_tl_row_bind_for_wasm(store.current_wasm_item_of_gather().uuid).id
+                                }}</span>
                                 <p></p>
                                 <v-icon icon="mdi mdi-barcode"></v-icon>
-                                <span> {{ " " + store.current_tl_row_bind_for_wasm(store.current_wasm_item_of_gather().uuid).uuid }}</span>
+                                <span> {{ " " +
+                                    store.current_tl_row_bind_for_wasm(store.current_wasm_item_of_gather().uuid).uuid
+                                }}</span>
                                 <p></p>
                                 <v-icon icon="mdi mdi-qrcode"></v-icon>
-                                <span> {{ " " + store.current_tl_row_bind_for_wasm(store.current_wasm_item_of_gather().uuid).title }}</span>
+                                <span> {{ " " +
+                                    store.current_tl_row_bind_for_wasm(store.current_wasm_item_of_gather().uuid).title
+                                }}</span>
                             </div>
 
                         </v-card-text>

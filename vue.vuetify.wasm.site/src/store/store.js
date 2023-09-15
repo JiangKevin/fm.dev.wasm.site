@@ -346,6 +346,16 @@ export const store = defineStore("store", {
         }
       }
     },
+    // 修改wasm item的名称时，同时修改对应的tl row bind 信息
+    update_current_tl_row_bind_for_wasm(uuid, name) {
+      if (uuid || name) {
+        for (var i = 0; i < this.d_tl_rows.length; i++) {
+          if (this.d_tl_rows[i].bind_object.uuid == uuid) {
+            this.d_tl_rows[i].bind_object.name = name;
+          }
+        }
+      }
+    },
     // 添加tl row
     increment_of_tl_rows(wasm_item) {
       if (wasm_item.tl_create != true) {
