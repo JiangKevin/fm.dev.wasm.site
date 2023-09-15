@@ -646,6 +646,14 @@ export const store = defineStore("store", {
       }
       //
     },
+    formats_for_tl_number(current_tl_keyObject) {
+      console.log(current_tl_keyObject.val);
+      current_tl_keyObject.val = Number(current_tl_keyObject.val) - 0;
+      current_tl_keyObject.min = current_tl_keyObject.min - 0;
+      current_tl_keyObject.max = current_tl_keyObject.max - 0;
+
+      console.log(current_tl_keyObject.val);
+    },
     // 清楚所有数据
     clear_data() {
       // wasm items

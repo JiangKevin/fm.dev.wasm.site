@@ -33,13 +33,10 @@ export default {
         none() {
             this.panel = []
         },
-        itemProps(item) {
-            return {
-                title: item.name,
-                subtitle: item.uuid,
-            }
-        },
+        formats_for_tl_number(current_tl_keyObject) {
+            this.store.formats_for_tl_number(current_tl_keyObject);
 
+        },
     },
 
     async mounted() {
@@ -146,17 +143,20 @@ export default {
                                 v-model="store.current_tl_key_item_of_gather().uuid"></v-text-field>
                             <!-- val -->
                             <v-text-field clearable label="Val" prepend-inner-icon="mdi mdi-valve-closed" variant="solo"
+                                @update:modelValue="formats_for_tl_number(store.current_tl_key_item_of_gather())"
                                 density="comfortable" class="fm_v_text_field" hide-details="true" type="number"
                                 v-model="store.current_tl_key_item_of_gather().val"></v-text-field>
                             <!-- min -->
                             <v-text-field clearable label="Min" prepend-inner-icon="mdi mdi-arrow-collapse-left"
+                                @update:modelValue="formats_for_tl_number(store.current_tl_key_item_of_gather())"
                                 variant="solo" density="comfortable" class="fm_v_text_field" hide-details="true"
                                 type="number" v-model="store.current_tl_key_item_of_gather().min"></v-text-field>
                             <!-- max -->
                             <v-text-field clearable label="Max" prepend-inner-icon="mdi mdi-arrow-collapse-right"
+                                @update:modelValue="formats_for_tl_number(store.current_tl_key_item_of_gather())"
                                 variant="solo" density="comfortable" class="fm_v_text_field" hide-details="true"
                                 type="number" v-model="store.current_tl_key_item_of_gather().max"></v-text-field>
-                            <!-- shap -->
+                            <!-- Easing function -->
                             <v-combobox label="Easing function" variant="solo" class="fm_v_combobox" hide-details="true"
                                 prepend-inner-icon="mdi mdi-rhombus-split"
                                 v-model="store.current_tl_key_item_of_gather().animation"
