@@ -16,6 +16,7 @@ export default {
         loading: false,
         show: false,
         panel: ['row', 'key', 'attributes'],
+        Easing_items: ['00 - EASE_NONE', '02 - EASE_NONE'],
         store: store()
     }),
     setup() {
@@ -117,7 +118,6 @@ export default {
                                 <div class="span_div"> <span>Fill color of key :{{
                                     store.current_tl_row_item_of_gather().style.keyframesStyle.fillColor }}</span></div>
                             </div>
-
                             <!-- key Select fillcolor -->
                             <div class="fm_color_div">
                                 <ColorPicker format="rgb" shape="square" theme="black"
@@ -144,6 +144,23 @@ export default {
                             <v-text-field clearable label="UUID" prepend-inner-icon="mdi mdi-barcode" variant="solo"
                                 density="comfortable" class="fm_v_text_field" disabled hide-details="true"
                                 v-model="store.current_tl_key_item_of_gather().uuid"></v-text-field>
+                            <!-- val -->
+                            <v-text-field clearable label="Val" prepend-inner-icon="mdi mdi-valve-closed" variant="solo"
+                                density="comfortable" class="fm_v_text_field" hide-details="true" type="number"
+                                v-model="store.current_tl_key_item_of_gather().val"></v-text-field>
+                            <!-- min -->
+                            <v-text-field clearable label="Min" prepend-inner-icon="mdi mdi-arrow-collapse-left"
+                                variant="solo" density="comfortable" class="fm_v_text_field" hide-details="true"
+                                type="number" v-model="store.current_tl_key_item_of_gather().min"></v-text-field>
+                            <!-- max -->
+                            <v-text-field clearable label="Max" prepend-inner-icon="mdi mdi-arrow-collapse-right"
+                                variant="solo" density="comfortable" class="fm_v_text_field" hide-details="true"
+                                type="number" v-model="store.current_tl_key_item_of_gather().max"></v-text-field>
+                            <!-- shap -->
+                            <v-combobox label="Easing function" variant="solo" class="fm_v_combobox" hide-details="true"
+                                prepend-inner-icon="mdi mdi-rhombus-split"
+                                v-model="store.current_tl_key_item_of_gather().animation"
+                                :items="Easing_items"></v-combobox>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                     <!-- panel attributes -->
