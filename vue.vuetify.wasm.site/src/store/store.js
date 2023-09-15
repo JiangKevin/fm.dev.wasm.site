@@ -168,6 +168,7 @@ var new_tl_row_template = {
     uuid: "",
     name: "",
   },
+  type: "3D",
   selected: false,
   draggable: true,
   style: {
@@ -362,6 +363,7 @@ export const store = defineStore("store", {
         var tl_node_insert = JSON.parse(JSON.stringify(new_tl_row_template));
         tl_node_insert.id = "#-" + new Date().getTime().toString();
         tl_node_insert.uuid = uuidv4_UpperCase();
+        tl_node_insert.type = "3D Model";
         tl_node_insert.title = wasm_item.name;
         tl_node_insert.bind_object.uuid = wasm_item.uuid;
         tl_node_insert.bind_object.name = wasm_item.name;

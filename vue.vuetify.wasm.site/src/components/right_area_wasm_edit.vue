@@ -41,12 +41,12 @@ export default {
         },
         // 更改名字
         change_name_for_wasm_item(uuid, name) {
-            if (store.current_wasm_item_of_gather().tl_create) {
-                console.log("From js: uuid= " + uuid + " name= " + name)
+            if (this.store.current_wasm_item_of_gather().tl_create) {
+                // console.log("From js: uuid= " + uuid + " name= " + name)
                 this.store.update_current_tl_row_bind_for_wasm(uuid, name)
             }
         },
-
+        // 
         delete_wasm_node(obj) {
             this.is_del_wasm_item = false
             this.store.delete_wasm_current_item()
