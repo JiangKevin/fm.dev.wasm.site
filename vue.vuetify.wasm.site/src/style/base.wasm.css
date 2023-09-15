@@ -481,8 +481,7 @@ input::-webkit-inner-spin-button {
   border-bottom: var(--border_nomal);
   overflow: hidden;
 }
-.fm_outline_header_in> .v-toolbar__content 
-{
+.fm_outline_header_in > .v-toolbar__content {
   background-color: var(--bg_color);
   border-radius: 0px !important;
   height: 28px !important;
@@ -836,10 +835,38 @@ input::-webkit-inner-spin-button {
   min-width: 90px !important;
   width: 90px !important;
 }
+
+/*  */
+.fm_v_combobox {
+  padding-top: 0px !important;
+  padding-bottom: 4px !important;
+}
+.fm_v_combobox > .v-input__control > .v-field {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.fm_v_combobox > .v-input__control > .v-field > .v-field__field {
+  margin-right: -52px !important;
+}
+.fm_v_combobox
+  > .v-input__control
+  > .v-field
+  > .v-field__field
+  > .v-field__input {
+  font-size: 12px !important;
+  border-bottom: var(--border_nomal);
+}
+.fm_v_combobox > .v-input__control > .v-field > .v-field__clearable {
+  border-bottom: var(--border_nomal);
+  margin-left: 0px !important;
+  margin-right: -28px !important;
+  padding-left: 4px !important;
+}
+
 /*  */
 .fm_toolbar_contain {
   border-left: var(--border_nomal);
-  width:fit-content !important;
+  width: fit-content !important;
 }
 
 .fm_toolbar_btn {
@@ -865,7 +892,6 @@ input::-webkit-inner-spin-button {
   height: 28px !important;
   margin: 0px !important;
   border-radius: 0px !important;
-
 }
 .fm_ol_toolbar_btn > span > i {
   font-size: 1em !important;
@@ -944,4 +970,12 @@ input::-webkit-inner-spin-button {
 .vc-color-wrap.transparent {
   margin-top: 4px !important;
   margin-bottom: 4px !important;
+}
+.v-list-item-title
+{
+  font-size: 13px !important;
+}
+.v-list-item-subtitle
+{
+  font-size: 12px !important;
 }

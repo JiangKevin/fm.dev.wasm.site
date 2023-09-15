@@ -64,19 +64,29 @@ export const useWasmNodes = defineStore("wasm_nodes_used", {
   state: () => {
     return {
       d_nodes_gather: reactive([]),
+      d_nodes_gather_for_bind: reactive([]),
       d_index_increment: -1,
       d_select_edit_index: -1,
     };
   },
   getters: {
-    // compute_select_fillcolor(state) {
-    // }
+    get_gather_for_bind(state) {
+      state.d_nodes_gather_for_bind = [];
+      for (var i = 0; i < state.d_nodes_gather.length; i++) {
+        let wasm_node_insert_for_bind = {};
+        wasm_node_insert_for_bind.uuid = state.d_nodes_gather[i].uuid;
+        wasm_node_insert_for_bind.name = state.d_nodes_gather[i].name;
+        state.d_nodes_gather_for_bind.push(wasm_node_insert_for_bind);
+      }
+      return state.d_nodes_gather_for_bind;
+    },
   },
   actions: {
     increment_of_nodes_gather(uuid_str, obj) {
       var wasm_node_insert = {};
       this.d_index_increment += 1;
-      wasm_node_insert.index_id = "#" + this.d_index_increment;
+      wasm_node_insert.index_id =
+        "#" + this.d_index_increment.toFixed(0).padStart(4, "0");
       wasm_node_insert.uuid = uuid_str;
       wasm_node_insert.type = obj.type;
       wasm_node_insert.isTexRepeat = obj.isTexRepeat;
@@ -119,12 +129,13 @@ export const useWasmNodes = defineStore("wasm_nodes_used", {
       this.d_nodes_gather.push(wasm_node_insert);
     },
     current_item_of_gather() {
-      if (this.d_select_edit_index != -1) {
-        return this.d_nodes_gather[this.d_select_edit_index];
-      } else {
-        return this.d_nodes_gather[0];
+      if (this.d_nodes_gather.length == 0 || this.d_select_edit_index == -1) {
+        return undefined;
       }
+
+      return this.d_nodes_gather[this.d_select_edit_index];
     },
+
     change_color_for_bring_in(obj) {
       update_color_for_bring_in(obj);
       console.log(this.d_nodes_gather);
@@ -341,7 +352,26 @@ export const tl_drows = defineStore("tl", {
       new_row_key.min = new_row_key.val - 1000;
       new_row_key.min = new_row_key.val - 0 + 1000;
       //
-      this.tl_rows[this.d_select_row_index].keyframes.push(new_row_key)
+      this.tl_rows[this.d_select_row_index].keyframes.push(new_row_key);
+    },
+    current_row_item_of_gather() {
+      if (this.tl_rows.length == 0 || this.d_select_row_index == -1) {
+        return undefined;
+      }
+
+      return this.tl_rows[this.d_select_row_index];
+    },
+    current_key_item_of_gather() {
+      if (
+        this.tl_rows.length == 0 ||
+        this.d_select_row_index == -1 ||
+        this.d_select_key_index == -1
+      ) {
+        return undefined;
+      }
+      return this.tl_rows[this.d_select_row_index].keyframes[
+        this.d_select_key_index
+      ];
     },
     clear_data() {
       if (this.tl_rows.length != 0) {

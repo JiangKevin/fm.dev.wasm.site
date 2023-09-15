@@ -16,6 +16,8 @@ export default {
         loading: false,
         show: false,
         panel: ['row', 'key', 'attributes'],
+        store_wasm_nodes_define: useWasmNodes(),
+        store_tl_rows_define: tl_drows(),
     }),
     setup() {
 
@@ -31,7 +33,14 @@ export default {
         none() {
             this.panel = []
         },
+        itemProps(item) {
+            return {
+                title: item.name,
+                subtitle: item.uuid,
+            }
+        },
     },
+
     async mounted() {
 
     },
@@ -57,7 +66,29 @@ export default {
                                     :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>
                             </template>
                         </v-expansion-panel-title>
-                        <v-expansion-panel-text class="fm_expansion_panel_text">
+                        <v-expansion-panel-text class="fm_expansion_panel_text"
+                            v-if="store_tl_rows_define.d_select_row_index != -1">
+                            <!-- id -->
+                            <v-text-field clearable label="ID" prepend-inner-icon="mdi mdi-barcode" variant="solo"
+                                density="comfortable" class="fm_v_text_field" disabled hide-details="true"
+                                v-model="store_tl_rows_define.current_row_item_of_gather().id"></v-text-field>
+                            <!-- uuid -->
+                            <v-text-field clearable label="UUID" prepend-inner-icon="mdi mdi-barcode" variant="solo"
+                                density="comfortable" class="fm_v_text_field" disabled hide-details="true"
+                                v-model="store_tl_rows_define.current_row_item_of_gather().uuid"></v-text-field>
+                            <!-- title -->
+                            <v-text-field clearable label="Title" prepend-inner-icon="mdi mdi-qrcode" variant="solo"
+                                density="comfortable" class="fm_v_text_field" disabled hide-details="true"
+                                v-model="store_tl_rows_define.current_row_item_of_gather().title"></v-text-field>
+                            <v-text-field clearable label="Title" prepend-inner-icon="mdi mdi-qrcode" hide-details="true"
+                                clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" class="fm_v_text_field"
+                                v-model="store_tl_rows_define.current_row_item_of_gather().title"></v-text-field>
+                            <!--  -->
+                            <v-combobox label="Bind model" variant="solo" prepend-inner-icon="mdi mdi-qrcode"
+                                hide-details="true" class="fm_v_combobox"
+                                v-model="store_tl_rows_define.current_row_item_of_gather().bind_object" itemTitle="name"
+                                itemValue="uuid" :items="store_wasm_nodes_define.get_gather_for_bind"
+                                :item-props="itemProps"></v-combobox>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                     <!-- panel key -->
