@@ -16,7 +16,7 @@ export default {
         loading: false,
         show: false,
         panel: ['row', 'key', 'attributes'],
-        store:store()
+        store: store()
     }),
     setup() {
 
@@ -38,6 +38,7 @@ export default {
                 subtitle: item.uuid,
             }
         },
+
     },
 
     async mounted() {
@@ -59,14 +60,13 @@ export default {
                     <!-- panel row -->
                     <v-expansion-panel value="row" class="fm_expansion_panel">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
-                            <v-icon icon="mdi mdi-lightbulb-group"></v-icon><span>Row</span>
+                            <v-icon icon="mdi mdi-align-vertical-center"></v-icon><span>Basic</span>
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
                                     :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>
                             </template>
                         </v-expansion-panel-title>
-                        <v-expansion-panel-text class="fm_expansion_panel_text"
-                            v-if="store.d_tl_select_row_index != -1">
+                        <v-expansion-panel-text class="fm_expansion_panel_text" v-if="store.d_tl_select_row_index != -1">
                             <!-- id -->
                             <v-text-field clearable label="ID" prepend-inner-icon="mdi mdi-barcode" variant="solo"
                                 density="comfortable" class="fm_v_text_field" disabled hide-details="true"
@@ -79,33 +79,77 @@ export default {
                             <v-text-field clearable label="Title" prepend-inner-icon="mdi mdi-qrcode" variant="solo"
                                 density="comfortable" class="fm_v_text_field" disabled hide-details="true"
                                 v-model="store.current_tl_row_item_of_gather().title"></v-text-field>
+                            <!-- type -->
+                            <v-text-field clearable label="Using Type" prepend-inner-icon="mdi mdi-alpha-t-box"
+                                variant="solo" density="comfortable" class="fm_v_text_field" disabled hide-details="true"
+                                v-model="store.current_tl_row_item_of_gather().type"></v-text-field>
                             <!-- bind uuid -->
-                            <v-text-field clearable label="Bind UUID" prepend-inner-icon="mdi mdi-qrcode" variant="solo"
+                            <v-text-field clearable label="Bind UUID" prepend-inner-icon="mdi mdi-barcode" variant="solo"
                                 density="comfortable" class="fm_v_text_field" disabled hide-details="true"
                                 v-model="store.current_tl_row_item_of_gather().bind_object.uuid"></v-text-field>
                             <!-- bind name -->
                             <v-text-field clearable label="Bind name" prepend-inner-icon="mdi mdi-qrcode" variant="solo"
                                 density="comfortable" class="fm_v_text_field" disabled hide-details="true"
                                 v-model="store.current_tl_row_item_of_gather().bind_object.name"></v-text-field>
-                           
+                            <!-- shap -->
+                            <v-combobox label="Shap of key" variant="solo" class="fm_v_combobox" hide-details="true"
+                                prepend-inner-icon="mdi mdi-rhombus-split"
+                                v-model="store.current_tl_row_item_of_gather().style.keyframesStyle.shape"
+                                :items="['rhomb', 'rect', 'circle']"></v-combobox>
+                            <!-- row fillcolor -->
+                            <div class="fm_color_div">
+                                <ColorPicker format="rgb" shape="square" theme="black"
+                                    v-model:pureColor="store.current_tl_row_item_of_gather().style.fillColor" />
+                                <div class="span_div"> <span>Fill color of row :{{
+                                    store.current_tl_row_item_of_gather().style.fillColor }}</span></div>
+                            </div>
+                            <!-- row group fillcolor -->
+                            <div class="fm_color_div">
+                                <ColorPicker format="rgb" shape="square" theme="black"
+                                    v-model:pureColor="store.current_tl_row_item_of_gather().style.groupsStyle.fillColor" />
+                                <div class="span_div"> <span>Fill color of Group :{{
+                                    store.current_tl_row_item_of_gather().style.groupsStyle.fillColor }}</span></div>
+                            </div>
+                            <!-- key fillcolor -->
+                            <div class="fm_color_div">
+                                <ColorPicker format="rgb" shape="square" theme="black"
+                                    v-model:pureColor="store.current_tl_row_item_of_gather().style.keyframesStyle.fillColor" />
+                                <div class="span_div"> <span>Fill color of key :{{
+                                    store.current_tl_row_item_of_gather().style.keyframesStyle.fillColor }}</span></div>
+                            </div>
+
+                            <!-- key Select fillcolor -->
+                            <div class="fm_color_div">
+                                <ColorPicker format="rgb" shape="square" theme="black"
+                                    v-model:pureColor="store.current_tl_row_item_of_gather().style.keyframesStyle.selectedFillColor" />
+                                <div class="span_div"> <span>Fill color of selected key :{{
+                                    store.current_tl_row_item_of_gather().style.keyframesStyle.selectedFillColor
+                                }}</span></div>
+                            </div>
+
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                     <!-- panel key -->
                     <v-expansion-panel value="key" class="fm_expansion_panel">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
-                            <v-icon icon="mdi mdi-cctv"></v-icon><span>Key</span>
+                            <v-icon icon="mdi mdi-cards-diamond"></v-icon><span>Current Key</span>
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
                                     :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>
                             </template>
                         </v-expansion-panel-title>
-                        <v-expansion-panel-text class="fm_expansion_panel_text">
+                        <v-expansion-panel-text class="fm_expansion_panel_text"
+                            v-if="(store.d_tl_select_row_index != -1) && (store.d_tl_select_key_index != -1)">
+                            <!-- uuid -->
+                            <v-text-field clearable label="UUID" prepend-inner-icon="mdi mdi-barcode" variant="solo"
+                                density="comfortable" class="fm_v_text_field" disabled hide-details="true"
+                                v-model="store.current_tl_key_item_of_gather().uuid"></v-text-field>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                     <!-- panel attributes -->
                     <v-expansion-panel value="attributes" class="fm_expansion_panel">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
-                            <v-icon icon="mdi mdi-cogs"></v-icon><span>Attributes</span>
+                            <v-icon icon="mdi mdi-heating-coil"></v-icon><span>Attributes</span>
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
                                     :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>
