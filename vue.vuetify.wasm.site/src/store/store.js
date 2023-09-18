@@ -432,10 +432,7 @@ export const store = defineStore("store", {
       this.d_tl_select_key_index = -1;
     },
     del_current_tl_row_item_of_gather() {
-      if (
-        this.d_tl_rows.length == 0 ||
-        this.d_tl_select_row_index == -1 
-      ) {
+      if (this.d_tl_rows.length == 0 || this.d_tl_select_row_index == -1) {
         return "The current row cannot be deleted。";
       }
       // 重置对应wasm obj 的预制动作创建标志

@@ -177,8 +177,8 @@ export default {
         <v-toolbar class="fm_toolbar_bottom">
             <v-spacer></v-spacer>
             <div class="fm_toolbar_contain">
-                <v-btn icon="mdi mdi-delete" class="fm_toolbar_btn"></v-btn>
-                <v-dialog v-model="is_del_wasm_item" activator="parent" transition="dialog-bottom-transition" persistent
+                <v-btn icon="mdi mdi-delete" class="fm_toolbar_btn" @click="is_del_wasm_item = true" :class="{ 'fm_btn_prohibit': this.store.d_wasm_select_edit_index == -1 }"></v-btn>
+                <v-dialog v-model="is_del_wasm_item" transition="dialog-bottom-transition" persistent
                     v-if="store.d_wasm_select_edit_index != -1" width="auto">
                     <v-card class="fm_dialog_card" v-if="store.d_wasm_select_edit_index != -1">
                         <v-card-title>
