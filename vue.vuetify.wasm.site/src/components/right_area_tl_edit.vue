@@ -4,11 +4,11 @@ import { defineComponent, inject, watch } from 'vue'
 import { store } from '@/store/store'
 import { ColorPicker } from "vue3-colorpicker";
 import "vue3-colorpicker/style.css";
-import right_area_tl_attributes_edit_view from '@/components/right_area_tl_attributes_edit.vue'
+import right_area_tl_attributes_edit_3d_view from '@/components/right_area_tl_attributes_edit_of_3d.vue'
 export default {
     components: {
         ColorPicker,
-        right_area_tl_attributes_edit_view
+        right_area_tl_attributes_edit_3d_view
     },
     props: {
 
@@ -222,7 +222,9 @@ export default {
                             </template>
                         </v-expansion-panel-title>
                         <v-expansion-panel-text class="fm_expansion_panel_text" v-if="store.d_tl_select_key_index != -1">
-                            <right_area_tl_attributes_edit_view></right_area_tl_attributes_edit_view>
+                            <right_area_tl_attributes_edit_3d_view
+                                v-if="store.current_tl_key_item_of_gather().type = '3D Model'">
+                            </right_area_tl_attributes_edit_3d_view>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                 </v-expansion-panels>
