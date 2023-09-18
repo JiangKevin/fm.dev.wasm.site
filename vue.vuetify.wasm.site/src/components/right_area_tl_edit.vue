@@ -122,6 +122,7 @@ export default {
                                 :items="['rhomb', 'rect', 'circle']"></v-combobox>
                             <!-- style keyframesStyle width -->
                             <v-text-field clearable label="Shape width" prepend-inner-icon="mdi mdi-arrow-left-right"
+                                v-if="store.current_tl_row_item_of_gather().style.keyframesStyle.shape != 'circle'"
                                 variant="solo" @update:modelValue="store.refresh_tl_show()" density="comfortable"
                                 class="fm_v_text_field" hide-details="true" type="number"
                                 v-model.number="store.current_tl_row_item_of_gather().style.keyframesStyle.width"></v-text-field>
@@ -134,28 +135,32 @@ export default {
                             <!-- row fillcolor -->
                             <div class="fm_color_div">
                                 <ColorPicker format="rgb" shape="square" theme="black"
-                                    v-model:pureColor="store.current_tl_row_item_of_gather().style.fillColor" @update:pureColor="store.refresh_tl_show()"/>
+                                    v-model:pureColor="store.current_tl_row_item_of_gather().style.fillColor"
+                                    @update:pureColor="store.refresh_tl_show()" />
                                 <div class="span_div"> <span>Fill color of row :{{
                                     store.current_tl_row_item_of_gather().style.fillColor }}</span></div>
                             </div>
                             <!-- row group fillcolor -->
                             <div class="fm_color_div">
                                 <ColorPicker format="rgb" shape="square" theme="black"
-                                    v-model:pureColor="store.current_tl_row_item_of_gather().style.groupsStyle.fillColor" @update:pureColor="store.refresh_tl_show()"/>
+                                    v-model:pureColor="store.current_tl_row_item_of_gather().style.groupsStyle.fillColor"
+                                    @update:pureColor="store.refresh_tl_show()" />
                                 <div class="span_div"> <span>Fill color of Group :{{
                                     store.current_tl_row_item_of_gather().style.groupsStyle.fillColor }}</span></div>
                             </div>
                             <!-- key fillcolor -->
                             <div class="fm_color_div">
                                 <ColorPicker format="rgb" shape="square" theme="black"
-                                    v-model:pureColor="store.current_tl_row_item_of_gather().style.keyframesStyle.fillColor" @update:pureColor="store.refresh_tl_show()" />
+                                    v-model:pureColor="store.current_tl_row_item_of_gather().style.keyframesStyle.fillColor"
+                                    @update:pureColor="store.refresh_tl_show()" />
                                 <div class="span_div"> <span>Fill color of key :{{
                                     store.current_tl_row_item_of_gather().style.keyframesStyle.fillColor }}</span></div>
                             </div>
                             <!-- key Select fillcolor -->
                             <div class="fm_color_div">
                                 <ColorPicker format="rgb" shape="square" theme="black"
-                                    v-model:pureColor="store.current_tl_row_item_of_gather().style.keyframesStyle.selectedFillColor" @update:pureColor="store.refresh_tl_show()" />
+                                    v-model:pureColor="store.current_tl_row_item_of_gather().style.keyframesStyle.selectedFillColor"
+                                    @update:pureColor="store.refresh_tl_show()" />
                                 <div class="span_div"> <span>Fill color of selected key :{{
                                     store.current_tl_row_item_of_gather().style.keyframesStyle.selectedFillColor
                                 }}</span></div>
