@@ -269,13 +269,18 @@ export default {
                             <p></p>
                             <v-icon icon="mdi mdi-barcode"></v-icon>
                             <span> {{ " " + store.current_tl_row_item_of_gather().id }}</span>
-                            <!-- <p></p>
-                            <span> {{ " " + store.current_tl_key_item_of_gather().min }}</span>
-                            <v-icon icon="mdi mdi-arrow-collapse-left"></v-icon>
-                            <span> {{ " " + store.current_tl_key_item_of_gather().val }}</span>
-                            <v-icon icon="mdi mdi-arrow-collapse-right"></v-icon>
-                            <span> {{ " " + store.current_tl_key_item_of_gather().max }}</span>
-                            <p></p> -->
+                            <p></p>
+                            <v-icon icon="mdi mdi-qrcode"></v-icon>
+                            <span> {{ " " + store.current_tl_row_item_of_gather().title }}</span>
+                            <p></p>
+                            <span>The corresponding bind object information is: </span>
+                            <p></p>
+                            <v-icon icon="mdi mdi-barcode"></v-icon>
+                            <span> {{ " " + store.current_tl_row_item_of_gather().bind_object.uuid }}</span>
+                            <p></p>
+                            <v-icon icon="mdi mdi-qrcode"></v-icon>
+                            <span> {{ " " + store.current_tl_row_item_of_gather().bind_object.name }}</span>
+                            <p></p>
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>

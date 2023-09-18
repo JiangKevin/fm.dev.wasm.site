@@ -439,7 +439,17 @@ export const store = defineStore("store", {
       ) {
         return "The current row cannot be deleted。";
       }
-      //
+      // 重置对应wasm obj 的预制动作创建标志
+      for (var i = 0; i < this.d_wasm_nodes_gather.length; i++) {
+        if (
+          this.d_wasm_nodes_gather[i].uuid ==
+          this.d_tl_rows[d_tl_select_row_index].bind_object.uuid
+        ) {
+          this.d_wasm_nodes_gather[i].tl_create = false;
+          break;
+        }
+      }
+      // 删除tl row
       this.d_tl_rows.splice(this.d_tl_select_row_index, 1);
       this.d_tl_select_row_index = -1;
       this.d_tl_select_key_index = -1;
