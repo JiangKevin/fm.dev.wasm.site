@@ -63,6 +63,7 @@ function update_color_for_bring_in(obj) {
     @param        json     用来排序的json
     @param        key      排序的键值
 */
+// 方法1
 function JsonSort(json, key) {
   for (var j = 1, jl = json.length; j < jl; j++) {
     var temp = json[j],
@@ -77,7 +78,39 @@ function JsonSort(json, key) {
   //console.log(json);
   return json;
 }
+// 方法2
+var sortBy = function (filed, rev, primer) {
+  rev = rev ? -1 : 1;
+  return function (a, b) {
+    a = a[filed];
+    b = b[filed];
+    if (typeof primer != "undefined") {
+      a = primer(a);
+      b = primer(b);
+    }
+    if (a < b) {
+      return rev * -1;
+    }
+    if (a > b) {
+      return rev * 1;
+    }
+    return 1;
+  };
+};
+// //数字排序
+// obj.sort(sortBy('b', false, parseInt));
+// console.log(obj);
 
+// //字符排序
+// obj.sort(sortBy('b', false, String));
+// console.log(obj);
+
+//
+var obj = [
+  { b: "3", c: "c" },
+  { b: "1", c: "a" },
+  { b: "2", c: "b" },
+];
 /**
  * 测试数据，后期用request 替代
  */
@@ -895,9 +928,15 @@ export const store = defineStore("store", {
       //
     },
     // 排序tl keys 对象,用作预制工作执行前
-    sort_by_val_for_tl_keys(tl_row) {
-      var json = JsonSort(tl_row, "val");
-      console.log(json)
+    sort_by_val_for_tl_keys(tl_row_keys) {
+      // 方法1
+      //   var json = JsonSort(tl_row, "val");
+      //   console.log(json);
+      //   return json;
+
+      // 方法2
+      var json = JSON.parse(JSON.stringify(tl_row_keys));
+      json.sort(sortBy("val", false, parseInt));
       return json;
     },
     // 清楚所有数据
