@@ -31,17 +31,17 @@ export default {
             // 打印到控制台
             console.log(JSON.stringify(model))
 
-            // 排序后输出
-            var titleline = []
-            model.timeline = []
-            for (var i = 0; i < this.store.d_tl_rows.length; i++) {
-                let old_tl_row = this.store.d_tl_rows[i].keyframes
-                let new_to_row = this.store.sort_by_val_for_tl_keys(old_tl_row)
-                titleline.push(new_to_row)
-            }
-            model.timeline = JSON.parse(JSON.stringify(titleline));
-            // 打印到控制台
-            console.log(JSON.stringify(model))
+            // // 排序后输出
+            // var titleline = []
+            // model.timeline = []
+            // for (var i = 0; i < this.store.d_tl_rows.length; i++) {
+            //     let old_tl_row = this.store.d_tl_rows[i].keyframes
+            //     let new_to_row = this.store.sort_by_val_for_tl_keys(old_tl_row)
+            //     titleline.push(new_to_row)
+            // }
+            // model.timeline = JSON.parse(JSON.stringify(titleline));
+            // // 打印到控制台
+            // console.log(JSON.stringify(model))
         }
     },
     mounted() {

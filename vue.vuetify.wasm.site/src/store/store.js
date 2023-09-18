@@ -235,6 +235,7 @@ var tl_key_attributes_of_3D = {
     hexa: "#00000000",
     rgba: "rgba(0, 0, 0, 0)",
   },
+  draw_model: ["FACE", "WIREFRAME"],
 };
 //
 var tl_key_attributes_of_Camera = {
@@ -634,8 +635,19 @@ export const store = defineStore("store", {
       }
       //
       this.d_tl_rows[this.d_tl_select_row_index].keyframes.push(new_row_key);
-      //   刷新tl
+      // 进行排序，之后重新获取d_tl_select_key_index
+      let old_keys = this.d_tl_rows[this.d_tl_select_row_index].keyframes;
+      let new_keys = this.sort_by_val_for_tl_keys(old_keys);
+      this.d_tl_rows[this.d_tl_select_row_index].keyframes = new_keys;
+      for (var i = 0; i < new_keys.length; i++) {
+        if (new_row_key.uuid == new_keys[i].uuid) {
+          this.d_tl_select_key_index = i;
+          break;
+        }
+      }
+      // 刷新tl
       this.refresh_tl_show();
+      //
     },
     // 返回当前tl row
     current_tl_row_item_of_gather() {
@@ -695,6 +707,26 @@ export const store = defineStore("store", {
       this.d_tl_select_key_index = -1;
       //   刷新tl
       this.refresh_tl_show();
+    },
+    copy_from_pre_to_current_attributes() {
+      if (
+        this.d_tl_rows.length == 0 ||
+        this.d_tl_select_key_index == -1 ||
+        this.d_tl_select_row_index == -1 ||
+        this.d_tl_select_key_index == 0
+      ) {
+        return "The pre key cannot be copy";
+      } else {
+        this.d_tl_rows[this.d_tl_select_row_index].keyframes[
+          this.d_tl_select_key_index
+        ].attributes = JSON.parse(
+          JSON.stringify(
+            this.d_tl_rows[this.d_tl_select_row_index].keyframes[
+              this.d_tl_select_key_index - 1
+            ].attributes
+          )
+        );
+      }
     },
     // wasm 全局设置期初
     configuration_creat() {

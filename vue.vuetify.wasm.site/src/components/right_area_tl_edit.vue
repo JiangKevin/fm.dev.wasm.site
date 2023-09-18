@@ -236,6 +236,16 @@ export default {
         <v-toolbar class="fm_toolbar_bottom" height="36">
             <v-spacer></v-spacer>
             <div class="fm_toolbar_contain">
+                <v-tooltip location="top" class="fm_tooltip">
+                    <template v-slot:activator="{ props }">
+                        <v-btn v-bind="props" icon="mdi mdi-content-duplicate" class="fm_toolbar_btn"
+                            :class="{ 'fm_btn_prohibit': store.d_tl_select_key_index == -1 || store.d_tl_select_key_index == 0 }"
+                            @click="store.copy_from_pre_to_current_attributes()"></v-btn>
+                    </template>
+                    <span>Copy the previous keyframe prefab action properties</span>
+                </v-tooltip>
+            </div>
+            <div class="fm_toolbar_contain">
                 <v-btn icon="mdi mdi-delete-forever" class="fm_toolbar_btn" :class="compute_of_key_del"
                     @click="is_del_tl_key = true">
                 </v-btn>

@@ -62,4 +62,13 @@ export default {
         <div class="span_div"> <span>Node Color :{{
             store.current_tl_key_item_of_gather().attributes.fillcolor.rgba }}</span></div>
     </div>
-</template>
+    <!-- Rendering mode -->
+    <v-switch v-model="store.current_tl_key_item_of_gather().attributes.draw_model" value="FACE" true-value="FACE"
+        hide-details="true" class="fm_switch" label="Rendering mode:Face" color="indigo-darken-3"
+        true-icon="mdi mdi-cube"></v-switch>
+    <v-switch v-model="store.current_tl_key_item_of_gather().attributes.draw_model" value="WIREFRAME" true-value="WIREFRAME"
+        hide-details="true" class="fm_switch" label="Rendering mode:WireFrame" color="indigo-darken-3"
+        true-icon="mdi mdi-cube-outline"></v-switch>
+    <v-switch v-model="store.current_tl_key_item_of_gather().attributes.draw_model" value="POINT" true-value="POINT"
+        hide-details="true" class="fm_switch" label="Rendering mode:Point" color="indigo-darken-3"
+        true-icon="mdi mdi-blur"></v-switch></template>
