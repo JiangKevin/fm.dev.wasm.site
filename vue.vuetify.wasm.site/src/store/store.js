@@ -160,6 +160,81 @@ var wasm_obj_resouse = [
 /**
  *
  * 模板数据 */
+//
+var tl_key_attributes_of_3D = {
+  location: {
+    x: 0,
+    y: 0,
+    z: 0,
+  },
+  direction: {
+    x: 0,
+    y: 0,
+    z: 0,
+  },
+};
+//
+var tl_key_attributes_of_Camera = {
+  location: {
+    x: 0,
+    y: 0,
+    z: 0,
+  },
+  direction: {
+    x: 0,
+    y: 0,
+    z: 0,
+  },
+};
+var tl_key_attributes_of_PL = {
+  location: {
+    x: 0,
+    y: 0,
+    z: 0,
+  },
+  direction: {
+    x: 0,
+    y: 0,
+    z: 0,
+  },
+};
+var tl_key_attributes_of_SL = {
+  location: {
+    x: 0,
+    y: 0,
+    z: 0,
+  },
+  direction: {
+    x: 0,
+    y: 0,
+    z: 0,
+  },
+};
+var tl_key_attributes_of_AL = {
+  location: {
+    x: 0,
+    y: 0,
+    z: 0,
+  },
+  direction: {
+    x: 0,
+    y: 0,
+    z: 0,
+  },
+};
+var tl_key_attributes_of_DL = {
+  location: {
+    x: 0,
+    y: 0,
+    z: 0,
+  },
+  direction: {
+    x: 0,
+    y: 0,
+    z: 0,
+  },
+};
+//
 var new_tl_row_template = {
   id: "#-1691484560194",
   uuid: "",
@@ -171,7 +246,7 @@ var new_tl_row_template = {
   type: "3D",
   selected: false,
   draggable: true,
-  loop_count:1,
+  loop_count: 1,
   style: {
     height: 24,
     fillColor: "#252526",
@@ -197,9 +272,7 @@ var new_tl_row_template = {
       selected: false,
       min: 0,
       max: 1000000,
-      attributes:{
-
-      }
+      attributes: {},
     },
     {
       uuid: "",
@@ -208,9 +281,7 @@ var new_tl_row_template = {
       selected: false,
       min: 0,
       max: 1000000,
-      attributes:{
-        
-      }
+      attributes: {},
     },
   ],
 };
@@ -366,16 +437,78 @@ export const store = defineStore("store", {
         }
       }
     },
+    refresh_tl_show() {
+      // 刷新tl
+      if (this.d_tl_object) {
+        this.d_tl_object.rescale();
+        this.d_tl_object.redraw();
+      }
+    },
     // 添加tl row
-    increment_of_tl_rows(wasm_item) {
+    increment_of_tl_rows(wasm_item, type) {
       if (wasm_item.tl_create != true) {
         var tl_node_insert = JSON.parse(JSON.stringify(new_tl_row_template));
         tl_node_insert.id = "#-" + new Date().getTime().toString();
         tl_node_insert.uuid = uuidv4_UpperCase();
-        tl_node_insert.type = "3D Model";
+
         tl_node_insert.title = wasm_item.name;
         tl_node_insert.bind_object.uuid = wasm_item.uuid;
         tl_node_insert.bind_object.name = wasm_item.name;
+        // type
+        if (type == "3D Model") {
+          tl_node_insert.type = "3D Model";
+          tl_node_insert.keyframes[0].attributes = JSON.parse(
+            JSON.stringify(tl_key_attributes_of_3D)
+          );
+          tl_node_insert.keyframes[1].attributes = JSON.parse(
+            JSON.stringify(tl_key_attributes_of_3D)
+          );
+        }
+        if (type == "Point Light") {
+          tl_node_insert.type = "Point Light";
+          tl_node_insert.keyframes[0].attributes = JSON.parse(
+            JSON.stringify(tl_key_attributes_of_PL)
+          );
+          tl_node_insert.keyframes[1].attributes = JSON.parse(
+            JSON.stringify(tl_key_attributes_of_PL)
+          );
+        }
+        if (type == "Spot Light") {
+          tl_node_insert.type = "Spot Light";
+          tl_node_insert.keyframes[0].attributes = JSON.parse(
+            JSON.stringify(tl_key_attributes_of_SL)
+          );
+          tl_node_insert.keyframes[1].attributes = JSON.parse(
+            JSON.stringify(tl_key_attributes_of_SL)
+          );
+        }
+        if (type == "Ambient Light") {
+          tl_node_insert.type = "Ambient Light";
+          tl_node_insert.keyframes[0].attributes = JSON.parse(
+            JSON.stringify(tl_key_attributes_of_AL)
+          );
+          tl_node_insert.keyframes[1].attributes = JSON.parse(
+            JSON.stringify(tl_key_attributes_of_AL)
+          );
+        }
+        if (type == "Directiona Light") {
+          tl_node_insert.type = "Directiona Light";
+          tl_node_insert.keyframes[0].attributes = JSON.parse(
+            JSON.stringify(tl_key_attributes_of_DL)
+          );
+          tl_node_insert.keyframes[1].attributes = JSON.parse(
+            JSON.stringify(tl_key_attributes_of_DL)
+          );
+        }
+        if (type == "Camera") {
+          tl_node_insert.type = "Camera";
+          tl_node_insert.keyframes[0].attributes = JSON.parse(
+            JSON.stringify(tl_key_attributes_of_Camera)
+          );
+          tl_node_insert.keyframes[1].attributes = JSON.parse(
+            JSON.stringify(tl_key_attributes_of_Camera)
+          );
+        }
         // 修改keys的uuid
         tl_node_insert.keyframes[0].uuid = uuidv4_UpperCase();
         tl_node_insert.keyframes[1].uuid = uuidv4_UpperCase();
@@ -386,11 +519,6 @@ export const store = defineStore("store", {
         //   刷新tl
         this.refresh_tl_show();
       }
-    },
-    refresh_tl_show() {
-      // 刷新tl
-      this.d_tl_object.rescale();
-      this.d_tl_object.redraw();
     },
     // 为选中的tl row 增加new key
     increment_of_select_row(keyTime) {
@@ -407,6 +535,39 @@ export const store = defineStore("store", {
       new_row_key.selected = false;
       new_row_key.min = 0;
       new_row_key.max = 1000000;
+      //   添加附加属性
+      if (this.d_tl_rows[this.d_tl_select_row_index].type == "3D Model") {
+        new_row_key.attributes = JSON.parse(
+          JSON.stringify(tl_key_attributes_of_3D)
+        );
+      }
+      if (this.d_tl_rows[this.d_tl_select_row_index].type == "Camera") {
+        new_row_key.attributes = JSON.parse(
+          JSON.stringify(tl_key_attributes_of_Camera)
+        );
+      }
+      if (this.d_tl_rows[this.d_tl_select_row_index].type == "Point Light") {
+        new_row_key.attributes = JSON.parse(
+          JSON.stringify(tl_key_attributes_of_PL)
+        );
+      }
+      if (this.d_tl_rows[this.d_tl_select_row_index].type == "Spot Light") {
+        new_row_key.attributes = JSON.parse(
+          JSON.stringify(tl_key_attributes_of_SL)
+        );
+      }
+      if (this.d_tl_rows[this.d_tl_select_row_index].type == "Ambient Light") {
+        new_row_key.attributes = JSON.parse(
+          JSON.stringify(tl_key_attributes_of_AL)
+        );
+      }
+      if (
+        this.d_tl_rows[this.d_tl_select_row_index].type == "Directiona Light"
+      ) {
+        new_row_key.attributes = JSON.parse(
+          JSON.stringify(tl_key_attributes_of_DL)
+        );
+      }
       //
       this.d_tl_rows[this.d_tl_select_row_index].keyframes.push(new_row_key);
       //   刷新tl

@@ -4,9 +4,11 @@ import { defineComponent, inject, watch } from 'vue'
 import { store } from '@/store/store'
 import { ColorPicker } from "vue3-colorpicker";
 import "vue3-colorpicker/style.css";
+import right_area_tl_attributes_edit_view from '@/components/right_area_tl_attributes_edit.vue'
 export default {
     components: {
-        ColorPicker
+        ColorPicker,
+        right_area_tl_attributes_edit_view
     },
     props: {
 
@@ -106,8 +108,8 @@ export default {
                                 v-model="store.current_tl_row_item_of_gather().bind_object.name"></v-text-field>
                             <!-- loop count -->
                             <v-text-field clearable label="Loop count" prepend-inner-icon="mdi mdi-recycle-variant"
-                                variant="solo" density="comfortable"
-                                class="fm_v_text_field" hide-details="true" type="number"
+                                variant="solo" density="comfortable" class="fm_v_text_field" hide-details="true"
+                                type="number"
                                 v-model.number="store.current_tl_row_item_of_gather().loop_count"></v-text-field>
                             <!-- style height -->
                             <v-text-field clearable label="Row height" prepend-inner-icon="mdi mdi-arrow-up-down-bold"
@@ -219,7 +221,8 @@ export default {
                                     :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>
                             </template>
                         </v-expansion-panel-title>
-                        <v-expansion-panel-text class="fm_expansion_panel_text">
+                        <v-expansion-panel-text class="fm_expansion_panel_text" v-if="store.d_tl_select_key_index != -1">
+                            <right_area_tl_attributes_edit_view></right_area_tl_attributes_edit_view>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                 </v-expansion-panels>

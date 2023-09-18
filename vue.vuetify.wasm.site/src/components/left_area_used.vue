@@ -25,7 +25,7 @@ export default {
     methods:
     {
         tl_node_add(obj) {
-            this.store.increment_of_tl_rows(obj)
+            this.store.increment_of_tl_rows(obj,'3D Model')
         },
         wasm_select_click(index) {
             this.store.d_wasm_select_edit_index = index;
