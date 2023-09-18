@@ -17,7 +17,7 @@ export default {
         loaded: false,
         loading: false,
         show: false,
-        panel: ['style', 'key', 'attributes'],
+        panel: ['key', 'attributes'],
         Easing_items: ['EASE_NONE', 'EASE_NONE'],
         store: store(),
         is_del_tl_key: false,

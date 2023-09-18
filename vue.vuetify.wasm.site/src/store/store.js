@@ -172,6 +172,14 @@ var tl_key_attributes_of_3D = {
     y: 0,
     z: 0,
   },
+  fillcolor: {
+    r: 0,
+    g: 0,
+    b: 0,
+    a: 0,
+    hexa: "#00000000",
+    rgba: "rgba(0, 0, 0, 0)",
+  },
 };
 //
 var tl_key_attributes_of_Camera = {
@@ -242,6 +250,7 @@ var new_tl_row_template = {
   bind_object: {
     uuid: "",
     name: "",
+    index_of_runtime_wasm_gather: -1, //预制动作执行前，遍历wasm对象，获取index，便于执行过程中定位
   },
   type: "3D",
   selected: false,
