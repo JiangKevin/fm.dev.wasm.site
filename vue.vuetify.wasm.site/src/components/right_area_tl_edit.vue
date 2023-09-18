@@ -106,28 +106,29 @@ export default {
                                 v-model="store.current_tl_row_item_of_gather().bind_object.name"></v-text-field>
                             <!-- style height -->
                             <v-text-field clearable label="Row height" prepend-inner-icon="mdi mdi-arrow-up-down-bold"
-                                variant="solo" @update:modelValue="store.current_tl_key_item_of_gather()"
-                                density="comfortable" class="fm_v_text_field" hide-details="true" type="number"
+                                variant="solo" @update:modelValue="store.refresh_tl_show()" density="comfortable"
+                                class="fm_v_text_field" hide-details="true" type="number"
                                 v-model.number="store.current_tl_row_item_of_gather().style.height"></v-text-field>
                             <!-- style groupsStyle height -->
                             <v-text-field clearable label="Group height" prepend-inner-icon="mdi mdi-menu-swap"
-                                variant="solo" @update:modelValue="store.current_tl_key_item_of_gather()"
-                                density="comfortable" class="fm_v_text_field" hide-details="true" type="number"
+                                variant="solo" @update:modelValue="store.refresh_tl_show()" density="comfortable"
+                                class="fm_v_text_field" hide-details="true" type="number"
                                 v-model.number="store.current_tl_row_item_of_gather().style.groupsStyle.height"></v-text-field>
                             <!-- shap -->
                             <v-combobox label="Shap of key" variant="solo" class="fm_v_combobox" hide-details="true"
                                 prepend-inner-icon="mdi mdi-rhombus-split"
                                 v-model="store.current_tl_row_item_of_gather().style.keyframesStyle.shape"
+                                @update:modelValue="store.refresh_tl_show()"
                                 :items="['rhomb', 'rect', 'circle']"></v-combobox>
                             <!-- style keyframesStyle width -->
                             <v-text-field clearable label="Shape width" prepend-inner-icon="mdi mdi-arrow-left-right"
-                                variant="solo" @update:modelValue="store.current_tl_key_item_of_gather()"
-                                density="comfortable" class="fm_v_text_field" hide-details="true" type="number"
+                                variant="solo" @update:modelValue="store.refresh_tl_show()" density="comfortable"
+                                class="fm_v_text_field" hide-details="true" type="number"
                                 v-model.number="store.current_tl_row_item_of_gather().style.keyframesStyle.width"></v-text-field>
                             <!-- style keyframesStyle height -->
                             <v-text-field clearable label="Shape height" prepend-inner-icon="mdi mdi-arrow-up-down"
-                                variant="solo" @update:modelValue="store.current_tl_key_item_of_gather()"
-                                density="comfortable" class="fm_v_text_field" hide-details="true" type="number"
+                                variant="solo" @update:modelValue="store.refresh_tl_show()" density="comfortable"
+                                class="fm_v_text_field" hide-details="true" type="number"
                                 v-model.number="store.current_tl_row_item_of_gather().style.keyframesStyle.height"></v-text-field>
 
                             <!-- row fillcolor -->
@@ -179,18 +180,18 @@ export default {
                                 v-model="store.current_tl_key_item_of_gather().uuid"></v-text-field>
                             <!-- val -->
                             <v-text-field clearable label="Val" prepend-inner-icon="mdi mdi-valve-closed" variant="solo"
-                                @update:modelValue="store.current_tl_key_item_of_gather()" density="comfortable"
-                                class="fm_v_text_field" hide-details="true" type="number"
+                                @update:modelValue="store.refresh_tl_show()" density="comfortable" class="fm_v_text_field"
+                                hide-details="true" type="number"
                                 v-model.number="store.current_tl_key_item_of_gather().val"></v-text-field>
                             <!-- min -->
                             <v-text-field clearable label="Min" prepend-inner-icon="mdi mdi-arrow-collapse-left"
-                                @update:modelValue="store.current_tl_key_item_of_gather()" variant="solo"
-                                density="comfortable" class="fm_v_text_field" hide-details="true" type="number"
+                                @update:modelValue="store.refresh_tl_show()" variant="solo" density="comfortable"
+                                class="fm_v_text_field" hide-details="true" type="number"
                                 v-model="store.current_tl_key_item_of_gather().min"></v-text-field>
                             <!-- max -->
                             <v-text-field clearable label="Max" prepend-inner-icon="mdi mdi-arrow-collapse-right"
-                                @update:modelValue="store.current_tl_key_item_of_gather()" variant="solo"
-                                density="comfortable" class="fm_v_text_field" hide-details="true" type="number"
+                                @update:modelValue="store.refresh_tl_show()" variant="solo" density="comfortable"
+                                class="fm_v_text_field" hide-details="true" type="number"
                                 v-model.number="store.current_tl_key_item_of_gather().max"></v-text-field>
                             <!-- Easing function -->
                             <v-combobox label="Easing function" variant="solo" class="fm_v_combobox" hide-details="true"

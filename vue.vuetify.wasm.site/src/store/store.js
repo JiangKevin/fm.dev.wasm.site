@@ -228,6 +228,7 @@ export const store = defineStore("store", {
       d_wasm_light_count: -1,
       d_wasm_light_index: -1,
       is_creat_light_for_wasm: false,
+      d_tl_object: undefined,
     };
   },
   /**getters */
@@ -375,7 +376,14 @@ export const store = defineStore("store", {
         this.d_tl_rows.push(tl_node_insert);
         //
         wasm_item.tl_create = true;
+        //   刷新tl
+        this.refresh_tl_show();
       }
+    },
+    refresh_tl_show() {
+      // 刷新tl
+      this.d_tl_object.rescale();
+      this.d_tl_object.redraw();
     },
     // 为选中的tl row 增加new key
     increment_of_select_row(keyTime) {
@@ -394,6 +402,8 @@ export const store = defineStore("store", {
       new_row_key.max = 1000000;
       //
       this.d_tl_rows[this.d_tl_select_row_index].keyframes.push(new_row_key);
+      //   刷新tl
+      this.refresh_tl_show();
     },
     // 返回当前tl row
     current_tl_row_item_of_gather() {
@@ -430,6 +440,8 @@ export const store = defineStore("store", {
         1
       );
       this.d_tl_select_key_index = -1;
+      //   刷新tl
+      this.refresh_tl_show();
     },
     del_current_tl_row_item_of_gather() {
       if (this.d_tl_rows.length == 0 || this.d_tl_select_row_index == -1) {
@@ -449,6 +461,8 @@ export const store = defineStore("store", {
       this.d_tl_rows.splice(this.d_tl_select_row_index, 1);
       this.d_tl_select_row_index = -1;
       this.d_tl_select_key_index = -1;
+      //   刷新tl
+      this.refresh_tl_show();
     },
     // wasm 全局设置期初
     configuration_creat() {

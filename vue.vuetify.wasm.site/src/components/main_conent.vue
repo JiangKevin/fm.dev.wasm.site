@@ -82,6 +82,8 @@ export default {
                 this.timeline_obj.setModel({ rows: this.store.d_tl_rows })
                 // 
                 this.iniPlayer()
+                // 赋值给store的全局tl对象
+                this.store.d_tl_object = this.timeline_obj
             }
             else {
                 if (this.timeline_obj) {
