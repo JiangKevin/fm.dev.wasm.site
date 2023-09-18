@@ -220,9 +220,11 @@ export default {
         <v-toolbar class="fm_toolbar_bottom" height="36">
             <v-spacer></v-spacer>
             <div class="fm_toolbar_contain">
-                <v-btn icon="mdi mdi-delete-forever" class="fm_toolbar_btn" :class="compute_of_key_del"></v-btn>
+                <v-btn icon="mdi mdi-delete-forever" class="fm_toolbar_btn" :class="compute_of_key_del"
+                    @click="is_del_tl_key = true">
+                </v-btn>
                 <!-- 删除当前key -->
-                <v-dialog v-model="is_del_tl_key" activator="parent" transition="dialog-bottom-transition" persistent
+                <v-dialog v-model="is_del_tl_key" transition="dialog-bottom-transition" persistent
                     v-if="store.d_tl_select_key_index != -1" width="auto">
                     <v-card class="fm_dialog_card" v-if="store.d_tl_select_key_index != -1">
                         <v-card-title>
@@ -252,11 +254,12 @@ export default {
                         </v-card-actions>
                     </v-card>
                 </v-dialog>
+
                 <v-btn icon="mdi mdi-delete" class="fm_toolbar_btn"
-                    :class="{ 'fm_btn_prohibit': this.store.d_tl_select_row_index == -1 }"></v-btn>
+                    :class="{ 'fm_btn_prohibit': this.store.d_tl_select_row_index == -1 }" @click="is_del_tl_row = true">
+                </v-btn>
                 <!-- 删除当前row -->
-                <v-dialog v-model="is_del_tl_row" activator="parent" transition="dialog-bottom-transition" persistent
-                    v-if="store.d_tl_select_row_index != -1" width="auto">
+                <v-dialog v-model="is_del_tl_row" persistent v-if="store.d_tl_select_row_index != -1" width="auto">
                     <v-card class="fm_dialog_card" v-if="store.d_tl_select_row_index != -1">
                         <v-card-title>
                             Are you sure you want to delete the current row item?
@@ -293,6 +296,7 @@ export default {
                         </v-card-actions>
                     </v-card>
                 </v-dialog>
+
             </div>
             <div class="fm_toolbar_contain">
                 <v-btn icon="mdi mdi-chevron-triple-down" class="fm_toolbar_btn" @click="all"></v-btn>
