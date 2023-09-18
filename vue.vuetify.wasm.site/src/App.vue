@@ -54,6 +54,9 @@ import loadJs from '@/components/wasm_load.vue'
 import main_View from '@/components/main_conent.vue';
 import left_area_view from '@/components/left_area.vue'
 import right_area_view from '@/components/right_area.vue'
+/** 用于调试 */
+var is_debug = true
+// 
 export default {
   // inject: ['is_debug'],
   components: {
@@ -74,7 +77,6 @@ export default {
   setup() {
     console.log('App setup')
     // 假如wasm的控制
-    let is_debug = false
     // 修改样式
     const theme = useTheme();
     theme.global.name.value = 'dark'

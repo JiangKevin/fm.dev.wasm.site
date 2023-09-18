@@ -5,6 +5,7 @@ import right_area_wasm_edit_view from '@/components/right_area_wasm_edit.vue'
 import right_area_tl_edit_view from '@/components/right_area_tl_edit.vue'
 import right_area_configuration_view from '@/components/right_area_configuration.vue'
 export default {
+    inject: ['is_debug'],
     components: {
         right_area_wasm_edit_view,
         right_area_tl_edit_view,

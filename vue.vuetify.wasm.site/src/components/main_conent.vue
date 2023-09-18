@@ -3,6 +3,7 @@
 import { store } from '@/store/store'
 
 export default {
+    inject: ['is_debug'],
     props: {
         view_left: {
             type: Boolean,

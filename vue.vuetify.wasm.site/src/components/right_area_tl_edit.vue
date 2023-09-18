@@ -6,6 +6,7 @@ import { ColorPicker } from "vue3-colorpicker";
 import "vue3-colorpicker/style.css";
 import right_area_tl_attributes_edit_3d_view from '@/components/right_area_tl_attributes_edit_of_3d.vue'
 export default {
+    inject: ['is_debug'],
     components: {
         ColorPicker,
         right_area_tl_attributes_edit_3d_view

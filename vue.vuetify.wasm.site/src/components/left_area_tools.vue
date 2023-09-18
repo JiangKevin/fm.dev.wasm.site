@@ -3,6 +3,7 @@
 import { defineComponent, inject, watch } from 'vue'
 import { store } from '@/store/store'
 export default {
+    inject: ['is_debug'],
     props: {
 
     },

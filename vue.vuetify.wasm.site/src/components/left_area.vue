@@ -4,6 +4,7 @@ import left_area_res_view from '@/components/left_area_res.vue'
 import left_area_used_view from '@/components/left_area_used.vue'
 import left_area_tools_view from '@/components/left_area_tools.vue'
 export default {
+    inject: ['is_debug'],
     components: {
         left_area_res_view,
         left_area_used_view,
