@@ -104,6 +104,11 @@ export default {
                             <v-text-field clearable label="Bind name" prepend-inner-icon="mdi mdi-qrcode" variant="solo"
                                 density="comfortable" class="fm_v_text_field" disabled hide-details="true"
                                 v-model="store.current_tl_row_item_of_gather().bind_object.name"></v-text-field>
+                            <!-- loop count -->
+                            <v-text-field clearable label="Loop count" prepend-inner-icon="mdi mdi-recycle-variant"
+                                variant="solo" density="comfortable"
+                                class="fm_v_text_field" hide-details="true" type="number"
+                                v-model.number="store.current_tl_row_item_of_gather().loop_count"></v-text-field>
                             <!-- style height -->
                             <v-text-field clearable label="Row height" prepend-inner-icon="mdi mdi-arrow-up-down-bold"
                                 variant="solo" @update:modelValue="store.refresh_tl_show()" density="comfortable"

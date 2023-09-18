@@ -171,6 +171,7 @@ var new_tl_row_template = {
   type: "3D",
   selected: false,
   draggable: true,
+  loop_count:1,
   style: {
     height: 24,
     fillColor: "#252526",
@@ -196,6 +197,9 @@ var new_tl_row_template = {
       selected: false,
       min: 0,
       max: 1000000,
+      attributes:{
+
+      }
     },
     {
       uuid: "",
@@ -204,6 +208,9 @@ var new_tl_row_template = {
       selected: false,
       min: 0,
       max: 1000000,
+      attributes:{
+        
+      }
     },
   ],
 };
