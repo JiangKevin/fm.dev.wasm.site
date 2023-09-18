@@ -106,11 +106,6 @@ var sortBy = function (filed, rev, primer) {
 // console.log(obj);
 
 //
-var obj = [
-  { b: "3", c: "c" },
-  { b: "1", c: "a" },
-  { b: "2", c: "b" },
-];
 /**
  * 测试数据，后期用request 替代
  */
@@ -600,7 +595,7 @@ export const store = defineStore("store", {
       new_row_key.selected = false;
       new_row_key.min = 0;
       new_row_key.max = 1000000;
-      //   添加附加属性
+      // 添加附加属性
       if (this.d_tl_rows[this.d_tl_select_row_index].type == "3D Model") {
         new_row_key.attributes = JSON.parse(
           JSON.stringify(tl_key_attributes_of_3D)
