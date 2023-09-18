@@ -434,8 +434,7 @@ export const store = defineStore("store", {
     del_current_tl_row_item_of_gather() {
       if (
         this.d_tl_rows.length == 0 ||
-        this.d_tl_select_row_index == -1 ||
-        this.d_tl_select_key_index == -1
+        this.d_tl_select_row_index == -1 
       ) {
         return "The current row cannot be deleted。";
       }
@@ -443,7 +442,7 @@ export const store = defineStore("store", {
       for (var i = 0; i < this.d_wasm_nodes_gather.length; i++) {
         if (
           this.d_wasm_nodes_gather[i].uuid ==
-          this.d_tl_rows[d_tl_select_row_index].bind_object.uuid
+          this.d_tl_rows[this.d_tl_select_row_index].bind_object.uuid
         ) {
           this.d_wasm_nodes_gather[i].tl_create = false;
           break;
