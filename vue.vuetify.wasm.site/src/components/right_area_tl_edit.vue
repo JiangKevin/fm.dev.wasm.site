@@ -15,23 +15,42 @@ export default {
         loaded: false,
         loading: false,
         show: false,
-        panel: ['row', 'key', 'attributes'],
+        panel: ['style', 'key', 'attributes'],
         Easing_items: ['EASE_NONE', 'EASE_NONE'],
-        store: store()
+        store: store(),
+        is_del_tl_key: false,
+        is_del_tl_row: false
     }),
     setup() {
 
     },
     computed: {
-
+        compute_of_key_del() {
+            if ((this.store.d_tl_select_row_index == -1) || (this.store.d_tl_select_key_index == -1)) {
+                return 'fm_btn_prohibit'
+            }
+            else {
+                if ((this.store.d_tl_rows[this.store.d_tl_select_row_index].keyframes.length == 2)) {
+                    return 'fm_btn_prohibit'
+                }
+            }
+        }
     },
     methods:
     {
         all() {
-            this.panel = ['row', 'key', 'attributes']
+            this.panel = ['style', 'key', 'attributes']
         },
         none() {
             this.panel = []
+        },
+        delete_tl_key() {
+            this.is_del_tl_key = false
+            this.store.del_current_tl_key_item_of_gather()
+        },
+        delete_tl_row() {
+            this.is_del_tl_row = false
+            this.store.del_current_tl_row_item_of_gather()
         },
     },
 
@@ -52,9 +71,9 @@ export default {
                 <!-- expansion-panels start -->
                 <v-expansion-panels class="fm_expansion_panels" v-model="panel" multiple>
                     <!-- panel row -->
-                    <v-expansion-panel value="row" class="fm_expansion_panel">
+                    <v-expansion-panel value="style" class="fm_expansion_panel">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
-                            <v-icon icon="mdi mdi-align-vertical-center"></v-icon><span>Basic</span>
+                            <v-icon icon="mdi mdi-align-vertical-center"></v-icon><span>Style</span>
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
                                     :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>
@@ -175,7 +194,7 @@ export default {
                                 v-model.number="store.current_tl_key_item_of_gather().max"></v-text-field>
                             <!-- Easing function -->
                             <v-combobox label="Easing function" variant="solo" class="fm_v_combobox" hide-details="true"
-                                prepend-inner-icon="mdi mdi-rhombus-split"
+                                prepend-inner-icon="mdi mdi-function-variant"
                                 v-model.number="store.current_tl_key_item_of_gather().animation"
                                 :items="Easing_items"></v-combobox>
                         </v-expansion-panel-text>
@@ -183,7 +202,7 @@ export default {
                     <!-- panel attributes -->
                     <v-expansion-panel value="attributes" class="fm_expansion_panel">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
-                            <v-icon icon="mdi mdi-heating-coil"></v-icon><span>Attributes</span>
+                            <v-icon icon="mdi mdi-heating-coil"></v-icon><span>Attributes of bind object</span>
                             <template v-slot:actions="{ expanded }">
                                 <v-icon :color="!expanded ? 'teal' : ''"
                                     :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>
@@ -200,6 +219,76 @@ export default {
         </v-card-text>
         <v-toolbar class="fm_toolbar_bottom" height="36">
             <v-spacer></v-spacer>
+            <div class="fm_toolbar_contain">
+                <v-btn icon="mdi mdi-delete-forever" class="fm_toolbar_btn" :class="compute_of_key_del"></v-btn>
+                <!-- 删除当前key -->
+                <v-dialog v-model="is_del_tl_key" activator="parent" transition="dialog-bottom-transition" persistent
+                    v-if="store.d_tl_select_key_index != -1" width="auto">
+                    <v-card class="fm_dialog_card" v-if="store.d_tl_select_key_index != -1">
+                        <v-card-title>
+                            Are you sure you want to delete the current key item?
+                        </v-card-title>
+                        <v-card-text>
+                            <span>The deleted timeline key information is: </span>
+                            <p></p>
+                            <v-icon icon="mdi mdi-barcode"></v-icon>
+                            <span> {{ " " + store.current_tl_key_item_of_gather().uuid }}</span>
+                            <p></p>
+                            <span> {{ " " + store.current_tl_key_item_of_gather().min }}</span>
+                            <v-icon icon="mdi mdi-arrow-collapse-left"></v-icon>
+                            <span> {{ " " + store.current_tl_key_item_of_gather().val }}</span>
+                            <v-icon icon="mdi mdi-arrow-collapse-right"></v-icon>
+                            <span> {{ " " + store.current_tl_key_item_of_gather().max }}</span>
+                            <p></p>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="green-darken-1" variant="text" @click="is_del_tl_key = false">
+                                Cancel
+                            </v-btn>
+                            <v-btn color="red" variant="text" @click="delete_tl_key">
+                                Ok
+                            </v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
+                <v-btn icon="mdi mdi-delete" class="fm_toolbar_btn"
+                    :class="{ 'fm_btn_prohibit': this.store.d_tl_select_row_index == -1 }"></v-btn>
+                <!-- 删除当前row -->
+                <v-dialog v-model="is_del_tl_row" activator="parent" transition="dialog-bottom-transition" persistent
+                    v-if="store.d_tl_select_row_index != -1" width="auto">
+                    <v-card class="fm_dialog_card" v-if="store.d_tl_select_row_index != -1">
+                        <v-card-title>
+                            Are you sure you want to delete the current row item?
+                        </v-card-title>
+                        <v-card-text>
+                            <span>The deleted timeline row information is: </span>
+                            <p></p>
+                            <v-icon icon="mdi mdi-barcode"></v-icon>
+                            <span> {{ " " + store.current_tl_row_item_of_gather().uuid }}</span>
+                            <p></p>
+                            <v-icon icon="mdi mdi-barcode"></v-icon>
+                            <span> {{ " " + store.current_tl_row_item_of_gather().id }}</span>
+                            <!-- <p></p>
+                            <span> {{ " " + store.current_tl_key_item_of_gather().min }}</span>
+                            <v-icon icon="mdi mdi-arrow-collapse-left"></v-icon>
+                            <span> {{ " " + store.current_tl_key_item_of_gather().val }}</span>
+                            <v-icon icon="mdi mdi-arrow-collapse-right"></v-icon>
+                            <span> {{ " " + store.current_tl_key_item_of_gather().max }}</span>
+                            <p></p> -->
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="green-darken-1" variant="text" @click="is_del_tl_row = false">
+                                Cancel
+                            </v-btn>
+                            <v-btn color="red" variant="text" @click="delete_tl_row">
+                                Ok
+                            </v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
+            </div>
             <div class="fm_toolbar_contain">
                 <v-btn icon="mdi mdi-chevron-triple-down" class="fm_toolbar_btn" @click="all"></v-btn>
                 <v-btn icon="mdi mdi-chevron-triple-up" class="fm_toolbar_btn" @click="none"></v-btn>

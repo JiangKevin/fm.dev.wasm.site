@@ -415,6 +415,35 @@ export const store = defineStore("store", {
         this.d_tl_select_key_index
       ];
     },
+    del_current_tl_key_item_of_gather() {
+      if (
+        this.d_tl_rows.length == 0 ||
+        this.d_tl_select_row_index == -1 ||
+        this.d_tl_select_key_index == -1 ||
+        this.d_tl_rows[this.d_tl_select_row_index].keyframes.length == 2
+      ) {
+        return "The current keyframe cannot be deleted。";
+      }
+      //
+      this.d_tl_rows[this.d_tl_select_row_index].keyframes.splice(
+        this.d_tl_select_key_index,
+        1
+      );
+      this.d_tl_select_key_index = -1;
+    },
+    del_current_tl_row_item_of_gather() {
+      if (
+        this.d_tl_rows.length == 0 ||
+        this.d_tl_select_row_index == -1 ||
+        this.d_tl_select_key_index == -1
+      ) {
+        return "The current row cannot be deleted。";
+      }
+      //
+      this.d_tl_rows.splice(this.d_tl_select_row_index, 1);
+      this.d_tl_select_row_index = -1;
+      this.d_tl_select_key_index = -1;
+    },
     // wasm 全局设置期初
     configuration_creat() {
       if (this.is_creat_light_for_wasm == false) {
