@@ -56,6 +56,28 @@ function update_color_for_bring_in(obj) {
     }
   }
 }
+
+// 实现json数组排序
+/*
+    @function     JsonSort 对json排序
+    @param        json     用来排序的json
+    @param        key      排序的键值
+*/
+function JsonSort(json, key) {
+  for (var j = 1, jl = json.length; j < jl; j++) {
+    var temp = json[j],
+      val = temp[key],
+      i = j - 1;
+    while (i >= 0 && json[i][key] > val) {
+      json[i + 1] = json[i];
+      i = i - 1;
+    }
+    json[i + 1] = temp;
+  }
+  //console.log(json);
+  return json;
+}
+
 /**
  * 测试数据，后期用request 替代
  */
@@ -871,6 +893,12 @@ export const store = defineStore("store", {
         this.d_wasm_light_index = 0;
       }
       //
+    },
+    // 排序tl keys 对象,用作预制工作执行前
+    sort_by_val_for_tl_keys(tl_row) {
+      var json = JsonSort(tl_row, "val");
+      console.log(json)
+      return json;
     },
     // 清楚所有数据
     clear_data() {
