@@ -160,9 +160,6 @@ export default {
       }
       this.compute_view_size()
     },
-    init_wasm() {
-      this.store.configuration_creat();
-    }
   },
 
   async created() {
@@ -175,7 +172,7 @@ export default {
     setTimeout(function () {
       that.store.configuration_creat();
       // console.log("setime out do")
-    }, 5000);
+    }, 1000);
   },
   async updated() {
     console.log('App updated')

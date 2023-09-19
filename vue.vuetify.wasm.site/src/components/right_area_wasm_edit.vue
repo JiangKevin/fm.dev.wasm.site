@@ -43,21 +43,35 @@ export default {
         // 更改名字
         change_name_for_wasm_item(uuid, name) {
             if (this.store.current_wasm_item_of_gather().tl_create) {
-                // console.log("From js: uuid= " + uuid + " name= " + name)
                 this.store.update_current_tl_row_bind_for_wasm(uuid, name)
+            }
+        },
+        change_location_for_wasm_item(wasm_item) {
+            if (this.is_debug) {
+                if (Module) {
+                    if (wasm_item.location.x == '') {
+                        wasm_item.location.x = 0
+                    }
+                    if (wasm_item.location.y == '') {
+                        wasm_item.location.y = 0
+                    }
+                    if (wasm_item.location.z == '') {
+                        wasm_item.location.z = 0
+                    }
+                    Module.cwrap("update_node_location", "", [
+                        "string",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                    ])(wasm_item.uuid, this.store.d_wasm_select_edit_index, wasm_item.location.x, wasm_item.location.y, wasm_item.location.z);
+                }
             }
         },
         // 
         delete_wasm_node(wasm_uuid) {
             this.is_del_wasm_item = false
-            this.store.delete_wasm_current_item()
-            // 
-            if (this.is_debug) {
-                if (Module) {
-                    /** */
-                    Module.cwrap('delete_node_from_scenes', '', ['string'])(wasm_uuid);
-                }
-            }
+            this.store.delete_wasm_current_item(wasm_uuid)
         }
     },
     async mounted() {
@@ -97,17 +111,20 @@ export default {
                                 @update:modelValue="change_name_for_wasm_item(store.current_wasm_item_of_gather().uuid, store.current_wasm_item_of_gather().name)"></v-text-field>
                             <!-- 坐标 -->
                             <v-text-field clearable label="X of Location" prepend-inner-icon="mdi mdi-map-marker-down"
+                                @update:focused="change_location_for_wasm_item(store.current_wasm_item_of_gather())"
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
                                 type="number" class="fm_v_text_field"
-                                v-model="store.current_wasm_item_of_gather().location.x"></v-text-field>
+                                v-model.number="store.current_wasm_item_of_gather().location.x"></v-text-field>
                             <v-text-field clearable label="Y of Location" prepend-inner-icon="mdi mdi-map-marker-down"
+                                @update:focused="change_location_for_wasm_item(store.current_wasm_item_of_gather())"
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
                                 type="number" class="fm_v_text_field"
-                                v-model="store.current_wasm_item_of_gather().location.y"></v-text-field>
+                                v-model.number="store.current_wasm_item_of_gather().location.y"></v-text-field>
                             <v-text-field clearable label="Z of Location" prepend-inner-icon="mdi mdi-map-marker-down"
+                                @update:focused="change_location_for_wasm_item(store.current_wasm_item_of_gather())"
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
                                 type="number" class="fm_v_text_field"
-                                v-model="store.current_wasm_item_of_gather().location.z"></v-text-field>
+                                v-model.number="store.current_wasm_item_of_gather().location.z"></v-text-field>
                             <!-- 角度 -->
                             <v-text-field clearable label="X of Direction" prepend-inner-icon="mdi mdi-flag-triangle"
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"

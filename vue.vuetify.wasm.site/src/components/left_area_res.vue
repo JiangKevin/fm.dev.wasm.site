@@ -161,17 +161,9 @@ export default {
         },
         async add_wasm_item_to_scenes(obj, index) {
             var uuid_str = uuidv4_UpperCase()
-            if (this.is_debug) {
-                if (Module) {
-                    console.log(uuid_str)
-                    /** */
-                    let importFlage = this.get_importFlag(obj)
-                    /** */
-                    Module.cwrap('add_node_to_scenes', '', ['string', 'string', 'number', 'number'])(obj.url, uuid_str, obj.isTexRepeat, importFlage)
-                }
-            }
+            let importFlage = this.get_importFlag(obj)
             /** */
-            this.store.increment_of_wasm_nodes_gather(uuid_str, obj)
+            this.store.increment_of_wasm_nodes_gather(uuid_str, obj,importFlage)
         }
     },
     mounted() {

@@ -132,21 +132,6 @@ var wasm_obj_resouse = [
       "Collection of best designed, highly customizable, & developer’s friendly VueJS Admin Dashboard Templates for your next project. Download these templates and boost your development skills.",
   },
   {
-    uuid: "E29DB78B-6EAA-49B2-806B-60B35C93357E",
-    name: "Industry Square of XJH",
-    is_expand: false,
-    type: "Square",
-    node_type: "fbx",
-    importFlags: ["aiProcess_Triangulate", "aiProcess_RemoveComponent"],
-    isTexRepeat: true,
-    creat_date: "2020-10-11",
-    icon: "",
-    img: "./static/res/img/img_lights.jpg",
-    url: "./data/original3D/ld-dmgc-1.fbx",
-    describe:
-      "Collection of best designed, highly customizable, & developer’s friendly VueJS Admin Dashboard Templates for your next project. Download these templates and boost your development skills.",
-  },
-  {
     uuid: "E29DB78B-6EAA-49B2-806B-60B35C933578",
     name: "Industry Square of BLG",
     is_expand: false,
@@ -387,26 +372,28 @@ export const store = defineStore("store", {
   /**actions */
   actions: {
     // 添加wasm nodes
-    increment_of_wasm_nodes_gather(uuid_str, obj) {
+    increment_of_wasm_nodes_gather(uuid_str, res_obj, importFlage) {
       var wasm_node_insert = {};
       this.d_wasm_add_index_increment += 1;
       wasm_node_insert.index_id =
         "#" + this.d_wasm_add_index_increment.toFixed(0).padStart(4, "0");
       wasm_node_insert.uuid = uuid_str;
-      wasm_node_insert.type = obj.type;
-      wasm_node_insert.isTexRepeat = obj.isTexRepeat;
-      wasm_node_insert.img = obj.img;
-      wasm_node_insert.url = obj.url;
-      wasm_node_insert.node_type = obj.node_type;
+      wasm_node_insert.type = res_obj.type;
+      wasm_node_insert.isTexRepeat = res_obj.isTexRepeat;
+      wasm_node_insert.img = res_obj.img;
+      wasm_node_insert.url = res_obj.url;
+      wasm_node_insert.node_type = res_obj.node_type;
       wasm_node_insert.node_class = "3D Node";
-      wasm_node_insert.name = obj.name;
+      wasm_node_insert.name = res_obj.name;
       wasm_node_insert.quote = false;
       wasm_node_insert.referenceds = [];
       wasm_node_insert.selected = false;
       wasm_node_insert.creat_date = timestampToTime();
-      wasm_node_insert.icon = obj.icon;
+      wasm_node_insert.icon = res_obj.icon;
       wasm_node_insert.describe = "";
       wasm_node_insert.tl_create = false;
+      wasm_node_insert.importFlage = importFlage;
+    //   wasm_node_insert.wasm_index = this.d_wasm_nodes_gather.size();
       // POINT/WIREFRAME/FACE
       wasm_node_insert.draw_model = ["FACE", "WIREFRAME"];
       /** 位置 */
@@ -432,10 +419,14 @@ export const store = defineStore("store", {
       wasm_node_insert.fillcolor = i_fillcolor;
       /** */
       this.d_wasm_nodes_gather.push(wasm_node_insert);
-      /**第一次带入module */
-      if (this.d_wasm_module == undefined && Module != undefined) {
-        this.d_wasm_module = Module;
-        console.log("From js: store wasm module created");
+      /** wasm insert */
+      if (this.d_wasm_module) {
+        this.d_wasm_module.cwrap("add_node_to_scenes", "", [
+          "string",
+          "string",
+          "number",
+          "number",
+        ])(res_obj.url, uuid_str, res_obj.isTexRepeat, importFlage);
       }
     },
     // 返回当前编辑的wasm node
@@ -454,9 +445,7 @@ export const store = defineStore("store", {
       update_color_for_bring_in(obj);
     },
     // 删除当前的wasm 项
-    delete_wasm_current_item() {
-      console.log(this.d_wasm_nodes_gather[this.d_wasm_select_edit_index].uuid);
-
+    delete_wasm_current_item(wasm_uuid) {
       if (this.d_wasm_select_edit_index != -1) {
         // 删除 tl 的绑定对应项
         if (this.d_wasm_nodes_gather[this.d_wasm_select_edit_index].tl_create) {
@@ -474,7 +463,12 @@ export const store = defineStore("store", {
         }
         // 删除wasm nodes 对应项
         this.d_wasm_nodes_gather.splice(this.d_wasm_select_edit_index, 1);
-
+        // 删除wasm moudel
+        if (this.d_wasm_module) {
+          this.d_wasm_module.cwrap("delete_node_from_scenes", "", ["string"])(
+            wasm_uuid
+          );
+        }
         // 重置选中项
         this.d_wasm_select_edit_index = -1;
       }
