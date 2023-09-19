@@ -139,7 +139,7 @@ export default {
         }
       }
     },
-    cc() {
+    module_loaded() {
       console.log("From js app")
     },
     /** 控制左侧区域显示与否 */
@@ -159,6 +159,9 @@ export default {
         this.right_width = 48
       }
       this.compute_view_size()
+    },
+    init_wasm() {
+      this.store.configuration_creat();
     }
   },
 
@@ -168,16 +171,17 @@ export default {
   async mounted() {
     console.log('App mounted')
     // 期初配置
-    setTimeout(this.store.configuration_creat(), 5000);
+    var that = this;
+    setTimeout(function () {
+      that.store.configuration_creat();
+      // console.log("setime out do")
+    }, 5000);
   },
   async updated() {
     console.log('App updated')
   },
   async activated() {
     console.log('App activated')
-  },
-  async serverPrefetch() {
-    console.log('App serverPrefetch')
   },
   async unmounted() {
     console.log('App unmounted')

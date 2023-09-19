@@ -11,3 +11,5 @@ const app = createApp(App);
 registerPlugins(app);
 
 app.mount("#app");
+console.log("From main.js start");
+// console.log(app.config);

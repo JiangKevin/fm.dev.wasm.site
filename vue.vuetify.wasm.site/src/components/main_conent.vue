@@ -233,7 +233,21 @@ export default {
                 }
             }, this.playStep)
         },
+        stanby() {
+            /**获取wasm index */
+            if (this.is_debug) {
+                if (Module) {
+                    /** */
+                    var json_str_of_nodeindex = Module._get_index_of_nodes_from_scenes()
+                    console.log(UTF8ToString(json_str_of_nodeindex));
+                    Module._free(json_str_of_nodeindex)
+                }
+            }
+        },
         play() {
+            // 
+            this.stanby()
+            // 
             this.playing = true
             if (this.timeline_obj) {
                 this.moveTimelineIntoTheBounds()
@@ -268,24 +282,19 @@ export default {
         }
     },
     async created() {
-
+        console.log('main conent created')
     },
     async mounted() {
-        console.log('main mounted')
-
+        console.log('main conent mounted')
     },
     async updated() {
-        console.log('main updated')
+        console.log('main conent updated')
     },
     async activated() {
-        console.log('main activated')
+        console.log('main conent activated')
     },
-    async serverPrefetch() {
-        console.log('main serverPrefetch')
-    },
-
     async unmounted() {
-        console.log('main unmounted')
+        console.log('main conent unmounted')
     }
 
 }

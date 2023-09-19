@@ -1,4 +1,5 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
+// import Module from "static/js/hmi_editer_web";
 import { reactive, ref } from "vue";
 // uuid生成函数
 function uuidv4_UpperCase() {
@@ -367,6 +368,7 @@ export const store = defineStore("store", {
       d_wasm_light_index: -1,
       is_creat_light_for_wasm: false,
       d_tl_object: undefined,
+      d_wasm_module: undefined,
     };
   },
   /**getters */
@@ -430,6 +432,11 @@ export const store = defineStore("store", {
       wasm_node_insert.fillcolor = i_fillcolor;
       /** */
       this.d_wasm_nodes_gather.push(wasm_node_insert);
+      /**第一次带入module */
+      if (this.d_wasm_module == undefined && Module != undefined) {
+        this.d_wasm_module = Module;
+        console.log("From js: store wasm module created");
+      }
     },
     // 返回当前编辑的wasm node
     current_wasm_item_of_gather() {
@@ -953,6 +960,23 @@ export const store = defineStore("store", {
         this.d_wasm_light_index = 0;
       }
       //
+      /**第一次带入module */
+      if (this.d_wasm_module == undefined && Module != undefined) {
+        this.d_wasm_module = Module;
+        console.log("From js: store wasm module created");
+      }
+      //  uuids拼接
+      if (this.d_wasm_module) {
+        var str_uuids =
+          p_light.uuid +
+          ":" +
+          s_light.uuid +
+          ":" +
+          a_light.uuid +
+          ":" +
+          d_light.uuid;
+        this.d_wasm_module.cwrap("beginning_light", "", ["string"])(str_uuids);
+      }
     },
     // 排序tl keys 对象,用作预制工作执行前
     sort_by_val_for_tl_keys(tl_row_keys) {

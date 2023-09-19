@@ -168,7 +168,6 @@ export default {
                     let importFlage = this.get_importFlag(obj)
                     /** */
                     Module.cwrap('add_node_to_scenes', '', ['string', 'string', 'number', 'number'])(obj.url, uuid_str, obj.isTexRepeat, importFlage)
-
                 }
             }
             /** */

@@ -48,9 +48,16 @@ export default {
             }
         },
         // 
-        delete_wasm_node(obj) {
+        delete_wasm_node(wasm_uuid) {
             this.is_del_wasm_item = false
             this.store.delete_wasm_current_item()
+            // 
+            if (this.is_debug) {
+                if (Module) {
+                    /** */
+                    Module.cwrap('delete_node_from_scenes', '', ['string'])(wasm_uuid);
+                }
+            }
         }
     },
     async mounted() {
@@ -219,7 +226,8 @@ export default {
                             <v-btn color="green-darken-1" variant="text" @click="is_del_wasm_item = false">
                                 Cancel
                             </v-btn>
-                            <v-btn color="red" variant="text" @click="delete_wasm_node">
+                            <v-btn color="red" variant="text"
+                                @click="delete_wasm_node(store.current_wasm_item_of_gather().uuid)">
                                 Ok
                             </v-btn>
                         </v-card-actions>
