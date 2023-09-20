@@ -265,7 +265,31 @@ export default {
         },
         change_keyboard_kes_for_config() { },
         transform_code_to_key(code) {
-            return String.fromCharCode(code)
+            var rt = ''
+            if (code <= 127) {
+                return String.fromCharCode(code)
+            }
+            else {
+                switch (code) {
+                    case 57356:
+                        rt = '◀'
+                        break;
+                    case 57358:
+                        rt = '▶'
+                        break;
+                    case 57357:
+                        rt = '▲'
+                        break;
+                    case 57359:
+                        rt = '▼'
+                        break;
+                    default:
+                        rt = String.fromCodePoint(code)
+                        break;
+                }
+                return rt
+
+            }
         },
     },
     async mounted() {
