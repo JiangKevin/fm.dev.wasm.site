@@ -820,6 +820,28 @@ input::-webkit-inner-spin-button {
   > .v-input__control
   > .v-field
   > .v-field__field
+  > .v-text-field__suffix {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  padding-right: 0px !important;
+  border-bottom: var(--border_nomal);
+  height: 46px !important;
+  min-height: 46px !important;
+  max-height: 46px !important;
+}
+.fm_v_text_field
+  > .v-input__control
+  > .v-field
+  > .v-field__field
+  > .v-text-field__suffix
+  > .v-text-field__suffix__text {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+.fm_v_text_field
+  > .v-input__control
+  > .v-field
+  > .v-field__field
   > .v-field__input {
   font-size: 12px !important;
   border-bottom: var(--border_nomal);
