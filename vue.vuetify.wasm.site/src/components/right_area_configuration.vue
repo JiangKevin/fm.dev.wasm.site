@@ -103,6 +103,64 @@ export default {
                 }
             }
         },
+        change_spot_conical_for_light_item(light_item, index) {
+            if (this.is_debug) {
+                if (Module) {
+                    if (light_item.spotCutOff == '') {
+                        light_item.spotCutOff = 0
+                    }
+                    if (light_item.exponent == '') {
+                        light_item.exponent = 0
+                    }
+                    Module.cwrap("update_light_spot_conical", "", [
+                        "string",
+                        "number",
+                        "number",
+                        "number",
+                    ])(light_item.uuid, index, light_item.spotCutOff, light_item.exponent,);
+                }
+            }
+        },
+        change_ambient_surface_for_light_item(light_item, index) {
+            if (this.is_debug) {
+                if (Module) {
+                    if (light_item.surface_w == '') {
+                        light_item.surface_w = 0
+                    }
+                    if (light_item.surface_h == '') {
+                        light_item.surface_h = 0
+                    }
+                    Module.cwrap("update_light_ambient_surface", "", [
+                        "string",
+                        "number",
+                        "number",
+                        "number",
+                    ])(light_item.uuid, index, light_item.surface_w, light_item.surface_h,);
+                }
+            }
+        },
+        change_use_for_light_item(light_item, index) {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_light_use", "", [
+                        "string",
+                        "number",
+                        "number",
+                    ])(light_item.uuid, index, light_item.enable,);
+                }
+            }
+        },
+        change_legend_for_light_item(light_item, index) {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_light_legend", "", [
+                        "string",
+                        "number",
+                        "number",
+                    ])(light_item.uuid, index, light_item.legend,);
+                }
+            }
+        },
     },
     async mounted() {
 
@@ -185,18 +243,22 @@ export default {
                             <!-- 只有运动光源具备的特性 -->
                             <v-text-field clearable label="SpotCutOff" prepend-inner-icon="mdi mdi-angle-obtuse"
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
-                                type="number" class="fm_v_text_field" v-model="light_config.spotCutOff"
+                                @update:focused="change_spot_conical_for_light_item(light_config, index)" type="number"
+                                class="fm_v_text_field" v-model="light_config.spotCutOff"
                                 v-if="light_config.type == 'SPOT'"></v-text-field>
                             <v-text-field clearable label="Exponent" prepend-inner-icon="mdi mdi-lightning-bolt-outline"
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
-                                type="number" class="fm_v_text_field" v-model="light_config.exponent"
+                                @update:focused="change_spot_conical_for_light_item(light_config, index)" type="number"
+                                class="fm_v_text_field" v-model="light_config.exponent"
                                 v-if="light_config.type == 'SPOT'"></v-text-field>
                             <!-- 只有环境光源具备的特性 -->
                             <v-text-field clearable label="Surface_w" prepend-inner-icon="mdi mdi-arrow-expand-horizontal"
+                                @update:focused="change_ambient_surface_for_light_item(light_config, index)"
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
                                 type="number" class="fm_v_text_field" v-model="light_config.surface_w"
                                 v-if="light_config.type == 'AMBIENT'"></v-text-field>
                             <v-text-field clearable label="Surface_h" prepend-inner-icon="mdi mdi-arrow-expand-vertical"
+                                @update:focused="change_ambient_surface_for_light_item(light_config, index)"
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
                                 type="number" class="fm_v_text_field" v-model="light_config.surface_h"
                                 v-if="light_config.type == 'AMBIENT'"></v-text-field>
@@ -227,11 +289,12 @@ export default {
                             <!-- 启用与否 -->
                             <!-- <v-divider :thickness="1" class="border-opacity-75" color="#511acb"></v-divider> -->
                             <v-switch v-model="light_config.enable" :value=true :true-value=true hide-details="true"
-                                class="fm_switch" label="Enable light" color="red-darken-3"
+                                @update:modelValue="change_use_for_light_item(light_config, index)" class="fm_switch"
+                                label="Enable light" color="red-darken-3"
                                 true-icon="mdi mdi-white-balance-sunny"></v-switch>
                             <v-switch v-model="light_config.legend" :value=true :true-value=true hide-details="true"
-                                class="fm_switch" label="Legend show" color="red-darken-3"
-                                true-icon="mdi mdi-pin"></v-switch>
+                                @update:modelValue="change_legend_for_light_item(light_config, index)" class="fm_switch"
+                                label="Legend show" color="red-darken-3" true-icon="mdi mdi-pin"></v-switch>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
 
