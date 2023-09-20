@@ -358,6 +358,7 @@ export default {
                             </template>
                         </v-expansion-panel-title>
                         <v-expansion-panel-text class="fm_expansion_panel_text">
+                            
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                     <!-- panel other -->

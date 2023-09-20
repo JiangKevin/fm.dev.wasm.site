@@ -393,7 +393,7 @@ export const store = defineStore("store", {
       wasm_node_insert.describe = "";
       wasm_node_insert.tl_create = false;
       wasm_node_insert.importFlage = importFlage;
-    //   wasm_node_insert.wasm_index = this.d_wasm_nodes_gather.size();
+      //   wasm_node_insert.wasm_index = this.d_wasm_nodes_gather.size();
       // POINT/WIREFRAME/FACE
       wasm_node_insert.draw_model = ["FACE", "WIREFRAME"];
       /** 位置 */
@@ -406,7 +406,7 @@ export const store = defineStore("store", {
       var i_direction = {};
       i_direction.x = 0;
       i_direction.y = 0;
-      i_direction.z = 0;
+      i_direction.z = 180;
       wasm_node_insert.direction = i_direction;
       /** 颜色 */
       var i_fillcolor = {};
@@ -952,6 +952,32 @@ export const store = defineStore("store", {
         /** */
         this.d_wasm_light_count = 4;
         this.d_wasm_light_index = 0;
+
+        /**期初camera */
+        var camera = {};
+        camera.uuid = uuidv4_UpperCase();
+        camera.name = "main camera";
+        // 位置
+        var cam_location = {};
+        cam_location.x = 0;
+        cam_location.y = 0;
+        cam_location.z = 100;
+        camera.location = cam_location;
+        // 方位
+        var cam_direction = {};
+        cam_direction.x = 0;
+        cam_direction.y = 0;
+        cam_direction.z = 0;
+        camera.direction = cam_direction;
+        //
+        camera.nearClip = 0;
+        camera.farClip = 10000;
+        camera.inertia = false;
+        camera.translationKey = "v";
+        camera.mouseInput = true;
+        camera.mouseMiddleButton = true;
+        //
+        this.config_of_camera = camera;
       }
       //
       /**第一次带入module */
@@ -970,6 +996,7 @@ export const store = defineStore("store", {
           ":" +
           d_light.uuid;
         this.d_wasm_module.cwrap("beginning_light", "", ["string"])(str_uuids);
+        this.d_wasm_module.cwrap("beginning_camera", "", [""])();
       }
     },
     // 排序tl keys 对象,用作预制工作执行前
