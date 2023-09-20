@@ -983,6 +983,19 @@ export const store = defineStore("store", {
         /**期初others */
         var others = {};
         others.is_debug = true;
+        others.is_lua = false;
+        others.is_native_ui = false;
+
+        var drive_keys = {};
+        drive_keys.i_left_key = 97;
+        drive_keys.i_right_key = 100;
+        drive_keys.i_forward_key = 119;
+        drive_keys.i_backward_key = 115;
+        drive_keys.t_left_key = 57356;
+        drive_keys.t_right_key = 57358;
+        drive_keys.z_up_key = 57357;
+        drive_keys.z_down_key = 57359;
+        others.drive_keys = drive_keys;
         //
         this.config_of_others = others;
       }

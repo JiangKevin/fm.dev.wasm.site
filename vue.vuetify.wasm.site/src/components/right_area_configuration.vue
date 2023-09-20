@@ -28,7 +28,7 @@ export default {
     methods:
     {
         all() {
-            this.panel = ['Point light', 'Spot light', 'Ambient light', 'Directiona light', 'camera', 'others']
+            this.panel = ['Point light', 'Spot light', 'Ambient light', 'Directiona light', 'camera', 'keyboard', 'others']
         },
         none() {
             this.panel = []
@@ -245,6 +245,24 @@ export default {
                 }
             }
         },
+        change_native_ui_show_for_config_others() {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_switch_native_ui_show", "", [
+                        "number"
+                    ])(this.store.config_of_others.is_native_ui);
+                }
+            }
+        },
+        change_lua_support_for_config_others() {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_switch_lua", "", [
+                        "number"
+                    ])(this.store.config_of_others.is_lua);
+                }
+            }
+        },
     },
     async mounted() {
 
@@ -374,11 +392,12 @@ export default {
                             <!-- <v-divider :thickness="1" class="border-opacity-75" color="#511acb"></v-divider> -->
                             <v-switch v-model="light_config.enable" :value=true :true-value=true hide-details="true"
                                 @update:modelValue="change_use_for_light_item(light_config, index)" class="fm_switch"
-                                label="Enable light" color="red-darken-3"
-                                true-icon="mdi mdi-white-balance-sunny" false-icon="mdi mdi-weather-sunny-off"></v-switch>
+                                label="Enable light" color="red-darken-3" true-icon="mdi mdi-white-balance-sunny"
+                                false-icon="mdi mdi-weather-sunny-off"></v-switch>
                             <v-switch v-model="light_config.legend" :value=true :true-value=true hide-details="true"
                                 @update:modelValue="change_legend_for_light_item(light_config, index)" class="fm_switch"
-                                label="Legend show" color="red-darken-3" true-icon="mdi mdi-pin" false-icon="mdi mdi-pin-off"></v-switch>
+                                label="Legend show" color="red-darken-3" true-icon="mdi mdi-pin"
+                                false-icon="mdi mdi-pin-off"></v-switch>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
 
@@ -406,6 +425,19 @@ export default {
                                 false-icon="mdi mdi-mouse-variant-off"></v-switch>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
+                    <!-- panel keyboard -->
+                    <v-expansion-panel value="keyboard" class="fm_expansion_panel">
+                        <v-expansion-panel-title class="fm_expansion_panel_title">
+                            <v-icon icon="mdi mdi-keyboard"></v-icon><span>Keyboard key settings</span>
+                            <template v-slot:actions="{ expanded }">
+                                <v-icon :color="!expanded ? 'teal' : ''"
+                                    :icon="expanded ? 'mdi mdi-chevron-triple-down' : 'mdi mdi-chevron-triple-up'"></v-icon>
+                            </template>
+                        </v-expansion-panel-title>
+                        <v-expansion-panel-text class="fm_expansion_panel_text">
+
+                        </v-expansion-panel-text>
+                    </v-expansion-panel>
                     <!-- panel other -->
                     <v-expansion-panel value="others" class="fm_expansion_panel">
                         <v-expansion-panel-title class="fm_expansion_panel_title">
@@ -420,6 +452,14 @@ export default {
                                 hide-details="true" @update:modelValue="change_debug_show_for_config_others()"
                                 class="fm_switch" label="Show debug information" color="red-darken-3"
                                 true-icon="mdi mdi-bug-play-outline" false-icon="mdi mdi-bug-pause-outline"></v-switch>
+                            <v-switch v-model="store.config_of_others.is_native_ui" :value=true :true-value=true
+                                hide-details="true" @update:modelValue="change_native_ui_show_for_config_others()"
+                                class="fm_switch" label="Show native ui" color="red-darken-3" true-icon="mdi mdi-eye-plus"
+                                false-icon="mdi mdi-eye-off"></v-switch>
+                            <v-switch v-model="store.config_of_others.is_lua" :value=true :true-value=true
+                                hide-details="true" @update:modelValue="change_lua_support_for_config_others()"
+                                class="fm_switch" label="Lua support" color="red-darken-3" true-icon="mdi mdi-language-lua"
+                                false-icon="mdi mdi-circle-off-outline"></v-switch>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                 </v-expansion-panels>

@@ -18,12 +18,24 @@ export default defineConfig({
       autoImport: true,
     }),
   ],
+  build: {
+    chunkSizeWarningLimit: 1500,
+  },
   define: { "process.env": {} },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
-    extensions: [".js", ".json", ".jsx", ".mjs", ".ts", ".tsx", ".vue",".data"],
+    extensions: [
+      ".js",
+      ".json",
+      ".jsx",
+      ".mjs",
+      ".ts",
+      ".tsx",
+      ".vue",
+      ".data",
+    ],
   },
   server: {
     port: 3000,
