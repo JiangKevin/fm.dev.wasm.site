@@ -32,6 +32,7 @@ export default {
             var configuration = {}
             configuration.lights = JSON.parse(JSON.stringify(this.store.config_of_lights));
             configuration.camera = JSON.parse(JSON.stringify(this.store.config_of_camera));
+            configuration.others = JSON.parse(JSON.stringify(this.store.config_of_others));
             model.configuration = configuration
             // 打印到控制台
             console.log(JSON.stringify(model))
