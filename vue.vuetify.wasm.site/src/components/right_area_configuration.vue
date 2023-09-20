@@ -209,6 +209,42 @@ export default {
                 }
             }
         },
+        change_mouseMiddleButton_for_config_camera() {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_camera_mouseMiddleButton", "", [
+                        "number"
+                    ])(this.store.config_of_camera.mouseMiddleButton);
+                }
+            }
+        },
+        change_mouseInput_for_config_camera() {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_camera_mouseInput", "", [
+                        "number"
+                    ])(this.store.config_of_camera.mouseInput);
+                }
+            }
+        },
+        change_inertia_for_config_camera() {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_camera_inertia", "", [
+                        "number"
+                    ])(this.store.config_of_camera.inertia);
+                }
+            }
+        },
+        change_debug_show_for_config_others() {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_debug_info_show", "", [
+                        "number"
+                    ])(this.store.config_of_others.is_debug);
+                }
+            }
+        },
     },
     async mounted() {
 
@@ -339,10 +375,10 @@ export default {
                             <v-switch v-model="light_config.enable" :value=true :true-value=true hide-details="true"
                                 @update:modelValue="change_use_for_light_item(light_config, index)" class="fm_switch"
                                 label="Enable light" color="red-darken-3"
-                                true-icon="mdi mdi-white-balance-sunny"></v-switch>
+                                true-icon="mdi mdi-white-balance-sunny" false-icon="mdi mdi-weather-sunny-off"></v-switch>
                             <v-switch v-model="light_config.legend" :value=true :true-value=true hide-details="true"
                                 @update:modelValue="change_legend_for_light_item(light_config, index)" class="fm_switch"
-                                label="Legend show" color="red-darken-3" true-icon="mdi mdi-pin"></v-switch>
+                                label="Legend show" color="red-darken-3" true-icon="mdi mdi-pin" false-icon="mdi mdi-pin-off"></v-switch>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
 
@@ -358,7 +394,16 @@ export default {
                             </template>
                         </v-expansion-panel-title>
                         <v-expansion-panel-text class="fm_expansion_panel_text">
-                            
+                            <!-- inertia -->
+                            <v-switch v-model="store.config_of_camera.inertia" :value=true :true-value=true
+                                hide-details="true" @update:modelValue="change_inertia_for_config_camera()"
+                                class="fm_switch" label="Enable inertia" color="red-darken-3"
+                                true-icon="mdi mdi-star-shooting" false-icon="mdi mdi-star-settings"></v-switch>
+                            <!-- mouseInput -->
+                            <v-switch v-model="store.config_of_camera.mouseInput" :value=true :true-value=true
+                                hide-details="true" @update:modelValue="change_mouseInput_for_config_camera()"
+                                class="fm_switch" label="Enable mouseInput" color="red-darken-3" true-icon="mdi mdi-mouse"
+                                false-icon="mdi mdi-mouse-variant-off"></v-switch>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                     <!-- panel other -->
@@ -371,6 +416,10 @@ export default {
                             </template>
                         </v-expansion-panel-title>
                         <v-expansion-panel-text class="fm_expansion_panel_text">
+                            <v-switch v-model="store.config_of_others.is_debug" :value=true :true-value=true
+                                hide-details="true" @update:modelValue="change_debug_show_for_config_others()"
+                                class="fm_switch" label="Show debug information" color="red-darken-3"
+                                true-icon="mdi mdi-bug-play-outline" false-icon="mdi mdi-bug-pause-outline"></v-switch>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                 </v-expansion-panels>

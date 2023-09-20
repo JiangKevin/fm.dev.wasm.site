@@ -341,6 +341,7 @@ export const store = defineStore("store", {
     return {
       config_of_lights: reactive([]),
       config_of_camera: reactive([]),
+      config_of_others: reactive([]),
       d_wasm_nodes_gather: reactive([]),
       d_wasm_nodes_gather_for_bind: reactive([]),
       d_tl_rows: reactive([]),
@@ -978,6 +979,12 @@ export const store = defineStore("store", {
         camera.mouseMiddleButton = true;
         //
         this.config_of_camera = camera;
+
+        /**期初others */
+        var others = {};
+        others.is_debug = true;
+        //
+        this.config_of_others = others;
       }
       //
       /**第一次带入module */
