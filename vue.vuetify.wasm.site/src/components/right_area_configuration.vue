@@ -16,7 +16,7 @@ export default {
         loaded: false,
         loading: false,
         show: false,
-        panel: ['Point light', 'Spot light', 'Ambient light', 'Directiona light', 'camera', 'others'],
+        panel: ['Point light'],
         store: store(),
     }),
     setup() {
@@ -36,6 +36,72 @@ export default {
         change_color_attributes(obj) {
             this.store.change_color_for_bring_in(obj);
 
+        },
+        change_location_for_light_item(light_item, index) {
+            if (this.is_debug) {
+                if (Module) {
+                    if (light_item.location.x == '') {
+                        light_item.location.x = 0
+                    }
+                    if (light_item.location.y == '') {
+                        light_item.location.y = 0
+                    }
+                    if (light_item.location.z == '') {
+                        light_item.location.z = 0
+                    }
+                    Module.cwrap("update_light_location", "", [
+                        "string",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                    ])(light_item.uuid, index, light_item.location.x, light_item.location.y, light_item.location.z);
+                }
+            }
+        },
+        change_direction_for_light_item(light_item, index) {
+            if (this.is_debug) {
+                if (Module) {
+                    if (light_item.direction.x == '') {
+                        light_item.direction.x = 0
+                    }
+                    if (light_item.direction.y == '') {
+                        light_item.direction.y = 0
+                    }
+                    if (light_item.direction.z == '') {
+                        light_item.direction.z = 0
+                    }
+                    Module.cwrap("update_light_direction", "", [
+                        "string",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                    ])(light_item.uuid, index, light_item.direction.x, light_item.direction.y, light_item.direction.z);
+                }
+            }
+        },
+        change_attenuation_for_light_item(light_item, index) {
+            if (this.is_debug) {
+                if (Module) {
+                    if (light_item.constant == '') {
+                        light_item.constant = 0
+                    }
+                    if (light_item.linear == '') {
+                        light_item.linear = 0
+                    }
+                    if (light_item.quadratic == '') {
+                        light_item.quadratic = 0
+                    }
+                    Module.cwrap("update_light_attenuation", "", [
+                        "string",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                    ])(light_item.uuid, index, light_item.constant, light_item.linear, light_item.quadratic);
+                }
+            }
         },
     },
     async mounted() {
@@ -76,35 +142,43 @@ export default {
 
                             <!-- 坐标 -->
                             <v-text-field clearable label="X of Location" prepend-inner-icon="mdi mdi-map-marker-down"
-                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
-                                type="number" class="fm_v_text_field" v-model="light_config.location.x"></v-text-field>
+                                @update:focused="change_location_for_light_item(light_config, index)" hide-details="true"
+                                clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" type="number"
+                                class="fm_v_text_field" v-model="light_config.location.x"></v-text-field>
                             <v-text-field clearable label="Y of Location" prepend-inner-icon="mdi mdi-map-marker-down"
-                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
-                                type="number" class="fm_v_text_field" v-model="light_config.location.y"></v-text-field>
+                                @update:focused="change_location_for_light_item(light_config, index)" hide-details="true"
+                                clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" type="number"
+                                class="fm_v_text_field" v-model="light_config.location.y"></v-text-field>
                             <v-text-field clearable label="Z of Location" prepend-inner-icon="mdi mdi-map-marker-down"
-                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
-                                type="number" class="fm_v_text_field" v-model="light_config.location.z"></v-text-field>
+                                @update:focused="change_location_for_light_item(light_config, index)" hide-details="true"
+                                clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" type="number"
+                                class="fm_v_text_field" v-model="light_config.location.z"></v-text-field>
                             <!-- 方位 -->
                             <v-text-field clearable label="X of Direction" prepend-inner-icon="mdi mdi-flag-triangle"
-                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
-                                type="number" class="fm_v_text_field" v-model="light_config.direction.x"></v-text-field>
+                                @update:focused="change_direction_for_light_item(light_config, index)" hide-details="true"
+                                clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" type="number"
+                                class="fm_v_text_field" v-model="light_config.direction.x"></v-text-field>
                             <v-text-field clearable label="Y of Direction" prepend-inner-icon="mdi mdi-flag-triangle"
-                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
-                                type="number" class="fm_v_text_field" v-model="light_config.direction.y"></v-text-field>
+                                @update:focused="change_direction_for_light_item(light_config, index)" hide-details="true"
+                                clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" type="number"
+                                class="fm_v_text_field" v-model="light_config.direction.y"></v-text-field>
                             <v-text-field clearable label="Z of Direction" prepend-inner-icon="mdi mdi-flag-triangle"
-                                hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
-                                type="number" class="fm_v_text_field" v-model="light_config.direction.z"></v-text-field>
-
+                                @update:focused="change_direction_for_light_item(light_config, index)" hide-details="true"
+                                clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" type="number"
+                                class="fm_v_text_field" v-model="light_config.direction.z"></v-text-field>
                             <!-- 衰减，平行光源不具备的属性 -->
                             <v-text-field clearable label="Constant" prepend-inner-icon="mdi mdi-flash" hide-details="true"
                                 clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" type="number"
+                                @update:focused="change_attenuation_for_light_item(light_config, index)"
                                 class="fm_v_text_field" v-model="light_config.constant"
                                 v-if="light_config.type != 'DIRECTIONA'"></v-text-field>
                             <v-text-field clearable label="Linear" prepend-inner-icon="mdi mdi-flash" hide-details="true"
+                                @update:focused="change_attenuation_for_light_item(light_config, index)"
                                 clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" type="number"
                                 class="fm_v_text_field" v-model="light_config.linear"
                                 v-if="light_config.type != 'DIRECTIONA'"></v-text-field>
                             <v-text-field clearable label="Quadratic" prepend-inner-icon="mdi mdi-flash" hide-details="true"
+                                @update:focused="change_attenuation_for_light_item(light_config, index)"
                                 clear-icon="mdi mdi-backspace" variant="solo" density="comfortable" type="number"
                                 class="fm_v_text_field" v-model="light_config.quadratic"
                                 v-if="light_config.type != 'DIRECTIONA'"></v-text-field>

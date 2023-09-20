@@ -68,6 +68,28 @@ export default {
                 }
             }
         },
+        change_direction_for_wasm_item(wasm_item) {
+            if (this.is_debug) {
+                if (Module) {
+                    if (wasm_item.direction.x == '') {
+                        wasm_item.direction.x = 0
+                    }
+                    if (wasm_item.direction.y == '') {
+                        wasm_item.direction.y = 0
+                    }
+                    if (wasm_item.direction.z == '') {
+                        wasm_item.direction.z = 0
+                    }
+                    Module.cwrap("update_node_direction", "", [
+                        "string",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                    ])(wasm_item.uuid, this.store.d_wasm_select_edit_index, wasm_item.direction.x, wasm_item.direction.y, wasm_item.direction.z);
+                }
+            }
+        },
         // 
         delete_wasm_node(wasm_uuid) {
             this.is_del_wasm_item = false
@@ -127,14 +149,17 @@ export default {
                                 v-model.number="store.current_wasm_item_of_gather().location.z"></v-text-field>
                             <!-- 角度 -->
                             <v-text-field clearable label="X of Direction" prepend-inner-icon="mdi mdi-flag-triangle"
+                                @update:focused="change_direction_for_wasm_item(store.current_wasm_item_of_gather())"
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
                                 type="number" class="fm_v_text_field"
                                 v-model="store.current_wasm_item_of_gather().direction.x"></v-text-field>
                             <v-text-field clearable label="Y of Direction" prepend-inner-icon="mdi mdi-flag-triangle"
+                                @update:focused="change_direction_for_wasm_item(store.current_wasm_item_of_gather())"
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
                                 type="number" class="fm_v_text_field"
                                 v-model="store.current_wasm_item_of_gather().direction.y"></v-text-field>
                             <v-text-field clearable label="Z of Direction" prepend-inner-icon="mdi mdi-flag-triangle"
+                                @update:focused="change_direction_for_wasm_item(store.current_wasm_item_of_gather())"
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
                                 type="number" class="fm_v_text_field"
                                 v-model="store.current_wasm_item_of_gather().direction.z"></v-text-field>
