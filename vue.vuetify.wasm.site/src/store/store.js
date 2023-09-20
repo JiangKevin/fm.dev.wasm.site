@@ -314,7 +314,7 @@ var new_tl_row_template = {
     {
       uuid: "",
       val: 1000,
-      animation: "00 - EASE_NONE",
+      animation: "EASE_NONE",
       selected: false,
       min: 0,
       max: 1000000,
@@ -323,7 +323,7 @@ var new_tl_row_template = {
     {
       uuid: "",
       val: 2000,
-      animation: "00 - EASE_NONE",
+      animation: "EASE_NONE",
       selected: false,
       min: 0,
       max: 1000000,
