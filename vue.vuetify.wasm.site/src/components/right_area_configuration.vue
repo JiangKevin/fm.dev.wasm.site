@@ -267,41 +267,67 @@ export default {
             if (this.is_debug) {
                 if (Module) {
                     // left key
-                    Module.cwrap("update_keyboard_left_key", "", [
-                        "number"
-                    ])(this.store.config_of_others.drive_keys.i_left_key);
+                    if (this.store.config_of_others.drive_keys.i_left_key != '') {
+                        Module.cwrap("update_keyboard_left_key", "", [
+                            "number"
+                        ])(this.store.config_of_others.drive_keys.i_left_key);
+                    }
                     // right key
-                    Module.cwrap("update_keyboard_right_key", "", [
-                        "number"
-                    ])(this.store.config_of_others.drive_keys.i_right_key);
+                    if (this.store.config_of_others.drive_keys.i_right_key != '') {
+
+                        Module.cwrap("update_keyboard_right_key", "", [
+                            "number"
+                        ])(this.store.config_of_others.drive_keys.i_right_key);
+                    }
                     // forward key
-                    Module.cwrap("update_keyboard_forward_key", "", [
-                        "number"
-                    ])(this.store.config_of_others.drive_keys.i_forward_key);
+                    if (this.store.config_of_others.drive_keys.i_forward_key != '') {
+
+                        Module.cwrap("update_keyboard_forward_key", "", [
+                            "number"
+                        ])(this.store.config_of_others.drive_keys.i_forward_key);
+                    }
                     // forward key
-                    Module.cwrap("update_keyboard_backward_key", "", [
-                        "number"
-                    ])(this.store.config_of_others.drive_keys.i_backward_key);
+                    if (this.store.config_of_others.drive_keys.i_backward_key != '') {
+
+                        Module.cwrap("update_keyboard_backward_key", "", [
+                            "number"
+                        ])(this.store.config_of_others.drive_keys.i_backward_key);
+                    }
                     // turn left key
-                    Module.cwrap("update_keyboard_turn_left_key", "", [
-                        "number"
-                    ])(this.store.config_of_others.drive_keys.t_left_key);
+                    if (this.store.config_of_others.drive_keys.t_left_key != '') {
+
+                        Module.cwrap("update_keyboard_turn_left_key", "", [
+                            "number"
+                        ])(this.store.config_of_others.drive_keys.t_left_key);
+                    }
                     // turn left key
-                    Module.cwrap("update_keyboard_turn_right_key", "", [
-                        "number"
-                    ])(this.store.config_of_others.drive_keys.t_right_key);
+                    if (this.store.config_of_others.drive_keys.t_right_key != '') {
+
+                        Module.cwrap("update_keyboard_turn_right_key", "", [
+                            "number"
+                        ])(this.store.config_of_others.drive_keys.t_right_key);
+                    }
                     // up key
-                    Module.cwrap("update_keyboard_z_up_key", "", [
-                        "number"
-                    ])(this.store.config_of_others.drive_keys.z_up_key);
+                    if (this.store.config_of_others.drive_keys.z_up_key != '') {
+
+                        Module.cwrap("update_keyboard_z_up_key", "", [
+                            "number"
+                        ])(this.store.config_of_others.drive_keys.z_up_key);
+                    }
                     // down key
-                    Module.cwrap("update_keyboard_z_down_key", "", [
-                        "number"
-                    ])(this.store.config_of_others.drive_keys.z_down_key);
+                    if (this.store.config_of_others.drive_keys.z_down_key != '') {
+
+                        Module.cwrap("update_keyboard_z_down_key", "", [
+                            "number"
+                        ])(this.store.config_of_others.drive_keys.z_down_key);
+                    }
                     // translation key
-                    Module.cwrap("update_keyboard_translationKey_key", "", [
-                        "number"
-                    ])(this.store.config_of_camera.translationKey);
+                    if (this.store.config_of_camera.translationKey != '') {
+
+                        Module.cwrap("update_keyboard_translationKey_key", "", [
+                            "number"
+                        ])(this.store.config_of_camera.translationKey);
+                    }
                 }
             }
         },
