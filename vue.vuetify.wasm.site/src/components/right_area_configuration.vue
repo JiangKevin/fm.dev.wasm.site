@@ -33,8 +33,8 @@ export default {
         none() {
             this.panel = []
         },
-        change_color_attributes(obj) {
-            this.store.change_color_for_bring_in(obj);
+        change_color_attributes(color_Various) {
+            this.store.change_color_for_bring_in(color_Various);
 
         },
         change_location_for_light_item(light_item, index) {
@@ -161,6 +161,54 @@ export default {
                 }
             }
         },
+        change_diffuse_color_for_light_item(light_item, index) {
+            this.change_color_attributes(light_item.diffuse_color)
+            // 
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_light_diffuse_color", "", [
+                        "string",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                    ])(light_item.uuid, index, light_item.diffuse_color.r, light_item.diffuse_color.g, light_item.diffuse_color.b, light_item.diffuse_color.a);
+                }
+            }
+        },
+        change_specular_color_for_light_item(light_item, index) {
+            this.change_color_attributes(light_item.specular_color)
+            // 
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_light_specular_color", "", [
+                        "string",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                    ])(light_item.uuid, index, light_item.specular_color.r, light_item.specular_color.g, light_item.specular_color.b, light_item.specular_color.a);
+                }
+            }
+        },
+        change_ambient_color_for_light_item(light_item, index) {
+            this.change_color_attributes(light_item.ambient_color)
+            // 
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_light_ambient_color", "", [
+                        "string",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                    ])(light_item.uuid, index, light_item.ambient_color.r, light_item.ambient_color.g, light_item.ambient_color.b, light_item.ambient_color.a);
+                }
+            }
+        },
     },
     async mounted() {
 
@@ -267,21 +315,21 @@ export default {
                             <div class="fm_color_div">
                                 <ColorPicker format="rgb" shape="square" theme="black"
                                     v-model:pureColor="light_config.diffuse_color.rgba"
-                                    @pureColorChange="change_color_attributes(light_config.diffuse_color)" />
+                                    @pureColorChange="change_diffuse_color_for_light_item(light_config, index)" />
                                 <div class="span_div"> <span>Diffuse Color :{{ light_config.diffuse_color.rgba }}</span>
                                 </div>
                             </div>
                             <div class="fm_color_div">
                                 <ColorPicker format="rgb" shape="square" theme="black"
                                     v-model:pureColor="light_config.specular_color.rgba"
-                                    @pureColorChange="change_color_attributes(light_config.specular_color)" />
+                                    @pureColorChange="change_specular_color_for_light_item(light_config, index)" />
                                 <div class="span_div"> <span>Specular Color :{{ light_config.specular_color.rgba }}</span>
                                 </div>
                             </div>
                             <div class="fm_color_div">
                                 <ColorPicker format="rgb" shape="square" theme="black"
                                     v-model:pureColor="light_config.ambient_color.rgba"
-                                    @pureColorChange="change_color_attributes(light_config.ambient_color)" />
+                                    @pureColorChange="change_ambient_color_for_light_item(light_config, index)" />
                                 <div class="span_div">
                                     <span>Ambient Color :{{ light_config.ambient_color.rgba }}</span>
                                 </div>
