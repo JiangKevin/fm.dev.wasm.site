@@ -263,7 +263,48 @@ export default {
                 }
             }
         },
-        change_keyboard_kes_for_config() { },
+        change_keyboard_kes_for_config() {
+            if (this.is_debug) {
+                if (Module) {
+                    // left key
+                    Module.cwrap("update_keyboard_left_key", "", [
+                        "number"
+                    ])(this.store.config_of_others.drive_keys.i_left_key);
+                    // right key
+                    Module.cwrap("update_keyboard_right_key", "", [
+                        "number"
+                    ])(this.store.config_of_others.drive_keys.i_right_key);
+                    // forward key
+                    Module.cwrap("update_keyboard_forward_key", "", [
+                        "number"
+                    ])(this.store.config_of_others.drive_keys.i_forward_key);
+                    // forward key
+                    Module.cwrap("update_keyboard_backward_key", "", [
+                        "number"
+                    ])(this.store.config_of_others.drive_keys.i_backward_key);
+                    // turn left key
+                    Module.cwrap("update_keyboard_turn_left_key", "", [
+                        "number"
+                    ])(this.store.config_of_others.drive_keys.t_left_key);
+                    // turn left key
+                    Module.cwrap("update_keyboard_turn_right_key", "", [
+                        "number"
+                    ])(this.store.config_of_others.drive_keys.t_right_key);
+                    // up key
+                    Module.cwrap("update_keyboard_z_up_key", "", [
+                        "number"
+                    ])(this.store.config_of_others.drive_keys.z_up_key);
+                    // down key
+                    Module.cwrap("update_keyboard_z_down_key", "", [
+                        "number"
+                    ])(this.store.config_of_others.drive_keys.z_down_key);
+                    // translation key
+                    Module.cwrap("update_keyboard_translationKey_key", "", [
+                        "number"
+                    ])(this.store.config_of_camera.translationKey);
+                }
+            }
+        },
         transform_code_to_key(code) {
             var rt = ''
             if (code <= 127) {
@@ -291,6 +332,7 @@ export default {
 
             }
         },
+
     },
     async mounted() {
 
@@ -465,60 +507,58 @@ export default {
                         <v-expansion-panel-text class="fm_expansion_panel_text">
                             <!-- key left -->
                             <v-text-field clearable label="Left key" prepend-inner-icon="mdi mdi-arrow-left-thin"
-                                @update:focused="change_keyboard_kes_for_config()" hide-details="true"
-                                 variant="solo" density="comfortable" type="number"
-                                class="fm_v_text_field"
+                                @update:focused="change_keyboard_kes_for_config()" hide-details="true" variant="solo"
+                                density="comfortable" type="number" class="fm_v_text_field"
                                 :suffix="transform_code_to_key(store.config_of_others.drive_keys.i_left_key)"
                                 v-model="store.config_of_others.drive_keys.i_left_key"></v-text-field>
                             <!-- key right -->
                             <v-text-field clearable label="Right key" prepend-inner-icon="mdi mdi-arrow-right-thin"
-                                @update:focused="change_keyboard_kes_for_config()" hide-details="true"
-                                 variant="solo" density="comfortable" type="number"
-                                class="fm_v_text_field"
+                                @update:focused="change_keyboard_kes_for_config()" hide-details="true" variant="solo"
+                                density="comfortable" type="number" class="fm_v_text_field"
                                 :suffix="transform_code_to_key(store.config_of_others.drive_keys.i_right_key)"
                                 v-model="store.config_of_others.drive_keys.i_right_key"></v-text-field>
                             <!-- key forward -->
                             <v-text-field clearable label="Forward key" prepend-inner-icon="mdi mdi-arrow-up-thin"
-                                @update:focused="change_keyboard_kes_for_config()" hide-details="true"
-                                 variant="solo" density="comfortable" type="number"
-                                class="fm_v_text_field"
+                                @update:focused="change_keyboard_kes_for_config()" hide-details="true" variant="solo"
+                                density="comfortable" type="number" class="fm_v_text_field"
                                 :suffix="transform_code_to_key(store.config_of_others.drive_keys.i_forward_key)"
                                 v-model="store.config_of_others.drive_keys.i_forward_key"></v-text-field>
                             <!-- key backward -->
                             <v-text-field clearable label="Backward key" prepend-inner-icon="mdi mdi-arrow-down-thin"
-                                @update:focused="change_keyboard_kes_for_config()" hide-details="true"
-                                 variant="solo" density="comfortable" type="number"
-                                class="fm_v_text_field"
+                                @update:focused="change_keyboard_kes_for_config()" hide-details="true" variant="solo"
+                                density="comfortable" type="number" class="fm_v_text_field"
                                 :suffix="transform_code_to_key(store.config_of_others.drive_keys.i_backward_key)"
                                 v-model="store.config_of_others.drive_keys.i_backward_key"></v-text-field>
                             <!-- key turn left -->
                             <v-text-field clearable label="Turn left key" prepend-inner-icon="mdi mdi-arrow-left-top"
-                                @update:focused="change_keyboard_kes_for_config()" hide-details="true"
-                                 variant="solo" density="comfortable" type="number"
-                                class="fm_v_text_field"
+                                @update:focused="change_keyboard_kes_for_config()" hide-details="true" variant="solo"
+                                density="comfortable" type="number" class="fm_v_text_field"
                                 :suffix="transform_code_to_key(store.config_of_others.drive_keys.t_left_key)"
                                 v-model="store.config_of_others.drive_keys.t_left_key"></v-text-field>
                             <!-- key turn right -->
                             <v-text-field clearable label="Turn right key" prepend-inner-icon="mdi mdi-arrow-right-top"
-                                @update:focused="change_keyboard_kes_for_config()" hide-details="true"
-                                 variant="solo" density="comfortable" type="number"
-                                class="fm_v_text_field"
+                                @update:focused="change_keyboard_kes_for_config()" hide-details="true" variant="solo"
+                                density="comfortable" type="number" class="fm_v_text_field"
                                 :suffix="transform_code_to_key(store.config_of_others.drive_keys.t_right_key)"
                                 v-model="store.config_of_others.drive_keys.t_right_key"></v-text-field>
                             <!-- key turn up -->
                             <v-text-field clearable label="Up key" prepend-inner-icon="mdi mdi-transfer-up"
-                                @update:focused="change_keyboard_kes_for_config()" hide-details="true"
-                                 variant="solo" density="comfortable" type="number"
-                                class="fm_v_text_field"
+                                @update:focused="change_keyboard_kes_for_config()" hide-details="true" variant="solo"
+                                density="comfortable" type="number" class="fm_v_text_field"
                                 :suffix="transform_code_to_key(store.config_of_others.drive_keys.z_up_key)"
                                 v-model="store.config_of_others.drive_keys.z_up_key"></v-text-field>
                             <!-- key turn down -->
                             <v-text-field clearable label="Down key" prepend-inner-icon="mdi mdi-transfer-down"
-                                @update:focused="change_keyboard_kes_for_config()" hide-details="true"
-                                 variant="solo" density="comfortable" type="number"
-                                class="fm_v_text_field"
+                                @update:focused="change_keyboard_kes_for_config()" hide-details="true" variant="solo"
+                                density="comfortable" type="number" class="fm_v_text_field"
                                 :suffix="transform_code_to_key(store.config_of_others.drive_keys.z_down_key)"
                                 v-model="store.config_of_others.drive_keys.z_down_key"></v-text-field>
+                            <!-- camera TranslationKey  -->
+                            <v-text-field clearable label="Translation Key" prepend-inner-icon="mdi mdi-panorama-variant"
+                                @update:focused="change_keyboard_kes_for_config()" hide-details="true" variant="solo"
+                                density="comfortable" type="number" class="fm_v_text_field"
+                                :suffix="transform_code_to_key(store.config_of_camera.translationKey)"
+                                v-model="store.config_of_camera.translationKey"></v-text-field>
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                     <!-- panel other -->

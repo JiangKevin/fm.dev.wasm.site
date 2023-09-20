@@ -974,7 +974,7 @@ export const store = defineStore("store", {
         camera.nearClip = 0;
         camera.farClip = 10000;
         camera.inertia = false;
-        camera.translationKey = "v";
+        camera.translationKey = 118
         camera.mouseInput = true;
         camera.mouseMiddleButton = true;
         //
