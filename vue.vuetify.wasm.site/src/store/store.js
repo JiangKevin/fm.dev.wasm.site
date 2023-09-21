@@ -1017,8 +1017,8 @@ export const store = defineStore("store", {
         camera.farClip = 10000;
         camera.inertia = false;
         camera.translationKey = 118;
-        camera.mouseInput = true;
-        camera.mouseMiddleButton = true;
+        camera.mouseInput = false;
+        camera.mouseMiddleButton = false;
         //
         this.config_of_camera = camera;
 
@@ -1031,6 +1031,8 @@ export const store = defineStore("store", {
         others.view_horizontal_sensitivity = 120;
         others.enble_vertical_view_change = false;
         others.view_vertical_sensitivity = 45;
+        others.move_interval = 200;
+        others.speed_of_sports = 0.2;
 
         var drive_keys = {};
         drive_keys.i_left_key = 97;

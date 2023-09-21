@@ -299,6 +299,24 @@ export default {
                 }
             }
         },
+        up_mouse_move_interval_for_config_others() {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_move_interval", "", [
+                        "number"
+                    ])(this.store.config_of_others.move_interval);
+                }
+            }
+        },
+        up_speed_of_sports_for_config_others() {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_speed_of_sports", "", [
+                        "number"
+                    ])(this.store.config_of_others.speed_of_sports);
+                }
+            }
+        },
         change_keyboard_kes_for_config() {
             if (this.is_debug) {
                 if (Module) {
@@ -671,6 +689,16 @@ export default {
                                 hide-details="true" variant="solo" density="comfortable" type="number"
                                 class="fm_v_text_field"
                                 v-model="store.config_of_others.view_vertical_sensitivity"></v-text-field>
+                            <!--  -->
+                            <v-text-field clearable label="Mouse move interval" prepend-inner-icon="mdi mdi-arrow-left-thin"
+                                @update:focused="up_mouse_move_interval_for_config_others()" hide-details="true"
+                                variant="solo" density="comfortable" type="number" class="fm_v_text_field"
+                                v-model="store.config_of_others.move_interval"></v-text-field>
+
+                            <v-text-field clearable label="Speed of sports" prepend-inner-icon="mdi mdi-arrow-left-thin"
+                                @update:focused="up_speed_of_sports_for_config_others()" hide-details="true" variant="solo"
+                                density="comfortable" type="number" class="fm_v_text_field"
+                                v-model="store.config_of_others.speed_of_sports"></v-text-field>
 
 
 
@@ -688,5 +716,6 @@ export default {
                 <v-btn icon="mdi mdi-chevron-triple-down" class="fm_toolbar_btn" @click="all"></v-btn>
                 <v-btn icon="mdi mdi-chevron-triple-up" class="fm_toolbar_btn" @click="none"></v-btn>
             </div>
-    </v-toolbar>
-</v-card></template>
+        </v-toolbar>
+    </v-card>
+</template>
