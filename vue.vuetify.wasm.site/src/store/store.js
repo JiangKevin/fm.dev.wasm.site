@@ -202,7 +202,6 @@ var tl_key_attributes_of_3D = {
   render_face: true,
   render_wireframe: false,
   render_points: false,
-  render_materials: true,
   location: {
     x: 0,
     y: 0,
@@ -420,6 +419,7 @@ export const store = defineStore("store", {
       wasm_node_insert.render_wireframe = false;
       wasm_node_insert.render_points = false;
       wasm_node_insert.render_materials = true;
+      //
       wasm_node_insert.draw_model = ["FACE", "WIREFRAME"];
       /** 位置 */
       var i_location = {};
@@ -1027,6 +1027,10 @@ export const store = defineStore("store", {
         others.is_debug = true;
         others.is_lua = false;
         others.is_native_ui = false;
+        others.enble_horizontal_view_change = true;
+        others.view_horizontal_sensitivity = 120;
+        others.enble_vertical_view_change = false;
+        others.view_vertical_sensitivity = 45;
 
         var drive_keys = {};
         drive_keys.i_left_key = 97;

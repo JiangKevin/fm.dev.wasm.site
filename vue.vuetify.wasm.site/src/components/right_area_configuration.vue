@@ -263,6 +263,42 @@ export default {
                 }
             }
         },
+        up_horizontal_view_change_support_for_config_others() {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_enable_horizontal_view_change", "", [
+                        "number"
+                    ])(this.store.config_of_others.enble_horizontal_view_change);
+                }
+            }
+        },
+        up_vertical_view_change_support_for_config_others() {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_enable_vertical_view_change", "", [
+                        "number"
+                    ])(this.store.config_of_others.view_vertical_sensitivity);
+                }
+            }
+        },
+        up_horizontal_view_change_sensitivity_for_config_others() {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_view_horizontal_sensitivity", "", [
+                        "number"
+                    ])(this.store.config_of_others.view_horizontal_sensitivity);
+                }
+            }
+        },
+        up_vertical_view_change_sensitivity_for_config_others() {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_view_vertical_sensitivity", "", [
+                        "number"
+                    ])(this.store.config_of_others.view_vertical_sensitivity);
+                }
+            }
+        },
         change_keyboard_kes_for_config() {
             if (this.is_debug) {
                 if (Module) {
@@ -609,6 +645,35 @@ export default {
                                 hide-details="true" @update:modelValue="change_lua_support_for_config_others()"
                                 class="fm_switch" label="Lua support" color="red-darken-3" true-icon="mdi mdi-language-lua"
                                 false-icon="mdi mdi-circle-off-outline"></v-switch>
+                            <!--  -->
+                            <v-switch v-model="store.config_of_others.enble_horizontal_view_change" :value=true
+                                :true-value=true hide-details="true"
+                                @update:modelValue="up_horizontal_view_change_support_for_config_others()" class="fm_switch"
+                                label="Enble horizontal view change surport" color="red-darken-3"
+                                true-icon="mdi mdi-language-lua" false-icon="mdi mdi-circle-off-outline"></v-switch>
+                            <v-switch v-model="store.config_of_others.enble_vertical_view_change" :value=true
+                                :true-value=true hide-details="true"
+                                @update:modelValue="up_vertical_view_change_support_for_config_others()" class="fm_switch"
+                                label="Enble vertical view change surport" color="red-darken-3"
+                                true-icon="mdi mdi-language-lua" false-icon="mdi mdi-circle-off-outline"></v-switch>
+
+
+                            <v-text-field clearable label="Horizontal sensitivity"
+                                prepend-inner-icon="mdi mdi-arrow-left-thin"
+                                @update:focused="up_horizontal_view_change_sensitivity_for_config_others()"
+                                hide-details="true" variant="solo" density="comfortable" type="number"
+                                class="fm_v_text_field"
+                                v-model="store.config_of_others.view_horizontal_sensitivity"></v-text-field>
+
+                            <v-text-field clearable label="Vertical sensitivity"
+                                prepend-inner-icon="mdi mdi-arrow-left-thin"
+                                @update:focused="up_vertical_view_change_sensitivity_for_config_others()"
+                                hide-details="true" variant="solo" density="comfortable" type="number"
+                                class="fm_v_text_field"
+                                v-model="store.config_of_others.view_vertical_sensitivity"></v-text-field>
+
+
+
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                 </v-expansion-panels>
@@ -623,6 +688,5 @@ export default {
                 <v-btn icon="mdi mdi-chevron-triple-down" class="fm_toolbar_btn" @click="all"></v-btn>
                 <v-btn icon="mdi mdi-chevron-triple-up" class="fm_toolbar_btn" @click="none"></v-btn>
             </div>
-        </v-toolbar>
-    </v-card>
-</template>
+    </v-toolbar>
+</v-card></template>
