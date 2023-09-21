@@ -109,6 +109,39 @@ export default {
                 }
             }
         },
+        change_render_model_surface_for_wasm_item(wasm_item) {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("switch_node_render_model_face_for_scenes", "", [
+                        "string",
+                        "number",
+                        "number",
+                    ])(wasm_item.uuid, this.store.d_wasm_select_edit_index, wasm_item.render_face);
+                }
+            }
+        },
+        change_render_model_wireframe_for_wasm_item(wasm_item) {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("switch_node_render_model_wireframe_for_scenes", "", [
+                        "string",
+                        "number",
+                        "number",
+                    ])(wasm_item.uuid, this.store.d_wasm_select_edit_index, wasm_item.render_wireframe);
+                }
+            }
+        },
+        change_render_model_points_for_wasm_item(wasm_item) {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("switch_node_render_model_points_for_scenes", "", [
+                        "string",
+                        "number",
+                        "number",
+                    ])(wasm_item.uuid, this.store.d_wasm_select_edit_index, wasm_item.render_points);
+                }
+            }
+        },
         change_render_color_for_wasm_item(wasm_item) {
             this.store.change_color_for_bring_in(wasm_item.fillcolor);
             if (this.is_debug) {
@@ -219,13 +252,16 @@ export default {
                                 false-icon="mdi mdi-square-off-outline"></v-switch>
 
                             <v-switch v-model="store.current_wasm_item_of_gather().render_face" :value=true :true-value=true
+                                @update:modelValue="change_render_model_surface_for_wasm_item(store.current_wasm_item_of_gather())"
                                 hide-details="true" class="fm_switch" label="Rendering mode:Face" color="rindigo-darken-3"
                                 true-icon="mdi mdi-cube" false-icon="mdi mdi-cube-off"></v-switch>
                             <v-switch v-model="store.current_wasm_item_of_gather().render_wireframe" :value=true
+                                @update:modelValue="change_render_model_wireframe_for_wasm_item(store.current_wasm_item_of_gather())"
                                 :true-value=true hide-details="true" class="fm_switch" label="Rendering mode:Wireframe"
                                 color="rindigo-darken-3" true-icon="mdi mdi-cube-outline"
                                 false-icon="mdi mdi-cube-off-outline"></v-switch>
                             <v-switch v-model="store.current_wasm_item_of_gather().render_points" :value=true
+                                @update:modelValue="change_render_model_points_for_wasm_item(store.current_wasm_item_of_gather())"
                                 :true-value=true hide-details="true" class="fm_switch" label="Rendering mode:Points"
                                 color="rindigo-darken-3" true-icon="mdi mdi-blur" false-icon="mdi mdi-blur-off"></v-switch>
 
