@@ -603,8 +603,8 @@ export default {
                             <!-- mouseInput -->
                             <v-switch v-model="store.config_of_camera.mouseInput" :value=true :true-value=true
                                 hide-details="true" @update:modelValue="change_mouseInput_for_config_camera()"
-                                class="fm_switch" label="Enable mouseInput" color="red-darken-3" true-icon="mdi mdi-mouse"
-                                false-icon="mdi mdi-mouse-variant-off"></v-switch>
+                                class="fm_switch" label="Enable mouseInput rotate" color="red-darken-3"
+                                true-icon="mdi mdi-mouse" false-icon="mdi mdi-mouse-variant-off"></v-switch>
                             <!--  -->
                             <v-switch v-model="store.config_of_others.enble_horizontal_view_change" :value=true
                                 :true-value=true hide-details="true"
@@ -615,11 +615,12 @@ export default {
                                 :true-value=true hide-details="true"
                                 @update:modelValue="up_vertical_view_change_support_for_config_others()" class="fm_switch"
                                 label="Enble vertical view change surport" color="red-darken-3"
-                                true-icon="mdi mdi-unfold-more-horizontal" false-icon="mdi mdi-circle-off-outline"></v-switch>
+                                true-icon="mdi mdi-unfold-more-horizontal"
+                                false-icon="mdi mdi-circle-off-outline"></v-switch>
                             <v-switch v-model="store.config_of_others.switch_acceleration" :value=true :true-value=true
                                 hide-details="true" @update:modelValue="up_switch_acceleration_support_for_config_others()"
                                 class="fm_switch" label="Enable acceleration of sport" color="red-darken-3"
-                                true-icon="mdi mdi-language-lua" false-icon="mdi mdi-circle-off-outline"></v-switch>
+                                true-icon="mdi mdi-car-speed-limiter" false-icon="mdi mdi-circle-off-outline"></v-switch>
 
 
                         </v-expansion-panel-text>
