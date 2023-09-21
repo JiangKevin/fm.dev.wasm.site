@@ -572,6 +572,29 @@ export default {
                             </template>
                         </v-expansion-panel-title>
                         <v-expansion-panel-text class="fm_expansion_panel_text">
+                            <v-text-field clearable label="Horizontal sensitivity"
+                                prepend-inner-icon="mdi mdi-unfold-more-vertical"
+                                @update:focused="up_horizontal_view_change_sensitivity_for_config_others()"
+                                hide-details="true" variant="solo" density="comfortable" type="number"
+                                class="fm_v_text_field"
+                                v-model="store.config_of_others.view_horizontal_sensitivity"></v-text-field>
+
+                            <v-text-field clearable label="Vertical sensitivity"
+                                prepend-inner-icon="mdi mdi-unfold-more-horizontal"
+                                @update:focused="up_vertical_view_change_sensitivity_for_config_others()"
+                                hide-details="true" variant="solo" density="comfortable" type="number"
+                                class="fm_v_text_field"
+                                v-model="store.config_of_others.view_vertical_sensitivity"></v-text-field>
+                            <!--  -->
+                            <v-text-field clearable label="Mouse move interval" prepend-inner-icon="mdi mdi-timer-sync"
+                                @update:focused="up_mouse_move_interval_for_config_others()" hide-details="true"
+                                variant="solo" density="comfortable" type="number" class="fm_v_text_field"
+                                v-model="store.config_of_others.move_interval"></v-text-field>
+
+                            <v-text-field clearable label="Speed of sports" prepend-inner-icon="mdi mdi-speedometer-medium"
+                                @update:focused="up_speed_of_sports_for_config_others()" hide-details="true" variant="solo"
+                                density="comfortable" type="number" class="fm_v_text_field"
+                                v-model="store.config_of_others.speed_of_sports"></v-text-field>
                             <!-- inertia -->
                             <v-switch v-model="store.config_of_camera.inertia" :value=true :true-value=true
                                 hide-details="true" @update:modelValue="change_inertia_for_config_camera()"
@@ -582,6 +605,23 @@ export default {
                                 hide-details="true" @update:modelValue="change_mouseInput_for_config_camera()"
                                 class="fm_switch" label="Enable mouseInput" color="red-darken-3" true-icon="mdi mdi-mouse"
                                 false-icon="mdi mdi-mouse-variant-off"></v-switch>
+                            <!--  -->
+                            <v-switch v-model="store.config_of_others.enble_horizontal_view_change" :value=true
+                                :true-value=true hide-details="true"
+                                @update:modelValue="up_horizontal_view_change_support_for_config_others()" class="fm_switch"
+                                label="Enble horizontal view change surport" color="red-darken-3"
+                                true-icon="mdi mdi-unfold-more-vertical" false-icon="mdi mdi-circle-off-outline"></v-switch>
+                            <v-switch v-model="store.config_of_others.enble_vertical_view_change" :value=true
+                                :true-value=true hide-details="true"
+                                @update:modelValue="up_vertical_view_change_support_for_config_others()" class="fm_switch"
+                                label="Enble vertical view change surport" color="red-darken-3"
+                                true-icon="mdi mdi-unfold-more-horizontal" false-icon="mdi mdi-circle-off-outline"></v-switch>
+                            <v-switch v-model="store.config_of_others.switch_acceleration" :value=true :true-value=true
+                                hide-details="true" @update:modelValue="up_switch_acceleration_support_for_config_others()"
+                                class="fm_switch" label="Enable acceleration of sport" color="red-darken-3"
+                                true-icon="mdi mdi-language-lua" false-icon="mdi mdi-circle-off-outline"></v-switch>
+
+
                         </v-expansion-panel-text>
                     </v-expansion-panel>
                     <!-- panel keyboard -->
@@ -672,45 +712,7 @@ export default {
                                 hide-details="true" @update:modelValue="change_lua_support_for_config_others()"
                                 class="fm_switch" label="Lua support" color="red-darken-3" true-icon="mdi mdi-language-lua"
                                 false-icon="mdi mdi-circle-off-outline"></v-switch>
-                            <!--  -->
-                            <v-switch v-model="store.config_of_others.enble_horizontal_view_change" :value=true
-                                :true-value=true hide-details="true"
-                                @update:modelValue="up_horizontal_view_change_support_for_config_others()" class="fm_switch"
-                                label="Enble horizontal view change surport" color="red-darken-3"
-                                true-icon="mdi mdi-language-lua" false-icon="mdi mdi-circle-off-outline"></v-switch>
-                            <v-switch v-model="store.config_of_others.enble_vertical_view_change" :value=true
-                                :true-value=true hide-details="true"
-                                @update:modelValue="up_vertical_view_change_support_for_config_others()" class="fm_switch"
-                                label="Enble vertical view change surport" color="red-darken-3"
-                                true-icon="mdi mdi-language-lua" false-icon="mdi mdi-circle-off-outline"></v-switch>
-                            <v-switch v-model="store.config_of_others.switch_acceleration" :value=true :true-value=true
-                                hide-details="true" @update:modelValue="up_switch_acceleration_support_for_config_others()"
-                                class="fm_switch" label="Enable acceleration of sport" color="red-darken-3"
-                                true-icon="mdi mdi-language-lua" false-icon="mdi mdi-circle-off-outline"></v-switch>
 
-                            <v-text-field clearable label="Horizontal sensitivity"
-                                prepend-inner-icon="mdi mdi-arrow-left-thin"
-                                @update:focused="up_horizontal_view_change_sensitivity_for_config_others()"
-                                hide-details="true" variant="solo" density="comfortable" type="number"
-                                class="fm_v_text_field"
-                                v-model="store.config_of_others.view_horizontal_sensitivity"></v-text-field>
-
-                            <v-text-field clearable label="Vertical sensitivity"
-                                prepend-inner-icon="mdi mdi-arrow-left-thin"
-                                @update:focused="up_vertical_view_change_sensitivity_for_config_others()"
-                                hide-details="true" variant="solo" density="comfortable" type="number"
-                                class="fm_v_text_field"
-                                v-model="store.config_of_others.view_vertical_sensitivity"></v-text-field>
-                            <!--  -->
-                            <v-text-field clearable label="Mouse move interval" prepend-inner-icon="mdi mdi-arrow-left-thin"
-                                @update:focused="up_mouse_move_interval_for_config_others()" hide-details="true"
-                                variant="solo" density="comfortable" type="number" class="fm_v_text_field"
-                                v-model="store.config_of_others.move_interval"></v-text-field>
-
-                            <v-text-field clearable label="Speed of sports" prepend-inner-icon="mdi mdi-arrow-left-thin"
-                                @update:focused="up_speed_of_sports_for_config_others()" hide-details="true" variant="solo"
-                                density="comfortable" type="number" class="fm_v_text_field"
-                                v-model="store.config_of_others.speed_of_sports"></v-text-field>
 
 
 
