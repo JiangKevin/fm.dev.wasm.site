@@ -421,6 +421,24 @@ export const store = defineStore("store", {
       i_fillcolor.hexa = "#FFFFFFFF";
       i_fillcolor.rgba = "rgba(255,255,255,1)";
       wasm_node_insert.fillcolor = i_fillcolor;
+      //
+      var i_wireframe_color = {};
+      i_wireframe_color.r = 0;
+      i_wireframe_color.g = 0;
+      i_wireframe_color.b = 0;
+      i_wireframe_color.a = 0;
+      i_wireframe_color.hexa = "#FFFFFFFF";
+      i_wireframe_color.rgba = "rgba(255,255,255,1)";
+      wasm_node_insert.wireframe_fillcolor = i_wireframe_color;
+      //
+      var i_points_color = {};
+      i_points_color.r = 0;
+      i_points_color.g = 0;
+      i_points_color.b = 0;
+      i_points_color.a = 0;
+      i_points_color.hexa = "#FFFFFFFF";
+      i_points_color.rgba = "rgba(255,255,255,1)";
+      wasm_node_insert.points_fillcolor = i_points_color;
       /** */
       this.d_wasm_nodes_gather.push(wasm_node_insert);
       /** wasm insert */

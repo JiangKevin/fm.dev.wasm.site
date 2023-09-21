@@ -157,6 +157,36 @@ export default {
                 }
             }
         },
+        change_render_wireframe_color_for_wasm_item(wasm_item) {
+            this.store.change_color_for_bring_in(wasm_item.wireframe_fillcolor);
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_select_node_wireframe_color_for_scenes", "", [
+                        "string",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                    ])(wasm_item.uuid, this.store.d_wasm_select_edit_index, wasm_item.wireframe_fillcolor.r, wasm_item.wireframe_fillcolor.g, wasm_item.wireframe_fillcolor.b, wasm_item.wireframe_fillcolor.a);
+                }
+            }
+        },
+        change_render_points_color_for_wasm_item(wasm_item) {
+            this.store.change_color_for_bring_in(wasm_item.points_fillcolor);
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_select_node_points_color_for_scenes", "", [
+                        "string",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                    ])(wasm_item.uuid, this.store.d_wasm_select_edit_index, wasm_item.points_fillcolor.r, wasm_item.points_fillcolor.g, wasm_item.points_fillcolor.b, wasm_item.points_fillcolor.a);
+                }
+            }
+        },
         // 
         delete_wasm_node(wasm_uuid) {
             this.is_del_wasm_item = false
@@ -230,13 +260,27 @@ export default {
                                 hide-details="true" clear-icon="mdi mdi-backspace" variant="solo" density="comfortable"
                                 type="number" class="fm_v_text_field"
                                 v-model="store.current_wasm_item_of_gather().direction.z"></v-text-field>
-                            <!--  -->
+                            <!-- color -->
                             <div class="fm_color_div">
                                 <ColorPicker format="rgb" shape="square" theme="black"
                                     v-model:pureColor="store.current_wasm_item_of_gather().fillcolor.rgba"
                                     @pureColorChange="change_render_color_for_wasm_item(store.current_wasm_item_of_gather())" />
-                                <div class="span_div"> <span>Node Color :{{
+                                <div class="span_div"> <span>Surface Color :{{
                                     store.current_wasm_item_of_gather().fillcolor.rgba }}</span></div>
+                            </div>
+                            <div class="fm_color_div">
+                                <ColorPicker format="rgb" shape="square" theme="black"
+                                    v-model:pureColor="store.current_wasm_item_of_gather().wireframe_fillcolor.rgba"
+                                    @pureColorChange="change_render_wireframe_color_for_wasm_item(store.current_wasm_item_of_gather())" />
+                                <div class="span_div"> <span>Wireframe Color :{{
+                                    store.current_wasm_item_of_gather().wireframe_fillcolor.rgba }}</span></div>
+                            </div>
+                            <div class="fm_color_div">
+                                <ColorPicker format="rgb" shape="square" theme="black"
+                                    v-model:pureColor="store.current_wasm_item_of_gather().points_fillcolor.rgba"
+                                    @pureColorChange="change_render_points_color_for_wasm_item(store.current_wasm_item_of_gather())" />
+                                <div class="span_div"> <span>Points Color :{{
+                                    store.current_wasm_item_of_gather().points_fillcolor.rgba }}</span></div>
                             </div>
                             <!--  -->
 
