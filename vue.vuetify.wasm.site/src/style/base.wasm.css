@@ -823,7 +823,7 @@ input::-webkit-inner-spin-button {
   > .v-text-field__suffix {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
-  padding-right: 0px !important;
+  padding-right: 8px !important;
   border-bottom: var(--border_nomal);
   height: 46px !important;
   min-height: 46px !important;

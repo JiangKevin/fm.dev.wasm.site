@@ -55,21 +55,43 @@ export default {
     <v-text-field clearable label="Z of Direction" prepend-inner-icon="mdi mdi-flag-triangle" variant="solo"
         density="comfortable" class="fm_v_text_field" hide-details="true" type="number"
         v-model.number="store.current_tl_key_item_of_gather().attributes.direction.z"></v-text-field>
-    <!--  -->
+    <!-- color -->
     <div class="fm_color_div">
         <ColorPicker format="rgb" shape="square" theme="black"
             v-model:pureColor="store.current_tl_key_item_of_gather().attributes.fillcolor.rgba"
             @pureColorChange="store.change_color_for_bring_in(store.current_tl_key_item_of_gather().attributes.fillcolor)" />
-        <div class="span_div"> <span>Node Color :{{
+        <div class="span_div"> <span>Surface Color :{{
             store.current_tl_key_item_of_gather().attributes.fillcolor.rgba }}</span></div>
     </div>
+    <div class="fm_color_div">
+        <ColorPicker format="rgb" shape="square" theme="black"
+            v-model:pureColor="store.current_tl_key_item_of_gather().attributes.wireframe_fillcolor.rgba"
+            @pureColorChange="store.change_color_for_bring_in(store.current_tl_key_item_of_gather().attributes.fillcolor)" />
+        <div class="span_div"> <span>Wireframe Color :{{
+            store.current_tl_key_item_of_gather().attributes.wireframe_fillcolor.rgba }}</span></div>
+    </div>
+    <div class="fm_color_div">
+        <ColorPicker format="rgb" shape="square" theme="black"
+            v-model:pureColor="store.current_tl_key_item_of_gather().attributes.points_fillcolor.rgba"
+            @pureColorChange="store.change_color_for_bring_in(store.current_tl_key_item_of_gather().attributes.fillcolor)" />
+        <div class="span_div"> <span>Points Color :{{
+            store.current_tl_key_item_of_gather().attributes.points_fillcolor.rgba }}</span></div>
+    </div>
     <!-- Rendering mode -->
-    <v-switch v-model="store.current_tl_key_item_of_gather().attributes.draw_model" value="FACE" true-value="FACE"
-        hide-details="true" class="fm_switch" label="Rendering mode:Face" color="indigo-darken-3"
-        true-icon="mdi mdi-cube"></v-switch>
-    <v-switch v-model="store.current_tl_key_item_of_gather().attributes.draw_model" value="WIREFRAME" true-value="WIREFRAME"
-        hide-details="true" class="fm_switch" label="Rendering mode:WireFrame" color="indigo-darken-3"
-        true-icon="mdi mdi-cube-outline"></v-switch>
-    <v-switch v-model="store.current_tl_key_item_of_gather().attributes.draw_model" value="POINT" true-value="POINT"
-        hide-details="true" class="fm_switch" label="Rendering mode:Point" color="indigo-darken-3"
-        true-icon="mdi mdi-blur"></v-switch></template>
+    <v-switch v-model="store.current_tl_key_item_of_gather().attributes.switch_render" :value=true :true-value=true
+        hide-details="true" class="fm_switch" label="Rendering" color="rindigo-darken-3" true-icon="mdi mdi-eye"
+        false-icon="mdi mdi-eye-off"></v-switch>
+    <v-switch v-model="store.current_tl_key_item_of_gather().attributes.render_materials" :value=true :true-value=true
+        hide-details="true" class="fm_switch" label="Rendering Materials" color="rindigo-darken-3"
+        true-icon="mdi mdi-texture" false-icon="mdi mdi-square-off-outline"></v-switch>
+
+    <v-switch v-model="store.current_tl_key_item_of_gather().attributes.render_face" :value=true :true-value=true
+        hide-details="true" class="fm_switch" label="Rendering mode:Face" color="rindigo-darken-3" true-icon="mdi mdi-cube"
+        false-icon="mdi mdi-cube-off"></v-switch>
+    <v-switch v-model="store.current_tl_key_item_of_gather().attributes.render_wireframe" :value=true :true-value=true
+        hide-details="true" class="fm_switch" label="Rendering mode:Wireframe" color="rindigo-darken-3"
+        true-icon="mdi mdi-cube-outline" false-icon="mdi mdi-cube-off-outline"></v-switch>
+    <v-switch v-model="store.current_tl_key_item_of_gather().attributes.render_points" :value=true :true-value=true
+        hide-details="true" class="fm_switch" label="Rendering mode:Points" color="rindigo-darken-3"
+        true-icon="mdi mdi-blur" false-icon="mdi mdi-blur-off"></v-switch>
+</template>

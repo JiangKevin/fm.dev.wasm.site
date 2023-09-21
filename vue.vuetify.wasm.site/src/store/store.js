@@ -198,6 +198,11 @@ var wasm_obj_resouse = [
  * 模板数据 */
 //
 var tl_key_attributes_of_3D = {
+  switch_render: true,
+  render_face: true,
+  render_wireframe: false,
+  render_points: false,
+  render_materials: true,
   location: {
     x: 0,
     y: 0,
@@ -206,15 +211,31 @@ var tl_key_attributes_of_3D = {
   direction: {
     x: 0,
     y: 0,
-    z: 0,
+    z: 180,
   },
   fillcolor: {
-    r: 0,
-    g: 0,
-    b: 0,
-    a: 0,
-    hexa: "#00000000",
-    rgba: "rgba(0, 0, 0, 0)",
+    r: 255,
+    g: 255,
+    b: 255,
+    a: 1,
+    hexa: "#FFFFFFFF",
+    rgba: "rgba(255,255,255,1)",
+  },
+  wireframe_fillcolor: {
+    r: 255,
+    g: 255,
+    b: 255,
+    a: 1,
+    hexa: "#FFFFFFFF",
+    rgba: "rgba(255,255,255,1)",
+  },
+  points_fillcolor: {
+    r: 255,
+    g: 255,
+    b: 255,
+    a: 1,
+    hexa: "#FFFFFFFF",
+    rgba: "rgba(255,255,255,1)",
   },
   draw_model: ["FACE", "WIREFRAME"],
 };
@@ -414,28 +435,28 @@ export const store = defineStore("store", {
       wasm_node_insert.direction = i_direction;
       /** 颜色 */
       var i_fillcolor = {};
-      i_fillcolor.r = 0;
-      i_fillcolor.g = 0;
-      i_fillcolor.b = 0;
-      i_fillcolor.a = 0;
+      i_fillcolor.r = 255;
+      i_fillcolor.g = 255;
+      i_fillcolor.b = 255;
+      i_fillcolor.a = 1;
       i_fillcolor.hexa = "#FFFFFFFF";
       i_fillcolor.rgba = "rgba(255,255,255,1)";
       wasm_node_insert.fillcolor = i_fillcolor;
       //
       var i_wireframe_color = {};
-      i_wireframe_color.r = 0;
-      i_wireframe_color.g = 0;
-      i_wireframe_color.b = 0;
-      i_wireframe_color.a = 0;
+      i_wireframe_color.r = 255;
+      i_wireframe_color.g = 255;
+      i_wireframe_color.b = 255;
+      i_wireframe_color.a = 1;
       i_wireframe_color.hexa = "#FFFFFFFF";
       i_wireframe_color.rgba = "rgba(255,255,255,1)";
       wasm_node_insert.wireframe_fillcolor = i_wireframe_color;
       //
       var i_points_color = {};
-      i_points_color.r = 0;
-      i_points_color.g = 0;
-      i_points_color.b = 0;
-      i_points_color.a = 0;
+      i_points_color.r = 255;
+      i_points_color.g = 255;
+      i_points_color.b = 255;
+      i_points_color.a = 1;
       i_points_color.hexa = "#FFFFFFFF";
       i_points_color.rgba = "rgba(255,255,255,1)";
       wasm_node_insert.points_fillcolor = i_points_color;
@@ -614,7 +635,7 @@ export const store = defineStore("store", {
       /**将当前tl的time点赋予新的key val */
       new_row_key.val = keyTime - 0;
       new_row_key.uuid = uuidv4_UpperCase();
-      new_row_key.animation = "00 - EASE_NONE";
+      new_row_key.animation = "EASE_NONE";
       new_row_key.selected = false;
       new_row_key.min = 0;
       new_row_key.max = 1000000;
