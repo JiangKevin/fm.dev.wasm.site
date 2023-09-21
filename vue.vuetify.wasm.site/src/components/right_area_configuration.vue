@@ -317,6 +317,15 @@ export default {
                 }
             }
         },
+        up_switch_acceleration_support_for_config_others() {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_is_acceleration", "", [
+                        "number"
+                    ])(this.store.config_of_others.switch_acceleration);
+                }
+            }
+        }, //
         change_keyboard_kes_for_config() {
             if (this.is_debug) {
                 if (Module) {
@@ -674,7 +683,10 @@ export default {
                                 @update:modelValue="up_vertical_view_change_support_for_config_others()" class="fm_switch"
                                 label="Enble vertical view change surport" color="red-darken-3"
                                 true-icon="mdi mdi-language-lua" false-icon="mdi mdi-circle-off-outline"></v-switch>
-
+                            <v-switch v-model="store.config_of_others.switch_acceleration" :value=true :true-value=true
+                                hide-details="true" @update:modelValue="up_switch_acceleration_support_for_config_others()"
+                                class="fm_switch" label="Enable acceleration of sport" color="red-darken-3"
+                                true-icon="mdi mdi-language-lua" false-icon="mdi mdi-circle-off-outline"></v-switch>
 
                             <v-text-field clearable label="Horizontal sensitivity"
                                 prepend-inner-icon="mdi mdi-arrow-left-thin"
@@ -699,6 +711,9 @@ export default {
                                 @update:focused="up_speed_of_sports_for_config_others()" hide-details="true" variant="solo"
                                 density="comfortable" type="number" class="fm_v_text_field"
                                 v-model="store.config_of_others.speed_of_sports"></v-text-field>
+
+
+
 
 
 

@@ -1033,6 +1033,7 @@ export const store = defineStore("store", {
         others.view_vertical_sensitivity = 45;
         others.move_interval = 200;
         others.speed_of_sports = 0.2;
+        others.switch_acceleration=false
 
         var drive_keys = {};
         drive_keys.i_left_key = 97;
