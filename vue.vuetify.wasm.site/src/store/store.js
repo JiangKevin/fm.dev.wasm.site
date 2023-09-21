@@ -394,8 +394,11 @@ export const store = defineStore("store", {
       wasm_node_insert.describe = "";
       wasm_node_insert.tl_create = false;
       wasm_node_insert.importFlage = importFlage;
-      //   wasm_node_insert.wasm_index = this.d_wasm_nodes_gather.size();
-      // POINT/WIREFRAME/FACE
+      wasm_node_insert.switch_render = true;
+      wasm_node_insert.render_face = true;
+      wasm_node_insert.render_wireframe = false;
+      wasm_node_insert.render_points = false;
+      wasm_node_insert.render_materials = true;
       wasm_node_insert.draw_model = ["FACE", "WIREFRAME"];
       /** 位置 */
       var i_location = {};
@@ -415,8 +418,8 @@ export const store = defineStore("store", {
       i_fillcolor.g = 0;
       i_fillcolor.b = 0;
       i_fillcolor.a = 0;
-      i_fillcolor.hexa = "#00000000";
-      i_fillcolor.rgba = "rgba(0, 0, 0, 0)";
+      i_fillcolor.hexa = "#FFFFFFFF";
+      i_fillcolor.rgba = "rgba(255,255,255,1)";
       wasm_node_insert.fillcolor = i_fillcolor;
       /** */
       this.d_wasm_nodes_gather.push(wasm_node_insert);
@@ -974,7 +977,7 @@ export const store = defineStore("store", {
         camera.nearClip = 0;
         camera.farClip = 10000;
         camera.inertia = false;
-        camera.translationKey = 118
+        camera.translationKey = 118;
         camera.mouseInput = true;
         camera.mouseMiddleButton = true;
         //

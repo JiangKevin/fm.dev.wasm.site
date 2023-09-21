@@ -37,9 +37,6 @@ export default {
         none() {
             this.panel = []
         },
-        change_fillcolor_attributes(obj) {
-            this.store.change_color_for_bring_in(obj);
-        },
         // 更改名字
         change_name_for_wasm_item(uuid, name) {
             if (this.store.current_wasm_item_of_gather().tl_create) {
@@ -87,6 +84,43 @@ export default {
                         "number",
                         "number",
                     ])(wasm_item.uuid, this.store.d_wasm_select_edit_index, wasm_item.direction.x, wasm_item.direction.y, wasm_item.direction.z);
+                }
+            }
+        },
+        change_render_for_wasm_item(wasm_item) {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("switch_node_render_for_scenes", "", [
+                        "string",
+                        "number",
+                        "number",
+                    ])(wasm_item.uuid, this.store.d_wasm_select_edit_index, wasm_item.switch_render);
+                }
+            }
+        },
+        change_render_model_material_for_wasm_item(wasm_item) {
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("switch_node_render_model_material_for_scenes", "", [
+                        "string",
+                        "number",
+                        "number",
+                    ])(wasm_item.uuid, this.store.d_wasm_select_edit_index, wasm_item.render_materials);
+                }
+            }
+        },
+        change_render_color_for_wasm_item(wasm_item) {
+            this.store.change_color_for_bring_in(wasm_item.fillcolor);
+            if (this.is_debug) {
+                if (Module) {
+                    Module.cwrap("update_select_node_color_for_scenes", "", [
+                        "string",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                        "number",
+                    ])(wasm_item.uuid, this.store.d_wasm_select_edit_index, wasm_item.fillcolor.r, wasm_item.fillcolor.g, wasm_item.fillcolor.b, wasm_item.fillcolor.a);
                 }
             }
         },
@@ -167,23 +201,35 @@ export default {
                             <div class="fm_color_div">
                                 <ColorPicker format="rgb" shape="square" theme="black"
                                     v-model:pureColor="store.current_wasm_item_of_gather().fillcolor.rgba"
-                                    @pureColorChange="change_fillcolor_attributes(store.current_wasm_item_of_gather().fillcolor)" />
+                                    @pureColorChange="change_render_color_for_wasm_item(store.current_wasm_item_of_gather())" />
                                 <div class="span_div"> <span>Node Color :{{
                                     store.current_wasm_item_of_gather().fillcolor.rgba }}</span></div>
                             </div>
                             <!--  -->
 
                             <!-- Rendering mode -->
-                            <v-switch v-model="store.current_wasm_item_of_gather().draw_model" value="FACE"
-                                true-value="FACE" hide-details="true" class="fm_switch" label="Rendering mode:Face"
-                                color="indigo-darken-3" true-icon="mdi mdi-cube"></v-switch>
-                            <v-switch v-model="store.current_wasm_item_of_gather().draw_model" value="WIREFRAME"
-                                true-value="WIREFRAME" hide-details="true" class="fm_switch"
-                                label="Rendering mode:WireFrame" color="indigo-darken-3"
-                                true-icon="mdi mdi-cube-outline"></v-switch>
-                            <v-switch v-model="store.current_wasm_item_of_gather().draw_model" value="POINT"
-                                true-value="POINT" hide-details="true" class="fm_switch" label="Rendering mode:Point"
-                                color="indigo-darken-3" true-icon="mdi mdi-blur"></v-switch>
+                            <v-switch v-model="store.current_wasm_item_of_gather().switch_render" :value=true
+                                @update:modelValue="change_render_for_wasm_item(store.current_wasm_item_of_gather())"
+                                :true-value=true hide-details="true" class="fm_switch" label="Rendering"
+                                color="rindigo-darken-3" true-icon="mdi mdi-eye" false-icon="mdi mdi-eye-off"></v-switch>
+                            <v-switch v-model="store.current_wasm_item_of_gather().render_materials" :value=true
+                                :true-value=true hide-details="true" class="fm_switch" label="Rendering Materials"
+                                @update:modelValue="change_render_model_material_for_wasm_item(store.current_wasm_item_of_gather())"
+                                color="rindigo-darken-3" true-icon="mdi mdi-texture"
+                                false-icon="mdi mdi-square-off-outline"></v-switch>
+
+                            <v-switch v-model="store.current_wasm_item_of_gather().render_face" :value=true :true-value=true
+                                hide-details="true" class="fm_switch" label="Rendering mode:Face" color="rindigo-darken-3"
+                                true-icon="mdi mdi-cube" false-icon="mdi mdi-cube-off"></v-switch>
+                            <v-switch v-model="store.current_wasm_item_of_gather().render_wireframe" :value=true
+                                :true-value=true hide-details="true" class="fm_switch" label="Rendering mode:Wireframe"
+                                color="rindigo-darken-3" true-icon="mdi mdi-cube-outline"
+                                false-icon="mdi mdi-cube-off-outline"></v-switch>
+                            <v-switch v-model="store.current_wasm_item_of_gather().render_points" :value=true
+                                :true-value=true hide-details="true" class="fm_switch" label="Rendering mode:Points"
+                                color="rindigo-darken-3" true-icon="mdi mdi-blur" false-icon="mdi mdi-blur-off"></v-switch>
+
+                            <!-- tl created -->
                             <v-switch v-model="store.current_wasm_item_of_gather().tl_create" :value=true :true-value=true
                                 hide-details="true" class="fm_switch" label="Inclue prefabricated actions"
                                 color="red-darken-3" readonly true-icon="mdi mdi-chart-timeline-variant-shimmer"></v-switch>
