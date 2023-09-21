@@ -277,7 +277,7 @@ export default {
                 if (Module) {
                     Module.cwrap("update_enable_vertical_view_change", "", [
                         "number"
-                    ])(this.store.config_of_others.view_vertical_sensitivity);
+                    ])(this.store.config_of_others.enble_vertical_view_change);
                 }
             }
         },
